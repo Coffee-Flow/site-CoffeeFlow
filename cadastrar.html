@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="cadastrar.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <header>
+        <ul class="ul-header">
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+            <li><img src="img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
+            <li><button onclick="href('index')" class="btn btn-header" style="cursor: pointer;">HOME</button></li>
+        </ul>
+    </header>
+    <div class="content">
+        <div class="form-box">
+            <h1>Primeiro Acesso</h1>
+            <form action="">
+                <label class="label" id="nomeL" for="nome"></label><input id="nome" type="text" class="input-form" onfocusout="limpar(nome, nomeL)" onfocus="limpar(nome, nomeL)" placeholder="Nome">
+                <label class="label" id="emailL" for="email"></label><input id="email" type="text" class="input-form" onfocusout="limpar(email, emailL)" onfocus="limpar(email, emailL)" placeholder="E-mail">
+                <label class="label" id="cpfL" for="cpf"></label><input id="cpf" type="text" class="input-form" onfocusout="limpar(cpf, cpfL)" onfocus="limpar(cpf, cpfL)" placeholder="CPF">
+                <label class="label" id="senhaL" for="senha"></label><input id="senha" type="password" class="input-form" onfocusout="limpar(senha, senhaL)" onfocus="limpar(senha, senhaL)" placeholder="Senha">
+                <button>Cadastrar-se</button>
+            </form>
+            <button onclick="href('login')">Login</button>
+        </div>
+    </div>
+</body>
+</html>
+<script src="script.js">
+    
+</script>

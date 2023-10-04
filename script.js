@@ -37,3 +37,23 @@ function exibirCon3() {
         container2.style.display = "none";
     }
 }
+
+function href(place){
+    window.location.href=place+".html";
+}
+
+function limpar(element, elementLabel){
+
+    var legenda = elementLabel.innerHTML;
+    var texto = element.value;
+
+    if(legenda == ""){
+        var setLegenda = element.placeholder;
+        console.log(setLegenda)
+        element.removeAttribute("placeholder");
+        elementLabel.innerHTML = setLegenda;
+    }else if(texto == ""){
+        elementLabel.innerHTML = "";
+        element.placeholder = legenda;
+    }
+}
