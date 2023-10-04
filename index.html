@@ -4,29 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - CoffeeFlow</title>
+    <title>Site Institucional - CoffeeFlow</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <link rel="shortcut icon" href="img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
 </head>
 
 <body>
 
+    <!-- Header -->
+
     <header>
         <ul class="ul-header">
+
+            <!-- SideNav -->
+
             <div id="mySidenav" class="sidenav">
                 <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Clients</a>
-                <a href="#">Contact</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/Feedback.svg" alt="">Clientes</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/telephone.svg" alt="">Contato</a>
             </div>
-
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+
+            <!-- NavBar -->
+
             <li><img src="img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
-            <li><button class="btn btn-header" style="cursor: pointer;">ACESSAR</button></li>
+            <li><a href="#" style="text-decoration: none;"><button class="btn btn-header">ACESSAR</button></a></li>
         </ul>
     </header>
+
+    <!-- Section 1 -->
 
     <section class="section1">
         <img src="img/Section1/imgXicaraCafe.svg" alt="Xícara de Café" class="img-xicara">
@@ -38,9 +46,84 @@
         <img src="img/Section1/imgGraosCafe.svg" alt="Grãos de Café" class="img-grãos">
     </section>
 
+    <!-- Section 2 -->
+
     <section class="section2">
         <img src="img/Section2/SVG onda.svg" alt="" class="vetor-onda">
+        <div style="position: absolute;" class="topicos">
+            <div class="div-topico">
+                <div>
+                    <img src="img/Section2/Plus.svg" alt="">
+                    <h3 style="width: 120px;">Controle Eficiente</h3>
+                </div>
+                <p>Monitore com facilidade os fatores essenciais que afetam sua plantação.</p>
+            </div>
+
+            <div class="div-topico">
+                <div>
+                    <img src="img/Section2/Plus.svg" alt="">
+                    <h3>Antecipação e Segurança</h3>
+                </div>
+                <p>Possua ferramentas para lidar com mudanças climáticas e reduzir riscos.</p>
+            </div>
+
+            <div class="div-topico">
+                <div>
+                    <img src="img/Section2/Plus.svg" alt="">
+                    <h3>Produtividade e Resultados</h3>
+                </div>
+                <p>Cultive todo o potencial da sua plantação enquanto otimiza o uso de insumos.</p>
+            </div>
+        </div>
+
+        <div class="sobre-nós">
+            <div>
+                <h2>Sobre nós</h2>
+                <p>Bem-vindo ao CoffeeFlow, somos uma equipe dedicada e entusiasmada que se uniu para transformar a indústria cafeeira. <br><br>Nossa missão é simples: ajudar produtores de café a alcançar todo o potencial de suas plantações. Combinamos nossa expertise em análise de dados e desenvolvimento de sistemas para criar uma solução revolucionária de monitoramento agrícola.
+                <br><br>Estamos comprometidos em fornecer as ferramentas certas para que você possa cultivar o melhor café possível. Junte-se a nós nesta jornada rumo a um futuro mais brilhante para o café.</p>
+            </div>
+            <img src="img/Section2/ft Agricultor + Celular.svg" alt="">
+        </div>
     </section>
 
+    <!-- Section 3 -->
+
+    <section class="section3">
+        <h1 style="color: #925035;">O clima traz desafios</h1><h1 style="color: #053C11;">A CoffeeFlow soluções</h1> 
+        <div class="triade-btn">
+            <button onclick="exibirCon1()" class="btn">Monitoramento Climático</button>
+            <button onclick="exibirCon2()" class="btn">Manejo de Irrigação</button>
+            <button onclick="exibirCon3()" class="btn">Relatórios Gerenciais</button>
+        </div>
+
+        <div id="container1">
+            <img src="img/Section3/monitoramentoClimático.svg" alt="" width="50%">
+            <ul>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Previsão do tempo personalizada para sua fazenda;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Alertas sob medida, incluindo geada e condições para pragas;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Planejamento de operações agrícolas com base em informações precisas.</li>
+            </ul>
+        </div>
+
+        <div id="container2" style="display: none;">
+            <img src="img/Section3/manejoIrrigação.svg" alt="" width="50%">
+            <ul>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Aprimore a gestão de irrigação para maior precisão;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Reduza custos e aumente a produtividade de forma eficiente;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Irrigação automática com base nas condições do solo e do clima.</li>
+            </ul>
+        </div>
+
+        <div id="container3" style="display: none;">
+            <img src="img/Section3/relatóriosGerenciais.svg" alt="" width="50%">
+            <ul>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Acompanhe e analise, safra a safra, os principais fatores impactando seu negócio;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Tenha acesso a relatórios gerenciais detalhados para uma visão abrangente de sua produção de café;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Alertas automáticos para informar os agricultores sobre condições críticas, como seca ou excesso de umidade.</li>
+            </ul>
+        </div>
+    </section>
 </body>
 </html>
+
+<script src="script.js"></script>
