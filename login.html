@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar</title>
+    <title>Login</title>
     <link rel="shortcut icon" href="img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="cadastrar.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="menu.css">
 </head>
 <body>
@@ -24,17 +24,17 @@
             <li><button onclick="href('index')" class="btn btn-header" style="cursor: pointer;">HOME</button></li>
         </ul>
     </header>
+
     <div class="content">
         <div class="form-box">
-            <h1>Primeiro Acesso</h1>
+            <h1>Login</h1>
             <form action="">
-                <label class="label" id="nomeL" for="nome"></label><input id="nome" type="text" class="input-form" onfocusout="limpar(nome, nomeL)" onfocus="limpar(nome, nomeL)" placeholder="Nome">
                 <label class="label" id="emailL" for="email"></label><input id="email" type="text" class="input-form" onfocusout="limpar(email, emailL)" onfocus="limpar(email, emailL)" placeholder="E-mail">
-                <label class="label" id="cpfL" for="cpf"></label><input id="cpf" type="text" class="input-form" onfocusout="limpar(cpf, cpfL)" onfocus="limpar(cpf, cpfL)" placeholder="CPF">
                 <label class="label" id="senhaL" for="senha"></label><input id="senha" type="password" class="input-form" onfocusout="limpar(senha, senhaL)" onfocus="limpar(senha, senhaL)" placeholder="Senha">
-                <button>Cadastrar-se</button>
+                <button>Logar</button>
             </form>
-            <button onclick="href('login')">Login</button>
+            <button onclick="href('cadastrar')">Cadastrar-se</button>
+            <p><a href="#">Esqueci minha senha</a></p>
         </div>
     </div>
 </body>
