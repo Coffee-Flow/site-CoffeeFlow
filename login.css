@@ -26,7 +26,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 300px;
+    height: 200px;
   }
   
   .form-box>h1{
@@ -35,12 +35,16 @@ body{
   }
 
   .form-box p a{
-    color: #D9A30B;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
   }
-  
+ 
   .form-box form button{
     width: 100px;
     height: 41px;
+    margin-top: 30px;
     border-radius: 44px;
     background-color: #EAE8DB;
     color: #925035;
@@ -48,6 +52,8 @@ body{
     font-weight: bold;
     font-size: 17px;
   }
+
+
   
   .form-box>button{
     width: 150px;
@@ -85,3 +91,7 @@ body{
   .input-form::placeholder{
     color: rgba(146, 80, 53, 1);
   }
+
+  .content .lineVector{
+    margin-bottom: 5px;
+  }  

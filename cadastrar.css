@@ -38,6 +38,7 @@ body{
   width: 150px;
   height: 41px;
   border-radius: 44px;
+  margin-top: 30px;
   background-color: #EAE8DB;
   color: #925035;
   border: 3px solid #053C11;
@@ -62,7 +63,7 @@ body{
   font-weight: bold;
 }
 
-.input-form{
+.form-box .input-form{
   width: 334px;
   height: 35px;
   font-size: 22px;
@@ -76,8 +77,12 @@ body{
   cursor: pointer;
 }
 
-.input-form::placeholder{
+.form-box .input-form::placeholder{
   color: rgba(146, 80, 53, 1);
+}
+
+.content .lineVector{
+  margin-bottom: 5px;
 }
 
 
