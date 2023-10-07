@@ -57,6 +57,8 @@ p {
   color: #053C11;
   display: block;
   transition: 0.3s;
+  display: flex;
+  gap: 7px;
 }
 
 .sidenav a:hover {
