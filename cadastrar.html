@@ -28,14 +28,33 @@
         <div class="form-box">
             <h1>Primeiro Acesso</h1>
             <form action="">
-                <label class="label" id="nomeL" for="nome"></label><input id="nome" type="text" class="input-form" onfocusout="limpar(nome, nomeL)" onfocus="limpar(nome, nomeL)" placeholder="Nome">
-                <label class="label" id="emailL" for="email"></label><input id="email" type="text" class="input-form" onfocusout="limpar(email, emailL)" onfocus="limpar(email, emailL)" placeholder="E-mail">
-                <label class="label" id="cpfL" for="cpf"></label><input id="cpf" type="text" class="input-form" onfocusout="limpar(cpf, cpfL)" onfocus="limpar(cpf, cpfL)" placeholder="CPF">
-                <label class="label" id="senhaL" for="senha"></label><input id="senha" type="password" class="input-form" onfocusout="limpar(senha, senhaL)" onfocus="limpar(senha, senhaL)" placeholder="Senha">
-                <button>Cadastrar-se</button>
+                <div class="input-group">
+                    <input id="nome" type="text" class="input-form" onfocus="limpar(this, nomeL)" onblur="limpar(this, nomeL)" placeholder="">
+
+                    <label class="label" id="nomeL" for="nome">Nome</label>
+                </div>
+
+                <div class="input-group">
+                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" placeholder="">
+
+                    <label class="label" id="emailL" for="email">E-mail Institucional</label>
+                </div>
+                
+                <div class="input-group">
+                    <input id="cpf" type="text" class="input-form" onfocus="limpar(this, cpfL)" onblur="limpar(this, cpfL)" placeholder="">
+
+                    <label class="label" id="cpfL" for="cpf">CPF</label>
+                </div>
+
+                <div class="input-group">
+                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)"  placeholder="">
+
+                    <label class="label" id="senhaL" for="senha">Senha</label>
+                </div>
+                <button class="btn-form">Cadastrar-se</button>
             </form>
             <div class="lineVector"><img src="img/Vectors/greenLine.svg"></div>
-            <button onclick="href('login')">Login</button>
+            <button class="btn-form" onclick="href('login')">Login</button>
         </div>
     </div>
 </body>

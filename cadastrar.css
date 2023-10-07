@@ -32,29 +32,39 @@ body{
 .form-box>h1{
   font-size: 27px;
   color: #053C11;
+  margin-bottom: 5px;
+}
+
+.btn-form {
+  border-radius: 44px;
+  background-color: #EAE8DB;
+  color: #925035;
+  border: 3px solid #053C11;
+  font: bold 17px 'Poppins';
+  transition: width 1s ease 0.4s;
+  cursor: pointer;
 }
 
 .form-box form button{
   width: 150px;
-  height: 41px;
-  border-radius: 44px;
-  margin-top: 30px;
-  background-color: #EAE8DB;
-  color: #925035;
-  border: 3px solid #053C11;
-  font-weight: bold;
-  font-size: 17px;
+  height: 35px;
+}
+
+.form-box form button:hover {
+  width: 200px;
+  color: #053C11;
+  transition-delay: 0s;
 }
 
 .form-box>button{
   width: 100px;
   height: 35px;
-  border-radius: 44px;
-  background-color: #EAE8DB;
-  color: #925035;
-  border: 3px solid #053C11;
-  font-size: 17px;
-  font-weight: bold;
+}
+
+.form-box>button:hover {
+  width: 150px;
+  color: #053C11;
+  transition-delay: 0s;
 }
 
 .form-box .label{
@@ -63,18 +73,23 @@ body{
   font-weight: bold;
 }
 
-.form-box .input-form{
+.input-group {
+  display: flex;
+  justify-content: center;
+}
+
+.input-form {
   width: 334px;
   height: 35px;
-  font-size: 22px;
+  font: 400 16px 'Poppins';
   text-align: center;
-  font-weight: bold;
   background-color: transparent;
   border: 0;
   border-bottom: #053C11 solid 1px;
   outline: none;
   color: #925035;
   cursor: pointer;
+  transition: top 1s ease-in-out;
 }
 
 .form-box .input-form::placeholder{
@@ -85,6 +100,24 @@ body{
   margin-bottom: 5px;
 }
 
+.label {
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(0.2rem);
+  transition: 350ms;
+}
+
+.input-form:focus~.label,
+input-form:valid~.label,
+.mostrar-email {
+  transform: translateY(-80%) scale(1);
+  padding: 0 .4em;
+}
+
+.subir-label {
+  transform: translateY(-80%) scale(1);
+  padding: 0 .4em;
+}
 
 /* .content{
   margin-top: 20px;

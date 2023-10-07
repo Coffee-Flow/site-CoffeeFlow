@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="menu.css">
 </head>
+
 <body>
     <header>
         <ul class="ul-header">
@@ -29,17 +31,27 @@
         <div class="form-box">
             <h1>Login</h1>
             <form action="">
-                <label class="label" id="emailL" for="email"></label><input id="email" type="text" class="input-form" onfocusout="limpar(email, emailL)" onfocus="limpar(email, emailL)" placeholder="E-mail">
-                <label class="label" id="senhaL" for="senha"></label><input id="senha" type="password" class="input-form" onfocusout="limpar(senha, senhaL)" onfocus="limpar(senha, senhaL)" placeholder="Senha">
-                <button>Logar</button>
+                <div class="input-group">
+                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" placeholder="">
+                    <label class="label" id="emailL" for="email">E-mail</label>
+                </div>
+
+                <div class="input-group">
+                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)" placeholder="">
+
+                    <label class="label" id="senhaL" for="senha">Senha</label>
+                </div>
+
+                <button onclick="href('login')" class="btn-form">Logar</button>
             </form>
             <div class="lineVector"><img src="img/Vectors/greenLine.svg"></div>
-            <button onclick="href('cadastrar')">Cadastrar-se</button>
+            <button onclick="href('cadastrar')" class="btn-form">Cadastrar-se</button>
             <p><a href="#">Esqueci minha senha</a></p>
         </div>
     </div>
 </body>
+
 </html>
 <script src="script.js">
-    
+
 </script>

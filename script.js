@@ -1,4 +1,4 @@
-// Animation SideNav
+// Animação SideNav
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "270px";
@@ -8,7 +8,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
-// Buttons Section 3 
+// Botões Section 3 
 
 var container1 = document.getElementById('container1');
 var container2 = document.getElementById('container2');
@@ -38,22 +38,18 @@ function exibirCon3() {
     }
 }
 
+// 
+
 function href(place){
     window.location.href=place+".html";
 }
 
-function limpar(element, elementLabel){
+//  Limpar Labels - Login/Cadastro
 
-    var legenda = elementLabel.innerHTML;
-    var texto = element.value;
-
-    if(legenda == ""){
-        var setLegenda = element.placeholder;
-        console.log(setLegenda)
-        element.removeAttribute("placeholder");
-        elementLabel.innerHTML = setLegenda;
-    }else if(texto == ""){
-        elementLabel.innerHTML = "";
-        element.placeholder = legenda;
+function limpar(input, label) {
+    if (input.value !== "") {
+        label.classList.add("subir-label");
+    } else {
+        label.classList.remove("subir-label");
     }
 }

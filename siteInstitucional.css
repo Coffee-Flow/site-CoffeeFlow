@@ -8,31 +8,29 @@ body {
   background-color: #EAE8DB;
 }
 
-/* Default styles for headings (h1) */
+/* Atributos padrões para títulos */
 h1 {
   font: 700 45px 'Poppins';
   line-height: 42px;
 }
 
-/* Default styles for headings (h2) */
 h2 {
   font: 700 35px 'Poppins';
   line-height: 25px;
 }
 
-/* Default styles for headings (h3) */
 h3 {
   font: 700 25px 'Poppins';
   line-height: 25px;
 }
 
-/* Default styles for paragraphs (p) */
+/* Atributos padrões para parágrafos (p) */
 p {
   font: 200 16px 'Poppins';
   line-height: 17px;
 }
 
-/* Default styles for buttons (.btn) */
+/* Atributos padrões para botões (.btn) */
 .btn {
   display: flex;
   align-items: center;
@@ -173,7 +171,8 @@ p {
 }
 
 .triade-btn .btn {
-  margin: 0 20px; width: 20%;
+  margin: 0 20px; 
+  width: 20%;
   transition: width 1s ease 0.4s;
 }
 
@@ -222,7 +221,7 @@ p {
 
 /* Footer */
 
-/* Default styles for footer text */
+/* Atributos padrões para textos no footer */
 
 footer h4 {
   font-size: 25px;
@@ -236,7 +235,7 @@ footer ul {
   list-style: none;
 }
 
-/* Custom styles for footer */
+/* Atributos customizados para o footer */
 
 footer {
   position: absolute;
