@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Recuperação de senha</title>
     <link rel="shortcut icon" href="img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="recuperacaosenha.css">
 </head>
 
 <body>
@@ -29,28 +30,29 @@
 
     <div class="content">
         <div class="form-box">
-            <h1>Login</h1>
+            <h1>Recuperação de Senha</h1>
             <form action="">
-                <div class="input-group">
-                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" placeholder="">
-                    <label class="label" id="emailL" for="email">E-mail</label>
+
+                <div class="subtext">
+                Iremos recuperar sua senha enviando uma redefinição de senha ao email associado ao CPF/CPNJ.
                 </div>
 
                 <div class="input-group">
-                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)" placeholder="">
-                    <label class="label" id="senhaL" for="senha">Senha</label>
+                    <input id="CNPJ" type="number" class="input-form" onfocus="limpar(this, CNPJL)" onblur="limpar(this, CNPJL)" placeholder="">
+                    <label class="label" id="cnpjL" for="cnpj">CNPJ</label>
                 </div>
 
-                <button onclick="href('login')" class="btn-form">Logar</button>
+                <button onclick="recuperar()" class="btn-form">Recuperar senha</button>
             </form>
             <div class="lineVector"><img src="img/Vectors/greenLine.svg"></div>
-            <button onclick="href('cadastrar')" class="btn-form">Cadastrar-se</button>
-            <p><a href="recuperacaosenha.html">Esqueci minha senha</a></p>
+
+            <div class="endtext">
+            Caso não tenha acesso a este e-mail, favor entrar em contato com o <a href="#">atendimento CoffeeFlow.</a>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
-<script src="script.js">
-
-</script>
+<script src="scriptrecsenha.js"></script>
+<script src="script.js"></script>
