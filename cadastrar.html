@@ -21,40 +21,62 @@
 
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
             <li><img src="img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
-            <li><button onclick="href('index')" class="btn btn-header" style="cursor: pointer;">HOME</button></li>
+            <li><button onclick="href('siteInstitucional')" class="btn btn-header" style="cursor: pointer;">HOME</button></li>
         </ul>
     </header>
     <div class="content">
         <div class="form-box">
             <h1>Primeiro Acesso</h1>
-            <form action="">
+            <form action="" id="form">
                 <div class="input-group">
-                    <input id="nome" type="text" class="input-form" onfocus="limpar(this, nomeL)" onblur="limpar(this, nomeL)" placeholder="">
-
-                    <label class="label" id="nomeL" for="nome">Nome</label>
+                    <input id="nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)" onblur="limpar(this, nomeL)" oninput="nameValidate()" placeholder=""> 
+                    <label class="label" id="nomeL" for="nome">Nome Completo</label>
                 </div>
+                <span class="span-required">*Nome deve ter no mínimo 3 caracteres</span>
 
                 <div class="input-group">
-                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" placeholder="">
-
+                    <input id="email" type="text" class="input-form required" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" oninput="emailValidate()" placeholder="">
                     <label class="label" id="emailL" for="email">E-mail Institucional</label>
                 </div>
+                <span class="span-required">*Digite um e-mail válido</span>
                 
                 <div class="input-group">
-                    <input id="cpf" type="text" class="input-form" onfocus="limpar(this, cpfL)" onblur="limpar(this, cpfL)" placeholder="">
-
+                    <input id="cpf" type="text" class="input-form required" onfocus="limpar(this, cpfL)" onblur="limpar(this, cpfL)" oninput="cpfValidate()" placeholder="">
                     <label class="label" id="cpfL" for="cpf">CPF</label>
                 </div>
+                <span class="span-required">*O CPF deve ter no mínimo 11 números e no máximo 14 (com 2 pontos e 1 hífen)</span>
 
                 <div class="input-group">
-                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)"  placeholder="">
-
-                    <label class="label" id="senhaL" for="senha">Senha</label>
+                    <input id="senha_main" type="password" class="input-form required" onfocus="limpar(this, senhaL_main)" onblur="limpar(this, senhaL_main)" oninput="mainPasswordValidate()" placeholder="">
+                    <label class="label" id="senhaL_main" for="senha">Senha (Mínimo de 12 caracteres)</label>
+                    <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png"  onclick="mudarTipo(senha_main)" id="olho" class="olho">
                 </div>
-                <button class="btn-form">Cadastrar-se</button>
+                <span class="span-required">*Digite uma senha com no mínimo 12 caracteres</span>
+
+                <div class="input-group">
+                    <input id="senha_copia" type="password" class="input-form required" onfocus="limpar(this, senhaL_copia)" onblur="limpar(this, senhaL_copia)" oninput="comparePassword()" placeholder="">
+                    <label class="label" id="senhaL_copia" for="senha">Repita a sua senha</label>
+                    <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png"  onclick="mudarTipo(senha_copia)" id="olho" class="olho">
+                </div>
+                <span class="span-required">*Senhas devem ser compatíveis</span>
+
+                <button class="btn-form" onclick="validar()">Cadastrar-se</button>
             </form>
-            <div class="lineVector"><img src="img/Vectors/greenLine.svg"></div>
-            <button class="btn-form" onclick="href('login')">Login</button>
+            <div class="lineVector">
+                <img src="img/Vectors/greenLine.svg">
+                <button class="btn-form" onclick="href('login')">Login</button>
+            </div>
+        </div>
+
+        <div id="senha_requisitos">
+            <h5 style="font-size: 15px;">A senha deve ter: <br><br></h5>
+            <ul>
+                <li>Tamanho mínimo de 12 e no máximo 20 caracteres;</li>
+                <li>Somente letras, números e caracteres especiais(!#@$%&);</li>
+                <li>No mínimo, uma letra maiúscula <strong>E</strong> minúscula;</li>
+                <li>No mínimo, um número;</li>
+                <li>No mínimo, um caractere especial(!#@$%&).</li>
+            </ul>
         </div>
     </div>
 </body>

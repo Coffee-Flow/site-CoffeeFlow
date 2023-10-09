@@ -300,3 +300,64 @@ footer {
   justify-content: space-around;
   height: 60px;
 }
+
+/* Estilização Calculadora Financeira*/
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-form {
+  width: 400px;
+  height: 25px;
+  font: 400 16px 'Poppins';
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  border-bottom: #053C11 solid 1px;
+  outline: none;
+  color: #925035;
+  cursor: pointer;
+  transition: top 1s ease-in-out;
+  margin-bottom: 12px;
+}
+
+.label {
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(-2rem);
+  transition: 350ms;
+}
+
+.input-form:focus~.label,
+input-form:valid~.label,
+.mostrar-email {
+  transform: translateY(-225%) scale(1);
+  padding: 0 .4em;
+}
+
+.subir-label {
+  transform: translateY(-225%) scale(1);
+  padding: 0 .4em;
+}
+
+#btn_proximo {
+  width: 14%;
+  height: 35px;
+  border-radius: 44px;
+  background-color: #EAE8DB;
+  color: #925035;
+  border: 2px solid #053C11;
+  font: bold 17px 'Poppins';
+  transition: width 1s ease 0.4s;
+  cursor: pointer;
+}
+
+#btn_proximo:hover {
+  width: 17%;
+  color: #053C11;
+  transition-delay: 0s;
+}

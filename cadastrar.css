@@ -12,7 +12,7 @@ body{
 
 .form-box{
   width: 519px;
-  height: 500px;
+  height: 530px;
   border-radius: 14px;
   background-color: rgba(234, 232, 219, 0.30);
   display: flex;
@@ -27,12 +27,12 @@ body{
   justify-content: space-between;
   align-items: center;
   height: 320px;
+  gap: 15px;
 }
 
 .form-box>h1{
   font-size: 27px;
   color: #053C11;
-  margin-bottom: 5px;
 }
 
 .btn-form {
@@ -56,19 +56,20 @@ body{
   transition-delay: 0s;
 }
 
-.form-box>button{
+.btn-form{
   width: 100px;
   height: 35px;
 }
 
-.form-box>button:hover {
+.btn-form:hover {
   width: 150px;
   color: #053C11;
   transition-delay: 0s;
+  transition: width 1s ease 0.4s;
 }
 
 .form-box .label{
-  font-size: 22px;
+  font: 500 18px 'Poppins';
   color: #925035;
   font-weight: bold;
 }
@@ -80,7 +81,7 @@ body{
 
 .input-form {
   width: 334px;
-  height: 35px;
+  height: 25px;
   font: 400 16px 'Poppins';
   text-align: center;
   background-color: transparent;
@@ -98,12 +99,15 @@ body{
 
 .content .lineVector{
   margin-bottom: 5px;
+  display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .label {
   position: absolute;
   pointer-events: none;
-  transform: translateY(0.2rem);
+  transform: translateY(-0.2rem);
   transition: 350ms;
 }
 
@@ -117,6 +121,32 @@ input-form:valid~.label,
 .subir-label {
   transform: translateY(-80%) scale(1);
   padding: 0 .4em;
+}
+
+.span-required {
+  font: 400 12px 'Poppins';
+  color: red;
+  margin-top: -18px;
+  display: none;
+}
+
+#senha_requisitos {
+  width: 290px;
+    background-color: #D9A30B;
+    font: 400 13px 'Poppins';
+    line-height: 18px;
+    border-radius: 15px;
+    padding: 20px 35px 20px 40px;
+    position: absolute;
+    right: 115px;
+    bottom: 29px;
+    text-align: justify;
+    display: none;
+}
+
+.olho {
+  cursor: pointer;
+  width: 25px;
 }
 
 /* .content{

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="siteInstitucional.css">
     <link rel="shortcut icon" href="img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -31,7 +32,8 @@
             <!-- NavBar -->
 
             <li><img src="img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
-            <li><a href="#" style="text-decoration: none;"><button onclick="href('login')" class="btn btn-header">ACESSAR</button></a></li>
+            <li><a href="#" style="text-decoration: none;"><button onclick="href('login')"
+                        class="btn btn-header">ACESSAR</button></a></li>
         </ul>
     </header>
 
@@ -80,8 +82,15 @@
         <div class="sobre-nós">
             <div>
                 <h2>Sobre nós</h2>
-                <p><strong><i>Bem-vindo ao CoffeeFlow</i></strong>, somos uma equipe dedicada e entusiasmada que se uniu para transformar a indústria cafeeira. <br><br>Nossa missão é simples: <i style="font-weight: 700; ">ajudar produtores de café a alcançar todo o potencial de suas plantações</i>. Combinamos nossa expertise em análise de dados e desenvolvimento de sistemas para criar uma solução revolucionária de monitoramento agrícola.
-                <br><br>Estamos comprometidos em fornecer as ferramentas certas para que você possa cultivar o melhor café possível. <i style="font-weight: 700; color: #925035;">Junte-se a nós nesta jornada rumo a um futuro mais brilhante para o café.</i></p>
+                <p><strong><i>Bem-vindo ao CoffeeFlow</i></strong>, somos uma equipe dedicada e entusiasmada que se uniu
+                    para transformar a indústria cafeeira. <br><br>Nossa missão é simples: <i
+                        style="font-weight: 700; ">ajudar produtores de café a alcançar todo o potencial de suas
+                        plantações</i>. Combinamos nossa expertise em análise de dados e desenvolvimento de sistemas
+                    para criar uma solução revolucionária de monitoramento agrícola.
+                    <br><br>Estamos comprometidos em fornecer as ferramentas certas para que você possa cultivar o
+                    melhor café possível. <i style="font-weight: 700; color: #925035;">Junte-se a nós nesta jornada rumo
+                        a um futuro mais brilhante para o café.</i>
+                </p>
             </div>
             <img src="img/Section2/ft Agricultor + Celular.svg" alt="">
         </div>
@@ -90,7 +99,8 @@
     <!-- Section 3 -->
 
     <section class="section3">
-        <h1 style="color: #925035;">O clima traz desafios</h1><h1 style="color: #053C11;">A CoffeeFlow soluções</h1> 
+        <h1 style="color: #925035;">O clima traz desafios</h1>
+        <h1 style="color: #053C11;">A CoffeeFlow soluções</h1>
         <div class="triade-btn">
             <button onclick="exibirCon1()" class="btn">Monitoramento Climático</button>
             <button onclick="exibirCon2()" class="btn">Manejo de Irrigação</button>
@@ -100,36 +110,62 @@
         <div id="container1">
             <img src="img/Section3/monitoramentoClimático.svg" alt="" width="50%">
             <ul>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Previsão do tempo personalizada para sua fazenda;</li>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Alertas sob medida, incluindo geada e condições para pragas;</li>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Planejamento de operações agrícolas com base em informações precisas.</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Previsão do tempo personalizada para sua
+                    fazenda;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Alertas sob medida, incluindo geada e
+                    condições para pragas;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Planejamento de operações agrícolas com base
+                    em informações precisas.</li>
             </ul>
         </div>
 
         <div id="container2" style="display: none;">
             <img src="img/Section3/manejoIrrigação.svg" alt="" width="47%">
             <ul>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Aprimore a gestão de irrigação para maior precisão;</li>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Reduza custos e aumente a produtividade de forma eficiente;</li>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Irrigação automática com base nas condições do solo e do clima.</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Aprimore a gestão de irrigação para maior
+                    precisão;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Reduza custos e aumente a produtividade de
+                    forma eficiente;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Irrigação automática com base nas condições do
+                    solo e do clima.</li>
             </ul>
         </div>
 
         <div id="container3" style="display: none;">
             <img src="img/Section3/relatóriosGerenciais.svg" alt="" width="47%">
             <ul>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Acompanhe e analise, safra a safra, os principais fatores impactando seu negócio;</li>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Tenha acesso a relatórios gerenciais detalhados para uma visão abrangente de sua produção de café;</li>
-                <li><img src="img/Section3/check.svg" alt="" width="20px">Alertas automáticos para informar os agricultores sobre condições críticas, como seca ou excesso de umidade.</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Acompanhe e analise, safra a safra, os
+                    principais fatores impactando seu negócio;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Tenha acesso a relatórios gerenciais
+                    detalhados para uma visão abrangente de sua produção de café;</li>
+                <li><img src="img/Section3/check.svg" alt="" width="20px">Alertas automáticos para informar os
+                    agricultores sobre condições críticas, como seca ou excesso de umidade.</li>
             </ul>
         </div>
     </section>
 
-    <!-- Section 4 -->
+    <!-- Section 4 / Calculadora Financeira -->
 
     <section class="section4">
         <img src="img/Section4/SVG onda (1).svg" alt="" class="vetor-onda-sec4">
-        <!-- Calculadora aqui -->
+        <form style="position: relative; " id="form">
+            <div class="input-group" id="div_a">
+                <input id="input_nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)"
+                    onblur="limpar(this, nomeL)" minlength="3" required />
+                <label class="label" id="nomeL" for="nome">Qual o seu nome?</label>
+                <button id="btn_proximo" onclick="proximo1()">Proximo</button>
+            </div>
+
+            <div class="input-group" id="div_b"></div>
+            <br />
+            <div class="input-group" id="div_c"></div>
+            <br />
+            <div class="input-group" id="div_d"></div>
+            <br />
+            <div class="input-group" id="div_e"></div>
+            <br /><br />
+            <div class="input-group" id="div_f"></div>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -140,7 +176,8 @@
                 <img src="img/Logo/CoffeeFlowLogo.svg" alt="CoffeeFlowLogo">
                 <h4>CoffeeFlow</h4>
             </div>
-            <p>Tecnologia e qualidade se encontram na CoffeeFlow, onde cada grão é cultivado com excelência. <span style="font-weight: 500;"><i>Junte-se a nós nessa jornada!</i></span></p>
+            <p>Tecnologia e qualidade se encontram na CoffeeFlow, onde cada grão é cultivado com excelência. <span
+                    style="font-weight: 500;"><i>Junte-se a nós nessa jornada!</i></span></p>
         </div>
 
         <div class="footer-direita">
@@ -155,9 +192,10 @@
             </div>
             <div class="links-fale-conosco">
                 <div>
-                <h4>Fale Conosco</h4>
-                <p>contato@coffeeflow.com</p>
-                <p>++55 (11) xxxx-xxxx</p></div>
+                    <h4>Fale Conosco</h4>
+                    <p>contato@coffeeflow.com</p>
+                    <p>++55 (11) xxxx-xxxx</p>
+                </div>
 
                 <ul>
                     <li><a href="#"><img src="img/Footer/Facebook.svg" alt="Icon Facebook"></a></li>
@@ -169,6 +207,7 @@
         </div>
     </footer>
 </body>
+
 </html>
 
 <script src="script.js"></script>
