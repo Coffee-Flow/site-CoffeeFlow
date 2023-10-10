@@ -371,3 +371,10 @@ footer {
   color: #053C11;
   transition-delay: 0s;
 }
+.girar {
+  transition: all 1s ease;
+}
+.girar:hover {
+  transform: rotate(359deg);
+  transition: all 1s ease;
+}
