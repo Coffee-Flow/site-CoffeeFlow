@@ -32,16 +32,18 @@
             <h1>Login</h1>
             <form action="">
                 <div class="input-group">
-                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" placeholder="">
+                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" oninput="emailValidateLogin()" required>
                     <label class="label" id="emailL" for="email">E-mail</label>
                 </div>
+                <span id="span_validate" class="span-required">*Digite um e-mail válido</span>
 
                 <div class="input-group">
-                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)" placeholder="">
+                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)" oninput="PasswordValidateLogin()" required>
                     <label class="label" id="senhaL" for="senha">Senha</label>
                 </div>
+                <span id="span_validate" class="span-required">*Digite uma senha com no mínimo 12 caracteres</span>
 
-                <button onclick="href('login')" class="btn-form">Logar</button>
+                <button onclick="avisar(email, senha)" class="btn-form" id="btnProximo">Logar</button>
             </form>
             <div class="lineVector"><img src="img/Vectors/greenLine.svg"></div>
             <button onclick="href('cadastrar')" class="btn-form">Cadastrar-se</button>

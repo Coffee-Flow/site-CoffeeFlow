@@ -216,7 +216,7 @@ p {
 .vetor-onda-sec4 {
   width: 100%;
     position: relative;
-    top: 315px;
+    top: 300px;
 }
 
 /* Footer */
@@ -311,36 +311,46 @@ footer {
 }
 
 .input-form {
-  width: 400px;
-  height: 25px;
-  font: 400 16px 'Poppins';
+  width: 30%;
+  height: 35px;
+  font: 400 17px 'Poppins';
   text-align: center;
   background-color: transparent;
-  border: 0;
-  border-bottom: #053C11 solid 1px;
+  border: #053C11 solid 1px;
+  border-radius: 40px;
   outline: none;
   color: #925035;
   cursor: pointer;
   transition: top 1s ease-in-out;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .label {
   position: absolute;
   pointer-events: none;
-  transform: translateY(-2rem);
+  transform: translateY(-1.6rem);
   transition: 350ms;
 }
 
+#form label {
+  font: 600 italic 20px 'Poppins';
+  color: #053c119f;
+  text-align: left;
+}
+
+.span-form {
+  font: 600 20px 'Poppins';
+}
+
 .input-form:focus~.label,
-input-form:valid~.label,
+.input-form:valid~.label,
 .mostrar-email {
-  transform: translateY(-225%) scale(1);
+  transform: translateY(-205%) scale(1);
   padding: 0 .4em;
 }
 
 .subir-label {
-  transform: translateY(-225%) scale(1);
+  transform: translateY(-179%) scale(1);
   padding: 0 .4em;
 }
 

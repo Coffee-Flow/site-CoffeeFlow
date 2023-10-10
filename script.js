@@ -137,6 +137,29 @@ function mudarTipo(input) {
     }
 }
 
+// Validação inputs Tela de Login
+
+function emailValidateLogin() {
+    if (!emailRegex.test(email.value)) {
+        email.style.borderBottom = '1px solid #e63636';
+        span_validate[0].style.display = 'block';
+    } else {
+        email.style.borderBottom = '';
+        span_validate[0].style.display = 'none';
+    }
+}
+
+function PasswordValidateLogin() {
+    if (!senhaRegex.test(senha.value)) {
+        senha.style.borderBottom = '1px solid #e63636';
+        span_validate[1].style.display = 'block';
+    } else {
+        senha.style.borderBottom = '';
+        span_validate[1].style.display = 'none';
+        
+    }
+}
+
 // Simulador Financeiro
 
 var nome = "";
@@ -159,37 +182,39 @@ var safra = 0;
 
 function proximo1() {
     nome = input_nome.value;
-    div_a.innerHTML = `<input id="input_largura" type="number" class="input-form required" onfocus="limpar(this, larguraL)" onblur="limpar(this, larguraL)" minlength="1" required/>
+    div_a.innerHTML = `<input id="input_largura" type="number" class="input-form required" onfocus="limpar(this, larguraL)" onblur="limpar(this, larguraL)" minlength="1" required style="width:40%;"/>
     <label class="label" id="larguraL" for="largura">Qual a largura do seu plantio? (em metros)?</label>
     <button id="btn_proximo" onclick="proximo2()">Proximo</button>`;
 }
 
 function proximo2() {
     largura = Number(input_largura.value);
-    div_a.innerHTML = `<input id="input_comprimento" type="number" class="input-form required" onfocus="limpar(this, comprimentoL)" onblur="limpar(this, comprimentoL)" minlength="1" required/>
+    div_a.innerHTML = `<input id="input_comprimento" type="number" class="input-form required" onfocus="limpar(this, comprimentoL)" onblur="limpar(this, comprimentoL)" minlength="1" required style="width:40%;"/>
     <label class="label" id="comprimentoL" for="comprimento">Qual o comprimento do seu plantio? (em metros)?</label>
     <button id="btn_proximo" onclick="proximo3()">Proximo</button>`;
   }
 
   function proximo3() {
     comprimento = Number(input_comprimento.value);
-    div_a.innerHTML = `<input id="input_espalinha" type="number" class="input-form required" onfocus="limpar(this, espalinhaL)" onblur="limpar(this, espalinhaL)" minlength="1" required/>
+    div_a.innerHTML = `<input id="input_espalinha" type="number" class="input-form required" onfocus="limpar(this, espalinhaL)" onblur="limpar(this, espalinhaL)" minlength="1" required style="width:40%;"/>
     <label class="label" id="espalinhaL" for="espalinha">Qual o espaçamento entre linhas? (em metros)</label>
     <button id="btn_proximo" onclick="proximo4()">Proximo</button>`;
   }
 
   function proximo4() {
     espalinha = Number(input_espalinha.value);
-    div_a.innerHTML = `<input id="input_espaplan" type="number" class="input-form required" onfocus="limpar(this, espaplanL)" onblur="limpar(this, espaplanL)" minlength="1" required/>
+    div_a.innerHTML = `<input id="input_espaplan" type="number" class="input-form required" onfocus="limpar(this, espaplanL)" onblur="limpar(this, espaplanL)" minlength="1" required style="width:40%;"/>
     <label class="label" id="espaplanL" for="espaplan">Qual o espaçamento das plantas? (em metros)</label>
     <button id="btn_proximo" onclick="proximo5()">Proximo</button>`;
   }
 
   function proximo5() {
     espaplan = Number(input_espaplan.value);
-    div_a.innerHTML = `<span> Você já possui um sistema de irrigação? </span>
-    Sim: <input type="radio" name="rad1" onclick="rad1s()">
-    Não <input type="radio" name="rad1"> 
+    div_a.innerHTML = `<span class="span-form"> Você já possui um sistema de irrigação? </span>
+    <div style="display: flex; gap: 12px;">
+        Sim: <input type="radio" name="rad1" onclick="rad1s()">
+        Não <input type="radio" name="rad1"> 
+    </div>
     <button id="btn_proximo" onclick="proximo6()">Proximo</button>`;
   }
 
@@ -198,16 +223,20 @@ function proximo2() {
   }
   function proximo6() {
     if (rad1 == 1) {
-      div_a.innerHTML = `<span> Qual é esse sistema?</span> 
-      Aspersão: <input type="radio" name="sis" onclick="asper()">
-      Superfície: <input type="radio" name="sis" onclick="super()">
-      Localizada: <input type="radio" name="sis" onclick="local()">
-      Subirrigação: <input type="radio" name="sis" onclick="subi()"> 
+      div_a.innerHTML = `<span class="span-form"> Qual é esse sistema?</span> 
+      <div style="display: flex; gap: 12px;">
+            Aspersão: <input type="radio" name="sis" onclick="asper()">
+            Superfície: <input type="radio" name="sis" onclick="super()">
+            Localizada: <input type="radio" name="sis" onclick="local()">
+            Subirrigação: <input type="radio" name="sis" onclick="subi()">
+        </div>
       <button id="btn_proximo" onclick="proximo9()">Proximo</button>`;
     } else {
-      div_a.innerHTML = `Você deseja fazer um sistema de irrigação com a nossa empresa? 
-      Sim: <input type="radio" name="rad2" onclick="fazersim()">
-      Não <input type="radio" name="rad2">
+      div_a.innerHTML = `<span class="span-form">Você deseja fazer um sistema de irrigação com a nossa empresa?</span> 
+        <div style="display: flex; gap: 12px;">
+        Sim: <input type="radio" name="rad2" onclick="fazersim()">
+        Não: <input type="radio" name="rad2">
+        </div>
       <button id="btn_proximo" onclick="proximo8()">Proximo</button>`;
     }
   }

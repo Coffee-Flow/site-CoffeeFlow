@@ -124,3 +124,10 @@ input-form:valid~.label,
   transform: translateY(-80%) scale(1);
   padding: 0 .4em;
 }
+
+#span_validate{
+  font: 400 12px 'Poppins';
+  color: red;
+  margin-top: -18px;
+  display: none;
+}

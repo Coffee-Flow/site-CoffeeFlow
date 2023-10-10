@@ -12,7 +12,7 @@ body{
 
 .form-box{
   width: 519px;
-  height: 530px;
+  height: 540px;
   border-radius: 14px;
   background-color: rgba(234, 232, 219, 0.30);
   display: flex;
@@ -26,8 +26,8 @@ body{
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 320px;
-  gap: 15px;
+  height: 360px;
+  gap: 16px;
 }
 
 .form-box>h1{
@@ -114,12 +114,12 @@ body{
 .input-form:focus~.label,
 input-form:valid~.label,
 .mostrar-email {
-  transform: translateY(-80%) scale(1);
+  transform: translateY(-95%) scale(1);
   padding: 0 .4em;
 }
 
 .subir-label {
-  transform: translateY(-80%) scale(1);
+  transform: translateY(-95%) scale(1);
   padding: 0 .4em;
 }
 
