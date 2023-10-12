@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Empresa</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="cadEmpresa.css">
+    <link rel="shortcut icon" href="img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <ul class="ul-header">
+
+            <!-- SideNav -->
+
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/Feedback.svg" alt="">Clientes</a>
+                <a href="#" class="links-sidenav"><img src="img/SideBar/telephone.svg" alt="">Contato</a>
+            </div>
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+
+            <!-- NavBar -->
+
+            <li><img src="img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
+            <li><a href="#" style="text-decoration: none;"><button onclick="href('siteInstitucional')"
+                        class="btn btn-header">INÍCIO</button></a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Cadastro da Empresa</h1>
+            <div class="input-group">
+                <input type="text" id="nomeEmp"> 
+                <label for="nomeEmp" id="nomeEmpL">Nome da Empresa</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="razao">
+                <label for="razao" id="razaoL">Razão Social</label>
+            </div>
+            <div class="input-group">
+                <input type="number" id="cnpj">
+                <label for="cnpj" id="cnpjL">CNPJ</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="emailCorp">
+                <label for="emailCorp" id="emailCorpL">Email Corporativo</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="tel">
+                <label for="tel" id="telL">Telefone Comercial</label>
+            </div>
+            <div class="input-group">
+                <input type="number" id="cep">
+                <label for="cep" id="cepL">CEP</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="logr">
+                <label for="logr" id="logrL">Logradouro</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="bairro">
+                <label for="bairro" id="bairroL">Bairro</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="cidade">
+                <label for="cidade" id="cidadeL">Cidade</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="uf">
+                <label for="uf" id="ufL">UF</label>
+            </div>
+        </div>
+        <div class="form-box yellowColor">
+            <h1>Detalhes da Lavoura</h1>
+            <div class="lavoura">
+                <div class="input-group">
+                    <input type="number" id="areaCultivo">
+                    <label for="areaCultivo">Tamanho da Área de Cultivo</label>
+                </div>
+            <div class="radioArea">
+                <input type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
+                <input type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
+            </div>
+            </div>
+
+            <div class="cafe">
+            <h2>Tipo(s) de Café cultivado(s)</h2>
+            <div class="radioCafe">
+                <input type="radio" name="cafe" id="arabica"><label for="arabica">Cultivo somente café arábica.</label>
+            </div>
+            <div class="radioCafe">
+                <input type="radio" name="cafe" id="canilon"><label for="canilon">Cultivo somente café canilon/robusta.</label>
+            </div>
+            <div class="radioCafe">
+                <input type="radio" name="cafe" id="outro"><label for="outro">Cultivo outro(s) tipo(s) de café</label>
+            </div>
+            </div>
+
+            <div class="irrig">
+            <h2>Tipo de Sistema de Irrigação</h2>
+            <div class="radioIrr">
+                <input type="radio" name="irr" id="arsp"><label for="arsp">Sistema de Irrigação por Aspersão.</label>
+            </div>
+            <div class="radioIrr">
+                <input type="radio" name="irr" id="nenhum"><label for="nenhum">Não possuo sistema de irrigação.</label>
+            </div>
+            <div class="radioIrr">
+                <input type="radio" name="irr" id="outro"><label for="outro">Outro sistema</label>
+            </div>
+            </div>
+
+
+            <h3>Quantidade média de café colhido anualmente (em sacas) <input type="number" id="sacas"> </h3>
+            <button>Finalizar Cadastro</button>
+        </div>
+    </div>
+</body>
+</html>
+<script src="script.js">
+    
+</script>
