@@ -21,46 +21,48 @@
 
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
             <li><img src="img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
-            <li><button onclick="href('siteInstitucional')" class="btn btn-header" style="cursor: pointer;">HOME</button></li>
+            <li><button onclick="href('siteInstitucional')" class="btn btn-header" style="cursor: pointer;">INÍCIO</button></li>
         </ul>
     </header>
     <div class="content">
         <div class="form-box">
             <h1>Primeiro Acesso</h1>
-            <form action="" id="form">
+            <form onsubmit="return impedirEnvioCadastro()" id="form">
                 <div class="input-group">
-                    <input id="nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)" onblur="limpar(this, nomeL)" oninput="nameValidate()" placeholder=""> 
+                    <input id="nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)" onblur="limpar(this, nomeL)" oninput="nameValidate()"> 
                     <label class="label" id="nomeL" for="nome">Nome Completo</label>
                 </div>
                 <span class="span-required">*Nome deve ter no mínimo 3 caracteres</span>
 
                 <div class="input-group">
-                    <input id="email" type="text" class="input-form required" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" oninput="emailValidate()" placeholder="">
+                    <input id="email" type="text" class="input-form required" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" oninput="emailValidate()">
                     <label class="label" id="emailL" for="email">E-mail Institucional</label>
                 </div>
                 <span class="span-required">*Digite um e-mail válido</span>
                 
                 <div class="input-group">
-                    <input id="cpf" type="text" class="input-form required" onfocus="limpar(this, cpfL)" onblur="limpar(this, cpfL)" oninput="cpfValidate()" placeholder="">
+                    <input id="cpf" type="text" class="input-form required" onfocus="limpar(this, cpfL)" onblur="limpar(this, cpfL)" oninput="cpfValidate()">
                     <label class="label" id="cpfL" for="cpf">CPF</label>
                 </div>
                 <span class="span-required">*O CPF deve ter no mínimo 11 números e no máximo 14 (com 2 pontos e 1 hífen)</span>
 
                 <div class="input-group">
-                    <input id="senha_main" type="password" class="input-form required" onfocus="limpar(this, senhaL_main)" onblur="limpar(this, senhaL_main)" oninput="mainPasswordValidate()" placeholder="">
+                    <input id="senha_main" type="password" class="input-form required" onfocus="limpar(this, senhaL_main)" onblur="limpar(this, senhaL_main)" oninput="mainPasswordValidate()">
+                    <img src="img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;" alt="" onclick="mudarTipo(senha_main, olho_fechado_main, olho_aberto_main)" id="olho_fechado_main" class="olho">
+                    <img src="img/TelaCadastrar/eye.svg" style="width: 17px;" alt="" onclick="mudarTipo(senha_main, olho_fechado_main, olho_aberto_main)" id="olho_aberto_main" class="olho">
                     <label class="label" id="senhaL_main" for="senha">Senha (Mínimo de 12 caracteres)</label>
-                    <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png"  onclick="mudarTipo(senha_main)" id="olho" class="olho">
                 </div>
                 <span class="span-required">*Digite uma senha com no mínimo 12 caracteres</span>
 
                 <div class="input-group">
-                    <input id="senha_copia" type="password" class="input-form required" onfocus="limpar(this, senhaL_copia)" onblur="limpar(this, senhaL_copia)" oninput="comparePassword()" placeholder="">
+                    <input id="senha_copia" type="password" class="input-form required" onfocus="limpar(this, senhaL_copia)" onblur="limpar(this, senhaL_copia)" oninput="comparePassword()">
+                    <img src="img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;position: relative;" alt="" onclick="mudarTipo(senha_copia, olho_fechado_copia, olho_aberto_copia)" id="olho_fechado_copia" class="olho">
+                    <img src="img/TelaCadastrar/eye.svg" style="width: 17px;" alt="" onclick="mudarTipo(senha_copia, olho_fechado_copia, olho_aberto_copia)" id="olho_aberto_copia" class="olho">
                     <label class="label" id="senhaL_copia" for="senha">Repita a sua senha</label>
-                    <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png"  onclick="mudarTipo(senha_copia)" id="olho" class="olho">
                 </div>
                 <span class="span-required">*Senhas devem ser compatíveis</span>
 
-                <button class="btn-form" onclick="validar()">Cadastrar-se</button>
+                <button class="btn-form" type="submit">Cadastrar-se</button>
             </form>
             <div class="lineVector">
                 <img src="img/Vectors/greenLine.svg">

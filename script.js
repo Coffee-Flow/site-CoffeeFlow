@@ -51,6 +51,7 @@ function limpar(input, label) {
         label.classList.add("subir-label");
     } else {
         label.classList.remove("subir-label");
+
     }
 }
 
@@ -71,6 +72,13 @@ form.addEventListener('submit', (event) => {
     cpfValidate();
     mainPasswordValidate();
     comparePassword();
+    if (impedirEnvioCadastro() == false) {
+        alert('Corrija os erros antes de enviar o formulário.');
+    } else {
+        form.submit(); // Envie o formulário se a validação for bem-sucedida, ou seja, retornar true
+    };
+
+    
 });
 
 function setError(index) {
@@ -127,13 +135,25 @@ function comparePassword() {
     }
 }
 
+function impedirEnvioCadastro() {
+    if (emailRegex.test(campos[1].value) && cpfRegex.test(campos[2].value) && senhaRegex.test(campos[3].value) && campos[4].value == campos[3].value) {
+        return true; // Se todas estas condições estiverem certas, o return true permite enivar o form
+    } else {
+        return false; // Impede o envio do formulário
+    }
+}
+
 // Mostrar senha
 
-function mudarTipo(input) {
+function mudarTipo(input, imgFechar, imgAbrir) {
     if (input.type === 'password') {
         input.type = 'text';
+        imgFechar.style.display = 'none';
+        imgAbrir.style.display = 'block'; 
     } else {
        input.type = 'password';
+       imgFechar.style.display = 'block';
+       imgAbrir.style.display = 'none';       
     }
 }
 
@@ -143,6 +163,7 @@ function emailValidateLogin() {
     if (!emailRegex.test(email.value)) {
         email.style.borderBottom = '1px solid #e63636';
         span_validate[0].style.display = 'block';
+        
     } else {
         email.style.borderBottom = '';
         span_validate[0].style.display = 'none';
@@ -158,6 +179,15 @@ function PasswordValidateLogin() {
         span_validate[1].style.display = 'none';
         
     }
+}
+
+function impedirEnvioLogin() {
+    if (!emailRegex.test(email.value) || !senhaRegex.test(senha.value)) {
+        alert('Corrija os erros antes de enviar o formulário.');
+        return false; // Impede o envio do formulário
+      } else {
+        return true;
+      }
 }
 
 // Simulador Financeiro

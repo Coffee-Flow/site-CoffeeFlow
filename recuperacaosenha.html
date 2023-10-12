@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperação de senha</title>
     <link rel="shortcut icon" href="img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="login.css">
+    <!-- <link rel="stylesheet" href="login.css"> -->
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="recuperacaosenha.css">
 </head>
@@ -24,25 +24,26 @@
 
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
             <li><img src="img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
-            <li><button onclick="href('siteInstitucional')" class="btn btn-header" style="cursor: pointer;">HOME</button></li>
+            <li><button onclick="href('siteInstitucional')" class="btn btn-header" style="cursor: pointer;">INÍCIO</button></li>
         </ul>
     </header>
 
     <div class="content">
         <div class="form-box">
             <h1>Recuperação de Senha</h1>
-            <form action="">
+            <form onsubmit="return recuperar()">
 
                 <div class="subtext">
                 Iremos recuperar sua senha enviando uma redefinição de senha ao email associado ao CPF/CPNJ.
                 </div>
 
                 <div class="input-group">
-                    <input id="CNPJ" type="number" class="input-form" onfocus="limpar(this, CNPJL)" onblur="limpar(this, CNPJL)" placeholder="">
-                    <label class="label" id="cnpjL" for="cnpj">CNPJ</label>
+                    <input id="CNPJ" class="input-form" onfocus="limpar(this, cnpjL)" onblur="limpar(this, cnpjL)" oninput="cpfCnpjValidate()"required>
+                    <label class="label" id="cnpjL" for="cnpj">CPF/CNPJ</label>
                 </div>
+                <span id="span_validate" class="span-required">*O CPF deve ter no mínimo 11 números e no máximo 14 (com 2 pontos e 1 hífen)</span>
 
-                <button onclick="recuperar()" class="btn-form">Recuperar senha</button>
+                <button type="submit" class="btn-form">Recuperar senha</button>
             </form>
             <div class="lineVector"><img src="img/Vectors/greenLine.svg"></div>
 

@@ -77,11 +77,16 @@ body{
 .input-group {
   display: flex;
   justify-content: center;
+  align-items: center;
+
 }
 
 .input-form {
   width: 334px;
   height: 25px;
+  position: relative;
+  left: 10px;
+  padding: 0 5px 0 0;
   font: 400 16px 'Poppins';
   text-align: center;
   background-color: transparent;
@@ -118,6 +123,7 @@ input-form:valid~.label,
   padding: 0 .4em;
 }
 
+
 .subir-label {
   transform: translateY(-95%) scale(1);
   padding: 0 .4em;
@@ -144,9 +150,20 @@ input-form:valid~.label,
     display: none;
 }
 
-.olho {
+#olho_aberto_main, #olho_aberto_copia {
+  display: none;
+}
+
+#olho_fechado_main, #olho_aberto_main, #olho_fechado_copia, #olho_aberto_copia {
   cursor: pointer;
-  width: 25px;
+  width: 30px;
+}
+
+.olho {
+  width: 20px;
+    position: relative;
+    right: 8px;
+    
 }
 
 /* .content{

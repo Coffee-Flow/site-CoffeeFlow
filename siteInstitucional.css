@@ -240,13 +240,13 @@ footer ul {
 footer {
   position: absolute;
   width: 100%;
-  height: 40%;
+  height: 215px;
   display: flex;
   justify-content: space-evenly;
   background-color: #925035;
-  padding: 5% 0;
+  padding: 38px 0 0 0;
   color: #EAE8DB;
-  gap: 50px;
+  gap: 40px;
 }
 
 .footer-esquerda div {
@@ -272,9 +272,9 @@ footer {
   flex-direction: column;
 }
 
-.links-institucional ul li {
+.links-institucional ul li, .links-fale-conosco p {
   font: 200 15px 'Poppins';
-  padding: 15px 0;
+  padding: 5px 0;
 }
 
 .links-institucional ul li a {
@@ -288,11 +288,7 @@ footer {
 }
 
 .links-fale-conosco {
-  gap: 40px;
-}
-
-.links-fale-conosco p {
-  padding: 15px 0;
+  gap: 10px;
 }
 
 .links-fale-conosco ul {
