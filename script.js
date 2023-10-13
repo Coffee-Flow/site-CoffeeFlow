@@ -41,7 +41,7 @@ function exibirCon3() {
 // 
 
 function href(place){
-    window.location.href=place+".html";
+    window.location.href= place + ".html";
 }
 
 //  Limpar Labels - Login/Cadastro
