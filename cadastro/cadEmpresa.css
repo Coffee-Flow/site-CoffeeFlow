@@ -1,5 +1,5 @@
 body{
-    background-image: url(img/BackgroundCadEm/cadEmpresa.svg);
+    background-image: url(../img/BackgroundCadEm/cadEmpresa.svg);
     background-size: cover;
     display: flex;
     flex-direction: column;

@@ -38,10 +38,10 @@ function exibirCon3() {
     }
 }
 
-// 
+// Redirecionamento via botões
 
 function href(place){
-    window.location.href= place + ".html";
+    window.location.href= "../" + place + ".html";
 }
 
 //  Limpar Labels - Login/Cadastro
@@ -342,3 +342,10 @@ function proximo2() {
     div_f.innerHTML += `Quanto custaria para investir no nosso projeto:
     <button id="btn_proximo" onclick="investimentoC()">Investir</button>`;
   }
+
+
+  // Login mocado para administrador
+
+//   function login(){
+
+//   }

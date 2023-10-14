@@ -1,5 +1,5 @@
 body {
-  background-image: url(img/BackgroundLogin/background.svg);
+  background-image: url(../img/BackgroundLogin/background.svg);
   background-size: cover;
 }
 
@@ -34,7 +34,7 @@ body {
   color: #053C11;
 }
 
-.form-box a {
+.form-box p a {
   color: black;
   font-size: 15px;
   font-weight: bold;
@@ -47,18 +47,17 @@ body {
   color: #925035;
   border: 3px solid #053C11;
   font: bold 17px 'Poppins';
-  margin-top: 20px;
   transition: width 1s ease 0.4s;
   cursor: pointer;
 }
 
 .form-box form button {
-  width: 300px;
+  width: 100px;
   height: 35px;
 }
 
 .form-box form button:hover {
-  width: 200px;
+  width: 150px;
   color: #053C11;
   transition-delay: 0s;
 }
@@ -104,7 +103,7 @@ body {
 }
 
 .content .lineVector {
-  margin-bottom: 0px;
+  margin-bottom: 5px;
 }
 
 .label {
@@ -126,20 +125,9 @@ input-form:valid~.label,
   padding: 0 .4em;
 }
 
-.subtext {
-  width: 80%;
-  padding: 0 0 25px 10%;
-}
-
-.endtext {
-  width: 80%;
-  margin-top: 0px;
-  padding-bottom: 30px;
-}
-
-.span-required {
+#span_validate{
   font: 400 12px 'Poppins';
   color: red;
-  margin-top: 6px;
+  margin-top: -18px;
   display: none;
 }
