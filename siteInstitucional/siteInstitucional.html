@@ -7,6 +7,7 @@
     <title>Site Institucional - CoffeeFlow</title>
     <link rel="stylesheet" href="../menu.css">
     <link rel="stylesheet" href="../siteInstitucional/siteInstitucional.css">
+    <link rel="stylesheet" href="riscos.css">
     <link rel="shortcut icon" href="../img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -25,8 +26,8 @@
                 <a href="sobreNos.html" class="links-sidenav"><img src="../img/SideBar/Information.svg" alt="">Sobre Nós</a>
                 <a href="#" class="links-sidenav"><img src="../img/SideBar/farm.svg" alt="">Nossos Serviços</a>
                 <a href="#" class="links-sidenav"><img src="../img/SideBar/Feedback.svg" alt="">Clientes</a>
-                <a href="#" class="links-sidenav"><img src="../img/SideBar/telephone.svg" alt="">Contato</a>
-                <a href="#" class="links-sidenav"><img src="../img/SideBar/Money.svg" alt="">Cotação</a>
+                <a href="#footer" class="links-sidenav"><img src="../img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="../calculadoraFinan/SimuladorFinan.html" class="links-sidenav"><img src="../img/SideBar/Money.svg" alt="">Cotação</a>
 
             </div>
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
@@ -151,35 +152,137 @@
     <section class="section4">
         <img src="../img/Section4/SVG onda (1).svg" alt="" class="vetor-onda-sec4" >
 
-        <form style="position: relative; background-color: #D9A30B;" id="form">
-            <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 70px;">
-                <h1 style="margin-bottom: 6px; color: #053C11;">Calcule aqui a sua perda</h1>
+        <div style="position: relative; background-color: #D9A30B;" id="form">
+            <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 32px;">
+                <h1 style="margin-bottom: 6px; color: #053C11;">Calcule as perdas em sua lavoura</h1>
                 <p style="font: 300 17px 'Poppins';">Vamos te conhecer para saber como te ajudar !😉</p>
         
             </div>
 
-            <div class="input-group" id="div_a">
-                <input id="input_nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)"
-                    onblur="limpar(this, nomeL)" minlength="3" required />
-                <label class="label" id="nomeL" for="nome">Qual o seu nome?</label>
-                <button id="btn_proximo" onclick="proximo1()">Proximo</button>
+            <div class="content">
+                <div id="div_limpar" class="tipoCafe">
+                    <div class="input-nome-riscos">
+                        
+                        <input id="nome_riscos" type="text" class="input-form-riscos" onfocus="limpar(this, nomeL_riscos)" onblur="limpar(this, nomeL_riscos)"  style="display: block;"> 
+                        <label class="label-riscos label" id="nomeL_riscos" for="nome">Olá! Qual o seu nome?</label>
+                        
+                    </div>
+                    <h1> Qual o seu tipo de café? </h1>
+                    <div class="englobaCafe">
+                        <div class="arabica">
+                            <button onclick="arabica()">Arábica</button>
+                        </div>
+                        <div class="robusta">
+                            <button onclick="robusta()">Robusta</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="englobaArabica">
+                    <div id="div_aparecerArabico" class="classArabica">
+                        <div class="arabicaItens">
+                            <h1><b>Café Arábica</b></h1> <br>
+                            <b>Quantos hectares possui sua plantação?</b> 
+                            <input id="input_hec" placeholder="Hectares" onfocus="limparPlace(this, 'Hectares')" onblur="voltarPlace(this, 'Hectares')">
+                            <br>
+                            <br>
+                            <b>Qual o faturamento anual da sua plantação?</b> 
+                            <input id="input_fat" placeholder="Faturamento anual" onfocus="limparPlace(this, 'Faturamento anual')" onblur="voltarPlace(this, 'Faturamento anual')">
+                            <br>
+                            <br>
+                            <b>Em qual estado é localizada sua plantação?</b> <br> <br> <select id="select_estado">
+                                <option value="1">AC</option>
+                                <option value="2">AL</option>
+                                <option value="3">AP</option>
+                                <option value="4">AM</option>
+                                <option value="5">BA</option>
+                                <option value="6">CE</option>
+                                <option value="7">ES</option>
+                                <option value="8">GO</option>
+                                <option value="9">MA</option>
+                                <option value="10">MT</option>
+                                <option value="11">MS</option>
+                                <option value="12">MG</option>
+                                <option value="13">PA</option>
+                                <option value="14">PB</option>
+                                <option value="15">PR</option>
+                                <option value="16">PE</option>
+                                <option value="17">PI</option>
+                                <option value="18">RJ</option>
+                                <option value="19">RN</option>
+                                <option value="20">RS</option>
+                                <option value="21">RO</option>
+                                <option value="22">SC</option>
+                                <option value="23">SP</option>
+                                <option value="24">SE</option>
+                                <option value="25">TO</option>
+                                <option value="26">DF</option>
+                            </select>
+                            <br> <br>
+                            
+                            <button class="botao btn-quadrado" onclick="formularioArabica()">Calcular riscos</button>
+                        </div>
+                    </div>
+                    <div id="div_arabicaRiscos" class="arabicaResposta">
+                        <div id="div_respostaArabica"></div>
+                    </div>
+                </div>
+                <div class="englobaRobusta">
+                    <div id="div_aparecerRobusta" class="classRobusta">
+                        <div class="robustaItens">
+                            <h1><b>Café Robusta</b></h1> <br>
+                            <b>Quantos hectares possui sua plantação?</b> <br> 
+                            <input id="input_hec1" placeholder="Hectares" onfocus="limparPlace(this, 'Hectares')" onblur="voltarPlace(this, 'Hectares')">
+                            <br>
+                            <br>
+                            <b>Qual o faturamento anual da sua plantação?</b> <br>
+                            <input id="input_fat1" placeholder="Faturamento anual" onfocus="limparPlace(this, 'Faturamento anual')" onblur="voltarPlace(this, 'Faturamento anual')">
+                            <br>
+                            <br>
+                            <b>Em qual estado é localizada sua plantação?</b> <br> <br> <select id="select_estado1">
+                                <option value="1">AC</option>
+                                <option value="2">AL</option>
+                                <option value="3">AP</option>
+                                <option value="4">AM</option>
+                                <option value="5">BA</option>
+                                <option value="6">CE</option>
+                                <option value="7">ES</option>
+                                <option value="8">GO</option>
+                                <option value="9">MA</option>
+                                <option value="10">MT</option>
+                                <option value="11">MS</option>
+                                <option value="12">MG</option>
+                                <option value="13">PA</option>
+                                <option value="14">PB</option>
+                                <option value="15">PR</option>
+                                <option value="16">PE</option>
+                                <option value="17">PI</option>
+                                <option value="18">RJ</option>
+                                <option value="19">RN</option>
+                                <option value="20">RS</option>
+                                <option value="21">RO</option>
+                                <option value="22">SC</option>
+                                <option value="23">SP</option>
+                                <option value="24">SE</option>
+                                <option value="25">TO</option>
+                                <option value="26">DF</option>
+                            </select>
+                            <br> <br>
+        
+                            <button class="botao btn-quadrado" onclick="formularioRobusta()">Calcular riscos</button>
+                        </div>
+                    </div>
+                    <div id="div_robustaRiscos" class="respostaRobusta">
+                        <div id="div_robustaResposta"></div>
+                    </div>
+                </div>
             </div>
-
-            <div class="input-group" id="div_b"></div>
-            <br />
-            <div class="input-group" id="div_c"></div>
-            <br />
-            <div class="input-group" id="div_d"></div>
-            <br />
-            <div class="input-group" id="div_e"></div>
-            <br /><br />
-            <div class="input-group" id="div_f"></div>
-        </form>
+        </div>
     </section>
 
     <!-- Footer -->
 
-    <footer>
+    <footer id="footer">
         <div class="footer-esquerda">
             <div>
                 <img src="../img/Logo/CoffeeFlowLogo.svg" alt="CoffeeFlowLogo">

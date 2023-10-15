@@ -155,7 +155,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 4em 10%;
+  margin: 4em 10% 0;
   background-color: #EAE8DB;
 }
 
@@ -216,7 +216,7 @@ p {
 .vetor-onda-sec4 {
   width: 100%;
     position: relative;
-    top: 300px;
+    top: 360px;
 }
 
 /* Footer */
@@ -328,11 +328,11 @@ footer {
   transition: 350ms;
 }
 
-#form label {
+/* #form label {
   font: 600 italic 20px 'Poppins';
   color: #053c119f;
   text-align: left;
-}
+} */
 
 .span-form {
   font: 600 20px 'Poppins';

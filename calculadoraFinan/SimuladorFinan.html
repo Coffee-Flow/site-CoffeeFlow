@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador Financeiro</title>
+  <link rel="stylesheet" href="cssSimulador.css" />
+  <link rel="stylesheet" href="../menu.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="../img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body id="body">
+
+  <!-- Header -->
+
+  <header>
+    <ul class="ul-header">
+
+      <!-- SideNav -->
+
+      <div id="mySidenav" class="sidenav">
+        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="../siteInstitucional/sobreNos.html" class="links-sidenav"><img src="../img/SideBar/Information.svg"
+            alt="">Sobre Nós</a>
+        <a href="#" class="links-sidenav"><img src="../img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+        <a href="#" class="links-sidenav"><img src="../img/SideBar/Feedback.svg" alt="">Clientes</a>
+        <a href="../siteInstitucional/siteInstitucional.html" class="links-sidenav"><img
+            src="../img/SideBar/telephone.svg" alt="">Contato</a>
+        <a href="../cadastro/cadastrarEmpresa.html" class="links-sidenav"><img src="../img/SideBar/Money.svg"
+            alt="">Cotação</a>
+
+      </div>
+      <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+
+      <!-- NavBar -->
+
+      <li><img src="../img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
+      <!-- <li><a href="../login.html" style="text-decoration: none;"><button class="btn btn-header">ACESSAR</button></a></li> -->
+      <li><a href="#" style="text-decoration: none;"><button onclick="href('cadastro/login')"
+            class="btn btn-header">ACESSAR</button></a></li>
+    </ul>
+  </header>
+
+  <section id="section">
+
+    <div class="centro" id="div_a">
+      <input id="input_nome" type="text" class="input-form" onfocus="limpar(this, nomeL)" onblur="limpar(this, nomeL)">
+      <label class="label" id="nomeL" for="nome">Informe o seu nome</label>
+      <button class="btn-form margin-btn" onclick="proximo1()">Próximo</button>
+    </div>
+
+  </section>
+  <br />
+  <!-- <div class="centro" id="div_b"></div>
+  <br />
+  <div class="centro" id="div_c"></div>
+  <br />
+  <div class="centro" id="div_d"></div>
+  <br />
+  <div class="centro" id="div_e"></div>
+  <br /><br /><br /><br /><br /><br /><br /><br />
+  <div class="centro" id="div_f"></div> -->
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="simuladorFinan.js"></script>
+<script src="../script.js"></script>

@@ -190,162 +190,152 @@ function impedirEnvioLogin() {
       }
 }
 
-// Simulador Financeiro
+// Simulador de Perdas
 
-var nome = "";
-var largura = 0;
-var comprimento = 0;
-var espaplan = 0;
-var espalinha = 0;
-var rad1 = 0;
-var irriga = "aspersão";
-var rad2 = 0;
-var sensores = 0;
-var cafeeiros = 0;
-var cafe = 0;
-var sacas = 0;
-var preco = 779.9;
-var dinheiro = 0;
-var vendaa = 0;
-var hectar = 10000;
-var safra = 0;
-
-function proximo1() {
-    nome = input_nome.value;
-    div_a.innerHTML = `<input id="input_largura" type="number" class="input-form required" onfocus="limpar(this, larguraL)" onblur="limpar(this, larguraL)" minlength="1" required style="width:40%;"/>
-    <label class="label" id="larguraL" for="largura">Qual a largura do seu plantio? (em metros)?</label>
-    <button id="btn_proximo" onclick="proximo2()">Proximo</button>`;
-}
-
-function proximo2() {
-    largura = Number(input_largura.value);
-    div_a.innerHTML = `<input id="input_comprimento" type="number" class="input-form required" onfocus="limpar(this, comprimentoL)" onblur="limpar(this, comprimentoL)" minlength="1" required style="width:40%;"/>
-    <label class="label" id="comprimentoL" for="comprimento">Qual o comprimento do seu plantio? (em metros)?</label>
-    <button id="btn_proximo" onclick="proximo3()">Proximo</button>`;
+function arabica() {
+    div_limpar.style.display = 'none'
+    div_aparecerArabico.style.display = 'block'
   }
+  function formularioArabica() {
+    var hectaresA = Number(input_hec.value)
+    var faturamentoA = Number(input_fat.value)
+    var estadoA = Number(select_estado.value)
+    var perdaAP = Number(faturamentoA * 0.20)
+    var perdaA = Number(faturamentoA * 0.30)
+    var perdaAM = Number(faturamentoA * 0.40)
+    const venda = Number(perdaA);
+    const vendaP = Number(perdaAP);
+    const vendaM = Number(perdaAM);
+  
+    const moedaM = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(vendaM);
+  
+    const moedaP = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(vendaP);
+  
+    const moeda = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(venda);
+  
+    div_arabicaRiscos.style.display = 'block';
+    div_arabicaRiscos.style.height = 'auto';
+    div_arabicaRiscos.style.textAlign = 'justify';
 
-  function proximo3() {
-    comprimento = Number(input_comprimento.value);
-    div_a.innerHTML = `<input id="input_espalinha" type="number" class="input-form required" onfocus="limpar(this, espalinhaL)" onblur="limpar(this, espalinhaL)" minlength="1" required style="width:40%;"/>
-    <label class="label" id="espalinhaL" for="espalinha">Qual o espaçamento entre linhas? (em metros)</label>
-    <button id="btn_proximo" onclick="proximo4()">Proximo</button>`;
-  }
-
-  function proximo4() {
-    espalinha = Number(input_espalinha.value);
-    div_a.innerHTML = `<input id="input_espaplan" type="number" class="input-form required" onfocus="limpar(this, espaplanL)" onblur="limpar(this, espaplanL)" minlength="1" required style="width:40%;"/>
-    <label class="label" id="espaplanL" for="espaplan">Qual o espaçamento das plantas? (em metros)</label>
-    <button id="btn_proximo" onclick="proximo5()">Proximo</button>`;
-  }
-
-  function proximo5() {
-    espaplan = Number(input_espaplan.value);
-    div_a.innerHTML = `<span class="span-form"> Você já possui um sistema de irrigação? </span>
-    <div style="display: flex; gap: 12px;">
-        Sim: <input type="radio" name="rad1" onclick="rad1s()">
-        Não <input type="radio" name="rad1"> 
-    </div>
-    <button id="btn_proximo" onclick="proximo6()">Proximo</button>`;
-  }
-
-  function rad1s() {
-    rad1 = 1;
-  }
-  function proximo6() {
-    if (rad1 == 1) {
-      div_a.innerHTML = `<span class="span-form"> Qual é esse sistema?</span> 
-      <div style="display: flex; gap: 12px;">
-            Aspersão: <input type="radio" name="sis" onclick="asper()">
-            Superfície: <input type="radio" name="sis" onclick="super()">
-            Localizada: <input type="radio" name="sis" onclick="local()">
-            Subirrigação: <input type="radio" name="sis" onclick="subi()">
-        </div>
-      <button id="btn_proximo" onclick="proximo9()">Proximo</button>`;
+    if (estadoA == 8 || estadoA == 10 || estadoA == 11 || estadoA == 12 || estadoA == 23) {
+      div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+  
+      Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 30%. Isso representa um <b>valor anual de ${moeda}!</b> <br><br>
+      
+      Essa perda é resultado das mudanças climáticas que afetam a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
+  
+      if (hectaresA >= 3) {
+        div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+  
+      Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 40%. Isso representa um <b>valor anual de ${moedaM}!</b> <br><br>
+      
+      Os fatores que afetam essa perda são: o estado que você está localizado, o porte elevado de sua plantação, possivelmente as <b>mudanças climáticas</b> e a crise hídrica, por conta da possível bienalidade negativa. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
+      }
     } else {
-      div_a.innerHTML = `<span class="span-form">Você deseja fazer um sistema de irrigação com a nossa empresa?</span> 
-        <div style="display: flex; gap: 12px;">
-        Sim: <input type="radio" name="rad2" onclick="fazersim()">
-        Não: <input type="radio" name="rad2">
-        </div>
-      <button id="btn_proximo" onclick="proximo8()">Proximo</button>`;
+      div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+  
+      Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 20%. Isso representa um <b>valor anual de ${moedaP}!</b> <br><br>
+      
+      Essa perda é resultado das mudanças climáticas e da má utilização da água que pode afetar a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
+    }
+  
+  }
+  
+  function robusta() {
+    div_limpar.style.display = 'none'
+    div_aparecerRobusta.style.display = 'block'
+  }
+  
+  function formularioRobusta() {
+    var hectaresR = Number(input_hec1.value)
+    var faturamentoR = Number(input_fat1.value)
+    var estadoR = Number(select_estado1.value)
+    var perdaRP = Number(faturamentoR * 0.15)
+    var perdaR = Number(faturamentoR * 0.15)
+    var perdaRM = Number(faturamentoR * 0.20)
+    const venda = Number(perdaR);
+    const vendaP = Number(perdaRP);
+    const vendaM = Number(perdaRM);
+  
+    const moedaRM = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(vendaM);
+  
+    const moedaRP = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(vendaP);
+  
+    const moedaR = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(venda);
+  
+    div_robustaRiscos.style.display = 'block';
+    div_robustaRiscos.style.height = 'auto';
+    div_robustaRiscos.style.textAlign = 'justify';
+    if (estadoR == 5 || estadoR == 7) {
+      div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+  
+      Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 15%. Isso representa um <b>valor anual de ${moedaR}!</b> <br><br>
+      
+      Essa perda é resultado da crise hídrica e das mudanças climáticas que afetam a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
+
+      if (hectaresR >= 3) {
+        div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+  
+        Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 20%. Isso representa um <b>valor anual de ${moedaRM}!</b> <br><br>
+        
+        Os fatores que afetam essa perda são: o estado que você está localizado, o porte elevado de sua plantação, possivelmente as <b>mudanças climáticas</b> e a crise hídrica, por conta da possível bienalidade negativa. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
+      }
+    } else {
+      div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+  
+      Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, sendo entre 10 e 15%. Isso representa um <b>valor anual de ${moedaRP}!</b> <br><br>
+      
+      Essa perda é resultado das mudanças climáticas e da má utilização da água que pode afetar a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
     }
   }
-  function asper() {
-    irriga = "aspersão";
-  }
-  function superf() {
-    irriga = "superfície";
-  }
-  function local() {
-    irriga = "localizada";
-  }
-  function subi() {
-    irriga = "subirrigação";
-  }
-  function fazersim() {
-    rad2 = 1;
-  }
-  function proximo8() {
-    cafeeiros = ((comprimento / espaplan) * largura) / espalinha;
-    sacas = 30;
-    tamaHectar = comprimento * largura;
-    tamanho = tamaHectar / hectar;
-    safra = sacas * tamanho;
-    vendaa = safra * preco;
 
-    const venda = vendaa;
-    const moeda = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(venda);
-
-    div_a.innerHTML = `Olá ${nome}, o seu plantio de café é de ${largura * comprimento} metros quadrados e tem ${cafeeiros} cafeeiros.`;
-        
-    if (rad2 == 1) {
-        div_b.innerHTML = `O seu plantio não possui um sistema de irrigação mas você quer fazer com a nossa empresa.`;
-    } else 
-        div_b.innerHTML = `O seu plantio não possui um sistema de irrigação e você não quer fazer com a nossa empresa.`;
-        div_d.innerHTML = `A produção do seu plantio em média é de ${safra.toFixed(0)} sacas de café.`;
-        div_e.innerHTML = `Que equivalem á ${moeda}`;
-        
-    if (rad2 == 0) {
-        div_f.innerHTML = `Caso queira ver como seria se sua plantação fosse irrigada com aspersão com a nossa empresa<br>
-        <button id="btn_proximo" onclick="proximo9()">Plantação Irrigada</button>`;
-    } else {
-        div_f.innerHTML = `Caso queira ver como será sua plantação quando tiver o nosso sistema de aspersão da nossa empresa<br>
-        <button id="btn_proximo" style="width: 300px;" onclick="proximo9()">Plantação Irrigada</button>`;}
-
-    div_f.innerHTML += `Quanto custaria para investir no nosso projeto<button onclick="investimentoS()">Investir</button>`;
+  function continuacao1() {
+    div_respostaArabica.innerHTML = `Considere a adoção de práticas de monitoramento inteligente para <b>mitigar os impactos climáticos e aumentar seus lucros</b>.<br><br>
+  
+    <h4 style="font: 700 15px 'Poppins'">Permita-nos compartilhar uma história de sucesso.</h4> <br>
+     Uma lavoura, no Espírito Santo, implementou esse sistema, instalando sensores de temperatura e umidade, bem como um sistema de irrigação inteligente. <br><br>
+  
+    <button id="continuacao2" class="botao" onclick="continuacao2()" style="margin: 15px 20px 0 37px;">Qual foi o resultado?</button>`; 
   }
-  function proximo9() {
-    cafeeiros = ((comprimento / espaplan) * largura) / espalinha;
-    sacas = 55;
-    tamaHectar = comprimento * largura;
-    tamanho = tamaHectar / hectar;
-    safra = sacas * tamanho;
-    vendaa = safra * preco;
-
-    const venda = vendaa;
-    const moeda = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(venda);
-
-    div_a.innerHTML = `Olá ${nome}, o seu plantio de café é de ${
-      largura * comprimento
-    } metros quadrados e tem ${cafeeiros} cafeeiros.`;
-    div_b.innerHTML = `O seu plantio já utiliza de um sistema de irrigação e o tipo de irrigação é por ${irriga}.`;
-    div_d.innerHTML = `A produção do seu plantio em média é de ${safra.toFixed(0)} sacas de café.`;
-    div_e.innerHTML = `Que equivalem á ${moeda}`;
-    div_f.innerHTML = `Se fosse sem irrigação<br>
-    <button id="btn_proximo" onclick="proximo8()">Plantação Sequeira</button>`;
-    div_f.innerHTML += `Quanto custaria para investir no nosso projeto:
-    <button id="btn_proximo" onclick="investimentoC()">Investir</button>`;
+  
+  function continuacao2() {
+    div_respostaArabica.innerHTML = `
+    <b>Os resultados foram notáveis!</b> Redução nas perdas de produção, aumento de até 20% na qualidade das colheitas e economia de 25% em recursos hídricos e adubo. <br><br>
+  
+    Agora, eles estão colhendo os frutos de uma lavoura mais sustentável e lucrativa. <b>Quer saber como alcançar resultados semelhantes?</b> <br><br>
+  
+    Basta se registrar em nosso site para obter informações detalhadas e acessar uma calculadora de cotação exclusiva. <br><br>
+    <b>Obrigado por confiar em nós!</b> 
+    `
   }
 
+  function limparPlace(input, placeholderText) {
+    input.placeholder = '';    
+  }
 
-  // Login mocado para administrador
+  function voltarPlace(input, placeholderText) {
+    if (input.value === '') { 
+        input.placeholder = placeholderText;
+    } 
 
-//   function login(){
+}
 
-//   }
+  
