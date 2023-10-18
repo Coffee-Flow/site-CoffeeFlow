@@ -61,7 +61,8 @@ var form = document.getElementById('form');
 var campos = document.querySelectorAll('.required');
 var spans = document.querySelectorAll('.span-required');
 var inputs = document.querySelectorAll('.input-form');
-var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+var labels = document.querySelectorAll('.label')
+var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?$/;
 var senhaRegex = /^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{12,}$/;
 var cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/;
 
@@ -92,7 +93,7 @@ function removeError(index) {
 }
 
 function nameValidate() {
-    if (campos[0].value.length < 3) {
+    if (campos[0].value.length < 5) {
         setError(0);
         
     } else {
@@ -142,6 +143,124 @@ function impedirEnvioCadastro() {
         return false; // Impede o envio do formulário
     }
 }
+
+// Validações Tela de Cadastro Empresa
+
+function nameValidateEmp() {
+    if (campos[0].value.length < 5) {
+        setError(0);
+        
+    } else {
+        removeError(0);
+    }
+}
+
+function razaoValidate() {
+    if (campos[1].value.length < 5) {
+        setError(1);
+        
+    } else {
+        removeError(1);
+    }
+}
+
+function cnpjValidate() {
+    if (!/^\d{2}(\.?\d{3}){2}\/?\d{4}-?\d{2}$/.test(campos[2].value)) {
+        setError(2);
+    } else {
+        removeError(2);
+    }
+}
+
+function emailCorpValidate() {
+    if (!emailRegex.test(campos[3].value)) {
+        setError(3);
+    } else {
+        removeError(3);
+    }
+}
+
+function telValidate() {
+    var telefone = tel.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+    if (telefone.length < 8 || telefone.length > 11) {
+        setError(4);
+    } else {
+        removeError(4);
+        telefone = telefone.replace(/^(\d{2})(\d{4,5})(\d{4})/, "($1) $2-$3");  // Aplica a máscara [(XX) XXXXX-XX], considerando formatos com 10 ou 11 dígitos
+    }
+
+    tel.value = telefone; // Atribui a máscara no valor do input quando for digitado todos os 10/11 dígitos
+}
+
+// Função para encontrar endereço de acordo com o CEP informado
+
+function consultarCEP(cep) {
+    // Usando a API do ViaCEP para consultar o CEP
+    var url = `https://viacep.com.br/ws/${cep}/json/`;
+
+    fetch(url) // É uma função global que recebe uma URL como argumento. Ela retorna uma promessa (Promise) como resposta.
+    // No caso, a função solicitou à URL buscar as informações do endereço associado ao CEP.
+        
+        .then(response => response.json()) 
+        .then(data => {
+            // Quando a solicitação é bem-sucedida, as informações vêm em formato JSON. 
+            // O método .then() é utilizado para lidar com a resposta quando ela estiver pronta.
+            if (data.erro) {
+                console.log("CEP não encontrado"); // Caso as informações não forem encontradas
+            } else { 
+                
+                // Caso forem encontradas, a função atribui elas para os seus respectivos campos, de acordo com os seus id's.
+
+                document.getElementById("logr").value = data.logradouro;
+                document.getElementById("bairro").value = data.bairro;
+                document.getElementById("cidade").value = data.localidade;
+                document.getElementById("uf").value = data.uf;
+                labels[6].classList.add("subir-label");
+                labels[7].classList.add("subir-label");
+                labels[8].classList.add("subir-label");
+                labels[9].classList.add("subir-label");
+            }
+        })
+        .catch(error => { // O método .catch() faz parte da API Fetch e é usado para lidar com erros que possam ocorrer durante uma solicitação de rede, como uma falha na conexão ou uma resposta inválida do servidor. 
+        // Caso houver algum erro no processo de busca, a função retorna esta mensagem de erro.
+
+            console.error("Erro na consulta: " + error);
+        });
+}
+
+function cepValidate() {
+    var cepValue = cep.value.replace(/[^\d]/g, ''); // Limpa caracteres não numéricos
+
+    if (cepValue.length === 8 && /^[0-9]{8}$/.test(cepValue)) {
+        // CEP válido
+        consultarCEP(cepValue); // Chama a função de consulta acima
+        removeError(5);
+    } else {
+        // CEP inválido
+        setError(5);
+    }
+}
+
+function impedirEnvioCadastroEmp() {
+    // Verifique todas as validações
+    var nameValidateValid = nameValidateEmp();
+    var razaoSocialValid = razaoValidate();
+    var cnpjValid = cnpjValidate();
+    var emailCorpValid = emailCorpValidate();
+    var telValid = telValidate();
+    var cepValid = cepValidate();
+
+    // Verifique se alguma validação falhou
+    if (!nameValidateValid || !razaoSocialValid || !cnpjValid || !emailCorpValid || !telValid || !cepValid) {
+        // Pelo menos uma validação falhou, portanto, o form não pode ser enviado
+        return false;
+    }
+
+    // Todas as validações foram bem-sucedidas, o form será enviado
+    return true;
+}
+
 
 // Mostrar senha
 

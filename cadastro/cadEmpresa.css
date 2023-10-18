@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url(../img/BackgroundCadEm/cadEmpresa.svg);
     background-size: cover;
     display: flex;
@@ -6,11 +6,12 @@ body{
     align-items: center;
 }
 
-header{
+header {
     width: 100%;
 }
-.container{
-    height: 975px;
+
+.container {
+    /* height: 975px; */
     width: 1082px;
     margin-top: 64px;
     border-radius: 14px;
@@ -19,7 +20,7 @@ header{
     background-color: rgba(234, 232, 219, 0.74);
 }
 
-.container .form-box{
+.container .form-box {
     width: 50%;
     padding-top: 41px;
     border-radius: 14px 0 0 14px;
@@ -28,10 +29,12 @@ header{
     align-items: center;
     color: #053C11;
 }
-.container .form-box .radioArea{
+
+.container .form-box .radioArea {
     display: flex;
 }
-.container .form-box h1{
+
+.container .form-box h1 {
     height: 69px;
     font-size: 38px;
     border-radius: 44.43px;
@@ -43,15 +46,17 @@ header{
     border: #EAE8DB 4.2px solid;
     box-shadow: 0 0 3.36px 0 rgba(0, 0, 0, 0.25);
 }
-.container .form-box h2{
+
+.container .form-box h2 {
     margin-top: 50px;
 }
-.container .form-box h3{
+
+.container .form-box h3 {
     margin-top: 40px;
 }
-.container .form-box button{
-    height: 62.58px;
-    width: 356.3px;
+
+.container .form-box button {
+    width: auto;
     margin-top: 92px;
     border: #D9A30B 6.39px solid;
     border-radius: 67.5px;
@@ -59,27 +64,37 @@ header{
     font-weight: bold;
     background-color: #EAE8DB;
     color: #053C11;
+    padding: 2px 32px;
+    cursor: pointer;
+    transition: border 0.5s;
 }
-.container .form-box .input-group{
+
+.container .form-box button:hover {
+    border: #053C11 6.39px solid;
+}
+
+.container .form-box .input-group {
     display: flex;
     margin-bottom: 45px;
     margin-left: 100px;
     width: 100%;
 }
-.container .form-box .input-group label{
+
+.container .form-box .input-group label {
     font-size: 20px;
     font-weight: bold;
-    color: rgba(5, 60, 17, 0.68);   
+    color: rgba(5, 60, 17, 0.68);
     position: absolute;
     pointer-events: none;
-    transform: translateY(0.2rem);
+    /* transform: translateY(0.2rem); */
     transition: 350ms;
 }
-.container .form-box .input-group input{
+
+.container .form-box .input-group input {
     width: 334px;
     height: 35px;
     font: 400 17px 'Poppins';
-    text-align: center;
+    text-align: left;
     background-color: transparent;
     border: 0;
     border-bottom: #053C11 solid 1px;
@@ -88,64 +103,119 @@ header{
     cursor: pointer;
     transition: top 1s ease-in-out;
 }
-.container .form-box .radioArea input{
+
+.container .form-box .radioArea input {
     width: 10px;
     border: #053C11;
 }
-.container .form-box.yellowColor{
+
+.container .form-box.yellowColor {
     background-color: rgba(217, 163, 11, .7);
-    border-radius: 14px ;
+    border-radius: 14px;
 }
-.container .form-box.yellowColor h1{
+
+.container .form-box.yellowColor h1 {
     background-color: #EAE8DB;
     border: 4.2px solid #053C11;
     color: #053C11;
 }
-.container .form-box.yellowColor h3{
+
+.container .form-box.yellowColor h3 {
     width: 455px;
     height: 72px;
     font-size: 25px;
 }
-.container .form-box.yellowColor h3 input{
+
+.container .form-box.yellowColor h3 input {
     width: 74px;
     border-bottom: #053C11 dashed;
     background-color: transparent;
 }
-.container .form-box.yellowColor h3 input:focus{
+
+.container .form-box.yellowColor h3 input:focus {
     outline: none;
 }
-.container .form-box.yellowColor h3 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+
+.container .form-box.yellowColor h3 input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-.container .form-box.yellowColor .input-group{
+
+.container .form-box.yellowColor .input-group {
     margin: 0;
 }
-.container .form-box.yellowColor .lavoura{
+
+.container .form-box.yellowColor .lavoura {
     width: 100%;
     margin-left: 100px;
 }
-.container .form-box.yellowColor .lavoura .radioArea input{
+
+.container .form-box.yellowColor .lavoura .radioArea input {
     margin-right: 10px;
 }
-.container .form-box.yellowColor .cafe{
+
+.container .form-box.yellowColor .cafe {
     width: 100%;
     margin-left: 100px;
 }
-.container .form-box.yellowColor .cafe .radioCafe input{
+
+.container .form-box.yellowColor .cafe .radioCafe input {
     margin-right: 10px;
 }
-.container .form-box.yellowColor .irrig{
+
+.container .form-box.yellowColor .irrig {
     width: 100%;
     margin-left: 100px;
 }
-.container .form-box.yellowColor .irrig .radioIrr input{
+
+.container .form-box.yellowColor .irrig .radioIrr input {
     margin-right: 10px;
 }
-.container .form-box.yellowColor .cafe .radioCafe{
-    margin-top: 12px;
-}
-.container .form-box.yellowColor .radioIrr{
+
+.container .form-box.yellowColor .cafe .radioCafe {
     margin-top: 12px;
 }
 
+.container .form-box.yellowColor .radioIrr {
+    margin-top: 12px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-0.2rem);
+    transition: 350ms;
+}
+
+.input-form:focus~.label,
+input-form:valid~.label,
+.mostrar-email {
+    transform: translateY(-95%) scale(1);
+    /* padding: 0 .4em; */
+}
+
+.subir-label {
+    transform: translateY(-95%) scale(1);
+    /* padding: 0 .4em; */
+}
+
+.span-required {
+    font: 400 12px 'Poppins';
+    color: red;
+    /* margin-top: -18px; */
+    display: none;
+}
+
+.tirar-margem {
+    margin-bottom: 0;
+}
+
+form {
+    margin: 0 0 0 -190px;
+}
