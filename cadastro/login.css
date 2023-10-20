@@ -21,7 +21,7 @@ body {
   align-items: center;
 }
 
-.form-box form {
+.form-box .forms {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,12 +51,12 @@ body {
   cursor: pointer;
 }
 
-.form-box form button {
+.form-box .forms button {
   width: 100px;
   height: 35px;
 }
 
-.form-box form button:hover {
+.form-box .forms button:hover {
   width: 150px;
   color: #053C11;
   transition-delay: 0s;
@@ -130,4 +130,19 @@ input-form:valid~.label,
   color: red;
   margin-top: -18px;
   display: none;
+}
+
+#olho_aberto_main, #olho_aberto_copia {
+  display: none;
+}
+
+#olho_fechado_main, #olho_aberto_main, #olho_fechado_copia, #olho_aberto_copia {
+  cursor: pointer;
+  width: 30px;
+}
+
+.olho {
+  width: 20px;
+  position: relative;
+  right: 8px;
 }

@@ -32,21 +32,22 @@
     <div class="content">
         <div class="form-box">
             <h1>Login</h1>
-            <form onsubmit="return impedirEnvioLogin()">
+            <!-- <form onsubmit="return impedirEnvioLogin()"> -->
+            <div class="forms">
                 <div class="input-group">
-                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" oninput="emailValidateLogin()" required>
+                    <input id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" required>
                     <label class="label" id="emailL" for="email">E-mail</label>
                 </div>
-                <span id="span_validate" class="span-required">*Digite um e-mail válido</span>
 
                 <div class="input-group">
-                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)" oninput="PasswordValidateLogin()" required>
+                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)" required>
                     <label class="label" id="senhaL" for="senha">Senha</label>
+                    <img src="../img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;position: relative;" alt="" onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_fechado_copia" class="olho">
+                    <img src="../img/TelaCadastrar/eye.svg" style="width: 17px;" alt="" onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_aberto_copia" class="olho">
                 </div>
-                <span id="span_validate" class="span-required">*Digite uma senha com no mínimo 12 caracteres</span>
 
-                <button type="submit" class="btn-form" id="btnProximo">Logar</button>
-            </form>
+                <button onclick="impedirEnvioLogin()" class="btn-form" id="btnProximo">Logar</button>
+            </div>
             <div class="lineVector"><img src="../img/Vectors/greenLine.svg"></div>
             <button onclick="href('cadastro/cadastrar')" class="btn-form">Cadastrar-se</button>
             <p><a href="recuperacaosenha.html">Esqueci minha senha</a></p>

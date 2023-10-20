@@ -161,9 +161,8 @@ input-form:valid~.label,
 
 .olho {
   width: 20px;
-    position: relative;
-    right: 8px;
-    
+  position: relative;
+  right: 8px;  
 }
 
 /* .content{

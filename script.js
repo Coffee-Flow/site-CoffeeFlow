@@ -276,32 +276,10 @@ function mudarTipo(input, imgFechar, imgAbrir) {
     }
 }
 
-// Validação inputs Tela de Login
-
-function emailValidateLogin() {
-    if (!emailRegex.test(email.value)) {
-        email.style.borderBottom = '1px solid #e63636';
-        span_validate[0].style.display = 'block';
-        
-    } else {
-        email.style.borderBottom = '';
-        span_validate[0].style.display = 'none';
-    }
-}
-
-function PasswordValidateLogin() {
-    if (!senhaRegex.test(senha.value)) {
-        senha.style.borderBottom = '1px solid #e63636';
-        span_validate[1].style.display = 'block';
-    } else {
-        senha.style.borderBottom = '';
-        span_validate[1].style.display = 'none';
-        
-    }
-}
+// // Validação inputs Tela de Login
 
 function impedirEnvioLogin() {
-    if (!emailRegex.test(email.value) || !senhaRegex.test(senha.value)) {
+    if (!emailRegex.test(email.value) || senha.value.length < 12) {
         alert('Corrija os erros antes de enviar o formulário.');
         return false; // Impede o envio do formulário
       } else {
