@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sua empresa</title>
+    <link rel="shortcut icon" href="../img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../menu.css">
+    <link rel="stylesheet" href="../menu-dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <ul class="ul-header">
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <!-- <a href="../siteInstitucional/sobreNos.html" class="links-sidenav">Sobre Nós</a>
+                <a href="#" class="links-sidenav">Nossos Serviços</a>
+                <a href="#" class="links-sidenav">Contato</a>
+                <a href="../cadastro/cadastrarEmpresa.html" class="links-sidenav">Cotação</a> -->
+
+                <div class="content">
+                    <img src="../img/SideBarDashboard/icon.svg">
+                    <h3>Jorge</h3>
+                    <img style="width: 200px;" src="../img/SideBarDashboard/linha.svg">
+                    <div class="options">
+                        <h4><img style="width: 28px;" src="../img/SideBarDashboard/dashIcon.svg">Dashboard</h4>
+                        <span><img src="../img/SideBarDashboard/calendar.svg">Período</span>
+                        <span><img src="../img/SideBarDashboard/toolkit.svg">Opções</span>
+                        <span><img src="../img/SideBarDashboard/help.svg">Ajuda</span>
+                        <span><img src="../img/SideBarDashboard/exit.svg">Sair</span>
+                    </div>
+                </div>
+            </div>
+
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+            <li><img src="../img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
+            <!-- <li><a href="siteInstitucional/siteInstitucional.html" style="text-decoration: none;"><button class="btn btn-header" style="cursor: pointer;">INÍCIO</button></a></li> -->
+            <li><button onclick="href('siteInstitucional/siteInstitucional')" class="btn btn-header" style="cursor: pointer;">INÍCIO</button></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <div class="section1">
+            <div class="grafico">
+                <canvas id="temperatura"></canvas>
+            </div>
+            <div class="grafico">
+                <canvas id="umidade"></canvas>
+            </div>
+        </div>
+        <div class="section2">
+            <div class="mapa">
+                <h1>Mapa</h1>
+                <img src="../img/dashboard/mapa.svg">
+            </div>
+            <div class="kpi">
+                <h1>Tudo o que você precisa saber</h1>
+                <div class="linha1">
+                    <div class="elipse temp-interna">
+                        <h2>35C°</h2>
+                        <h3>Temperatura Interna</h3>
+                    </div>
+                    <div class="elipse temp-maxima">
+                        <h2>35C°</h2>
+                        <h3>Máxima do mês</h3>
+                    </div>
+                    <div class="elipse temp-minima">
+                        <h2>6C°</h2>
+                        <h3>Mínima do mês</h3>
+                    </div>    
+                </div>
+                <div class="linha2">
+                    <div class="elipse umidade">
+                        <h2>6,9%</h2>
+                        <h3>Menor nível de umidade no mês</h3>
+                    </div>
+                    <div class="elipse umidade">
+                        <h2>35%</h2>
+                        <h3>Umidade relativa do ar</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script src="../script.js"></script>
+<script>
+    const graficoTemperatura = document.getElementById("temperatura");
+    const graficoUmidade = document.getElementById("umidade");
+
+    const legenda = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+
+    const dadosTemperatura = {
+        labels: legenda,
+        datasets: [
+            {
+                label: "Temperatura Interna",
+                data: [18,19,20,19,20,18],
+                borderColor: "#24211a",
+                backgroundColor: "#24211a",
+            },
+            {
+                label: "Temperatura Externa",
+                data: [24,25,25,26,24,23],
+                borderColor: "#547625",
+                backgroundColor: "#547625",
+            },
+        ],
+    };
+
+    const configTemperatura = {
+        type: "line",
+        data: dadosTemperatura,
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Temperatura (C°)',
+                    align: 'start',
+                    font: {
+                        size: 20,
+                        family: "'Poppins'"
+                    }
+                },
+                legend: {
+                    labels: {
+                        font: {
+                            size: 12,
+                            family: "'Poppins'"
+                        }
+                    }
+                }
+            },
+        }
+    };
+
+    const dadosUmidade = {
+        labels: legenda,
+        datasets: [
+            {
+                label: "Umidade",
+                data: [13,12,13,15,14,13],
+                borderColor: "rgb(54,162,235)",
+                backgroundColor: "rgb(54,162,235)",
+            },
+        ],
+    };
+
+    const configUmidade = {
+        type: "line",
+        data: dadosUmidade,
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Umidade (%)',
+                    align: 'start',
+                    font: {
+                        size: 20,
+                        family : "'Poppins'"
+                    }
+                },
+                legend: {
+                    labels: {
+                        font: {
+                            size: 14,
+                            family: "'Poppins'"
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    new Chart(graficoTemperatura, configTemperatura);
+    new Chart(graficoUmidade, configUmidade);
+</script>

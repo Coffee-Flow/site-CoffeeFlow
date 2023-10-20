@@ -1,0 +1,132 @@
+body{
+  background-color: #EAE8DB;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #053C11;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: -1px 0 8px 0 #3a3a3a;
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font: 600 italic 20px 'Poppins';
+    color: #EAE8DB;
+    display: block;
+    transition: 0.3s;
+    display: flex;
+    gap: 7px;
+  }
+  .sidenav .content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .sidenav .content img{
+    width: 100px;
+  }
+  .sidenav .content h3{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #EAE8DB;
+    font-size: 24px;
+  }
+  .sidenav .content .options{
+    width: 200px;
+  }
+  .sidenav .content .options h4{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    color: #EAE8DB;
+    background-color: #00BF63;
+    font-size: 15px;
+    height: 30px;
+  }
+  .sidenav .content .options h4 img{
+    margin-right: 5px;
+    margin-left: 2px;
+  }
+  .sidenav .content .options span{
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    color: #EAE8DB;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .sidenav .content .options span img{
+    width: 21px;
+  }
+  .content .section1{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+  .content .section2{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+  .content .section2 h1{
+    font-size: 20px;
+    color: #666666;
+    margin-bottom: 10px;
+  }
+  .content>div>div{
+    padding: 10px 20px 10px 20px;
+    width: 45%;
+    background-color: white;
+    border-radius: 38px;
+  }
+  .content .section2 .kpi{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 25px;
+  }
+  .content .section2 .kpi>div{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .content .section2 .kpi>div .elipse{
+    border: 6px #000 solid;
+    border-radius: 100px;
+    height: 130px;
+    width: 130px;
+  }
+  .content .section2 .kpi>div .elipse{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+  .content .section2 .kpi>div .elipse h2{
+    font-size: 40px;
+  }
+  .content .section2 .kpi>div .elipse h3{
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+
+  .umidade h2{
+    color: #8AC6FE;
+  }
+  .temp-maxima h2{
+    color: #FF4242;
+  }
+  .temp-minima h2{
+    color: #75C1D9;
+  }
+  .temp-interna h2{
+    color: #24211a;
+  }
