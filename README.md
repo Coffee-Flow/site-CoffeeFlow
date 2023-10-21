@@ -9,10 +9,14 @@ O CoffeeFlow é uma plataforma de monitoramento inteligente para produtores de c
 ## Estrutura de Diretório
 
 Aqui está a estrutura de diretório do projeto:
+  - [Diretório Site Institucional/](/siteInstitucional/);
+  - [Diretório Telas de Cadastro e Login/](/cadastro/);  
+  - [Diretório Simulador Financeiro/](/calculadoraFin/);
+  - [Diretório Dashboard/](/dashboard/);
   - [Diretório img/](/img/);
-  - [css/](style.css);
-  - [js/](script.js);
-  - [index.html](index.html);
+  - [Style Menu da Dashboard/](menu-dash.css);
+  - [Style Menu Geral/](menu.css);
+  - [Script Geral/](script.js);
   - [README.md](README.md).
 
 ## Pré-requisitos
@@ -39,4 +43,4 @@ Abra o arquivo "index.html" no seu navegador da web favorito.
 
 ## Contribuição
 
-Este repositório contém apenas os arquivos do site institucional. Se você deseja contribuir com o desenvolvimento da plataforma CoffeeFlow, visite nosso repositório principal em [Link para o Perfil CofeeFlow](https://github.com/Coffee-Flow).
+Este repositório contém apenas os arquivos do site. Se você deseja contribuir com o desenvolvimento da plataforma web da CoffeeFlow, visite nossa organização em [Link para o Perfil CofeeFlow](https://github.com/Coffee-Flow).
