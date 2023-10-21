@@ -34,7 +34,7 @@
     <div class="container">
         <div class="form-box">
             <h1>Cadastro da Empresa</h1>
-            <form onsubmit="return impedirEnvioCadastroEmp()">
+            <form onsubmit="return impedirEnvioCadastroEmp()" autocomplete="off">
             <div class="input-group">
                 <input type="text" id="nomeEmp" class="input-form required" onfocus="limpar(this, nomeEmpL)" onblur="limpar(this, nomeEmpL)" oninput="nameValidateEmp()"> 
                 <label class="label" for="nomeEmp" id="nomeEmpL">Nome da Empresa</label>
