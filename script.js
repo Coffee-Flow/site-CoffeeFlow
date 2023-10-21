@@ -283,8 +283,19 @@ function impedirEnvioLogin() {
         alert('Corrija os erros antes de enviar o formulário.');
         return false; // Impede o envio do formulário
       } else {
-        return true;
+        // return true;
+        login(email.value == "coffeeflow@sptech.school", senha.value == "CoffeeFlow@10");
       }
+}
+
+// Login
+
+function login(email, senha){
+    if(email && senha){
+        href("dashboard/dashboard");
+    }else{
+        href("cadastro/login");
+    }
 }
 
 // Simulador de Perdas
