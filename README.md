@@ -43,4 +43,4 @@ Abra o arquivo "index.html" no seu navegador da web favorito.
 
 ## Contribuição
 
-Este repositório contém apenas os arquivos do site institucional. Se você deseja contribuir com o desenvolvimento da plataforma CoffeeFlow, visite os nossos outros repositórios em [Link para o Perfil CofeeFlow](https://github.com/Coffee-Flow).
+Este repositório contém apenas os arquivos do site. Se você deseja contribuir com o desenvolvimento da plataforma web da CoffeeFlow, visite nossa organização em [Link para o Perfil CofeeFlow](https://github.com/Coffee-Flow).
