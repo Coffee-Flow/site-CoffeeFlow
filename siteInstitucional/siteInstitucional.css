@@ -50,7 +50,8 @@ p {
 .section1 {
   display: flex;
   background-color: #053C11;
-  padding: 40px 5em;
+  margin-top: -25px;
+  /* padding: 40px 5em; */
 }
 
 .img-xicara {
@@ -60,9 +61,9 @@ p {
 }
 
 .triade-texto {
-  position: absolute;
+  /* position: absolute;
   right: 315px;
-  top: 145px;
+  top: 145px; */
   padding: 20px;
 }
 
@@ -87,14 +88,15 @@ p {
 
 /* Style Section 2*/
 
-.vetor-onda-sec2 {
+/* .vetor-onda-sec2 {
   width: 100%;
   position: absolute;
   top: 390px;
-}
+} */
 
 .section2 {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -103,12 +105,14 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10em;
+  width: 80%;
+  gap: 9em;
+  margin: 50px 10% 0;
 }
 
 .div-topico {
   text-align: center;
-  width: 219px;
+  width: 17vw;
 }
 
 .div-topico div {
@@ -129,9 +133,9 @@ p {
 
 .sobre-nós {
   display: flex;
-  position: absolute;
-  top: 830px;
-  padding: 1em 190px;
+  /* position: absolute;
+  top: 830px; */
+  margin: 5em 190px;
   background-color: #EAE8DB;
 }
 
@@ -148,14 +152,14 @@ p {
 /* Style Section3 */
 
 .section3{
-  position: relative;
-  top: 30em;
+  /* position: relative;
+  top: 30em; */
   width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 4em 10% 0;
+  margin: 0 10% 0;
   background-color: #EAE8DB;
 }
 
@@ -185,7 +189,7 @@ p {
 #container1, #container2, #container3 {
   display:flex;
   justify-content: center;
-  margin: 2em 0 4em 0;
+  margin: 2em 0 2em 0;
   width: 100%;
 }
 
@@ -215,8 +219,19 @@ p {
 
 .vetor-onda-sec4 {
   width: 100%;
-    position: relative;
-    top: 360px;
+}
+
+.container-simula {
+  position: relative; 
+  background-color: #D9A30B;
+  margin-top: -8px
+}
+
+.titulo-simula {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  padding: 30px 0 32px;
 }
 
 /* Footer */

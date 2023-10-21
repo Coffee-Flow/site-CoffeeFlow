@@ -300,23 +300,20 @@ select {
     top: 208px;
     margin-left: 25px;
     pointer-events: none;
-    transform: translateY(-0.2rem);
+    transform: translateY(1.3rem);
     transition: 350ms;
     font: 700 27px 'Poppins';
     color: #053C11;
   }
-
-  
   
   .input-form-riscos:focus~.label-riscos,
   input-form-riscos:valid~.label-riscos,
   .mostrar-email {
-    transform: translateY(-95%) scale(1);
+    transform: translateY(-50%) scale(1);
     padding: 0;
   }
   
-  
   .subir-label {
-    transform: translateY(-95%) scale(1);
+    transform: translateY(-50%) scale(1);
     padding: 0;
   }
