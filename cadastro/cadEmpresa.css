@@ -12,17 +12,17 @@ header {
 
 .container {
     /* height: 975px; */
-    width: 1082px;
+    width: 900px;
     margin-top: 64px;
     border-radius: 14px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     background-color: rgba(234, 232, 219, 0.74);
 }
 
 .container .form-box {
     width: 50%;
-    padding-top: 41px;
+    padding: 30px 0;
     border-radius: 14px 0 0 14px;
     display: flex;
     flex-direction: column;
@@ -35,12 +35,12 @@ header {
 }
 
 .container .form-box h1 {
-    height: 69px;
-    font-size: 38px;
-    border-radius: 44.43px;
-    margin-bottom: 55px;
-    line-height: 69px;
-    padding-inline: 30px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 45px;
+    margin-bottom: 40px;
+    line-height: 55px;
+    padding-inline: 27px;
     background-color: #D9A30B;
     color: #EAE8DB;
     border: #EAE8DB 4.2px solid;
@@ -48,7 +48,7 @@ header {
 }
 
 .container .form-box h2 {
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 .container .form-box h3 {
@@ -57,10 +57,10 @@ header {
 
 .container .form-box button {
     width: auto;
-    margin-top: 92px;
+    margin: 55px 0 20px 0;
     border: #D9A30B 6.39px solid;
-    border-radius: 67.5px;
-    font-size: 30.65px;
+    border-radius: 68px;
+    font-size: 25px;
     font-weight: bold;
     background-color: #EAE8DB;
     color: #053C11;
@@ -75,13 +75,13 @@ header {
 
 .container .form-box .input-group {
     display: flex;
-    margin-bottom: 45px;
-    margin-left: 100px;
-    width: 100%;
+    margin-bottom: 40px;
+    /* margin-left: 100px; */
+    /* width: 100%; */
 }
 
 .container .form-box .input-group label {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     color: rgba(5, 60, 17, 0.68);
     position: absolute;
@@ -92,7 +92,7 @@ header {
 
 .container .form-box .input-group input {
     width: 334px;
-    height: 35px;
+    height: 25px;
     font: 400 17px 'Poppins';
     text-align: left;
     background-color: transparent;
@@ -121,9 +121,10 @@ header {
 }
 
 .container .form-box.yellowColor h3 {
-    width: 455px;
+    width: 75%;
     height: 72px;
-    font-size: 25px;
+    font-size: 18px;
+    text-align: left;
 }
 
 .container .form-box.yellowColor h3 input {
@@ -146,28 +147,28 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.container .form-box.yellowColor .lavoura {
+/* .container .form-box.yellowColor .lavoura {
     width: 100%;
     margin-left: 100px;
-}
+} */
 
 .container .form-box.yellowColor .lavoura .radioArea input {
     margin-right: 10px;
 }
 
-.container .form-box.yellowColor .cafe {
+/* .container .form-box.yellowColor .cafe {
     width: 100%;
     margin-left: 100px;
-}
+} */
 
 .container .form-box.yellowColor .cafe .radioCafe input {
     margin-right: 10px;
 }
 
-.container .form-box.yellowColor .irrig {
+/* .container .form-box.yellowColor .irrig {
     width: 100%;
     margin-left: 100px;
-}
+} */
 
 .container .form-box.yellowColor .irrig .radioIrr input {
     margin-right: 10px;
@@ -216,6 +217,6 @@ input-form:valid~.label,
     margin-bottom: 0;
 }
 
-form {
-    margin: 0 0 0 -190px;
-}
+/* form {
+    margin: 0 0 0 -106px;
+} */
