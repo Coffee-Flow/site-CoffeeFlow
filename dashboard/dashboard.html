@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="login.css" />
     <link rel="stylesheet" href="../menu.css" />
-    <link rel="stylesheet" href="../dash.css" />
+    <link rel="stylesheet" href="dash.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -21,6 +21,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="../script.js"></script>
 
   </head>
   <body>
@@ -72,6 +73,45 @@
       </ul>
     </header>
 
+    <div class="filtro">
+      <div class="div-periodo">
+        <b>Período</b>
+        <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins';">
+          <option>Hoje</option>
+          <option>Ontem</option>
+          <option>Última semana</option>
+          <option>Últimos 30 dias</option>
+          <option>Últimos 6 meses</option>
+          <option>Últimos 12 meses</option>
+          <option value="Personalizado" >Personalizado</option>
+        </select>
+      </div>
+      
+      <div class="divs-dates" id="divs_dates">
+        <div>
+          <b>Data Mínima</b>
+          <input type="date">
+        </div>
+        <div>
+          <b>Data Máxima</b>
+          <input type="date">
+        </div>
+      </div>
+      <button id="btn">Filtrar</button>
+      
+      
+      <div class="div-exportar">
+        <b>Exportar Dashboard</b>
+        <select>
+          <option value="">CSV</option>
+          <option value="">XLS</option>
+          <option value="">Relatórios exportados</option>
+        </select>
+      </div>
+      <button id="btn">Exportar</button>
+
+    </div>
+
     <div class="content">
       <div class="section1">
         <div class="grafico">
@@ -83,22 +123,22 @@
       </div>
       <div class="section2">
         <div class="mapa">
-          <h1>Mapa</h1>
-          <img src="../img/dashboard/mapa.svg" />
+          <h1>Notificações</h1>
+          <div id="notify"></div>
         </div>
         <div class="kpi">
           <h1>Tudo o que você precisa saber</h1>
           <div class="linha1">
             <div class="elipse temp-interna">
-              <h2>35C°</h2>
+              <h2 id="tempAtual">20C°</h2>
               <h3>Temperatura Interna atual</h3>
             </div>
             <div class="elipse temp-maxima">
-              <h2>35C°</h2>
+              <h2>26C°</h2>
               <h3>Temperatura Máxima do mês</h3>
             </div>
             <div class="elipse temp-minima">
-              <h2>6C°</h2>
+              <h2>15C°</h2>
               <h3>Temperatura Mínima do mês</h3>
             </div>
           </div>
@@ -121,8 +161,7 @@
     </div>
   </body>
 </html>
-<script src="../script.js"></script>
-<script>
+<script>//ChartJS Temperatura e Umidade
   const graficoTemperatura = document.getElementById("temperatura");
   const graficoUmidade = document.getElementById("umidade");
 
@@ -213,7 +252,7 @@
   new Chart(graficoTemperatura, configTemperatura);
   new Chart(graficoUmidade, configUmidade);
 </script>
-<script> //Chart de umidade
+<script>//Highcharts Chart de umidade
 
     var gaugeOptions = {
     chart: {
@@ -228,8 +267,7 @@
         startAngle: -90,
         endAngle: 90,
         background: {
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
             innerRadius: '60%',
             outerRadius: '100%',
             shape: 'arc'
@@ -410,4 +448,46 @@ var chartSpeed = Highcharts.chart('container-atualUmi', Highcharts.merge(gaugeOp
 
 }));
 
+</script>
+<script>//Notificações
+    setInterval( function notificar(){
+      x = (Math.random()*10+15).toFixed(0);
+
+      tempAtual.innerText = x+'C°';
+      notify.innerHTML = "";
+
+      var temperatura = "";
+      var temperaturaText = tempAtual.innerHTML;
+
+      var i = 0;
+      
+      console.log(tempAtual.innerHTML);
+
+      while(i <= temperaturaText.length - 1){
+        console.log(temperaturaText.charAt(i))
+        if(!isNaN(temperaturaText[i])){
+          temperatura += temperaturaText[i];
+        }
+        i++;
+      }
+      console.log(temperatura); 
+      temperatura = Number(temperatura);
+
+      if(temperatura > 22){
+        notify.innerHTML += "Temperatura atual elevada, recomendamos ativar os arspersores.";
+      }else if(temperatura < 18){
+        notify.innerHTML += "Temperatura atual baixa.";
+      }else{
+        notify.innerHTML = "Temperaturas ideais";
+      }
+    }, 5000);
+
+    // função para o filtro
+    function exibir(option) {
+    if (option.value == 'Personalizado') {
+      document.getElementById('divs_dates').style.display = 'flex';
+    } else {
+      document.getElementById('divs_dates').style.display = 'none';
+    }
+  }
 </script>
