@@ -28,7 +28,7 @@ function exibirCon2() {
         container2.style.display = "flex";
         container1.style.display = "none";
         container3.style.display = "none";
-    } 
+    }
 }
 function exibirCon3() {
     if (container3.style.display == "none" || container1.style.display == "flex" || container2.style.display == "flex") {
@@ -40,8 +40,8 @@ function exibirCon3() {
 
 // Redirecionamento via botões
 
-function href(place){
-    window.location.href= "../" + place + ".html";
+function href(place) {
+    window.location.href = "../" + place + ".html";
 }
 
 //  Limpar Labels - Login/Cadastro
@@ -79,7 +79,7 @@ form.addEventListener('submit', (event) => {
         form.submit(); // Envie o formulário se a validação for bem-sucedida, ou seja, retornar true
     };
 
-    
+
 });
 
 function setError(index) {
@@ -95,7 +95,7 @@ function removeError(index) {
 function nameValidate() {
     if (campos[0].value.length < 5) {
         setError(0);
-        
+
     } else {
         removeError(0);
     }
@@ -149,7 +149,7 @@ function impedirEnvioCadastro() {
 function nameValidateEmp() {
     if (campos[0].value.length < 5) {
         setError(0);
-        
+
     } else {
         removeError(0);
     }
@@ -158,7 +158,7 @@ function nameValidateEmp() {
 function razaoValidate() {
     if (campos[1].value.length < 5) {
         setError(1);
-        
+
     } else {
         removeError(1);
     }
@@ -200,16 +200,16 @@ function consultarCEP(cep) {
     var url = `https://viacep.com.br/ws/${cep}/json/`;
 
     fetch(url) // É uma função global que recebe uma URL como argumento. Ela retorna uma promessa (Promise) como resposta.
-    // No caso, a função solicitou à URL buscar as informações do endereço associado ao CEP.
-        
-        .then(response => response.json()) 
+        // No caso, a função solicitou à URL buscar as informações do endereço associado ao CEP.
+
+        .then(response => response.json())
         .then(data => {
             // Quando a solicitação é bem-sucedida, as informações vêm em formato JSON. 
             // O método .then() é utilizado para lidar com a resposta quando ela estiver pronta.
             if (data.erro) {
                 console.log("CEP não encontrado"); // Caso as informações não forem encontradas
-            } else { 
-                
+            } else {
+
                 // Caso forem encontradas, a função atribui elas para os seus respectivos campos, de acordo com os seus id's.
 
                 document.getElementById("logr").value = data.logradouro;
@@ -223,7 +223,7 @@ function consultarCEP(cep) {
             }
         })
         .catch(error => { // O método .catch() faz parte da API Fetch e é usado para lidar com erros que possam ocorrer durante uma solicitação de rede, como uma falha na conexão ou uma resposta inválida do servidor. 
-        // Caso houver algum erro no processo de busca, a função retorna esta mensagem de erro.
+            // Caso houver algum erro no processo de busca, a função retorna esta mensagem de erro.
 
             console.error("Erro na consulta: " + error);
         });
@@ -268,11 +268,11 @@ function mudarTipo(input, imgFechar, imgAbrir) {
     if (input.type === 'password') {
         input.type = 'text';
         imgFechar.style.display = 'none';
-        imgAbrir.style.display = 'block'; 
+        imgAbrir.style.display = 'block';
     } else {
-       input.type = 'password';
-       imgFechar.style.display = 'block';
-       imgAbrir.style.display = 'none';       
+        input.type = 'password';
+        imgFechar.style.display = 'block';
+        imgAbrir.style.display = 'none';
     }
 }
 
@@ -282,18 +282,18 @@ function impedirEnvioLogin() {
     if (!emailRegex.test(email.value) || senha.value.length < 12) {
         alert('Corrija os erros antes de enviar o formulário.');
         return false; // Impede o envio do formulário
-      } else {
+    } else {
         // return true;
         login(email.value == "coffeeflow@sptech.school", senha.value == "CoffeeFlow@10");
-      }
+    }
 }
 
 // Login
 
-function login(email, senha){
-    if(email && senha){
+function login(email, senha) {
+    if (email && senha) {
         href("dashboard/dashboard");
-    }else{
+    } else {
         href("cadastro/login");
     }
 }
@@ -303,8 +303,8 @@ function login(email, senha){
 function arabica() {
     div_limpar.style.display = 'none'
     div_aparecerArabico.style.display = 'block'
-  }
-  function formularioArabica() {
+}
+function formularioArabica() {
     var hectaresA = Number(input_hec.value)
     var faturamentoA = Number(input_fat.value)
     var estadoA = Number(select_estado.value)
@@ -314,56 +314,56 @@ function arabica() {
     const venda = Number(perdaA);
     const vendaP = Number(perdaAP);
     const vendaM = Number(perdaAM);
-  
+
     const moedaM = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+        style: "currency",
+        currency: "BRL",
     }).format(vendaM);
-  
+
     const moedaP = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+        style: "currency",
+        currency: "BRL",
     }).format(vendaP);
-  
+
     const moeda = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+        style: "currency",
+        currency: "BRL",
     }).format(venda);
-  
+
     div_arabicaRiscos.style.display = 'block';
     div_arabicaRiscos.style.height = 'auto';
     div_arabicaRiscos.style.textAlign = 'justify';
 
     if (estadoA == 8 || estadoA == 10 || estadoA == 11 || estadoA == 12 || estadoA == 23) {
-      div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+        div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
   
       Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 30%. Isso representa um <b>valor anual de ${moeda}!</b> <br><br>
       
       Essa perda é resultado das mudanças climáticas que afetam a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
-  
-      if (hectaresA >= 3) {
-        div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+
+        if (hectaresA >= 3) {
+            div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
   
       Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 40%. Isso representa um <b>valor anual de ${moedaM}!</b> <br><br>
       
       Os fatores que afetam essa perda são: o estado que você está localizado, o porte elevado de sua plantação, possivelmente as <b>mudanças climáticas</b> e a crise hídrica, por conta da possível bienalidade negativa. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
-      }
+        }
     } else {
-      div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+        div_respostaArabica.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
   
       Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 20%. Isso representa um <b>valor anual de ${moedaP}!</b> <br><br>
       
       Essa perda é resultado das mudanças climáticas e da má utilização da água que pode afetar a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
     }
-  
-  }
-  
-  function robusta() {
+
+}
+
+function robusta() {
     div_limpar.style.display = 'none'
     div_aparecerRobusta.style.display = 'block'
-  }
-  
-  function formularioRobusta() {
+}
+
+function formularioRobusta() {
     var hectaresR = Number(input_hec1.value)
     var faturamentoR = Number(input_fat1.value)
     var estadoR = Number(select_estado1.value)
@@ -373,58 +373,58 @@ function arabica() {
     const venda = Number(perdaR);
     const vendaP = Number(perdaRP);
     const vendaM = Number(perdaRM);
-  
+
     const moedaRM = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+        style: "currency",
+        currency: "BRL",
     }).format(vendaM);
-  
+
     const moedaRP = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+        style: "currency",
+        currency: "BRL",
     }).format(vendaP);
-  
+
     const moedaR = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+        style: "currency",
+        currency: "BRL",
     }).format(venda);
-  
+
     div_robustaRiscos.style.display = 'block';
     div_robustaRiscos.style.height = 'auto';
     div_robustaRiscos.style.textAlign = 'justify';
     if (estadoR == 5 || estadoR == 7) {
-      div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+        div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
   
       Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 15%. Isso representa um <b>valor anual de ${moedaR}!</b> <br><br>
       
       Essa perda é resultado da crise hídrica e das mudanças climáticas que afetam a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
 
-      if (hectaresR >= 3) {
-        div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+        if (hectaresR >= 3) {
+            div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
   
         Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, chegando a até 20%. Isso representa um <b>valor anual de ${moedaRM}!</b> <br><br>
         
         Os fatores que afetam essa perda são: o estado que você está localizado, o porte elevado de sua plantação, possivelmente as <b>mudanças climáticas</b> e a crise hídrica, por conta da possível bienalidade negativa. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
-      }
+        }
     } else {
-      div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
+        div_robustaResposta.innerHTML = `Olá, ${nome_riscos.value}! Agradecemos por escolher nossa calculadora. <br><br>
   
       Com base nas características de sua plantação, você pode estar <b>perdendo uma parte significativa de sua produção</b>, sendo entre 10 e 15%. Isso representa um <b>valor anual de ${moedaRP}!</b> <br><br>
       
       Essa perda é resultado das mudanças climáticas e da má utilização da água que pode afetar a produção em seu estado. No entanto, <b>trazemos boas notícias.</b> <button id="continuacao1" class="botao" onclick="continuacao1()" style="margin: 15px 20px 0 37px;">Quais notícias?</button>`;
     }
-  }
+}
 
-  function continuacao1() {
+function continuacao1() {
     div_respostaArabica.innerHTML = `Considere a adoção de práticas de monitoramento inteligente para <b>mitigar os impactos climáticos e aumentar seus lucros</b>.<br><br>
   
     <h4 style="font: 700 15px 'Poppins'">Permita-nos compartilhar uma história de sucesso.</h4> <br>
      Uma lavoura, no Espírito Santo, implementou esse sistema, instalando sensores de temperatura e umidade, bem como um sistema de irrigação inteligente. <br><br>
   
-    <button id="continuacao2" class="botao" onclick="continuacao2()" style="margin: 15px 20px 0 37px;">Qual foi o resultado?</button>`; 
-  }
-  
-  function continuacao2() {
+    <button id="continuacao2" class="botao" onclick="continuacao2()" style="margin: 15px 20px 0 37px;">Qual foi o resultado?</button>`;
+}
+
+function continuacao2() {
     div_respostaArabica.innerHTML = `
     <b>Os resultados foram notáveis!</b> Redução nas perdas de produção, aumento de até 20% na qualidade das colheitas e economia de 25% em recursos hídricos e adubo. <br><br>
   
@@ -433,17 +433,30 @@ function arabica() {
     Basta se registrar em nosso site para obter informações detalhadas e acessar uma calculadora de cotação exclusiva. <br><br>
     <b>Obrigado por confiar em nós!</b> 
     `
-  }
+}
 
-  function limparPlace(input, placeholderText) {
-    input.placeholder = '';    
-  }
+function limparPlace(input, placeholderText) {
+    input.placeholder = '';
+}
 
-  function voltarPlace(input, placeholderText) {
-    if (input.value === '') { 
+function voltarPlace(input, placeholderText) {
+    if (input.value === '') {
         input.placeholder = placeholderText;
-    } 
+    }
 
 }
 
-  
+function div_nt() {
+    div_n.innerHTML = "Nossa equipe instalará um sistema de irrigação por aspersão."; 
+    div_o.innerHTML = "";
+}
+
+function div_ntn() {
+    div_n.innerHTML = "";
+    div_o.innerHTML = "";
+}
+
+function div_non() {
+    div_n.innerHTML = "";
+    div_o.innerHTML = "Nossa equipe irá retirar o seu sistema de irrigação e instalará um sistema de irrigação por aspersão.";
+}

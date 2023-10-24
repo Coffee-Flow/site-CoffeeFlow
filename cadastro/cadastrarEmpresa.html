@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="cadEmpresa.css">
     <link rel="shortcut icon" href="../img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
 </head>
+
 <body>
     <header>
         <ul class="ul-header">
@@ -16,10 +18,13 @@
 
             <div id="mySidenav" class="sidenav">
                 <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="../siteInstitucional/sobreNos.html" class="links-sidenav"><img src="../img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="../siteInstitucional/sobreNos.html" class="links-sidenav"><img
+                        src="../img/SideBar/Information.svg" alt="">Sobre Nós</a>
                 <a href="#" class="links-sidenav"><img src="../img/SideBar/farm.svg" alt="">Nossos Serviços</a>
-                <a href="../siteInstitucional/siteInstitucional.html#footer" class="links-sidenav"><img src="../img/SideBar/telephone.svg" alt="">Contato</a>
-                <a href="../cadastro/cadastrarEmpresa.html" class="links-sidenav"><img src="../img/SideBar/Money.svg" alt="">Cotação</a>
+                <a href="../siteInstitucional/siteInstitucional.html#footer" class="links-sidenav"><img
+                        src="../img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="../cadastro/cadastrarEmpresa.html" class="links-sidenav"><img src="../img/SideBar/Money.svg"
+                        alt="">Cotação</a>
             </div>
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
 
@@ -35,67 +40,78 @@
         <div class="form-box">
             <h1>Cadastro da Empresa</h1>
             <form onsubmit="return impedirEnvioCadastroEmp()" autocomplete="off">
-            <div class="input-group">
-                <input type="text" id="nomeEmp" class="input-form required" onfocus="limpar(this, nomeEmpL)" onblur="limpar(this, nomeEmpL)" oninput="nameValidateEmp()"> 
-                <label class="label" for="nomeEmp" id="nomeEmpL">Nome da Empresa</label>
-                <span class="span-required">*Nome deve ter no mínimo 5 caracteres</span>
-            </div>
-            
+                <div class="input-group">
+                    <input type="text" id="nomeEmp" class="input-form required" onfocus="limpar(this, nomeEmpL)"
+                        onblur="limpar(this, nomeEmpL)" oninput="nameValidateEmp()">
+                    <label class="label" for="nomeEmp" id="nomeEmpL">Nome da Empresa</label>
+                    <span class="span-required">*Nome deve ter no mínimo 5 caracteres</span>
+                </div>
 
-            <div class="input-group">
-                <input type="text" id="razao" class="input-form required" onfocus="limpar(this, razaoL)" onblur="limpar(this, razaoL)" oninput="razaoValidate()">
-                <label class="label" for="razao" id="razaoL">Razão Social</label>
-                <span class="span-required">*Razão Social deve ter no mínimo 5 caracteres</span>
-            </div>
-            <div class="input-group">
-                <input id="cnpj" class="input-form required" onfocus="limpar(this, cnpjL)" onblur="limpar(this, cnpjL)" oninput="cnpjValidate()">
-                <label class="label" class="label" for="cnpj" id="cnpjL">CNPJ</label>
-                <span class="span-required">*O CNPJ deve ter 14 dígitos
-                </span>
-            </div>
-            <div class="input-group">
-                <input type="text" id="emailCorp" class="input-form required" onfocus="limpar(this, emailCorpL)" onblur="limpar(this, emailCorpL)" oninput="emailCorpValidate()">
-                <label class="label" for="emailCorp" id="emailCorpL">Email Corporativo</label>
-                <span class="span-required">*Digite um e-mail válido</span> 
-            </div>
-            <div class="input-group">
-                <input type="text" id="tel" class="input-form required" onfocus="limpar(this, telL)" onblur="limpar(this, telL)" oninput="telValidate()">
-                <label class="label" for="tel" id="telL">Telefone Comercial</label>
-                <span class="span-required">*Digite um número de telefone válido (10 Dígitos ou 11 Dígitos)</span> 
-            </div>
-            <div class="input-group">
-                <input id="cep" class="input-form required" onfocus="limpar(this, cepL)" onblur="limpar(this, cepL)" oninput="cepValidate()">
-                <label class="label" for="cep" id="cepL">CEP</label>
-                <span class="span-required">*O CEP deve ter 8 dígitos (Formato aceito: XXXXX-XXX)</span> 
-            </div>
-            <div class="input-group">
-                <input type="text" id="logr" class="input-form required" onfocus="limpar(this, logrL)" onblur="limpar(this, logrL)" oninput="logrValidate()">
-                <label class="label" for="logr" id="logrL">Logradouro</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="bairro" class="input-form required" onfocus="limpar(this, bairroL)" onblur="limpar(this, bairroL)" oninput="bairroValidate()">
-                <label class="label" for="bairro" id="bairroL">Bairro</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="cidade" class="input-form required" onfocus="limpar(this, cidadeL)" onblur="limpar(this, cidadeL)" oninput="cidadeValidate()">
-                <label class="label" for="cidade" id="cidadeL">Cidade</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="uf" class="input-form required" onfocus="limpar(this, ufL)" onblur="limpar(this, ufL)" oninput="ufValidate()">
-                <label class="label" for="uf" id="ufL">UF</label>
-            </div>
+
+                <div class="input-group">
+                    <input type="text" id="razao" class="input-form required" onfocus="limpar(this, razaoL)"
+                        onblur="limpar(this, razaoL)" oninput="razaoValidate()">
+                    <label class="label" for="razao" id="razaoL">Razão Social</label>
+                    <span class="span-required">*Razão Social deve ter no mínimo 5 caracteres</span>
+                </div>
+                <div class="input-group">
+                    <input id="cnpj" class="input-form required" onfocus="limpar(this, cnpjL)"
+                        onblur="limpar(this, cnpjL)" oninput="cnpjValidate()">
+                    <label class="label" class="label" for="cnpj" id="cnpjL">CNPJ</label>
+                    <span class="span-required">*O CNPJ deve ter 14 dígitos
+                    </span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="emailCorp" class="input-form required" onfocus="limpar(this, emailCorpL)"
+                        onblur="limpar(this, emailCorpL)" oninput="emailCorpValidate()">
+                    <label class="label" for="emailCorp" id="emailCorpL">Email Corporativo</label>
+                    <span class="span-required">*Digite um e-mail válido</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="tel" class="input-form required" onfocus="limpar(this, telL)"
+                        onblur="limpar(this, telL)" oninput="telValidate()">
+                    <label class="label" for="tel" id="telL">Telefone Comercial</label>
+                    <span class="span-required">*Digite um número de telefone válido (10 Dígitos ou 11 Dígitos)</span>
+                </div>
+                <div class="input-group">
+                    <input id="cep" class="input-form required" onfocus="limpar(this, cepL)" onblur="limpar(this, cepL)"
+                        oninput="cepValidate()">
+                    <label class="label" for="cep" id="cepL">CEP</label>
+                    <span class="span-required">*O CEP deve ter 8 dígitos (Formato aceito: XXXXX-XXX)</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="logr" class="input-form required" onfocus="limpar(this, logrL)"
+                        onblur="limpar(this, logrL)" oninput="logrValidate()">
+                    <label class="label" for="logr" id="logrL">Logradouro</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="bairro" class="input-form required" onfocus="limpar(this, bairroL)"
+                        onblur="limpar(this, bairroL)" oninput="bairroValidate()">
+                    <label class="label" for="bairro" id="bairroL">Bairro</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="cidade" class="input-form required" onfocus="limpar(this, cidadeL)"
+                        onblur="limpar(this, cidadeL)" oninput="cidadeValidate()">
+                    <label class="label" for="cidade" id="cidadeL">Cidade</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="uf" class="input-form required" onfocus="limpar(this, ufL)"
+                        onblur="limpar(this, ufL)" oninput="ufValidate()">
+                    <label class="label" for="uf" id="ufL">UF</label>
+                </div>
         </div>
         <div class="form-box yellowColor">
             <h1>Detalhes da Lavoura</h1>
             <div class="lavoura">
                 <div class="input-group">
-                    <input type="number" id="areaCultivo" class="input-form required" onfocus="limpar(this, areaCultL)" onblur="limpar(this, areaCultL)" oninput="areaCultValidate()">
+                    <input type="number" id="areaCultivo" class="input-form required" onfocus="limpar(this, areaCultL)"
+                        onblur="limpar(this, areaCultL)" oninput="areaCultValidate()">
                     <label class="label" for="areaCultivo" id="areaCultL">Tamanho da Área de Cultivo</label>
                 </div>
-            <div class="radioArea">
-                <input type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
-                <input type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
-            </div>
+                <div class="radioArea">
+                    <input type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
+                    <input type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
+                </div>
             </div>
 
             <!-- <div class="cafe">
@@ -112,24 +128,29 @@
             </div> -->
 
             <div class="irrig">
-            <h2>Tipo de Sistema de Irrigação</h2>
-            <div class="radioIrr">
-                <input type="radio" name="irr" id="arsp"><label for="arsp">Sistema de Irrigação por Aspersão.</label>
-            </div>
-            <div class="radioIrr">
-                <input type="radio" name="irr" id="nenhum"><label for="nenhum">Não possuo sistema de irrigação.</label>
-            </div>
-            <div class="radioIrr">
-                <input type="radio" name="irr" id="outroirr"><label for="outroirr">Outro sistema</label>
-            </div>
+                <h2>Tipo de Sistema de Irrigação</h2>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="arsp" onclick="div_ntn()"><label for="arsp">Sistema de Irrigação por
+                        Aspersão.</label>
+                </div>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="nenhum" onchange="div_nt()"><label for="nenhum">Não possuo sistema de
+                        irrigação.</label>
+                    </div>
+                    <div id="div_n"></div>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="outroirr" onclick="div_non()"><label for="outroirr">Outro sistema</label>
+                </div>
+                <div id="div_o"></div>
             </div>
 
             <h3>Quantidade média de café colhido anualmente (em sacas) <input type="number" id="sacas"> </h3>
             <button type="submit" value="Enviar">Finalizar Cadastro</button>
-        </form>
+            </form>
         </div>
     </div>
 </body>
+
 </html>
 <script src="../script.js">
 
