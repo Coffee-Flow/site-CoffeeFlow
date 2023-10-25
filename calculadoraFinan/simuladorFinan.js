@@ -98,7 +98,7 @@
      currency: "BRL",
    }).format(venda);
 
-   div_a.style.height = 'none';
+  //  div_a.style.height = 'none';
 
    div_a.innerHTML = `<p style="font:700 23px 'Poppins'">Ótimo, ${nome}! Com ${largura * comprimento} metros quadrados de plantio, você pode produzir aproximadamente ${safra.toFixed(0)} sacas de café, o equivalente à ${moeda}.</p> <br>
 
@@ -132,7 +132,7 @@
      currency: "BRL",
    }).format(venda);
 
-   div_a.style.height = 'none';
+  //  div_a.style.height = 'none';
 
    div_a.innerHTML = `<p style="font:700 23px 'Poppins'">Ótimo, ${nome}! Com ${largura * comprimento} metros quadrados de plantio, você está usando o sistema de irrigação por ${irriga}. A sua produção é de aproximadamente ${safra.toFixed(0)} sacas de café, o equivalente à ${moeda}.</p> <br>
 
@@ -174,7 +174,7 @@
    // div_e.innerHTML = "";
    // div_f.innerHTML = `<button onclick="proximo5()">Plantação Sequeira</button><br><button onclick="proximo6()">Plantação Irrigada</button><br><button onclick="grafico()">Mostrar em Grafico</button>`;
    // section.style.margin = '100px 0';
-   div_a.style.height = 'none';
+  //  div_a.style.height = 'none';
 
    div_a.innerHTML =
 
@@ -210,7 +210,7 @@
    // div_d.innerHTML = "";
    // div_e.innerHTML = "";
    // div_f.innerHTML = `<button onclick="proximo5()">Plantação Sequeira</button><br><button onclick="proximo6()">Plantação Irrigada</button><br><button onclick="grafico()">Mostrar em Grafico</button>`;
-   div_a.style.height = 'none';
+  //  div_a.style.height = 'none';
 
    div_a.innerHTML =
      `Com um investimento em nossos sistemas inteligente de monitoramento, você terá total controle sobre as condições da sua plantação.<br><br>
@@ -236,18 +236,21 @@
    // div_e.innerHTML = "";
    // div_f.innerHTML = `<button onclick="proximo5()">Plantação Sequeira</button><br><button onclick="proximo6()">Plantação Irrigada</button>`;
    document.body.style.backgroundColor = '#EAE8DB';  // Define a cor de fundo como vermelho
-   document.body.style.backgroundImage = 'none';  // Remove a imagem de fundo
-   div_a.style.height = 'none';
-   div_a.style.justifyContent = 'unset';
+  //  document.body.style.backgroundImage = 'none';   Remove a imagem de fundo
+  //  div_a.style.height = 'none';
+  //  div_a.style.justifyContent = 'unset';
 
 
-   div_a.innerHTML = `<div><canvas id="myChart" style="width: 600px; height: 500px;"></canvas></div>
+   div_a.innerHTML = `<div><canvas id="myChart" style="width: 500px; height: 300px; margin-top: 40px"></canvas></div>
    <div style="gap:12px;">
      <button onclick="proximo5()" style="margin:50px 0;" class="btn-form">Plantação Sem Irrigação</button>
      <button onclick="proximo6()" style="margin:50px 0;" class="btn-form">Plantação Irrigada</button>
    </div>`;
 
    const ctx = document.getElementById("myChart");
+
+   Chart.defaults.font.family = "'Poppins'";
+   Chart.defaults.color = '#000';
 
    new Chart(ctx, {
      type: "bar",
@@ -258,11 +261,15 @@
            label: "Investimento",
            data: [(cust + 4000), 4000, 4000, 4000, 4000, 4000],
            borderWidth: 1,
+           backgroundColor: "#D9A30B",
+           borderColor: "#D9A30B"
          },
          {
            label: "Produção",
            data: [vendaa, vendaa, vendaa, vendaa, vendaa, vendaa],
            borderWidth: 1,
+           backgroundColor: "#925035",
+           borderColor: "#925035"
          },
          {
            label: "Rendimento",
@@ -275,6 +282,8 @@
              vendaa - 4000,
            ],
            borderWidth: 1,
+           backgroundColor: "#053C11",
+           borderColor: "#053C11"
          },
        ],
      },

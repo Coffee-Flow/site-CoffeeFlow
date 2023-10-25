@@ -8,8 +8,9 @@
     <link
       rel="shortcut icon"
       href="../img/Logo/CoffeeFlowLogo.svg"
-      type="image/x-icon"/>
-    
+      type="image/x-icon"
+    />
+
     <link rel="stylesheet" href="login.css" />
     <link rel="stylesheet" href="../menu.css" />
     <link rel="stylesheet" href="dash.css" />
@@ -22,7 +23,6 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="../script.js"></script>
-
   </head>
   <body>
     <header>
@@ -76,30 +76,33 @@
     <div class="filtro">
       <div class="div-periodo">
         <b>Período</b>
-        <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins';">
+        <select
+          onchange="exibir(this)"
+          id="periodo_min"
+          style="font-family: 'Poppins'"
+        >
           <option>Hoje</option>
           <option>Ontem</option>
           <option>Última semana</option>
           <option>Últimos 30 dias</option>
           <option>Últimos 6 meses</option>
           <option>Últimos 12 meses</option>
-          <option value="Personalizado" >Personalizado</option>
+          <option value="Personalizado">Personalizado</option>
         </select>
       </div>
-      
+
       <div class="divs-dates" id="divs_dates">
         <div>
           <b>Data Mínima</b>
-          <input type="date">
+          <input type="date" />
         </div>
         <div>
           <b>Data Máxima</b>
-          <input type="date">
+          <input type="date" />
         </div>
       </div>
       <button id="btn">Filtrar</button>
-      
-      
+
       <div class="div-exportar">
         <b>Exportar Dashboard</b>
         <select>
@@ -109,7 +112,6 @@
         </select>
       </div>
       <button id="btn">Exportar</button>
-
     </div>
 
     <div class="content">
@@ -142,18 +144,25 @@
               <h3>Temperatura Mínima do mês</h3>
             </div>
           </div>
-          <div class="linha2" style="border-top: 3px dashed #666666;">
-              <div class="umidade">
+          <div class="linha2" style="border-top: 3px dashed #666666">
+            <!-- <div class="umidade">
                   <figure class="highcharts-figure">
                       <div id="container-menorUmi" class="chart-container"></div>
                     </figure>
                     <h3>Menor nível de umidade no mês</h3>
-            </div>
-            <div class="umidade">
+              </div>
+              <div class="umidade">
                 <figure class="highcharts-figure">
                     <div id="container-atualUmi" class="chart-container"></div>
                 </figure>
                 <h3>Umidade relativa do ar</h3>
+              </div> -->
+
+            <div class="umidade">
+              <canvas id="menorUmi"></canvas>
+            </div>
+            <div class="umidade">
+              <canvas id="maiorUmi"></canvas>
             </div>
           </div>
         </div>
@@ -161,12 +170,15 @@
     </div>
   </body>
 </html>
-<script>//ChartJS Temperatura e Umidade
+<script>
+  //ChartJS Temperatura e Umidade
   const graficoTemperatura = document.getElementById("temperatura");
   const graficoUmidade = document.getElementById("umidade");
 
   const legenda = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 
+  Chart.defaults.font.family = "'Poppins'";
+  
   const dadosTemperatura = {
     labels: legenda,
     datasets: [
@@ -252,242 +264,306 @@
   new Chart(graficoTemperatura, configTemperatura);
   new Chart(graficoUmidade, configUmidade);
 </script>
-<script>//Highcharts Chart de umidade
+<script>
+  //Highcharts Chart de umidade
 
-    var gaugeOptions = {
+  var gaugeOptions = {
     chart: {
-        type: 'solidgauge'
+      type: "solidgauge",
     },
 
     title: null,
 
     pane: {
-        center: ['50%', '85%'],
-        size: '100%',
-        startAngle: -90,
-        endAngle: 90,
-        background: {
-            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-        }
+      center: ["50%", "85%"],
+      size: "100%",
+      startAngle: -90,
+      endAngle: 90,
+      background: {
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || "#EEE",
+        innerRadius: "60%",
+        outerRadius: "100%",
+        shape: "arc",
+      },
     },
 
     exporting: {
-        enabled: false
+      enabled: false,
     },
 
     tooltip: {
-        enabled: false
+      enabled: false,
     },
 
     // the value axis
     yAxis: {
-        stops: [
-            [0.1, '#8AC6FE'], // cyan
-            [0.5, '#DDDF0D'], // yellow
-            [0.9, '#DF5353'] // red
-        ],
-        lineWidth: 0,
-        tickWidth: 0,
-        minorTickInterval: null,
-        tickAmount: 2,
-        title: {
-            y: -40
-        },
-        labels: {
-            y: 16
-        }
+      stops: [
+        [0.1, "#8AC6FE"], // cyan
+        [0.5, "#DDDF0D"], // yellow
+        [0.9, "#DF5353"], // red
+      ],
+      lineWidth: 0,
+      tickWidth: 0,
+      minorTickInterval: null,
+      tickAmount: 2,
+      title: {
+        y: -40,
+      },
+      labels: {
+        y: 16,
+      },
     },
 
     plotOptions: {
-        solidgauge: {
-            dataLabels: {
-                y: 5,
-                borderWidth: 0,
-                useHTML: true
-            }
-        }
-    }
-};
+      solidgauge: {
+        dataLabels: {
+          y: 5,
+          borderWidth: 0,
+          useHTML: true,
+        },
+      },
+    },
+  };
 
-// The speed gauge
-var chartSpeed = Highcharts.chart('container-menorUmi', Highcharts.merge(gaugeOptions, {
-    yAxis: {
+  // The speed gauge
+  var chartSpeed = Highcharts.chart(
+    "container-menorUmi",
+    Highcharts.merge(gaugeOptions, {
+      yAxis: {
         min: 0,
         max: 100,
         title: {
-            text: '',
-            style: {
-                fontSize: 12,
-                fontWeight: "bold",
-                color: "#000"
-            }
+          text: "",
+          style: {
+            fontSize: 12,
+            fontWeight: "bold",
+            color: "#000",
+          },
         },
         labels: {
-            enabled: false
-        }
-    },
-
-    credits: {
-        enabled: false
-    },
-
-    series: [{
-        name: 'Umidade',
-        data: [40],
-        dataLabels: {
-            format:
-                '<div style="text-align:center">' +
-                '<span style="font-size:20px">{y}%</span><br/>' +
-                '</div>'
+          enabled: false,
         },
-        tooltip: {
-            valueSuffix: ' %'
-        }
-    }]
+      },
 
-}));
+      credits: {
+        enabled: false,
+      },
 
-// Umidade atual
-var gaugeOptions = {
+      series: [
+        {
+          name: "Umidade",
+          data: [40],
+          dataLabels: {
+            format:
+              '<div style="text-align:center">' +
+              '<span style="font-size:20px">{y}%</span><br/>' +
+              "</div>",
+          },
+          tooltip: {
+            valueSuffix: " %",
+          },
+        },
+      ],
+    })
+  );
+
+  // Umidade atual
+  var gaugeOptions = {
     chart: {
-        type: 'solidgauge'
+      type: "solidgauge",
     },
 
     title: null,
 
     pane: {
-        center: ['50%', '85%'],
-        size: '100%',
-        startAngle: -90,
-        endAngle: 90,
-        background: {
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-        }
+      center: ["50%", "85%"],
+      size: "100%",
+      startAngle: -90,
+      endAngle: 90,
+      background: {
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || "#EEE",
+        innerRadius: "60%",
+        outerRadius: "100%",
+        shape: "arc",
+      },
     },
 
     exporting: {
-        enabled: false
+      enabled: false,
     },
 
     tooltip: {
-        enabled: false
+      enabled: false,
     },
 
     // the value axis
     yAxis: {
-        stops: [
-            [0.1, '#8AC6FE'], // cyan
-            [0.5, '#DDDF0D'], // yellow
-            [0.9, '#DF5353'] // red
-        ],
-        lineWidth: 0,
-        tickWidth: 0,
-        minorTickInterval: null,
-        tickAmount: 2,
-        title: {
-            y: -40
-        },
-        labels: {
-            y: 16
-        }
+      stops: [
+        [0.1, "#8AC6FE"], // cyan
+        [0.5, "#DDDF0D"], // yellow
+        [0.9, "#DF5353"], // red
+      ],
+      lineWidth: 0,
+      tickWidth: 0,
+      minorTickInterval: null,
+      tickAmount: 2,
+      title: {
+        y: -40,
+      },
+      labels: {
+        y: 16,
+      },
     },
 
     plotOptions: {
-        solidgauge: {
-            dataLabels: {
-                y: 5,
-                borderWidth: 0,
-                useHTML: true
-            }
-        }
-    }
-};
+      solidgauge: {
+        dataLabels: {
+          y: 5,
+          borderWidth: 0,
+          useHTML: true,
+        },
+      },
+    },
+  };
 
-// The speed gauge
-var chartSpeed = Highcharts.chart('container-atualUmi', Highcharts.merge(gaugeOptions, {
-    yAxis: {
+  // The speed gauge
+  var chartSpeed = Highcharts.chart(
+    "container-atualUmi",
+    Highcharts.merge(gaugeOptions, {
+      yAxis: {
         min: 0,
         max: 100,
         title: {
-            text: '',
-            style: {
-                fontSize: 12,
-                fontWeight: "bold",
-                color: "#000"
-            }
+          text: "",
+          style: {
+            fontSize: 12,
+            fontWeight: "bold",
+            color: "#000",
+          },
         },
         labels: {
-            enabled: false
-        }
-    },
-
-    credits: {
-        enabled: false
-    },
-
-    series: [{
-        name: 'Umidade',
-        data: [21],
-        dataLabels: {
-            format:
-                '<div style="text-align:center">' +
-                '<span style="font-size:20px">{y}%</span><br/>' +
-                '</div>'
+          enabled: false,
         },
-        tooltip: {
-            valueSuffix: ' %'
-        }
-    }]
+      },
 
-}));
+      credits: {
+        enabled: false,
+      },
 
+      series: [
+        {
+          name: "Umidade",
+          data: [21],
+          dataLabels: {
+            format:
+              '<div style="text-align:center">' +
+              '<span style="font-size:20px">{y}%</span><br/>' +
+              "</div>",
+          },
+          tooltip: {
+            valueSuffix: " %",
+          },
+        },
+      ],
+    })
+  );
 </script>
-<script>//Notificações
-    setInterval( function notificar(){
-      x = (Math.random()*10+15).toFixed(0);
+<script>
+  //ChartJS Umidade (pizza ao meio)
+  const pizzaUmidadeMim = document.getElementById("menorUmi");
+  const pizzaUmidadeMax = document.getElementById("maiorUmi");
 
-      tempAtual.innerText = x+'C°';
-      notify.innerHTML = "";
+  const dataPizzaMenor = {
+    labels: ["Umidade"],
+    datasets: [
+      {
+        label: "Umidade",
+        data: [300, 50],
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
 
-      var temperatura = "";
-      var temperaturaText = tempAtual.innerHTML;
+  const configPizzaMenor = {
+    type: "doughnut",
+    data: dataPizzaMenor,
+  };
 
-      var i = 0;
-      
-      console.log(tempAtual.innerHTML);
+  
+  const dataPizzaMaior = {
+    labels: ["Umidade"],
+    datasets: [
+      {
+        label: "Umidade",
+        data: [300, 50],
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
 
-      while(i <= temperaturaText.length - 1){
-        console.log(temperaturaText.charAt(i))
-        if(!isNaN(temperaturaText[i])){
-          temperatura += temperaturaText[i];
-        }
-        i++;
+  const configPizzaMaior = {
+    type: "doughnut",
+    data: dataPizzaMaior,
+  };
+
+  new Chart(pizzaUmidadeMim, configPizzaMenor);
+  new Chart(pizzaUmidadeMax, configPizzaMaior);
+</script>
+<script>
+  //Notificações
+  setInterval(function notificar() {
+    x = (Math.random() * 10 + 15).toFixed(0);
+
+    tempAtual.innerText = x + "C°";
+    notify.innerHTML = "";
+
+    var temperatura = "";
+    var temperaturaText = tempAtual.innerHTML;
+
+    var i = 0;
+
+    console.log(tempAtual.innerHTML);
+
+    while (i <= temperaturaText.length - 1) {
+      console.log(temperaturaText.charAt(i));
+      if (!isNaN(temperaturaText[i])) {
+        temperatura += temperaturaText[i];
       }
-      console.log(temperatura); 
-      temperatura = Number(temperatura);
+      i++;
+    }
+    console.log(temperatura);
+    temperatura = Number(temperatura);
 
-      if(temperatura > 22){
-        notify.innerHTML += "Temperatura atual elevada, recomendamos ativar os arspersores.";
-      }else if(temperatura < 18){
-        notify.innerHTML += "Temperatura atual baixa.";
-      }else{
-        notify.innerHTML = "Temperaturas ideais";
-      }
-    }, 5000);
-
-    // função para o filtro
-    function exibir(option) {
-    if (option.value == 'Personalizado') {
-      document.getElementById('divs_dates').style.display = 'flex';
+    if (temperatura > 22) {
+      notify.innerHTML +=
+        "Temperatura atual elevada, recomendamos ativar os arspersores.";
+    } else if (temperatura < 18) {
+      notify.innerHTML += "Temperatura atual baixa.";
     } else {
-      document.getElementById('divs_dates').style.display = 'none';
+      notify.innerHTML = "Temperaturas ideais";
+    }
+  }, 5000);
+
+  // função para o filtro
+  function exibir(option) {
+    if (option.value == "Personalizado") {
+      document.getElementById("divs_dates").style.display = "flex";
+    } else {
+      document.getElementById("divs_dates").style.display = "none";
     }
   }
 </script>
