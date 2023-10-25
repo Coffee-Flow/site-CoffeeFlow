@@ -151,6 +151,7 @@ body{
     border-left: 1px solid #053C11;
     padding: 0 15px;
     display: none;
+    margin-top: 16px;
   }
   .filtro .div-exportar {
     display: flex; 
@@ -194,6 +195,7 @@ body{
     background-color: #053C11;
     color: #EAE8DB;
   }
+  
   input[type="date"]::-webkit-calendar-picker-indicator{
     filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(899%) hue-rotate(340deg) brightness(109%) contrast(83%);  
   }
