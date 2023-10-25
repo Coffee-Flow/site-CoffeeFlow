@@ -422,17 +422,29 @@ function continuacao1() {
      Uma lavoura, no Espírito Santo, implementou esse sistema, instalando sensores de temperatura e umidade, bem como um sistema de irrigação inteligente. <br><br>
   
     <button id="continuacao2" class="botao" onclick="continuacao2()" style="margin: 15px 20px 0 37px;">Qual foi o resultado?</button>`;
+
+    div_robustaResposta.innerHTML = `Considere a adoção de práticas de monitoramento inteligente para <b>mitigar os impactos climáticos e aumentar seus lucros</b>.<br><br>
+  
+    <h4 style="font: 700 15px 'Poppins'">Permita-nos compartilhar uma história de sucesso.</h4> <br>
+     Uma lavoura, no Espírito Santo, implementou esse sistema, instalando sensores de temperatura e umidade, bem como um sistema de irrigação inteligente. <br><br>
+  
+    <button id="continuacao2" class="botao" onclick="continuacao2()" style="margin: 15px 20px 0 37px;">Qual foi o resultado?</button>`;
 }
 
 function continuacao2() {
-    div_respostaArabica.innerHTML = `
-    <b>Os resultados foram notáveis!</b> Redução nas perdas de produção, aumento de até 20% na qualidade das colheitas e economia de 25% em recursos hídricos e adubo. <br><br>
+    div_respostaArabica.innerHTML = `<b>Os resultados foram notáveis!</b> Redução nas perdas de produção, aumento de até 20% na qualidade das colheitas e economia de 25% em recursos hídricos e adubo. <br><br>
   
     Agora, eles estão colhendo os frutos de uma lavoura mais sustentável e lucrativa. <b>Quer saber como alcançar resultados semelhantes?</b> <br><br>
   
     Basta se registrar em nosso site para obter informações detalhadas e acessar uma calculadora de cotação exclusiva. <br><br>
-    <b>Obrigado por confiar em nós!</b> 
-    `
+    <b>Obrigado por confiar em nós!</b>`
+
+    div_robustaResposta.innerHTML = `<b>Os resultados foram notáveis!</b> Redução nas perdas de produção, aumento de até 20% na qualidade das colheitas e economia de 25% em recursos hídricos e adubo. <br><br>
+  
+    Agora, eles estão colhendo os frutos de uma lavoura mais sustentável e lucrativa. <b>Quer saber como alcançar resultados semelhantes?</b> <br><br>
+  
+    Basta se registrar em nosso site para obter informações detalhadas e acessar uma calculadora de cotação exclusiva. <br><br>
+    <b>Obrigado por confiar em nós!</b>`
 }
 
 function limparPlace(input, placeholderText) {
