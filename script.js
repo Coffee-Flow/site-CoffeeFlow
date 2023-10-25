@@ -458,17 +458,24 @@ function voltarPlace(input, placeholderText) {
 
 }
 
+var radioIrr = document.getElementById('radioIrr');
+
+
 function div_nt() {
-    div_n.innerHTML = "Nossa equipe instalará um sistema de irrigação por aspersão."; 
+    div_n.innerHTML = "*Nossa equipe instalará um sistema de irrigação por aspersão."; 
     div_o.innerHTML = "";
+    irrig.style.padding = '0 47px 0 51px';
 }
 
 function div_ntn() {
     div_n.innerHTML = "";
     div_o.innerHTML = "";
+    irrig.style.padding = '0';
 }
 
 function div_non() {
     div_n.innerHTML = "";
-    div_o.innerHTML = "Nossa equipe irá retirar o seu sistema de irrigação e instalará um sistema de irrigação por aspersão.";
+    div_o.innerHTML = "*Nossa equipe irá retirar o seu sistema de irrigação e instalará um sistema de irrigação por aspersão.";
+    irrig.style.padding = '0 47px 0 51px';
+
 }
