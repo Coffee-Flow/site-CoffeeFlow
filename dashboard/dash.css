@@ -86,6 +86,17 @@ body{
     background-color: white;
     border-radius: 38px;
   }
+  .content .section2 .quadra3 .metricas{
+    background-image: url(../img/dashboard/metricas.svg);
+    background-size: cover;
+    width: 100%;
+    height: 33%;
+    border-right: 1px solid black;
+  }
+  .content .section2 .quadra3 #notify{
+    display: flex;
+    justify-content: space-around;
+  }
   .content .section2 .kpi{
     display: flex;
     flex-direction: column;
@@ -115,15 +126,26 @@ body{
   .content .section2 .kpi>div .elipse h3{
     font-size: 15px;
     font-weight: 500;
+    color: #666666;
+  }
+  .content .section2 .kpi .umidade{
+    margin: 0;
+    text-align: center;
+  }
+  .content .section2 .kpi .umidade canvas{
+    height: 150px;
+  }
+  .content .section2 .kpi .umidade h1{
+    margin-top: -50px;
   }
 
-  .umidade h3{
+  /* .umidade h3{
     font-size: 15px;
     font-weight: 500;
   }
   .umidade h2{
     color: #8AC6FE;
-  }
+  } */
   .temp-maxima h2{
     color: #FF4242;
   }
@@ -151,7 +173,11 @@ body{
     border-left: 1px solid #053C11;
     padding: 0 15px;
     display: none;
-    margin-top: 16px;
+  }
+  .filtro .divs-dates>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .filtro .div-exportar {
     display: flex; 
@@ -229,7 +255,6 @@ body{
 
 .highcharts-data-table caption {
     padding: 1em 0;
-    /* font-size: 1.2em; */
     color: #555;
 }
 

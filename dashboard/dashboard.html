@@ -124,9 +124,16 @@
         </div>
       </div>
       <div class="section2">
-        <div class="mapa">
+        <div class="quadra3">
+          <h1>Métricas</h1>
+          <div id="metricas" class="metricas">
+          </div>
           <h1>Notificações</h1>
-          <div id="notify"></div>
+          <div id="notify">
+            <img id="humidity" src="../img/dashboard/notifyHumiGreen.svg">
+            <img src="../img/dashboard/notifyTempGreen.svg">
+          </div>
+
         </div>
         <div class="kpi">
           <h1>Tudo o que você precisa saber</h1>
@@ -159,10 +166,12 @@
               </div> -->
 
             <div class="umidade">
-              <canvas id="menorUmi"></canvas>
+              <canvas id="maiorUmi"></canvas>
+              <h1 id="maiorUmidade"></h1>
             </div>
             <div class="umidade">
-              <canvas id="maiorUmi"></canvas>
+              <canvas id="menorUmi"></canvas>
+              <h1 id="menorUmidade"></h1>
             </div>
           </div>
         </div>
@@ -475,14 +484,18 @@
   const pizzaUmidadeMim = document.getElementById("menorUmi");
   const pizzaUmidadeMax = document.getElementById("maiorUmi");
 
+  Chart.defaults.color = "#666666"
+
+  const umidadeBaixa = 33;
+
   const dataPizzaMenor = {
-    labels: ["Umidade"],
+    labels: ["Umidade (%)"],
     datasets: [
       {
         label: "Umidade",
-        data: [300, 50],
+        data: [umidadeBaixa, 100 - umidadeBaixa],
         backgroundColor: [
-          "rgb(255, 99, 132)",
+          "#8AC6FE",
           "#EAE8DB",
         ],
         hoverOffset: 4,
@@ -497,15 +510,18 @@
     data: dataPizzaMenor,
   };
 
-  
+  menorUmidade.innerHTML = umidadeBaixa+"%";
+
+  const umidadeAlta = 68;
+
   const dataPizzaMaior = {
-    labels: ["Umidade"],
+    labels: ["Umidade (%)"],
     datasets: [
       {
         label: "Umidade",
-        data: [300, 50],
+        data: [umidadeAlta, 100 - umidadeAlta],
         backgroundColor: [
-          "rgb(255, 99, 132)",
+          "#FF4242",
           "#EAE8DB",
         ],
         hoverOffset: 4,
@@ -520,16 +536,22 @@
     data: dataPizzaMaior,
   };
 
+  maiorUmidade.innerHTML = umidadeAlta+"%";
+
   new Chart(pizzaUmidadeMim, configPizzaMenor);
   new Chart(pizzaUmidadeMax, configPizzaMaior);
 </script>
 <script>
   //Notificações
+
+  console.log(humidity.src);
+
   setInterval(function notificar() {
     x = (Math.random() * 10 + 15).toFixed(0);
 
     tempAtual.innerText = x + "C°";
     notify.innerHTML = "";
+    
 
     var temperatura = "";
     var temperaturaText = tempAtual.innerHTML;
@@ -556,7 +578,8 @@
     } else {
       notify.innerHTML = "Temperaturas ideais";
     }
-  }, 5000);
+
+  }, 5000000);
 
   // função para o filtro
   function exibir(option) {
