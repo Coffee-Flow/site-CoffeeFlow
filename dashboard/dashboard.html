@@ -138,9 +138,27 @@
       </div>
       <div class="section2">
         <div class="quadra3">
-          <h1>Métricas</h1>
+          <h1>Métricas - Café Arábico</h1>
           <div id="metricas" class="metricas">
-            <img src="../img/dashboard/metricas.svg">
+            <!-- <img src="../img/dashboard/metricas.svg"> -->
+            <h2>Temperatura</h2>
+            <div class="temp">
+              <div class="linha">
+                <span>18</span>
+                <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>20C°</p>
+                <span>22</span>
+              </div>
+            </div>
+            <h2>Umidade</h2>
+            <div class="humidity">
+              <div class="linha">
+                <span>22%</span>
+                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>27%</p>
+                <span>32%
+                  
+                </span>
+              </div>
+            </div>
           </div>
           <h1>Notificações</h1>
           <div id="notify">
@@ -604,16 +622,16 @@
 
     var i = 0;
 
-    console.log(tempAtual.innerHTML);
+    // console.log(tempAtual.innerHTML);
 
     while (i <= temperaturaText.length - 1) {
-      console.log(temperaturaText.charAt(i));
+      // console.log(temperaturaText.charAt(i));
       if (!isNaN(temperaturaText[i])) {
         temperatura += temperaturaText[i];
       }
       i++;
     }
-    console.log(temperatura);
+    // console.log(temperatura);
     temperatura = Number(temperatura);
     
     if (x > 23.33 || x < 19.42) {
@@ -647,6 +665,30 @@
     }
 
     atualUmidade.innerHTML = y+"%";
+
+    if(y < 22 || y > 32){
+      id_ponteiroUmidade.style.left = (y-27)*10+"%";
+      id_ponteiroUmidade.style.opacity = 0
+      id_ponteiroUmidade.innerHTML = `|<br>${y}%`
+    }else{
+      id_ponteiroUmidade.style.left = (y-27)*10+"%";
+      id_ponteiroUmidade.style.opacity = 1
+      id_ponteiroUmidade.innerHTML = `|<br>${y}%`
+    }
+
+    console.log(x);
+    console.log(x-20);
+
+    if(x < 18 || x > 22){
+      id_ponteiroTemperatura.style.left = ((x-20)*25+"%")
+      id_ponteiroTemperatura.style.opacity = 0
+      id_ponteiroTemperatura.innerHTML = `|<br>${x}C°`
+    }else{
+      id_ponteiroTemperatura.style.left = ((x-20)*25+"%")
+      id_ponteiroTemperatura.style.opacity = 1
+      id_ponteiroTemperatura.innerHTML = `|<br>${x}C°`
+    }
+  
 
     umidade.data.datasets[0].data = [y, 100 - y];
     umidade.update();
