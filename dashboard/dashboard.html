@@ -131,7 +131,7 @@
           <h1>Notificações</h1>
           <div id="notify">
             <img id="humidity" src="../img/dashboard/notifyHumiGreen.svg">
-            <img src="../img/dashboard/notifyTempGreen.svg">
+            <img id="temp" src="../img/dashboard/notifyTempGreen.svg">
           </div>
 
         </div>
@@ -548,10 +548,9 @@
 
   setInterval(function notificar() {
     x = (Math.random() * 10 + 15).toFixed(0);
+    y = (Math.random() * 10 + 15).toFixed(0);
 
     tempAtual.innerText = x + "C°";
-    notify.innerHTML = "";
-    
 
     var temperatura = "";
     var temperaturaText = tempAtual.innerHTML;
@@ -569,17 +568,25 @@
     }
     console.log(temperatura);
     temperatura = Number(temperatura);
-
-    if (temperatura > 22) {
-      notify.innerHTML +=
-        "Temperatura atual elevada, recomendamos ativar os arspersores.";
-    } else if (temperatura < 18) {
-      notify.innerHTML += "Temperatura atual baixa.";
+    
+    if (x > 22) {
+      temp.src = "../img/dashboard/notifyTempRed.svg";
+    } else if (x < 18) {
+      temp.src = "../img/dashboard/notifyTempYellow.svg";
     } else {
-      notify.innerHTML = "Temperaturas ideais";
+      temp.src = "../img/dashboard/notifyTempGreen.svg";
     }
 
-  }, 5000000);
+
+    if (y > 30) {
+      humidity.src = "../img/dashboard/notifyHumiRed.svg";
+    } else if (y < 22) {
+      humidity.src = "../img/dashboard/notifyHumiYellow.svg";
+    } else {
+      humidity.src = "../img/dashboard/notifyHumiGreen.svg";
+    }
+    
+  }, 5000);
 
   // função para o filtro
   function exibir(option) {
