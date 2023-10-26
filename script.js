@@ -462,7 +462,7 @@ var radioIrr = document.getElementById('radioIrr');
 
 
 function div_nt() {
-    div_n.innerHTML = "*Nossa equipe instalará um sistema de irrigação por aspersão."; 
+    div_n.innerHTML = "*Nossa equipe instalará um sistema de irrigação por aspersão.";
     div_o.innerHTML = "";
     irrig.style.padding = '0 47px 0 51px';
 }

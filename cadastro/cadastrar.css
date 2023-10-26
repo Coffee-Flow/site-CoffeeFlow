@@ -1,16 +1,16 @@
-body{
+body {
   background-image: url(../img/BackgroundLogin/background.svg);
   background-size: cover;
 }
 
-.content{
+.content {
   margin-top: 20px;
   height: 100%;
   display: flex;
   justify-content: center;
 }
 
-.form-box{
+.form-box {
   width: 519px;
   height: 540px;
   border-radius: 14px;
@@ -21,7 +21,7 @@ body{
   align-items: center;
 }
 
-.form-box form{
+.form-box form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,7 +30,7 @@ body{
   gap: 16px;
 }
 
-.form-box>h1{
+.form-box>h1 {
   font-size: 27px;
   color: #053C11;
 }
@@ -45,7 +45,7 @@ body{
   cursor: pointer;
 }
 
-.form-box form button{
+.form-box form button {
   width: 150px;
   height: 35px;
 }
@@ -56,7 +56,7 @@ body{
   transition-delay: 0s;
 }
 
-.btn-form{
+.btn-form {
   width: 100px;
   height: 35px;
 }
@@ -68,7 +68,7 @@ body{
   transition: width 1s ease 0.4s;
 }
 
-.form-box .label{
+.form-box .label {
   font: 500 18px 'Poppins';
   color: #925035;
   font-weight: bold;
@@ -98,15 +98,15 @@ body{
   transition: top 1s ease-in-out;
 }
 
-.form-box .input-form::placeholder{
+.form-box .input-form::placeholder {
   color: rgba(146, 80, 53, 1);
 }
 
-.content .lineVector{
+.content .lineVector {
   margin-bottom: 5px;
   display: flex;
-    flex-direction: column;
-    gap: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .label {
@@ -138,23 +138,27 @@ input-form:valid~.label,
 
 #senha_requisitos {
   width: 290px;
-    background-color: #D9A30B;
-    font: 400 13px 'Poppins';
-    line-height: 18px;
-    border-radius: 15px;
-    padding: 20px 35px 20px 40px;
-    position: absolute;
-    right: 115px;
-    bottom: 29px;
-    text-align: justify;
-    display: none;
-}
-
-#olho_aberto_main, #olho_aberto_copia {
+  background-color: #D9A30B;
+  font: 400 13px 'Poppins';
+  line-height: 18px;
+  border-radius: 15px;
+  padding: 20px 35px 20px 40px;
+  position: absolute;
+  right: 115px;
+  bottom: 29px;
+  text-align: justify;
   display: none;
 }
 
-#olho_fechado_main, #olho_aberto_main, #olho_fechado_copia, #olho_aberto_copia {
+#olho_aberto_main,
+#olho_aberto_copia {
+  display: none;
+}
+
+#olho_fechado_main,
+#olho_aberto_main,
+#olho_fechado_copia,
+#olho_aberto_copia {
   cursor: pointer;
   width: 30px;
 }
@@ -162,7 +166,7 @@ input-form:valid~.label,
 .olho {
   width: 20px;
   position: relative;
-  right: 8px;  
+  right: 8px;
 }
 
 /* .content{

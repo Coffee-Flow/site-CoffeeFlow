@@ -125,18 +125,22 @@ input-form:valid~.label,
   padding: 0 .4em;
 }
 
-#span_validate{
+#span_validate {
   font: 400 12px 'Poppins';
   color: red;
   margin-top: -18px;
   display: none;
 }
 
-#olho_aberto_main, #olho_aberto_copia {
+#olho_aberto_main,
+#olho_aberto_copia {
   display: none;
 }
 
-#olho_fechado_main, #olho_aberto_main, #olho_fechado_copia, #olho_aberto_copia {
+#olho_fechado_main,
+#olho_aberto_main,
+#olho_fechado_copia,
+#olho_aberto_copia {
   cursor: pointer;
   width: 30px;
 }

@@ -1,4 +1,4 @@
-body{
+body {
   background-color: #EAE8DB;
 }
 .sidenav {
@@ -176,7 +176,7 @@ body{
     font-weight: 500;
   }
 
-  /* .umidade h3{
+/* .umidade h3{
     font-size: 15px;
     font-weight: 500;
   }
@@ -231,107 +231,110 @@ body{
     margin-left: 10px;
   }
 
-  #btn {
-    font: 600 15px 'Poppins';
-    border-radius: 50px;
-    padding: 3px 25px;
-    margin-top: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.4s;
-    color: #053C11;
-    border: 2px solid #D9A30B;
-  }
+#btn {
+  font: 600 15px 'Poppins';
+  border-radius: 50px;
+  padding: 3px 25px;
+  margin-top: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s;
+  color: #053C11;
+  border: 2px solid #D9A30B;
+}
 
-  #btn:hover {
-    background-color: #053C11;
-    border: 1px solid white;
-    padding: 3px 35px;
-    color: white;
-  }
+#btn:hover {
+  background-color: #053C11;
+  border: 1px solid white;
+  padding: 3px 35px;
+  color: white;
+}
 
-  input,
-  select {
-    font: 600 15px 'Poppins';
-    border-radius: 50px;
-    padding: 3px 25px;
-    border: none;
-    outline: none;
-    background-color: #053C11;
-    color: #EAE8DB;
-  }
-  
-  input[type="date"]::-webkit-calendar-picker-indicator{
-    filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(899%) hue-rotate(340deg) brightness(109%) contrast(83%);  
-  }
+input,
+select {
+  font: 600 15px 'Poppins';
+  border-radius: 50px;
+  padding: 3px 25px;
+  border: none;
+  outline: none;
+  background-color: #053C11;
+  color: #EAE8DB;
+}
 
-  .filtro div select {
-    font: 700 italic 15px 'Poppins';
-    padding: 3px 15px;
-  }
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(899%) hue-rotate(340deg) brightness(109%) contrast(83%);
+}
+
+.filtro div select {
+  font: 700 italic 15px 'Poppins';
+  padding: 3px 15px;
+}
 
 .highcharts-figure .chart-container {
-    width: 150px;
-    height: 150px;
-    float: left;
+  width: 150px;
+  height: 150px;
+  float: left;
 }
 
 .highcharts-figure,
 .highcharts-data-table table {
-    width: 130px;
-    margin: 0 auto;
+  width: 130px;
+  margin: 0 auto;
 }
 
 .highcharts-data-table table {
-    font-family: Verdana, sans-serif;
-    border-collapse: collapse;
-    border: 1px solid #ebebeb;
-    margin: 10px auto;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
 }
 
 .highcharts-data-table caption {
-    padding: 1em 0;
-    color: #555;
+  padding: 1em 0;
+  color: #555;
 }
 
 .highcharts-data-table th {
-    font-weight: 600;
-    padding: 0.5em;
+  font-weight: 600;
+  padding: 0.5em;
 }
 
 .highcharts-data-table td,
 .highcharts-data-table th,
 .highcharts-data-table caption {
-    padding: 0.5em;
+  padding: 0.5em;
 }
 
 .highcharts-data-table thead tr,
 .highcharts-data-table tr:nth-child(even) {
-    background: #f8f8f8;
+  background: #f8f8f8;
 }
 
 .highcharts-data-table tr:hover {
-    background: #f1f7ff;
+  background: #f1f7ff;
 }
 
 @media (max-width: 130px) {
-    .highcharts-figure,
-    .highcharts-data-table table {
-        width: 100%;
-    }
 
-    .highcharts-figure .chart-container {
-        width: 300px;
-        float: none;
-        margin: 0 auto;
-    }
+  .highcharts-figure,
+  .highcharts-data-table table {
+    width: 100%;
+  }
+
+  .highcharts-figure .chart-container {
+    width: 300px;
+    float: none;
+    margin: 0 auto;
+  }
 }
-.highcharts-background{
+
+.highcharts-background {
   fill: transparent;
 }
-.highcharts-axis-labels.highcharts-yaxis-labels.highcharts-radial-axis-labels text{
+
+.highcharts-axis-labels.highcharts-yaxis-labels.highcharts-radial-axis-labels text {
   font-size: 0;
 }

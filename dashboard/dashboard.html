@@ -1,56 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Sua empresa</title>
+<html lang="pt-br">
 
-    <link
-      rel="shortcut icon"
-      href="../img/Logo/CoffeeFlowLogo.svg"
-      type="image/x-icon"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Sua empresa</title>
 
-    <link rel="stylesheet" href="login.css" />
-    <link rel="stylesheet" href="../menu.css" />
-    <link rel="stylesheet" href="dash.css" />
+  <link rel="shortcut icon" href="../img/Logo/CoffeeFlowLogo.svg" type="image/x-icon" />
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="../script.js"></script>
-  </head>
-  <body>
-    <header>
-      <ul class="ul-header">
-        <div id="mySidenav" class="sidenav">
-          <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-          <div class="content">
-            <img src="../img/SideBarDashboard/icon.svg" />
-            <h3>Jorge</h3>
-            <img style="width: 200px" src="../img/SideBarDashboard/linha.svg" />
-            <div class="options">
-              <h4>
-                <img
-                  style="width: 28px"
-                  src="../img/SideBarDashboard/dashIcon.svg"
-                />Dashboard
-              </h4>
-              <span
-                ><img src="../img/SideBarDashboard/calendar.svg" />Período</span
-              >
-              <span
-                ><img src="../img/SideBarDashboard/toolkit.svg" />Opções</span
-              >
-              <span><img src="../img/SideBarDashboard/help.svg" />Ajuda</span>
-              <span><img src="../img/SideBarDashboard/exit.svg" />Sair</span>
-            </div>
+  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="../menu.css" />
+  <link rel="stylesheet" href="dash.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="../script.js"></script>
+</head>
+
+<body>
+  <header>
+    <ul class="ul-header">
+      <div id="mySidenav" class="sidenav">
+        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="content">
+          <img src="../img/SideBarDashboard/icon.svg" />
+          <h3>Jorge</h3>
+          <img style="width: 200px" src="../img/SideBarDashboard/linha.svg" />
+          <div class="options">
+            <h4>
+              <img style="width: 28px" src="../img/SideBarDashboard/dashIcon.svg" />Dashboard
+            </h4>
+            <span><img src="../img/SideBarDashboard/calendar.svg" />Período</span>
+            <span><img src="../img/SideBarDashboard/toolkit.svg" />Opções</span>
+            <span><img src="../img/SideBarDashboard/help.svg" />Ajuda</span>
+            <span><img src="../img/SideBarDashboard/exit.svg" />Sair</span>
           </div>
         </div>
+      </div>
 
         <span class="menu-toggle" onclick="openNav()">&#9776;</span>
         <li>
@@ -98,35 +89,31 @@
       </div>
     </div>
 
-    <div class="filtro">
-      <div class="div-periodo">
-        <b>Período</b>
-        <select
-          onchange="exibir(this)"
-          id="periodo_min"
-          style="font-family: 'Poppins'"
-        >
-          <option>Hoje</option>
-          <option>Ontem</option>
-          <option>Última semana</option>
-          <option>Últimos 30 dias</option>
-          <option>Últimos 6 meses</option>
-          <option>Últimos 12 meses</option>
-          <option value="Personalizado">Personalizado</option>
-        </select>
-      </div>
+  <div class="filtro">
+    <div class="div-periodo">
+      <b>Período</b>
+      <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
+        <option>Hoje</option>
+        <option>Ontem</option>
+        <option>Última semana</option>
+        <option>Últimos 30 dias</option>
+        <option>Últimos 6 meses</option>
+        <option>Últimos 12 meses</option>
+        <option value="Personalizado">Personalizado</option>
+      </select>
+    </div>
 
-      <div class="divs-dates" id="divs_dates">
-        <div>
-          <b>Data Mínima</b>
-          <input type="date" />
-        </div>
-        <div>
-          <b>Data Máxima</b>
-          <input type="date" />
-        </div>
+    <div class="divs-dates" id="divs_dates">
+      <div>
+        <b>Data Mínima</b>
+        <input type="date" />
       </div>
-      <button id="btn">Filtrar</button>
+      <div>
+        <b>Data Máxima</b>
+        <input type="date" />
+      </div>
+    </div>
+    <button id="btn">Filtrar</button>
 
       <div class="div-exportar">
         <b>Exportar Dashboard</b>
@@ -161,25 +148,25 @@
             <img id="temp" src="../img/dashboard/notifyTempGreen.svg">
           </div>
 
-        </div>
-        <div class="kpi">
-          <h1>Tudo o que você precisa saber</h1>
-          <div class="linha1">
-            <div class="elipse temp-interna">
-              <h2 id="tempAtual">20C°</h2>
-              <h3>Temperatura Interna atual</h3>
-            </div>
-            <div class="elipse temp-maxima">
-              <h2>26C°</h2>
-              <h3>Temperatura Máxima do mês</h3>
-            </div>
-            <div class="elipse temp-minima">
-              <h2>15C°</h2>
-              <h3>Temperatura Mínima do mês</h3>
-            </div>
+      </div>
+      <div class="kpi">
+        <h1>Tudo o que você precisa saber</h1>
+        <div class="linha1">
+          <div class="elipse temp-interna">
+            <h2 id="tempAtual">20C°</h2>
+            <h3>Temperatura Interna atual</h3>
           </div>
-          <div class="linha2" style="border-top: 3px dashed #666666">
-            <!-- <div class="umidade">
+          <div class="elipse temp-maxima">
+            <h2>26C°</h2>
+            <h3>Temperatura Máxima do mês</h3>
+          </div>
+          <div class="elipse temp-minima">
+            <h2>15C°</h2>
+            <h3>Temperatura Mínima do mês</h3>
+          </div>
+        </div>
+        <div class="linha2" style="border-top: 3px dashed #666666">
+          <!-- <div class="umidade">
                   <figure class="highcharts-figure">
                       <div id="container-menorUmi" class="chart-container"></div>
                     </figure>
@@ -220,7 +207,7 @@
   const legenda = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 
   Chart.defaults.font.family = "'Poppins'";
-  
+
   const dadosTemperatura = {
     labels: legenda,
     datasets: [
@@ -544,7 +531,7 @@
     data: dataPizzaMenor,
   };
 
-  menorUmidade.innerHTML = umidadeBaixa+"%";
+  menorUmidade.innerHTML = umidadeBaixa + "%";
 
   const umidadeAlta = 68;
 

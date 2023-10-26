@@ -57,13 +57,13 @@
   align-items: start;
   justify-content: center;
   color: #EAE8DB;
-  
+
 }
 
 .pacote1 a {
   text-decoration: none;
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   font: 700 15px 'Poppins';
   height: 32px;
