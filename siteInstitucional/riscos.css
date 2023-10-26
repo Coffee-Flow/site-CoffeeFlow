@@ -3,6 +3,7 @@
 * {
     margin: 0;
 }
+
 /* 
 header {
     background-color: #053C11;
@@ -57,6 +58,7 @@ header {
 .btn-header {
     width: 110px;
 }
+
 /* 
 body {
     font-family: "Poppins";
@@ -274,7 +276,7 @@ select {
     margin-top: 7em;
 }
 
-  .input-form-riscos {
+.input-form-riscos {
     width: 334px;
     height: 25px;
     position: relative;
@@ -289,13 +291,13 @@ select {
     color: #925035;
     cursor: pointer;
     transition: top 1s ease-in-out;
-  }
-  
-  .form-box .input-form-riscos::placeholder{
-    color: rgba(146, 80, 53, 1);
-  }
+}
 
-  .label-riscos {
+.form-box .input-form-riscos::placeholder {
+    color: rgba(146, 80, 53, 1);
+}
+
+.label-riscos {
     position: absolute;
     top: 208px;
     margin-left: 25px;
@@ -304,16 +306,16 @@ select {
     transition: 350ms;
     font: 700 27px 'Poppins';
     color: #053C11;
-  }
-  
-  .input-form-riscos:focus~.label-riscos,
-  input-form-riscos:valid~.label-riscos,
-  .mostrar-email {
+}
+
+.input-form-riscos:focus~.label-riscos,
+input-form-riscos:valid~.label-riscos,
+.mostrar-email {
     transform: translateY(-50%) scale(1);
     padding: 0;
-  }
-  
-  .subir-label {
+}
+
+.subir-label {
     transform: translateY(-50%) scale(1);
     padding: 0;
-  }
+}

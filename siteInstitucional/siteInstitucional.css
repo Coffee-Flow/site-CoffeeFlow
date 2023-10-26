@@ -125,10 +125,11 @@ p {
   color: #053C11;
 }
 
-.div-topico p, .sobre-nós p {
+.div-topico p,
+.sobre-nós p {
   font: 300 15px 'Poppins';
   line-height: 17px;
-  color: #053C11 ;
+  color: #053C11;
 }
 
 .sobre-nós {
@@ -151,7 +152,7 @@ p {
 
 /* Style Section3 */
 
-.section3{
+.section3 {
   /* position: relative;
   top: 30em; */
   width: 80%;
@@ -175,7 +176,7 @@ p {
 }
 
 .triade-btn .btn {
-  margin: 0 20px; 
+  margin: 0 20px;
   width: 20%;
   transition: width 1s ease 0.4s;
 }
@@ -186,14 +187,18 @@ p {
   transition-delay: 0s;
 }
 
-#container1, #container2, #container3 {
-  display:flex;
+#container1,
+#container2,
+#container3 {
+  display: flex;
   justify-content: center;
   margin: 2em 0 2em 0;
   width: 100%;
 }
 
-#container1 ul, #container2 ul, #container3 ul {
+#container1 ul,
+#container2 ul,
+#container3 ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -222,15 +227,15 @@ p {
 }
 
 .container-simula {
-  position: relative; 
+  position: relative;
   background-color: #D9A30B;
   margin-top: -8px
 }
 
 .titulo-simula {
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 30px 0 32px;
 }
 
@@ -257,7 +262,7 @@ p {
 .containerSlider {
   width: 800px;
   position: relative;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   height: 300px;
   top: 40%;
   left: 50%;
@@ -274,15 +279,19 @@ p {
 
 @keyframes slide {
   0% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
-  
-  33% {transform: translateX(-25%);
+
+  33% {
+    transform: translateX(-25%);
   }
-  66% {transform: translateX(-47%);
+
+  66% {
+    transform: translateX(-47%);
   }
-  
-  100% {transform: translateX(0);
+
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -338,12 +347,14 @@ footer {
   gap: 100px;
 }
 
-.links-institucional, .links-fale-conosco {
+.links-institucional,
+.links-fale-conosco {
   display: flex;
   flex-direction: column;
 }
 
-.links-institucional ul li, .links-fale-conosco p {
+.links-institucional ul li,
+.links-fale-conosco p {
   font: 200 15px 'Poppins';
   padding: 5px 0;
 }
@@ -438,9 +449,11 @@ footer {
   color: #053C11;
   transition-delay: 0s;
 }
+
 .girar {
   transition: all 1s ease;
 }
+
 .girar:hover {
   transform: rotate(359deg);
   transition: all 1s ease;
