@@ -237,10 +237,10 @@ body {
     color: #8AC6FE;
   } */
   .temp-maxima h2{
-    color: #FF4242;
+    color: #FF0000;
   }
   .temp-minima h2{
-    color: #75C1D9;
+    color: rgb(54,162,235);
   }
   .temp-interna h2{
     /* color: #24211a; */
