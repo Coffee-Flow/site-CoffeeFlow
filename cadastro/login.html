@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -15,16 +15,20 @@
         <ul class="ul-header">
             <div id="mySidenav" class="sidenav">
                 <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="../siteInstitucional/sobreNos.html" class="links-sidenav"><img src="../img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="../siteInstitucional/sobreNos.html" class="links-sidenav"><img
+                        src="../img/SideBar/Information.svg" alt="">Sobre Nós</a>
                 <a href="#" class="links-sidenav"><img src="../img/SideBar/farm.svg" alt="">Nossos Serviços</a>
-                <a href="../siteInstitucional/siteInstitucional.html#footer" class="links-sidenav"><img src="../img/SideBar/telephone.svg" alt="">Contato</a>
-                <a href="../cadastro/cadastrarEmpresa.html" class="links-sidenav"><img src="../img/SideBar/Money.svg" alt="">Cotação</a>
+                <a href="../siteInstitucional/siteInstitucional.html#footer" class="links-sidenav"><img
+                        src="../img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="../cadastro/cadastrarEmpresa.html" class="links-sidenav"><img src="../img/SideBar/Money.svg"
+                        alt="">Cotação</a>
             </div>
 
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
             <li><img src="../img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"></li>
             <!-- <li><a href="siteInstitucional/siteInstitucional.html" style="text-decoration: none;"><button class="btn btn-header" style="cursor: pointer;">INÍCIO</button></a></li> -->
-            <li><button onclick="href('siteInstitucional/siteInstitucional')" class="btn btn-header" style="cursor: pointer;">INÍCIO</button></li>
+            <li><button onclick="href('siteInstitucional/siteInstitucional')" class="btn btn-header"
+                    style="cursor: pointer;">INÍCIO</button></li>
         </ul>
     </header>
 
@@ -34,15 +38,21 @@
             <!-- <form onsubmit="return impedirEnvioLogin()"> -->
             <div class="forms">
                 <div class="input-group">
-                    <input autocomplete="off" id="email" type="text" class="input-form" onfocus="limpar(this, emailL)" onblur="limpar(this, emailL)" required>
+                    <input autocomplete="off" id="email" type="text" class="input-form" onfocus="limpar(this, emailL)"
+                        onblur="limpar(this, emailL)" required>
                     <label class="label" id="emailL" for="email">E-mail</label>
                 </div>
 
                 <div class="input-group">
-                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)" onblur="limpar(this, senhaL)" required>
+                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)"
+                        onblur="limpar(this, senhaL)" required>
                     <label class="label" id="senhaL" for="senha">Senha</label>
-                    <img src="../img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;position: relative;" alt="" onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_fechado_copia" class="olho">
-                    <img src="../img/TelaCadastrar/eye.svg" style="width: 17px;" alt="" onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_aberto_copia" class="olho">
+                    <img src="../img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;position: relative;" alt=""
+                        onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_fechado_copia"
+                        class="olho">
+                    <img src="../img/TelaCadastrar/eye.svg" style="width: 17px;" alt=""
+                        onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_aberto_copia"
+                        class="olho">
                 </div>
 
                 <button onclick="impedirEnvioLogin()" class="btn-form" id="btnProximo">Logar</button>
