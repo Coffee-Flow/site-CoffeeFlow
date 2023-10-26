@@ -619,24 +619,31 @@
     if (x > 23.33 || x < 19.42) {
       temp.src = "../img/dashboard/notifyTempRed.svg";
       tempAtual.style.color = "#FF0000";
+      temp.classList.add('animate');
     } else if (x > 22.35 || x < 20.39) {
       temp.src = "../img/dashboard/notifyTempYellow.svg";
       tempAtual.style.color = "#D9A30B";
+      temp.classList.remove('animate');
     } else {
       temp.src = "../img/dashboard/notifyTempGreen.svg";
       tempAtual.style.color = "#053C11";
+      temp.classList.remove('animate');
+
     }
 
 
     if (y > 32 || y < 22) {
       humidity.src = "../img/dashboard/notifyHumiRed.svg";
       umidade.data.datasets[0].backgroundColor = ["#FF0000", "#EAE8DB"];
+      humidity.classList.add('animate');
     } else if (y < 24 || y > 30) {
       humidity.src = "../img/dashboard/notifyHumiYellow.svg";
       umidade.data.datasets[0].backgroundColor = ["#D9A30B", "#EAE8DB"];
+      humidity.classList.remove('animate');
     } else {
       humidity.src = "../img/dashboard/notifyHumiGreen.svg";
       umidade.data.datasets[0].backgroundColor = ["#053C11", "#EAE8DB"];
+      humidity.classList.remove('animate');
     }
 
     atualUmidade.innerHTML = y+"%";

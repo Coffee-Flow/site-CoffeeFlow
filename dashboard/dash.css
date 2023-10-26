@@ -127,6 +127,20 @@ body {
   .content .section2 .quadra3 #notify img{
     width: 40%;
   }
+  .animate {
+    animation: animate 0.9s linear infinite;
+  }
+  @keyframes animate {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   .content .section2 .kpi{
     display: flex;
     flex-direction: column;
