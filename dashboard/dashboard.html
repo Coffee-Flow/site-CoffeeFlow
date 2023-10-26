@@ -144,17 +144,17 @@
             <h2>Temperatura</h2>
             <div class="temp">
               <div class="linha">
-                <span>18</span>
+                <span>18C°</span>
                 <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>20C°</p>
-                <span>22</span>
+                <span>22C°</span>
               </div>
             </div>
             <h2>Umidade</h2>
             <div class="humidity">
               <div class="linha">
-                <span>22%</span>
-                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>27%</p>
-                <span>32%
+                <span>20%</span>
+                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>25%</p>
+                <span>30%
                   
                 </span>
               </div>
@@ -634,11 +634,11 @@
     // console.log(temperatura);
     temperatura = Number(temperatura);
     
-    if (x > 23.33 || x < 19.42) {
+    if (x >= 22 || x < 19) {
       temp.src = "../img/dashboard/notifyTempRed.svg";
       tempAtual.style.color = "#FF0000";
       temp.classList.add('animate');
-    } else if (x > 22.35 || x < 20.39) {
+    } else if (x >= 21 || x < 20) {
       temp.src = "../img/dashboard/notifyTempYellow.svg";
       tempAtual.style.color = "#D9A30B";
       temp.classList.remove('animate');
@@ -650,11 +650,11 @@
     }
 
 
-    if (y > 32 || y < 22) {
+    if (y >= 30 || y <= 20) {
       humidity.src = "../img/dashboard/notifyHumiRed.svg";
       umidade.data.datasets[0].backgroundColor = ["#FF0000", "#EAE8DB"];
       humidity.classList.add('animate');
-    } else if (y < 24 || y > 30) {
+    } else if (y <= 24 || y == 29) {
       humidity.src = "../img/dashboard/notifyHumiYellow.svg";
       umidade.data.datasets[0].backgroundColor = ["#D9A30B", "#EAE8DB"];
       humidity.classList.remove('animate');
@@ -666,27 +666,46 @@
 
     atualUmidade.innerHTML = y+"%";
 
-    if(y < 22 || y > 32){
-      id_ponteiroUmidade.style.left = (y-27)*10+"%";
-      id_ponteiroUmidade.style.opacity = 0
-      id_ponteiroUmidade.innerHTML = `|<br>${y}%`
+    if(y < 20 || y > 30){
+      // id_ponteiroUmidade.style.opacity = 0
+      // id_ponteiroUmidade.innerHTML = `|<br>${y}%`
+      id_ponteiroUmidade.innerHTML = `|<br>|`
+      if(y.toString().includes("-")){
+      id_ponteiroUmidade.style.left = -50+"%";
+      }else{
+      id_ponteiroUmidade.style.left = 50+"%";
+      }
     }else{
-      id_ponteiroUmidade.style.left = (y-27)*10+"%";
+      id_ponteiroUmidade.style.left = (y-25)*10+"%";
       id_ponteiroUmidade.style.opacity = 1
-      id_ponteiroUmidade.innerHTML = `|<br>${y}%`
+      id_ponteiroUmidade.innerHTML = `|<br>`
+      if(y != 20 && y!= 30){
+        id_ponteiroUmidade.innerHTML += `${y}%`
+      }else{
+        id_ponteiroUmidade.innerHTML += `|`
+      }
     }
 
-    console.log(x);
-    console.log(x-20);
+    
 
     if(x < 18 || x > 22){
-      id_ponteiroTemperatura.style.left = ((x-20)*25+"%")
-      id_ponteiroTemperatura.style.opacity = 0
-      id_ponteiroTemperatura.innerHTML = `|<br>${x}C°`
+      // id_ponteiroTemperatura.style.opacity = 0
+      // id_ponteiroTemperatura.innerHTML = `|<br>${x}C°`
+      id_ponteiroTemperatura.innerHTML = `|<br>|`
+      if(x.toString().includes("-")){
+        id_ponteiroTemperatura.style.left = (-50+"%")
+      }else{
+        id_ponteiroTemperatura.style.left = (50+"%")
+      }
     }else{
       id_ponteiroTemperatura.style.left = ((x-20)*25+"%")
       id_ponteiroTemperatura.style.opacity = 1
-      id_ponteiroTemperatura.innerHTML = `|<br>${x}C°`
+      id_ponteiroTemperatura.innerHTML = `|<br>`
+      if(x != 18 && x != 22){
+        id_ponteiroTemperatura.innerHTML += `${x}C°`
+      }else{
+        id_ponteiroTemperatura.innerHTML += `|`
+      }
     }
   
 
