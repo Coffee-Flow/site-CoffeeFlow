@@ -73,6 +73,31 @@
       </ul>
     </header>
 
+    
+    <div class="sensor">
+      <span>Conjunto sensor</span>
+      <div class="lavoura">
+        <span>lavoura</span>
+        <select name="" id="">
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+          <option value="">4</option>
+          <option value="">5</option>
+        </select>
+      </div>
+      <div class="coordenada">
+        <span>coordenada</span>
+        <select name="" id="">
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+          <option value="">4</option>
+          <option value="">5</option>
+        </select>
+      </div>
+    </div>
+
     <div class="filtro">
       <div class="div-periodo">
         <b>Período</b>
@@ -114,6 +139,7 @@
       <button id="btn">Exportar</button>
     </div>
 
+
     <div class="content">
       <div class="section1">
         <div class="grafico">
@@ -127,6 +153,7 @@
         <div class="quadra3">
           <h1>Métricas</h1>
           <div id="metricas" class="metricas">
+            <img src="../img/dashboard/metricas.svg">
           </div>
           <h1>Notificações</h1>
           <div id="notify">
@@ -164,14 +191,20 @@
                 </figure>
                 <h3>Umidade relativa do ar</h3>
               </div> -->
-
+            <div class="umidade">
+              <canvas id="atualUmi"></canvas>
+              <h1 id="atualUmidade"></h1>
+              <h2>Umidade Atual</h2>
+            </div>
             <div class="umidade">
               <canvas id="maiorUmi"></canvas>
               <h1 id="maiorUmidade"></h1>
+              <h2>Maior Umidade no mês</h2>
             </div>
             <div class="umidade">
               <canvas id="menorUmi"></canvas>
               <h1 id="menorUmidade"></h1>
+              <h2>Menor Umidade no mês</h2>
             </div>
           </div>
         </div>
@@ -483,10 +516,11 @@
   //ChartJS Umidade (pizza ao meio)
   const pizzaUmidadeMim = document.getElementById("menorUmi");
   const pizzaUmidadeMax = document.getElementById("maiorUmi");
+  const pizzaUmidadeAtual = document.getElementById("atualUmi");
 
   Chart.defaults.color = "#666666"
 
-  const umidadeBaixa = 33;
+  const umidadeBaixa = 10;
 
   const dataPizzaMenor = {
     labels: ["Umidade (%)"],
@@ -538,17 +572,43 @@
 
   maiorUmidade.innerHTML = umidadeAlta+"%";
 
+  const umidadeAtual = 40;
+
+  const dataPizzaAtual = {
+    labels: ["Umidade (%)"],
+    datasets: [
+      {
+        label: "Umidade",
+        data: [umidadeAtual, 100 - umidadeAtual],
+        backgroundColor: [
+          "#053C11",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  const configPizzaAtual = {
+    type: "doughnut",
+    data: dataPizzaAtual,
+  };
+
+  atualUmidade.innerHTML = umidadeAtual+"%";
+
+
   new Chart(pizzaUmidadeMim, configPizzaMenor);
   new Chart(pizzaUmidadeMax, configPizzaMaior);
+  const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
 </script>
 <script>
   //Notificações
 
-  console.log(humidity.src);
-
   setInterval(function notificar() {
     x = (Math.random() * 10 + 15).toFixed(0);
-    y = (Math.random() * 10 + 15).toFixed(0);
+    y = (Math.random() * 10 + 20).toFixed(0);
 
     tempAtual.innerText = x + "C°";
 
@@ -569,24 +629,38 @@
     console.log(temperatura);
     temperatura = Number(temperatura);
     
-    if (x > 22) {
+    if (x > 23.33 || x < 19.42) {
       temp.src = "../img/dashboard/notifyTempRed.svg";
-    } else if (x < 18) {
+      tempAtual.style.color = "#FF0000";
+    } else if (x > 22.35 || x < 20.39) {
       temp.src = "../img/dashboard/notifyTempYellow.svg";
+      tempAtual.style.color = "#D9A30B";
     } else {
       temp.src = "../img/dashboard/notifyTempGreen.svg";
+      tempAtual.style.color = "#053C11";
     }
 
 
-    if (y > 30) {
+    if (y > 32 || y < 22) {
       humidity.src = "../img/dashboard/notifyHumiRed.svg";
-    } else if (y < 22) {
+      umidade.data.datasets[0].backgroundColor = ["#FF0000", "#EAE8DB"];
+    } else if (y < 24 || y > 30) {
       humidity.src = "../img/dashboard/notifyHumiYellow.svg";
+      umidade.data.datasets[0].backgroundColor = ["#D9A30B", "#EAE8DB"];
     } else {
       humidity.src = "../img/dashboard/notifyHumiGreen.svg";
+      umidade.data.datasets[0].backgroundColor = ["#053C11", "#EAE8DB"];
     }
-    
+
+    atualUmidade.innerHTML = y+"%";
+
+    umidade.data.datasets[0].data = [y, 100 - y];
+    umidade.update();
+
+
+
   }, 5000);
+
 
   // função para o filtro
   function exibir(option) {
@@ -596,4 +670,6 @@
       document.getElementById("divs_dates").style.display = "none";
     }
   }
+
+
 </script>

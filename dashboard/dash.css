@@ -65,6 +65,27 @@ body{
   .sidenav .content .options span img{
     width: 21px;
   }
+
+  .sensor{
+    display: flex;
+    justify-content: center;
+    align-items: last baseline;
+    color: #053C11;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .sensor>div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .sensor>span{
+    border-bottom: solid 2px #D9A30B;
+  }
+  .sensor>div span{
+    font-size: 10px;
+  }
   .content .section1{
     display: flex;
     justify-content: space-evenly;
@@ -86,16 +107,25 @@ body{
     background-color: white;
     border-radius: 38px;
   }
+  .content .section2 .quadra3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 45px;
+  }
   .content .section2 .quadra3 .metricas{
-    background-image: url(../img/dashboard/metricas.svg);
-    background-size: cover;
+    width: 100%;    
+  }
+  .content .section2 .quadra3 .metricas img{
     width: 100%;
-    height: 33%;
-    border-right: 1px solid black;
   }
   .content .section2 .quadra3 #notify{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+  }
+  .content .section2 .quadra3 #notify img{
+    width: 40%;
   }
   .content .section2 .kpi{
     display: flex;
@@ -130,6 +160,7 @@ body{
   }
   .content .section2 .kpi .umidade{
     margin: 0;
+    width: 150px;
     text-align: center;
   }
   .content .section2 .kpi .umidade canvas{
@@ -137,6 +168,12 @@ body{
   }
   .content .section2 .kpi .umidade h1{
     margin-top: -50px;
+  }
+  .content .section2 .kpi .umidade h2{
+    font-size: 15px;
+    color: #666666;
+    width: 100%;
+    font-weight: 500;
   }
 
   /* .umidade h3{
@@ -153,7 +190,8 @@ body{
     color: #75C1D9;
   }
   .temp-interna h2{
-    color: #24211a;
+    /* color: #24211a; */
+    color: #053C11;
   }
 
   .filtro{
@@ -161,7 +199,8 @@ body{
     justify-content: center;
     align-items: center;
     gap: 15px;
-    padding: 20px;
+    margin-top: 10px;
+    /* padding: 20px; */
   }
   .filtro .div-periodo{
     display: flex;
