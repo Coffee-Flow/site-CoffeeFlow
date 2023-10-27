@@ -153,9 +153,9 @@
             <h2>Umidade do solo</h2>
             <div class="humidity">
               <div class="linha">
-                <span>20%</span>
-                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>25%</p>
-                <span>30%
+                <span>50%</span>
+                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>70%</p>
+                <span>97%
                   
                 </span>
               </div>
@@ -526,7 +526,7 @@
 
   Chart.defaults.color = "#666666"
 
-  const umidadeBaixa = 10;
+  const umidadeBaixa = 46;
 
   const dataPizzaMenor = {
     labels: ["Umidade (%)"],
@@ -552,7 +552,7 @@
 
   menorUmidade.innerHTML = umidadeBaixa + "%";
 
-  const umidadeAlta = 68;
+  const umidadeAlta = 99;
 
   const dataPizzaMaior = {
     labels: ["Umidade (%)"],
@@ -578,7 +578,7 @@
 
   maiorUmidade.innerHTML = umidadeAlta+"%";
 
-  const umidadeAtual = 40;
+  const umidadeAtual = 68;
 
   const dataPizzaAtual = {
     labels: ["Umidade (%)"],
@@ -614,7 +614,7 @@
 
   setInterval(function notificar() {
     x = (Math.random() * 10 + 15).toFixed(0);
-    y = (Math.random() * 10 + 20).toFixed(0);
+    y = (Math.random() * 10 + 70).toFixed(0);
 
     tempAtual.innerText = x + "C°";
 
@@ -646,49 +646,15 @@
 
     }
 
-
-    if (y >= 30 || y <= 20) {
-      humidity.src = "../img/dashboard/notifyHumiRed.svg";
-      umidade.data.datasets[0].backgroundColor = ["#FF0000", "#EAE8DB"];
-      humidity.classList.add('animate');
-    } else if (y <= 24 || y == 29) {
-      humidity.src = "../img/dashboard/notifyHumiYellow.svg";
-      umidade.data.datasets[0].backgroundColor = ["#D9A30B", "#EAE8DB"];
-      humidity.classList.remove('animate');
-    } else {
-      humidity.src = "../img/dashboard/notifyHumiGreen.svg";
-      umidade.data.datasets[0].backgroundColor = ["#053C11", "#EAE8DB"];
-      humidity.classList.remove('animate');
-    }
-
-    atualUmidade.innerHTML = y+"%";
-
-    if(y < 20 || y > 30){
-      id_ponteiroUmidade.innerHTML = `|<br>|`
-      if(y.toString().includes("-")){
-      id_ponteiroUmidade.style.left = -50+"%";
-      }else{
-      id_ponteiroUmidade.style.left = 50+"%";
-      }
-    }else{
-      id_ponteiroUmidade.style.left = (y-25)*10+"%";
-      id_ponteiroUmidade.style.opacity = 1
-      id_ponteiroUmidade.innerHTML = `|<br>`
-      if(y != 20 && y!= 30){
-        id_ponteiroUmidade.innerHTML += `${y}%`
-      }else{
-        id_ponteiroUmidade.innerHTML += `|`
-      }
-    }
-
     
-
     if(x < 18 || x > 22){
       id_ponteiroTemperatura.innerHTML = `|<br>|`
-      if(x.toString().includes("-")){
-        id_ponteiroTemperatura.style.left = (-50+"%")
+      var razao = (x-20)*25;
+      console.log(razao.toString().charAt(0))
+      if(razao.toString().charAt(0) == "-"){
+        id_ponteiroTemperatura.style.left = "-"+50+"%"
       }else{
-        id_ponteiroTemperatura.style.left = (50+"%")
+        id_ponteiroTemperatura.style.left = 50+"%"
       }
     }else{
       id_ponteiroTemperatura.style.left = ((x-20)*25+"%")
@@ -700,6 +666,43 @@
         id_ponteiroTemperatura.innerHTML += `|`
       }
     }
+
+
+    if (y >= 97 || y <= 50) {
+      humidity.src = "../img/dashboard/notifyHumiRed.svg";
+      umidade.data.datasets[0].backgroundColor = ["#FF0000", "#EAE8DB"];
+      humidity.classList.add('animate');
+    } else if (y <= 60 || y == 80) {
+      humidity.src = "../img/dashboard/notifyHumiYellow.svg";
+      umidade.data.datasets[0].backgroundColor = ["#D9A30B", "#EAE8DB"];
+      humidity.classList.remove('animate');
+    } else {
+      humidity.src = "../img/dashboard/notifyHumiGreen.svg";
+      umidade.data.datasets[0].backgroundColor = ["#053C11", "#EAE8DB"];
+      humidity.classList.remove('animate');
+    }
+    atualUmidade.innerHTML = y+"%";
+
+    if(y < 50 || y > 97){
+      id_ponteiroUmidade.innerHTML = `|<br>|`
+      if(y.toString().includes("-")){
+      id_ponteiroUmidade.style.left = -50+"%";
+      }else{
+      id_ponteiroUmidade.style.left = 50+"%";
+      }
+    }else{
+      id_ponteiroUmidade.style.left = (y-75)*5+"%";
+      id_ponteiroUmidade.style.opacity = 1
+      id_ponteiroUmidade.innerHTML = `|<br>`
+      if(y != 50 && y!= 97){
+        id_ponteiroUmidade.innerHTML += `${y}%`
+      }else{
+        id_ponteiroUmidade.innerHTML += `|`
+      }
+    }
+
+    
+
   
 
     umidade.data.datasets[0].data = [y, 100 - y];
