@@ -145,16 +145,16 @@
             <h2>Temperatura do solo</h2>
             <div class="temp">
               <div class="linha">
-                <span>18C°</span>
-                <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>20C°</p>
-                <span>22C°</span>
+                <span>10C°</span>
+                <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>22C°</p>
+                <span>34C°</span>
               </div>
             </div>
             <h2>Umidade do solo</h2>
             <div class="humidity">
               <div class="linha">
                 <span>50%</span>
-                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>70%</p>
+                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>75%</p>
                 <span>97%
                   
                 </span>
@@ -172,7 +172,7 @@
         <h1>Tudo o que você precisa saber</h1>
         <div class="linha1">
           <div class="elipse temp-interna">
-            <h2 id="tempAtual">20C°</h2>
+            <h2 id="tempAtual">22C°</h2>
             <h3>Temperatura Interna atual</h3>
           </div>
           <div class="elipse temp-maxima">
@@ -578,7 +578,7 @@
 
   maiorUmidade.innerHTML = umidadeAlta+"%";
 
-  const umidadeAtual = 68;
+  const umidadeAtual = 75;
 
   const dataPizzaAtual = {
     labels: ["Umidade (%)"],
@@ -613,7 +613,7 @@
   //Notificações
 
   setInterval(function notificar() {
-    x = (Math.random() * 10 + 15).toFixed(0);
+    x = (Math.random() * 12 + Math.random() * 12).toFixed(0);
     y = (Math.random() * 10 + 70).toFixed(0);
 
     tempAtual.innerText = x + "C°";
@@ -631,11 +631,11 @@
     }
     temperatura = Number(temperatura);
     
-    if (x >= 22 || x < 19) {
+    if (x >= 34 || x <= 10) {
       temp.src = "../img/dashboard/notifyTempRed.svg";
       tempAtual.style.color = "#FF0000";
       temp.classList.add('animate');
-    } else if (x >= 21 || x < 20) {
+    } else if (x >= 27 || x <= 15) {
       temp.src = "../img/dashboard/notifyTempYellow.svg";
       tempAtual.style.color = "#D9A30B";
       temp.classList.remove('animate');
@@ -647,9 +647,9 @@
     }
 
     
-    if(x < 18 || x > 22){
+    if(x < 10 || x > 34){
       id_ponteiroTemperatura.innerHTML = `|<br>|`
-      var razao = (x-20)*25;
+      var razao = (x-22)*4;
       console.log(razao.toString().charAt(0))
       if(razao.toString().charAt(0) == "-"){
         id_ponteiroTemperatura.style.left = "-"+50+"%"
@@ -657,10 +657,10 @@
         id_ponteiroTemperatura.style.left = 50+"%"
       }
     }else{
-      id_ponteiroTemperatura.style.left = ((x-20)*25+"%")
+      id_ponteiroTemperatura.style.left = ((x-22)*4+"%")
       id_ponteiroTemperatura.style.opacity = 1
       id_ponteiroTemperatura.innerHTML = `|<br>`
-      if(x != 18 && x != 22){
+      if(x != 10 && x != 34){
         id_ponteiroTemperatura.innerHTML += `${x}C°`
       }else{
         id_ponteiroTemperatura.innerHTML += `|`
