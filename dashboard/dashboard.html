@@ -145,9 +145,9 @@
             <h2>Temperatura do solo</h2>
             <div class="temp">
               <div class="linha">
-                <span>10C°</span>
+                <span>10°C</span>
                 <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>22C°</p>
-                <span>34C°</span>
+                <span>34°C</span>
               </div>
             </div>
             <h2>Umidade do solo</h2>
@@ -172,15 +172,15 @@
         <h1>Tudo o que você precisa saber</h1>
         <div class="linha1">
           <div class="elipse temp-interna">
-            <h2 id="tempAtual">22C°</h2>
+            <h2 id="tempAtual">22°C</h2>
             <h3>Temperatura Interna atual</h3>
           </div>
           <div class="elipse temp-maxima">
-            <h2>26C°</h2>
+            <h2>26°C</h2>
             <h3>Temperatura Máxima do mês</h3>
           </div>
           <div class="elipse temp-minima">
-            <h2>15C°</h2>
+            <h2>15°C</h2>
             <h3>Temperatura Mínima do mês</h3>
           </div>
         </div>
@@ -252,7 +252,7 @@
       plugins: {
         title: {
           display: true,
-          text: "Temperatura (C°)",
+          text: "Temperatura (°C)",
           align: "start",
           font: {
             size: 20,
@@ -616,7 +616,7 @@
     x = (Math.random() * 12 + 15).toFixed(0);
     y = (Math.random() * 10 + 70).toFixed(0);
 
-    tempAtual.innerText = x + "C°";
+    tempAtual.innerText = x + "°C";
 
     var temperatura = "";
     var temperaturaText = tempAtual.innerHTML;
@@ -668,7 +668,7 @@
       id_ponteiroTemperatura.style.opacity = 1
       id_ponteiroTemperatura.innerHTML = `|<br>`
       if(x != 10 && x != 34){
-        id_ponteiroTemperatura.innerHTML += `${x}C°`
+        id_ponteiroTemperatura.innerHTML += `${x}°C`
       }else{
         id_ponteiroTemperatura.innerHTML += `|`
       }
