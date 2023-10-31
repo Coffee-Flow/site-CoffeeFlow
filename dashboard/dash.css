@@ -134,7 +134,7 @@ body {
   }
   .content .section2 .quadra3 .metricas .humidity .linha{
     background: rgb(255,0,0);
-    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 20%, rgba(0,255,0,1) 40%, rgba(0,255,0,1) 60%, rgba(255,255,0,1) 80%, rgba(255,0,0,1) 100%);
+    background: linear-gradient(90deg, #ffff60 0%, #a0ff67 20%, #20db74 40%, #20db74 60%, #109c77 80%, #007a7a 100%);
     display: flex;
     justify-content: space-between;
   }
@@ -149,7 +149,7 @@ body {
   }
   .content .section2 .quadra3 .metricas .temp .linha{
     background: rgb(255,0,0);
-    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 20%, rgba(0,255,0,1) 41%, rgba(216,255,0,1) 70%, rgba(255,0,0,1) 100%);
+    background: linear-gradient(90deg, #7afdff 0%, #9cdbc0 20%, #bdc771 41%, #c9b167 70%, #ff7200 100%);
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -237,13 +237,16 @@ body {
     color: #8AC6FE;
   } */
   .temp-maxima h2{
-    color: #FF0000;
+    color: #ff7200;
+    -webkit-text-stroke: 1px #666666;
   }
   .temp-minima h2{
-    color: rgb(54,162,235);
+    color: #7afdff;
+    -webkit-text-stroke: 1px #666666;
   }
   .temp-interna h2{
-    color: #053C11;
+    color: #bdc771;
+    -webkit-text-stroke: 1px #666666;
   }
 
   .filtro{

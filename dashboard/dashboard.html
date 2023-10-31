@@ -163,8 +163,8 @@
           </div>
           <h1>Notificações</h1>
           <div id="notify">
-            <img id="humidity" src="../img/dashboard/notifyHumiGreen.svg">
-            <img id="temp" src="../img/dashboard/notifyTempGreen.svg">
+            <img id="humidity" src="../img/dashboard/notifyHumiIdeal.svg">
+            <img id="temp" src="../img/dashboard/notifyTempIdeal.svg">
           </div>
 
       </div>
@@ -535,7 +535,7 @@
         label: "Umidade",
         data: [umidadeBaixa, 100 - umidadeBaixa],
         backgroundColor: [
-          "rgb(54,162,235)",
+          "#ffff60",
           "#EAE8DB",
         ],
         hoverOffset: 4,
@@ -561,7 +561,7 @@
         label: "Umidade",
         data: [umidadeAlta, 100 - umidadeAlta],
         backgroundColor: [
-          "#FF0000",
+          "#007a7a",
           "#EAE8DB",
         ],
         hoverOffset: 4,
@@ -587,7 +587,7 @@
         label: "Umidade",
         data: [umidadeAtual, 100 - umidadeAtual],
         backgroundColor: [
-          "#053C11",
+          "#20db74",
           "#EAE8DB",
         ],
         hoverOffset: 4,
@@ -613,7 +613,7 @@
   //Notificações
 
   setInterval(function notificar() {
-    x = (Math.random() * 12 + Math.random() * 12).toFixed(0);
+    x = (Math.random() * 12 + 15).toFixed(0);
     y = (Math.random() * 10 + 70).toFixed(0);
 
     tempAtual.innerText = x + "C°";
@@ -630,20 +630,27 @@
       i++;
     }
     temperatura = Number(temperatura);
-    
-    if (x >= 34 || x <= 10) {
-      temp.src = "../img/dashboard/notifyTempRed.svg";
-      tempAtual.style.color = "#FF0000";
-      temp.classList.add('animate');
-    } else if (x >= 27 || x <= 15) {
-      temp.src = "../img/dashboard/notifyTempYellow.svg";
-      tempAtual.style.color = "#D9A30B";
-      temp.classList.remove('animate');
-    } else {
-      temp.src = "../img/dashboard/notifyTempGreen.svg";
-      tempAtual.style.color = "#053C11";
-      temp.classList.remove('animate');
 
+    if(x<=10){
+      temp.src = "../img/dashboard/notifyTempLow";
+      tempAtual.style.color = "#7afdff";
+      temp.classList.add('animate');
+    }else if(x<=15){
+      temp.src = "../img/dashboard/notifyTempLowAlert.svg";
+      tempAtual.style.color = "#9cdbc0";
+      temp.classList.remove('animate');
+    }else if(x<27){
+      temp.src = "../img/dashboard/notifyTempIdeal.svg";
+      tempAtual.style.color = "#bdc771";
+      temp.classList.remove('animate');
+    }else if(x<34){
+      temp.src = "../img/dashboard/notifyTempHighAlert.svg";
+      tempAtual.style.color = "#c9b167";
+      temp.classList.remove('animate');
+    }else{
+      temp.src = "../img/dashboard/notifyTempHigh.svg";
+      tempAtual.style.color = "#ff7200";
+      temp.classList.add('animate');
     }
 
     
@@ -667,20 +674,28 @@
       }
     }
 
-
-    if (y >= 97 || y <= 50) {
-      humidity.src = "../img/dashboard/notifyHumiRed.svg";
-      umidade.data.datasets[0].backgroundColor = ["#FF0000", "#EAE8DB"];
+    if(y<=50){
+      humidity.src = "../img/dashboard/notifyHumiLow.svg";
+      umidade.data.datasets[0].backgroundColor = ["#ffff60", "#EAE8DB"];
       humidity.classList.add('animate');
-    } else if (y <= 60 || y == 80) {
-      humidity.src = "../img/dashboard/notifyHumiYellow.svg";
-      umidade.data.datasets[0].backgroundColor = ["#D9A30B", "#EAE8DB"];
+    }else if(y<=60){
+      humidity.src = "../img/dashboard/notifyHumiLowAlert.svg";
+      umidade.data.datasets[0].backgroundColor = ["#a0ff67", "#EAE8DB"];
       humidity.classList.remove('animate');
-    } else {
-      humidity.src = "../img/dashboard/notifyHumiGreen.svg";
-      umidade.data.datasets[0].backgroundColor = ["#053C11", "#EAE8DB"];
+    }else if(y<=80){
+      humidity.src = "../img/dashboard/notifyHumiIdeal.svg";
+      umidade.data.datasets[0].backgroundColor = ["#20db74", "#EAE8DB"];
       humidity.classList.remove('animate');
+    }else if(y<=97){
+      humidity.src = "../img/dashboard/notifyHumiHighAlert.svg";
+      umidade.data.datasets[0].backgroundColor = ["#109c77", "#EAE8DB"];
+      humidity.classList.remove('animate');
+    }else{
+      humidity.src = "../img/dashboard/notifyHumiHigh.svg";
+      umidade.data.datasets[0].backgroundColor = ["#007a7a", "#EAE8DB"];
+      humidity.classList.add('animate');
     }
+
     atualUmidade.innerHTML = y+"%";
 
     if(y < 50 || y > 97){
