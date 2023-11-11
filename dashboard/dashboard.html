@@ -32,140 +32,106 @@
           <h3>Jorge</h3>
           <img style="width: 200px" src="../img/SideBarDashboard/linha.svg" />
           <div class="options">
-            <h4>
-              <img style="width: 28px" src="../img/SideBarDashboard/dashIcon.svg" />Dashboard
-            </h4>
-            <span><img src="../img/SideBarDashboard/calendar.svg" />Período</span>
-            <span><img src="../img/SideBarDashboard/toolkit.svg" />Opções</span>
-            <span><img src="../img/SideBarDashboard/help.svg" />Ajuda</span>
-            <span><img src="../img/SideBarDashboard/exit.svg" />Sair</span>
-          </div>
-        </div>
-      </div>
+            <div class="dash-export">
+              <div class="container">
 
-        <span class="menu-toggle" onclick="openNav()">&#9776;</span>
-        <li>
-          <img
-            src="../img/Logo/CoffeeFlowLogo.svg"
-            alt="Logo Coffee Flow"
-            width="50px"
-          />
-        </li>
-        <!-- <li><a href="siteInstitucional/siteInstitucional.html" style="text-decoration: none;"><button class="btn btn-header" style="cursor: pointer;">INÍCIO</button></a></li> -->
-        <li>
-          <button
-            onclick="href('siteInstitucional/siteInstitucional')"
-            class="btn btn-header"
-            style="cursor: pointer"
-          >
-            INÍCIO
-          </button>
-        </li>
-      </ul>
-    </header>
+                <div class="filtro">
+                  <h4>Monitoramento</h4>
+                  <div class="div-periodo">
+                    <b>Período</b>
+                    <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
+                      <option>Hoje</option>
+                      <option>Ontem</option>
+                      <option>Última semana</option>
+                      <option>Últimos 30 dias</option>
+                      <option>Últimos 6 meses</option>
+                      <option>Últimos 12 meses</option>
+                      <option value="Personalizado">Personalizado</option>
+                    </select>
+                  </div>
 
-    
-    <div class="sensor">
-      <span>Conjunto sensor</span>
-      <div class="lavoura">
-        <span>lavoura</span>
-        <select name="" id="">
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-          <option value="">5</option>
-        </select>
-      </div>
-      <div class="coordenada">
-        <span>Quadrante</span>
-        <select name="" id="">
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-          <option value="">5</option>
-        </select>
-      </div>
-    </div>
+                  <div class="divs-dates" id="divs_dates">
+                    <div>
+                      <b>Data Mínima</b>
+                      <input type="date">
+                    </div>
+                    <div>
+                      <b>Data Máxima</b>
+                      <input type="date">
+                    </div>
+                  </div>
+                  <button id="btn">Filtrar</button>
 
-  <div class="filtro">
-    <div class="div-periodo">
-      <b>Período</b>
-      <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
-        <option>Hoje</option>
-        <option>Ontem</option>
-        <option>Última semana</option>
-        <option>Últimos 30 dias</option>
-        <option>Últimos 6 meses</option>
-        <option>Últimos 12 meses</option>
-        <option value="Personalizado">Personalizado</option>
-      </select>
-    </div>
-
-    <div class="divs-dates" id="divs_dates">
-      <div>
-        <b>Data Mínima</b>
-        <input type="date" />
-      </div>
-      <div>
-        <b>Data Máxima</b>
-        <input type="date" />
-      </div>
-    </div>
-    <button id="btn">Filtrar</button>
-
-      <div class="div-exportar">
-        <b>Exportar Dashboard</b>
-        <select>
-          <option value="">CSV</option>
-          <option value="">XLS</option>
-          <option value="">Relatórios exportados</option>
-        </select>
-      </div>
-      <a href="https://docs.google.com/spreadsheets/d/1FJqMQo1yTkB6_d2RwS3vEYMuvBa5YM_7pDU6-PUdvyI/edit#gid=213062297">
-        <button id="btn">Exportar</button>
-      </a>
-    </div>
-
-
-    <div class="content">
-      <div class="section1">
-        <div class="grafico">
-          <canvas id="temperatura"></canvas>
-        </div>
-        <div class="grafico">
-          <canvas id="umidade"></canvas>
-        </div>
-      </div>
-      <div class="section2">
-        <div class="quadra3">
-          <h1>Métricas - Café Arábico</h1>
-          <div id="metricas" class="metricas">
-            <h2>Temperatura do solo</h2>
-            <div class="temp">
-              <div class="linha">
-                <span>10°C</span>
-                <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>22C°</p>
-                <span>34°C</span>
+                  <div class="div-exportacao">
+                    <b>Exportar Dashboard</b>
+                    <select class="select-export">
+                      <option value="">CSV</option>
+                      <option value="">XLS</option>
+                      <option value="">Relatórios exportados</option>
+                    </select>
+                    <a href="docs.google.com/spreadsheets/d/1FJqMQo1yTkB6_d2RwS3vEYMuvBa5YM_7pDU6-PUdvyI/edit#gid=213062297"  class="btn-Export">
+                      <p>Exportar</p>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-            <h2>Umidade do solo</h2>
-            <div class="humidity">
-              <div class="linha">
-                <span>50%</span>
-                <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>75%</p>
-                <span>97%
-                  
-                </span>
-              </div>
+              <span><img src="../img/SideBarDashboard/help.svg">Ajuda</span>
+              <span><img src="../img/SideBarDashboard/exit.svg">Sair</span>
             </div>
           </div>
-          <h1>Notificações</h1>
-          <div id="notify">
-            <img id="humidity" src="../img/dashboard/notifyHumiIdeal.svg">
-            <img id="temp" src="../img/dashboard/notifyTempIdeal.svg">
+        </div>
+      </div>
+
+      <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+      <li>
+        <img src="../img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" />
+      </li>
+      <!-- <li><a href="siteInstitucional/siteInstitucional.html" style="text-decoration: none;"><button class="btn btn-header" style="cursor: pointer;">INÍCIO</button></a></li> -->
+      <li>
+        <button onclick="href('siteInstitucional/siteInstitucional')" class="btn btn-header" style="cursor: pointer">
+          INÍCIO
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <div class="content">
+    <div class="section1">
+      <div class="grafico">
+        <canvas id="temperatura"></canvas>
+      </div>
+      <div class="grafico">
+        <canvas id="umidade"></canvas>
+      </div>
+    </div>
+    <div class="section2">
+      <div class="quadra3">
+        <h1>Métricas - Café Arábico</h1>
+        <div id="metricas" class="metricas">
+          <h2>Temperatura do solo</h2>
+          <div class="temp">
+            <div class="linha">
+              <span>10°C</span>
+              <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>22C°</p>
+              <span>34°C</span>
+            </div>
           </div>
+          <h2>Umidade do solo</h2>
+          <div class="humidity">
+            <div class="linha">
+              <span>50%</span>
+              <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>75%</p>
+              <span>97%
+
+              </span>
+            </div>
+          </div>
+        </div>
+        <h1>Notificações</h1>
+        <div id="notify">
+          <img id="humidity" src="../img/dashboard/notifyHumiIdeal.svg">
+          <img id="temp" src="../img/dashboard/notifyTempIdeal.svg">
+        </div>
 
       </div>
       <div class="kpi">
@@ -197,26 +163,27 @@
                 </figure>
                 <h3>Umidade relativa do ar</h3>
               </div> -->
-            <div class="umidade">
-              <canvas id="atualUmi"></canvas>
-              <h1 id="atualUmidade"></h1>
-              <h2>Umidade Atual</h2>
-            </div>
-            <div class="umidade">
-              <canvas id="maiorUmi"></canvas>
-              <h1 id="maiorUmidade"></h1>
-              <h2>Maior Umidade no mês</h2>
-            </div>
-            <div class="umidade">
-              <canvas id="menorUmi"></canvas>
-              <h1 id="menorUmidade"></h1>
-              <h2>Menor Umidade no mês</h2>
-            </div>
+          <div class="umidade">
+            <canvas id="atualUmi"></canvas>
+            <h1 id="atualUmidade"></h1>
+            <h2>Umidade Atual</h2>
+          </div>
+          <div class="umidade">
+            <canvas id="maiorUmi"></canvas>
+            <h1 id="maiorUmidade"></h1>
+            <h2>Maior Umidade no mês</h2>
+          </div>
+          <div class="umidade">
+            <canvas id="menorUmi"></canvas>
+            <h1 id="menorUmidade"></h1>
+            <h2>Menor Umidade no mês</h2>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 <script>
   //ChartJS Temperatura e Umidade
@@ -576,7 +543,7 @@
     data: dataPizzaMaior,
   };
 
-  maiorUmidade.innerHTML = umidadeAlta+"%";
+  maiorUmidade.innerHTML = umidadeAlta + "%";
 
   const umidadeAtual = 75;
 
@@ -602,7 +569,7 @@
     data: dataPizzaAtual,
   };
 
-  atualUmidade.innerHTML = umidadeAtual+"%";
+  atualUmidade.innerHTML = umidadeAtual + "%";
 
 
   new Chart(pizzaUmidadeMim, configPizzaMenor);
@@ -631,94 +598,94 @@
     }
     temperatura = Number(temperatura);
 
-    if(x<=10){
+    if (x <= 10) {
       temp.src = "../img/dashboard/notifyTempLow";
       tempAtual.style.color = "#7afdff";
       temp.classList.add('animate');
-    }else if(x<=15){
+    } else if (x <= 15) {
       temp.src = "../img/dashboard/notifyTempLowAlert.svg";
       tempAtual.style.color = "#9cdbc0";
       temp.classList.remove('animate');
-    }else if(x<27){
+    } else if (x < 27) {
       temp.src = "../img/dashboard/notifyTempIdeal.svg";
       tempAtual.style.color = "#bdc771";
       temp.classList.remove('animate');
-    }else if(x<34){
+    } else if (x < 34) {
       temp.src = "../img/dashboard/notifyTempHighAlert.svg";
       tempAtual.style.color = "#c9b167";
       temp.classList.remove('animate');
-    }else{
+    } else {
       temp.src = "../img/dashboard/notifyTempHigh.svg";
       tempAtual.style.color = "#ff7200";
       temp.classList.add('animate');
     }
 
-    
-    if(x < 10 || x > 34){
+
+    if (x < 10 || x > 34) {
       id_ponteiroTemperatura.innerHTML = `|<br>|`
-      var razao = (x-22)*4;
+      var razao = (x - 22) * 4;
       console.log(razao.toString().charAt(0))
-      if(razao.toString().charAt(0) == "-"){
-        id_ponteiroTemperatura.style.left = "-"+50+"%"
-      }else{
-        id_ponteiroTemperatura.style.left = 50+"%"
+      if (razao.toString().charAt(0) == "-") {
+        id_ponteiroTemperatura.style.left = "-" + 50 + "%"
+      } else {
+        id_ponteiroTemperatura.style.left = 50 + "%"
       }
-    }else{
-      id_ponteiroTemperatura.style.left = ((x-22)*4+"%")
+    } else {
+      id_ponteiroTemperatura.style.left = ((x - 22) * 4 + "%")
       id_ponteiroTemperatura.style.opacity = 1
       id_ponteiroTemperatura.innerHTML = `|<br>`
-      if(x != 10 && x != 34){
+      if (x != 10 && x != 34) {
         id_ponteiroTemperatura.innerHTML += `${x}°C`
-      }else{
+      } else {
         id_ponteiroTemperatura.innerHTML += `|`
       }
     }
 
-    if(y<=50){
+    if (y <= 50) {
       humidity.src = "../img/dashboard/notifyHumiLow.svg";
       umidade.data.datasets[0].backgroundColor = ["#ffff60", "#EAE8DB"];
       humidity.classList.add('animate');
-    }else if(y<=60){
+    } else if (y <= 60) {
       humidity.src = "../img/dashboard/notifyHumiLowAlert.svg";
       umidade.data.datasets[0].backgroundColor = ["#a0ff67", "#EAE8DB"];
       humidity.classList.remove('animate');
-    }else if(y<=80){
+    } else if (y <= 80) {
       humidity.src = "../img/dashboard/notifyHumiIdeal.svg";
       umidade.data.datasets[0].backgroundColor = ["#20db74", "#EAE8DB"];
       humidity.classList.remove('animate');
-    }else if(y<=97){
+    } else if (y <= 97) {
       humidity.src = "../img/dashboard/notifyHumiHighAlert.svg";
       umidade.data.datasets[0].backgroundColor = ["#109c77", "#EAE8DB"];
       humidity.classList.remove('animate');
-    }else{
+    } else {
       humidity.src = "../img/dashboard/notifyHumiHigh.svg";
       umidade.data.datasets[0].backgroundColor = ["#007a7a", "#EAE8DB"];
       humidity.classList.add('animate');
     }
 
-    atualUmidade.innerHTML = y+"%";
+    atualUmidade.innerHTML = y + "%";
 
-    if(y < 50 || y > 97){
+    if (y < 50 || y > 97) {
       id_ponteiroUmidade.innerHTML = `|<br>|`
-      if(y.toString().includes("-")){
-      id_ponteiroUmidade.style.left = -50+"%";
-      }else{
-      id_ponteiroUmidade.style.left = 50+"%";
+      if (y.toString().includes("-")) {
+        id_ponteiroUmidade.style.left = -50 + "%";
+      } else {
+        id_ponteiroUmidade.style.left = 50 + "%";
       }
-    }else{
-      id_ponteiroUmidade.style.left = (y-75)*5+"%";
+    } else {
+      id_ponteiroUmidade.style.left = (y - 75) * 5 + "%";
       id_ponteiroUmidade.style.opacity = 1
       id_ponteiroUmidade.innerHTML = `|<br>`
-      if(y != 50 && y!= 97){
+      if (y != 50 && y != 97) {
         id_ponteiroUmidade.innerHTML += `${y}%`
-      }else{
+      } else {
         id_ponteiroUmidade.innerHTML += `|`
       }
     }
 
-    
 
-  
+
+
 
     umidade.data.datasets[0].data = [y, 100 - y];
     umidade.update();

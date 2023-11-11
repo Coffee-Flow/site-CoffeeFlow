@@ -14,10 +14,10 @@ body {
     padding-top: 60px;
     box-shadow: -1px 0 8px 0 #3a3a3a;
   }
-  .sidenav a {
+  .sidenav .closebtn {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font: 600 italic 20px 'Poppins';
+    font: 600 italic 40px 'Poppins';
     color: #EAE8DB;
     display: block;
     transition: 0.3s;
@@ -29,6 +29,7 @@ body {
     align-items: center;
     flex-direction: column;
   }
+  
   .sidenav .content img{
     width: 100px;
   }
@@ -38,15 +39,62 @@ body {
     color: #EAE8DB;
     font-size: 24px;
   }
+  
+  .btn-Export {
+    width: 50px;
+    height: 14px;
+    position: relative;
+    top: 20px;
+    left: 40px;
+    background-color: #EAE8DB;
+    border: 2px solid #D9A30B;
+    border-radius: 50px;
+  }
+
+  .btn-Export p {
+    position: relative;
+    right: 25px;
+    color: #053C11;
+    font-size: 18px;
+    font-weight: bold;
+    bottom: 1px;
+  }
+
+  .btn-Export:hover {
+    background-color: #D9A30B;
+    border: 2px solid #D9A30B;
+  }
+  .btn-Export p:hover {
+    color: #053C11;
+  }
+  
   .sidenav .content .options{
     width: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
-  .sidenav .content .options h4{
+  
+  .sidenav .content .options .dash-export {
+    background-color: #205F2D;
+    width: 160px;
+    height: 315px;
+    
+    
+  }
+  .sidenav .content .options .dash-export .container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .sidenav .content .options .dash-export h4{
     display: flex;
     align-items: center;
     margin-top: 5px;
     color: #EAE8DB;
-    background-color: #00BF63;
     font-size: 15px;
     height: 30px;
   }
@@ -66,26 +114,6 @@ body {
     width: 21px;
   }
 
-  .sensor{
-    display: flex;
-    justify-content: center;
-    align-items: last baseline;
-    color: #053C11;
-    margin-top: 5px;
-    font-weight: bold;
-    font-size: 25px;
-  }
-  .sensor>div{
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-  }
-  .sensor>span{
-    border-bottom: solid 2px #D9A30B;
-  }
-  .sensor>div span{
-    font-size: 10px;
-  }
   .content .section1{
     display: flex;
     justify-content: space-evenly;
@@ -249,37 +277,39 @@ body {
     -webkit-text-stroke: 1px #666666;
   }
 
-  .filtro{
+  .sidenav .content .options .dash-export .filtro{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    margin-top: 10px;
+
+
     /* padding: 20px; */
   }
-  .filtro .div-periodo{
+  .sidenav .content .options .dash-export .filtro .div-periodo{
     display: flex;
     flex-direction: column;
   }
-  .filtro .divs-dates {
+  .sidenav .content .options .dash-export .filtro .divs-dates {
     display: flex;
-    gap: 10px;
-    border-left: 1px solid #053C11;
-    padding: 0 15px;
     display: none;
+    flex-direction: column;
   }
-  .filtro .divs-dates>div{
+  .sidenav .content .options .dash-export .filtro .divs-dates>div{
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
-  .filtro .div-exportar {
+ 
+  .div-exportacao{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .sidenav .content .options .dash-export .filtro .div-exportar {
     display: flex; 
     flex-direction: column; 
     justify-content: right; 
-    margin-left: 70px;
   }
-  .filtro div b {
+  .sidenav .content .options .dash-export .filtro div b {
     font: 600 18px 'Poppins';
     color: #053C11;
     font-size: 10px;
