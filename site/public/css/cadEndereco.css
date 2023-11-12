@@ -1,0 +1,219 @@
+body {
+    background-image: url(../assets/img/BackgroundCadEm/cadEmpresa.svg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+}
+
+header {
+    width: 100%;
+}
+
+.container {
+    height: 100%;
+    /* width: 900px; */
+    margin: 20px 0;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* background-color: rgba(234, 232, 219, 0.74);
+    padding: 0 50px; */
+}
+
+#cadastro_concluido {
+    align-self: center;
+    position: relative;
+    margin-bottom: -20px;
+    background-color: #925035;
+    padding: 5px 12px;
+    border-radius: 30px;
+    display: none;
+}
+
+#cadastro_concluido p {
+    font: 500 12px 'Poppins';
+    color: #EAE8DB;
+}
+
+.container .form-box {
+    width: 100%;
+    height: 74vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 36px 0 6px 10px;
+    border-radius: 14px;
+    color: #053C11;
+    background-color: #ffffff94;
+}
+
+.container .form-box .form-box-endereco {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px 0 29px;
+    border-radius: 20px;
+}
+
+.container .form-box .form-box-yellowColor h1 {
+    background-color: #053C11;
+}
+
+.container .form-box .radioArea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .form-box h1 {
+    height: 40px;
+    font-size: 25px;
+    border-radius: 45px;
+    margin-bottom: 30px;
+    /* line-height: 55px; */
+    /* padding-inline: 27px; */
+    padding: 0 20px;
+    background-color: #D9A30B;
+    color: #EAE8DB;
+    border: #EAE8DB 4.2px solid;
+    box-shadow: 0 0 3.36px 0 rgba(0, 0, 0, 0.25);
+}
+
+.container .form-box h2 {
+    margin: 30px 0 8px;
+    font: 700 22px 'Poppins';
+}
+
+.container .form-box h3 {
+    margin-top: 40px;
+}
+
+.container .form-box button {
+    width: 60%;
+    /* margin: 55px 0 20px 0; */
+    border: #D9A30B 4px solid;
+    border-radius: 68px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #EAE8DB;
+    color: #053C11;
+    padding: 2px 25px;
+    margin-top: 58px;
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+}
+
+.container .form-box button:hover {
+    border-color: #053C11;
+    width: 70%;
+}
+
+.container .form-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .form-box .input-group {
+    display: flex;
+    margin-bottom: 30px;
+    /* margin-left: 100px; */
+    /* width: 100%; */
+}
+
+.container .form-box .input-group label {
+    font-size: 17px;
+    font-weight: bold;
+    color: rgba(5, 60, 17, 0.68);
+    position: absolute;
+    pointer-events: none;
+    /* transform: translateY(0.2rem); */
+    transition: 350ms;
+}
+
+.container .form-box .input-group input {
+    width: 334px;
+    height: 25px;
+    font: 400 17px 'Poppins';
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    border-bottom: #053C11 solid 1px;
+    outline: none;
+    color: #925035;
+    cursor: pointer;
+    transition: top 1s ease-in-out;
+}
+
+.container .form-box .radioArea input {
+    width: 10px;
+    border: #053C11;
+}
+
+.container .form-box-yellowColor {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    width: 50%;
+    padding: 0px 50px 2px 48px;
+    border-left: 1px solid black;
+}
+
+.container .form-box-yellowColor .cafe {
+    margin-bottom: 6px;
+}
+
+.container .form-box-yellowColor h3 input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container .form-box-yellowColor .cafe .radioCafe {
+    display: flex;
+    gap: 8px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-0.2rem);
+    transition: 350ms;
+}
+
+.input-form:focus~.label,
+input-form:valid~.label,
+.mostrar-email {
+    transform: translateY(-95%) scale(1);
+    /* padding: 0 .4em; */
+}
+
+.subir-label {
+    transform: translateY(-95%) scale(1);
+    /* padding: 0 .4em; */
+}
+
+.span-required {
+    font: 400 12px 'Poppins';
+    color: red;
+    /* margin-top: -18px; */
+    display: none;
+}
+
+.tirar-margem {
+    margin-bottom: 0;
+}
+
+.form-box-yellowColor .lavoura .input-group:nth-child(2) {
+    margin-bottom: 10px;
+}

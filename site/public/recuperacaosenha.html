@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação de senha</title>
+    <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="login.css"> -->
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/recuperacaosenha.css">
+</head>
+
+<body>
+    <header>
+        <ul class="ul-header">
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="sobreNos.html" class="links-sidenav"><img
+                        src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="servicos.html" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <a href="siteInstitucional.html#footer" class="links-sidenav"><img
+                        src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg" alt="">Cotação</a>
+            </div>
+
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+            <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" style="margin-left: 72px;"></li>
+            <li><button onclick="href('public/siteInstitucional')" class="btn btn-header"
+                    style="cursor: pointer;">INÍCIO</button></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <div class="form-box">
+            <h1>Recuperação de Senha</h1>
+            <form onsubmit="return recuperar()">
+
+                <div class="subtext">
+                    Iremos recuperar sua senha enviando uma redefinição de senha ao email associado ao CPF/CPNJ.
+                </div>
+
+                <div class="input-group">
+                    <input id="CNPJ" class="input-form" onfocus="limpar(this, cnpjL)" onblur="limpar(this, cnpjL)"
+                        oninput="cpfCnpjValidate()" required>
+                    <label class="label" id="cnpjL" for="cnpj">CPF/CNPJ</label>
+                </div>
+                <span id="span_validate" class="span-required">*O CPF deve ter no mínimo 11 números e no máximo 14 (com
+                    2 pontos e 1 hífen)</span>
+
+                <button type="submit" class="btn-form">Recuperar senha</button>
+            </form>
+            <div class="lineVector"><img src="assets/img/Vectors/greenLine.svg"></div>
+
+            <div class="endtext">
+                Caso não tenha acesso a este e-mail, favor entrar em contato com o <a href="#">atendimento
+                    CoffeeFlow.</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/recuperacaosenha.js"></script>
+<script src="js/script.js">
+
+</script>

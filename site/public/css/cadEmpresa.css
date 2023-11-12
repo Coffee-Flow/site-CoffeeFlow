@@ -1,0 +1,250 @@
+body {
+    background-image: url(../assets/img/BackgroundCadEm/cadEmpresa.svg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+}
+
+.container {
+    /* height: 975px; */
+    /* width: 900px; */
+    height: 70%;
+    margin: 24px 0;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(234, 232, 219, 0.74);
+    padding:30px 50px;
+}
+
+#cadastro_concluido {
+    align-self: center;
+    position: relative;
+    margin-bottom: -20px;
+    background-color: #925035;
+    padding: 5px 12px;
+    border-radius: 30px;
+    display: none;
+}
+
+#cadastro_concluido p {
+    font: 500 12px 'Poppins';
+    color: #EAE8DB;
+}
+
+.container .form-box {
+    padding: 30px 0;
+    height: 90%;
+    border-radius: 14px 0 0 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #053C11;
+}
+
+.container .form-box .radioArea {
+    display: flex;
+}
+
+.container .form-box h1 {
+    height: 40px;
+    font-size: 25px;
+    border-radius: 45px;
+    margin-bottom: 40px;
+    /* line-height: 55px; */
+    padding-inline: 27px;
+    background-color: #D9A30B;
+    color: #EAE8DB;
+    border: #EAE8DB 4.2px solid;
+    box-shadow: 0 0 3.36px 0 rgba(0, 0, 0, 0.25);
+}
+
+.container .form-box h2 {
+    margin-top: 35px;
+}
+
+.container .form-box h3 {
+    margin-top: 40px;
+}
+
+.container .form-box button {
+    width: 60%;
+    /* margin: 55px 0 20px 0; */
+    border: #D9A30B 4px solid;
+    border-radius: 68px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #EAE8DB;
+    color: #053C11;
+    padding: 2px 25px;
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+}
+
+.container .form-box button:hover {
+    border-color: #053C11;
+    width: 70%;
+}
+
+.container .form-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .form-box .input-group {
+    display: flex;
+    margin-bottom: 25px;
+    /* margin-left: 100px; */
+    /* width: 100%; */
+}
+
+.container .form-box .input-group label {
+    font-size: 17px;
+    font-weight: bold;
+    color: rgba(5, 60, 17, 0.68);
+    position: absolute;
+    pointer-events: none;
+    /* transform: translateY(0.2rem); */
+    transition: 350ms;
+}
+
+.container .form-box .input-group input {
+    width: 334px;
+    height: 25px;
+    font: 400 17px 'Poppins';
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    border-bottom: #053C11 solid 1px;
+    outline: none;
+    color: #925035;
+    cursor: pointer;
+    transition: top 1s ease-in-out;
+}
+
+.container .form-box .radioArea input {
+    width: 10px;
+    border: #053C11;
+}
+
+.container .form-box.yellowColor {
+    background-color: rgba(217, 163, 11, .7);
+    border-radius: 14px;
+}
+
+.container .form-box.yellowColor h1 {
+    background-color: #EAE8DB;
+    border: 4.2px solid #053C11;
+    color: #053C11;
+}
+
+.container .form-box.yellowColor h3 {
+    width: 75%;
+    height: 72px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.container .form-box.yellowColor h3 input {
+    width: 74px;
+    border-bottom: #053C11 dashed;
+    background-color: transparent;
+}
+
+.container .form-box.yellowColor h3 input:focus {
+    outline: none;
+}
+
+.container .form-box.yellowColor h3 input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container .form-box.yellowColor .input-group {
+    margin: 0;
+}
+
+/* .container .form-box.yellowColor .lavoura {
+    width: 100%;
+    margin-left: 100px;
+} */
+
+.container .form-box.yellowColor .lavoura .radioArea input {
+    margin-right: 10px;
+}
+
+/* .container .form-box.yellowColor .cafe {
+    width: 100%;
+    margin-left: 100px;
+} */
+
+.container .form-box.yellowColor .cafe .radioCafe input {
+    margin-right: 10px;
+}
+
+/* .container .form-box.yellowColor .irrig {
+    width: 100%;
+    margin-left: 100px;
+} */
+
+.container .form-box.yellowColor .irrig .radioIrr input {
+    margin-right: 10px;
+}
+
+.container .form-box.yellowColor .cafe .radioCafe {
+    margin-top: 12px;
+}
+
+.container .form-box.yellowColor .radioIrr {
+    margin-top: 12px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-0.2rem);
+    transition: 350ms;
+}
+
+.input-form:focus~.label,
+input-form:valid~.label,
+.mostrar-email {
+    transform: translateY(-95%) scale(1);
+    /* padding: 0 .4em; */
+}
+
+.subir-label {
+    transform: translateY(-95%) scale(1);
+    /* padding: 0 .4em; */
+}
+
+.span-required {
+    font: 400 12px 'Poppins';
+    color: red;
+    /* margin-top: -18px; */
+    display: none;
+}
+
+.tirar-margem {
+    margin-bottom: 0;
+}
+
+/* form {
+    margin: 0 0 0 -106px;
+} */

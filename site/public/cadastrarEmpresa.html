@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js"></script>
+    <title>Cadastrar Empresa</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/cadEmpresa.css">
+    <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <ul class="ul-header">
+
+            <!-- SideNav -->
+
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="sobreNos.html" class="links-sidenav"><img
+                        src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="servicos.html" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <a href="siteInstitucional.html#footer" class="links-sidenav"><img
+                        src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
+                        alt="">Cotação</a>
+            </div>
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+
+            <!-- NavBar -->
+
+            <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" style="margin-left: 72px;"></li>
+            <li><a href="#" style="text-decoration: none;"><button onclick="href('public/siteInstitucional')"
+                        class="btn btn-header">INÍCIO</button></a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <div id="cadastro_concluido">
+            <p>Cadastro Concluído!✅ Você será redirecionado para a tela de login.</p>
+        </div>
+        <div class="form-box">
+            <h1>Cadastro da Empresa</h1>
+            <!-- <form  autocomplete="off" action="login.html"> -->
+                <div class="input-group">
+                    <input type="text" id="nomeEmp" class="input-form required" onfocus="limpar(this, nomeEmpL)"
+                        onblur="limpar(this, nomeEmpL)">
+                    <label class="label" for="nomeEmp" id="nomeEmpL">Nome da Empresa</label>
+                    <span id="span_nomeEmp" class="span-required">*Nome deve ter no mínimo 5 caracteres</span>
+                </div>
+
+
+                <div class="input-group">
+                    <input type="text" id="razao" class="input-form required" onfocus="limpar(this, razaoL)"
+                        onblur="limpar(this, razaoL)">
+                    <label class="label" for="razao" id="razaoL">Razão Social</label>
+                    <span id="span_razao" class="span-required">*Razão Social deve ter no mínimo 5 caracteres</span>
+                </div>
+                <div class="input-group">
+                    <input id="cnpj" class="input-form required" onfocus="limpar(this, cnpjL)"
+                        onblur="limpar(this, cnpjL)">
+                    <label class="label" class="label" for="cnpj" id="cnpjL">CNPJ</label>
+                    <span id="span_cnpj" class="span-required">*O CNPJ deve ter 14 dígitos
+                    </span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="email_corp" class="input-form required" onfocus="limpar(this, emailCorpL)"
+                        onblur="limpar(this, emailCorpL)">
+                    <label class="label" for="emailCorp" id="emailCorpL">Email Corporativo</label>
+                    <span id="span_corp" class="span-required">*Digite um e-mail válido</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="tel" class="input-form required" onfocus="limpar(this, telL)"
+                        onblur="limpar(this, telL)">
+                    <label class="label" for="tel" id="telL">Telefone Comercial</label>
+                    <span id="span_tel" class="span-required">*Digite um telefone válido (10 Dígitos a 11 Dígitos)</span>
+                </div>
+            <button value="Enviar" onclick="validarForm()">Finalizar Cadastro</button>
+        </div>
+            <!-- </form> -->
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    function validarForm() {
+        var nomeEmpresa = document.getElementById('nomeEmp').value;
+        var spanNomeEmpresa = document.getElementById('span_nomeEmp');
+        var razaoSocial = document.getElementById('razao').value;
+        var spanRazaoSocial = document.getElementById('span_razao');
+        var cnpj = document.getElementById('cnpj').value;
+        var spanCnpj = document.getElementById('span_cnpj');
+        var emailCorp = document.getElementById('email_corp').value;
+        var spanEmailCorp = document.getElementById('span_corp');
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?$/;
+        var telCom = document.getElementById('tel').value;
+        var spanTelCom = document.getElementById('span_tel');
+
+
+        if (nomeEmpresa.length < 6) {
+            spanNomeEmpresa.style.display = 'block';
+            return false;
+        } else if (razaoSocial.length < 6) {
+            spanRazaoSocial.style.display = 'block';
+            return false;
+        } else if (cnpj.length != 14) {
+            spanCnpj.style.display = 'block';
+            return false;
+        } else if (!emailRegex.test(emailCorp)) {
+            spanEmailCorp.style.display = 'block';
+            return false;
+        } else if (telCom.length < 8 || telCom.length > 11) {
+            spanTelCom.style.display = 'block';
+            return false;
+        } else {
+            sumirMensagem();
+            setTimeout(function () {
+                window.location.href = "login.html";
+            }, 2000);
+        }
+    }
+
+</script>

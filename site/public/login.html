@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="js/script.js"></script>
+    <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+
+<body>
+    <header>
+        <ul class="ul-header">
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="sobreNos.html" class="links-sidenav"><img
+                        src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="#" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <a href="siteInstitucional.html#footer" class="links-sidenav"><img
+                        src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
+                        alt="">Cotação</a>
+            </div>
+
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+            <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" style="margin-left: 72px;"></li>
+            <!-- <li><a href="siteInstitucional/siteInstitucional.html" style="text-decoration: none;"><button class="btn btn-header" style="cursor: pointer;">INÍCIO</button></a></li> -->
+            <li><button onclick="href('public/siteInstitucional')" class="btn btn-header" style="cursor: pointer;">INÍCIO</button></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <div class="form-box">
+            <h1>Login</h1>
+            <!-- <form onsubmit="return impedirEnvioLogin()"> -->
+            <div class="forms">
+                <div class="input-group">
+                    <input autocomplete="off" id="email" type="text" class="input-form" onfocus="limpar(this, emailL)"
+                        onblur="limpar(this, emailL)" required>
+                    <label class="label" id="emailL" for="email">E-mail</label>
+                </div>
+
+                <div class="input-group">
+                    <input id="senha" type="password" class="input-form" onfocus="limpar(this, senhaL)"
+                        onblur="limpar(this, senhaL)" required>
+                    <label class="label" id="senhaL" for="senha">Senha</label>
+                    <img src="assets/img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;position: relative;" alt="" onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_fechado_copia"
+                        class="olho">
+                    <img src="assets/img/TelaCadastrar/eye.svg" style="width: 17px;" alt=""
+                        onclick="mudarTipo(senha, olho_fechado_copia, olho_aberto_copia)" id="olho_aberto_copia"
+                        class="olho">
+                </div>
+                <span id="span_inputs" class="span-required">*Preencha todos os campos corretamente</span>
+
+                <button onclick="validarForm()" class="btn-form" id="btnProximo">Logar</button>
+            </div>
+            <div class="lineVector"><img src="assets/img/Vectors/greenLine.svg"></div>
+            <button onclick="href('public/cadastrarEmpresa')" class="btn-form">Cadastrar-se</button>
+            <p><a href="recuperacaosenha.html">Esqueci minha senha</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function validarForm() {
+        if (email.value.length == 0 || senha.value.length == 0) {
+            span_inputs.style.display = 'block';
+            return false;
+        } else {
+            login(email.value == "coffeeflow@sptech.school", senha.value == "CoffeeFlow@10");
+        } 
+    }
+
+    function login(email, senha) {
+        if (email && senha) {
+            href("../site/public/dashboard/dashboard");
+        } else {
+            href("public/login");
+        }
+    }
+</script>

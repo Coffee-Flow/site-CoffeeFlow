@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,400;1,600;1,700;1,800&display=swap');
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'Poppins';
+}
+
+/* Default styles for headings (h1) */
+h1 {
+  font: 700 45px 'Poppins';
+  line-height: 42px;
+}
+
+/* Default styles for paragraphs (p) */
+p {
+  font: 200 16px 'Poppins';
+  line-height: 17px;
+}
+
+/* Default styles for buttons (.btn) */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 15px 'Poppins';
+  height: 32px;
+  padding: 5px 10px;
+  border: 3px solid #D9A30B;
+  border-radius: 20px;
+  background-color: #EAE8DB;
+  letter-spacing: -0.7px;
+  cursor: pointer;
+}
+
+/* Animation SideNav */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #EAE8DB;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: -1px 0 8px 0 #3a3a3a;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font: 600 italic 20px 'Poppins';
+  color: #053C11;
+  display: block;
+  transition: 0.3s;
+  display: flex;
+  gap: 7px;
+}
+
+.sidenav a:hover {
+  color: #D9A30B;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.menu-toggle {
+  font: 800 30px 'Poppins';
+  cursor: pointer;
+  color: #D9A30B;
+}
+
+.menu-toggle:hover {
+  color: #EAE8DB;
+  transition: 0.3s;
+}
+
+/* Style Header */
+header {
+  background-color: #053C11;
+  box-shadow: 0 4px 8px -5px rgb(20, 20, 20);
+  position: relative;
+  z-index: 1;
+}
+
+.ul-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 15px 0;
+}
+
+.ul-header li {
+  cursor: pointer;
+}
+
+#mySidenav li:first-child {
+  margin-left: 65px;
+}
+
+.btn:hover {
+  background-color: #D9A30B;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-header {
+  width: 110px;
+  color: #053C11;
+}

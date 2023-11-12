@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Usuário</title>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/cadastrar.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <ul class="ul-header">
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="sobreNos.html" class="links-sidenav"><img
+                        src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="servicos.html" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <!-- <a href="#" class="links-sidenav"><img src="assets/img/SideBar/Feedback.svg" alt="">Clientes</a> -->
+                <a href="siteInstitucional.html#footer" class="links-sidenav"><img src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
+                        alt="">Cotação</a>
+            </div>
+
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+            <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" style="margin-left: 72px;"></li>
+            <li><button onclick="href('siteInstitucional')" class="btn btn-header"
+                    style="cursor: pointer;">INÍCIO</button></li>
+        </ul>
+    </header>
+    <div class="content">
+        <div id="cadastro_concluido">
+            <p>Cadastro Concluído!✅ Você será redirecionado para a tela de login.</p>
+        </div>
+        <div class="form-box">
+            <h1>Primeiro Acesso</h1>
+            <!-- <form onsubmit="return impedirEnvioCadastro()" id="form" autocomplete="off"> -->
+            <div class="container-inputs">
+                <div class="input-group">
+                    <input id="nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)"
+                        onblur="limpar(this, nomeL)">
+                    <label class="label" id="nomeL" for="nome">Nome Completo</label>
+                    <span id="span_nome" class="span-required">*Nome deve ter no mínimo 5 caracteres</span>
+                </div>
+
+                <div class="input-group">
+                    <input id="email" type="text" class="input-form required" onfocus="limpar(this, emailL)"
+                        onblur="limpar(this, emailL)">
+                    <label class="label" id="emailL" for="email">E-mail Institucional</label>
+                    <span id="span_email" class="span-required">*Digite um e-mail válido</span>
+                </div>
+
+                <div class="input-group">
+                    <input id="cpf" class="input-form required" onfocus="limpar(this, cpfL)"
+                        onblur="limpar(this, cpfL)">
+                    <label class="label" id="cpfL" for="cpf">CPF</label>
+                    <span id="span_cpf" class="span-required">*O CPF deve conter 11 a 12 caracteres</span>
+                </div>
+
+                <div class="input-group">
+                <div style="display: flex;">
+                    <input id="senha_main" type="password" class="input-form required" onfocus="limpar(this, senhaL_main)" onblur="limpar(this, senhaL_main)" oninput="exibirRequisitos()">
+                    <img src="assets/img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;" alt=""
+                        onclick="mudarTipo(senha_main, olho_fechado_main, olho_aberto_main)" id="olho_fechado_main"
+                        class="olho">
+                    <img src="assets/img/TelaCadastrar/eye.svg" style="width: 17px;" alt=""
+                        onclick="mudarTipo(senha_main, olho_fechado_main, olho_aberto_main)" id="olho_aberto_main"
+                        class="olho">
+                    <label class="label" id="senhaL_main" for="senha">Senha (Mínimo de 8 caracteres)</label>
+                </div>
+                    <span id="span_senha_main" class="span-required">*Digite uma senha com no mínimo 8 caracteres</span>
+                </div>
+
+                <div class="input-group">
+                    <div style="display: flex;">
+                    <input id="senha_copia" type="password" class="input-form required"              onfocus="limpar(this, senhaL_copia)" onblur="limpar(this, senhaL_copia)" oninput="exibirRequisitos()">
+                    <img src="assets/img/TelaCadastrar/eye-off-outline.svg" style="width: 20px;position: relative;" alt=""
+                        onclick="mudarTipo(senha_copia, olho_fechado_copia, olho_aberto_copia)" id="olho_fechado_copia"
+                        class="olho">
+                    <img src="assets/img/TelaCadastrar/eye.svg" style="width: 17px;" alt=""
+                        onclick="mudarTipo(senha_copia, olho_fechado_copia, olho_aberto_copia)" id="olho_aberto_copia"
+                        class="olho">
+                    <label class="label" id="senhaL_copia" for="senha">Repita a sua senha</label>
+                </div>
+                    <span id="span_senha_copia" class="span-required">*Senhas devem ser compatíveis</span>
+                </div>                
+            </div>
+                <button class="btn-form" onclick="validarForm()" >Cadastrar-se</button>
+            <!-- </form> -->
+            <div class="lineVector">
+                <img src="assets/img/Vectors/greenLine.svg">
+                <button class="btn-form" onclick="href('login')">Login</button>
+            </div>
+        </div>
+
+        <div id="senha_requisitos">
+            <h5 style="font-size: 15px;">A senha deve ter: <br><br></h5>
+            <ul>
+                <li>Tamanho mínimo de 8;</li>
+                <li>Somente letras, números e caracteres especiais(!#@$%&);</li>
+                <li>No mínimo, uma letra maiúscula <strong>E</strong> minúscula;</li>
+                <li>No mínimo, um número;</li>
+                <li>No mínimo, um caractere especial(!#@$%&).</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function exibirRequisitos() {
+        var divRequisitos = document.getElementById('senha_requisitos');
+        divRequisitos.style.display = 'block'
+    }
+
+    function validarForm() {
+        var nomeCompleto = document.getElementById('nome').value;
+        var spanNomeCompleto = document.getElementById('span_nome');
+        var emailInsti = document.getElementById('email').value;
+        var spanEmailInsti = document.getElementById('span_email');
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?$/;
+        // var cpf = document.getElementById('cpf').value;
+        var spanCpf = document.getElementById('span_cpf');
+        var senhaPrincipal = document.getElementById('senha_main').value;
+        var spanSenhaPrincipal = document.getElementById('span_senha_main');
+        var senhaRegex = /^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
+        var senhaCopia = document.getElementById('senha_copia').value;
+        var spanSenhaCopia = document.getElementById('span_senha_copia');
+
+
+        if (nomeCompleto.length < 5) {
+            spanNomeCompleto.style.display = 'block';
+            return false;
+        } else if (!emailRegex.test(emailInsti)) {
+            spanEmailInsti.style.display = 'block';
+            return false;
+        } else if (cpf.value.length < 11 || cpf.value.length > 14) {
+            spanCpf.style.display = 'block';
+            return false;
+        } else if (!senhaRegex.test(senhaPrincipal)) {
+            spanSenhaPrincipal.style.display = 'block';
+            return false;
+        } else if (senhaCopia != senhaPrincipal) {
+            spanSenhaCopia.style.display = 'block';
+            return false;
+        } else {
+            sumirMensagem();
+            setTimeout(function () {
+                window.location.href = "login.html";
+            }, 2000);
+        }
+    }
+</script>

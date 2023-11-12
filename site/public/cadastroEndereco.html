@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js"></script>
+    <title>Cadastrar Novo Endereço e Lavoura</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/cadEndereco.css">
+    <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <ul class="ul-header">
+
+            <!-- SideNav -->
+
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="sobreNos.html" class="links-sidenav"><img
+                        src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
+                <a href="#" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <a href="siteInstitucional.html#footer" class="links-sidenav"><img
+                        src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
+                        alt="">Cotação</a>
+            </div>
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+
+            <!-- NavBar -->
+
+            <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" style="margin-left: 72px;"></li>
+            <li><a href="#" style="text-decoration: none;"><button onclick="href('../site/public/dashboard/dashboard')"
+                        class="btn btn-header">DASHBOARD</button></a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <div id="cadastro_concluido">
+            <p>Cadastro Concluído!✅ Você será redirecionado para a sua dashboard.</p>
+        </div>
+        <div class="form-box">
+            <div class="form-box-endereco">
+            <h1>Cadastro de Endereço</h1>
+            <!-- <form autocomplete="off"> -->
+                <div class="input-group">
+                    <input id="cep" class="input-form required" onfocus="limpar(this, cepL)" onblur="limpar(this, cepL)"
+                        oninput="consultarCEP()">
+                    <label class="label" for="cep" id="cepL">CEP</label>
+                    <span class="span-required" id="span_cep">*O CEP deve conter 8 dígitos (Formato aceito: XXXXX-XXX)</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="logr" class="input-form required" onfocus="limpar(this, logrL)"
+                        onblur="limpar(this, logrL)">
+                    <label class="label" for="logr" id="logrL">Logradouro</label>
+                    <span class="span-required" id="spanLogr">*O campo deve conter no mínimo 4 caraccones</span>
+                </div>
+                <div class="input-group">
+                    <input id="numero" class="input-form required" onfocus="limpar(this, numeroL)"
+                        onblur="limpar(this, numeroL)">
+                    <label class="label" for="numero" id="numeroL">Número</label>
+                    <span class="span-required" id="spanNumero">*O campo deve conter no mínimo 2 caracteres</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="complemento" class="input-form required" onfocus="limpar(this, complementoL)"
+                        onblur="limpar(this, complementoL)">
+                    <label class="label" for="complemento" id="complementoL">Complemento</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="bairro" class="input-form required" onfocus="limpar(this, bairroL)"
+                        onblur="limpar(this, bairroL)">
+                    <label class="label" for="bairro" id="bairroL">Bairro</label>
+                    <span class="span-required" id="spanBairro">*O campo não pode estar em branco</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="cidade" class="input-form required" onfocus="limpar(this, cidadeL)"
+                        onblur="limpar(this, cidadeL)">
+                    <label class="label" for="cidade" id="cidadeL">Cidade</label>
+                    <span class="span-required" id="spanCidade">*O campo não pode estar em branco</span>                   
+                </div>
+                <div class="input-group">
+                    <input type="text" id="uf" class="input-form required" onfocus="limpar(this, ufL)"
+                        onblur="limpar(this, ufL)">
+                    <label class="label" for="uf" id="ufL">UF</label>
+                    <span class="span-required" id="spanUf">*O campo deve conter 2 caracteres/span>
+                </div> </div>
+       
+        <div class="form-box-yellowColor">
+            <h1>Detalhes da Lavoura</h1>
+            <div class="lavoura">
+                <div class="input-group">
+                    <input type="text" id="nomeLavoura" class="input-form required" onfocus="limpar(this, nomeLavouraL)"
+                        onblur="limpar(this, nomeLavouraL)">
+                    <label class="label" for="nomeLavoura" id="nomeLavouraL">Nome da Lavoura</label>
+                    <span class="span-required" id="nome_lavoura_span">*Nome da Lavoura deve conter no mínimo 3 caracteres</span>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="areaCultivo" class="input-form required" onfocus="limpar(this, areaCultL)"
+                        onblur="limpar(this, areaCultL)">
+                    <label class="label" for="areaCultivo" id="areaCultL">Tamanho da Área de Cultivo</label>
+                    <span class="span-required" id="area_cultivo_span">*Tamanho da Área deve ser maior que 0</span>
+                </div>
+                <div class="radioArea">
+                    <input type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
+                    <input type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
+                    <span class="span-required" id="radio_area_span">*Selecione uma das opções</span>
+                </div>
+            </div>
+
+            <div class="cafe">
+            <h2>Tipo(s) de Café cultivado(s)</h2>
+            <div class="radioCafe">
+                <input type="radio" name="cafe" id="arabica"><label for="arabica">Cultivo somente café arábica.</label>
+            </div>
+            <div class="radioCafe">
+                <input type="radio" name="cafe" id="canilon"><label for="canilon">Cultivo somente café canilon/robusta.</label>
+            </div>
+            <div class="radioCafe">
+                <input type="radio" name="cafe" id="outrocafe"><label for="outrocafe">Cultivo outro(s) tipo(s) de café</label>
+            </div>
+            <span class="span-required" id="radio_cafe_span">*Selecione uma das opções</span>
+            </div>
+
+            <!-- <div class="irrig" id="irrig">
+                <h2>Tipo de Sistema de Irrigação</h2>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="arsp" onclick="div_ntn()"><label for="arsp">Sistema de Irrigação
+                        por
+                        Aspersão.</label>
+                </div>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="nenhum" onchange="div_nt()"><label for="nenhum">Não possuo
+                        sistema de irrigação.</label>
+                </div>
+                <div id="div_n" style="font-size: 13px; color: rgb(190, 14, 14);"></div>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="outroirr" onclick="div_non()"><label for="outroirr">Outro
+                        sistema</label>
+                </div>
+                <div id="div_o" style="font-size: 13px; color: rgb(190, 14, 14);"></div>
+            </div> -->
+
+            <!-- <h3>Quantidade média de café colhido anualmente (em sacas) <input type="number" id="sacas"> </h3> -->
+            <button value="Enviar" onclick="validarForm()">Finalizar Cadastro</button>
+        
+            <!-- </form> -->
+        </div>
+        
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    // Validações Inputs
+
+    function consultarCEP() {
+        var cep = document.getElementById('cep');
+        var cepValue = cep.value.replace(/[^\d]/g, ''); // Limpa caracteres não numéricos
+
+        if (cepValue.length != 8 && !/^[0-9]{8}$/.test(cepValue)) {
+            // CEP inválido
+            span_cep.style.display = 'block';
+        } else {
+        // CEP válido
+        // Usando a API do ViaCEP para consultar o CEP
+        var url = `https://viacep.com.br/ws/${cepValue}/json/`;
+
+        fetch(url) // É uma função global que recebe uma URL como argumento. Ela retorna uma promessa (Promise) como resposta.
+            // No caso, a função solicitou à URL buscar as informações do endereço associado ao CEP.
+
+            .then(response => response.json())
+            .then(data => {
+                // Quando a solicitação é bem-sucedida, as informações vêm em formato JSON. 
+                // O método .then() é utilizado para lidar com a resposta quando ela estiver pronta.
+                if (data.erro) {
+                    console.log("CEP não encontrado"); // Caso as informações não forem encontradas
+                } else {
+
+                    // Caso forem encontradas, a função atribui elas para os seus respectivos campos, de acordo com os seus id's.
+
+                    document.getElementById("logr").value = data.logradouro;
+                    document.getElementById("bairro").value = data.bairro;
+                    document.getElementById("cidade").value = data.localidade;
+                    document.getElementById("uf").value = data.uf;
+                    // Verificar se 'numero' e 'complemento' estão presentes na resposta antes de tentar atribuir
+                    if ('numero' in data) {
+                        document.getElementById("numero").value = data.numero;
+                    }
+
+                    if ('complemento' in data) {
+                        document.getElementById("complemento").value = data.complemento;
+                    }
+
+                    logrL.classList.add("subir-label");
+                    numeroL.classList.add("subir-label");
+                    complementoL.classList.add("subir-label");
+                    bairroL.classList.add("subir-label");
+                    cidadeL.classList.add("subir-label");
+                    ufL.classList.add("subir-label");
+
+
+                }
+            })
+            .catch(error => { // O método .catch() faz parte da API Fetch e é usado para lidar com erros que possam ocorrer durante uma solicitação de rede, como uma falha na conexão ou uma resposta inválida do servidor. 
+                // Caso houver algum erro no processo de busca, a função retorna esta mensagem de erro.
+
+                console.error("Erro na consulta: " + error);
+            });
+        }
+    }
+
+
+
+    function validarForm() {
+        var opcoesArea = document.getElementsByName('area');
+        var spanArea = document.getElementById('radio_area_span');
+        var selecionadoArea = false;
+        var selecionadoCafe = false;
+
+        var inputNome = document.getElementById('nomeLavoura').value;
+        var inputAreaCult = document.getElementById('areaCultivo').value;
+        var spanAreaCult = document.getElementById('area_cultivo_span');
+        var opcoesCafe = document.getElementsByName('cafe');
+        var spanCafe = document.getElementById('radio_cafe_span');
+
+        for (var i = 0; i < opcoesArea.length; i++) {
+            if (opcoesArea[i].checked) {
+                selecionadoArea = true;
+                break;
+            }
+        }
+
+        for (var i = 0; i < opcoesCafe.length; i++) {
+            if (opcoesCafe[i].checked) {
+                selecionadoCafe = true;
+                break;
+            }
+        }
+
+        if (logr.value.length < 5) {
+            spanLogr.style.display = 'block';
+            return false;
+        } else if (numero.value.length < 3) {
+            spanNumero.style.display = 'block';
+            return false;
+        } else if (bairro.value.length < 1) {
+            spanBairro.style.display = 'block';
+            return false;
+        } else if (cidade.value.length < 1) {
+            spanCidade.style.display = 'block';
+            return false;
+        } else if (uf.value.length < 2) {
+            spanUf.style.display = 'block';
+            return false;
+        } else if (inputNome.length <= 3) {
+            nome_lavoura_span.style.display = 'block';
+            return false;
+        } else if (inputAreaCult <= 0) {
+            spanAreaCult.style.display = 'block';
+            return false;
+        } else if (!selecionadoArea) {
+            spanArea.style.display = 'block';
+            return false;
+        } else if (!selecionadoCafe) {
+            spanCafe.style.display = 'block';
+            return false;
+        } else {
+            sumirMensagem();
+            setTimeout(function () {
+                window.location.href = "../public/dashboard/dashboard.html";
+            }, 2000);
+        }
+    }
+
+</script>

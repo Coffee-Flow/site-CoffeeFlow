@@ -1,0 +1,248 @@
+body {
+  background-image: url(../assets/img/BackgroundCadEm/cadEmpresa.svg);
+  background-size: cover;
+}
+
+.content {
+  margin-top: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#cadastro_concluido {
+  align-self: center;
+  position: relative;
+  margin-bottom: -20px;
+  background-color: #925035;
+  padding: 5px 12px;
+  border-radius: 30px;
+  display: none;
+}
+
+#cadastro_concluido p {
+  font: 500 12px 'Poppins';
+  color: #EAE8DB;
+}
+
+.form-box {
+  width: 40%;
+  height: 80vh;
+  border-radius: 14px;
+  background-color: rgba(234, 232, 219, 0.30);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-box form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 360px;
+  gap: 16px;
+}
+
+.form-box>h1 {
+  font-size: 27px;
+  color: #053C11;
+  font-size: 27px;
+}
+
+.container-inputs {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-form {
+  border-radius: 44px;
+  background-color: #EAE8DB;
+  color: #925035;
+  border: 3px solid #053C11;
+  font: bold 17px 'Poppins';
+  padding: 0 20px;
+  height: 35px;
+  transition: padding 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.form-box form button {
+  padding: 0 20px;
+  height: 35px;
+}
+
+.form-box form button:hover {
+  padding: 0 30px;
+  color: #053C11;
+}
+
+.btn-form:hover {
+  padding: 0 30px;
+  color: #053C11;
+  transition: padding 0.4s ease-in-out;
+}
+
+.form-box .label {
+  font: 500 16px 'Poppins';
+  color: #925035;
+  font-weight: bold;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form {
+  width: 320px;
+  height: 25px;
+  padding: 0 5px 0 0;
+  font: 400 16px 'Poppins'; 
+  background-color: transparent;
+  border: 0;
+  border-bottom: #053C11 solid 1px;
+  outline: none;
+  color: #925035;
+  cursor: pointer;
+  transition: top 1s ease-in-out;
+}
+
+.form-box .input-form::placeholder {
+  color: rgba(146, 80, 53, 1);
+}
+
+.content .lineVector {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(-0.2rem);
+  transition: 350ms;
+}
+
+.input-form:focus~.label,
+input-form:valid~.label,
+.mostrar-email {
+  transform: translateY(-96%) scale(1);
+}
+
+
+.subir-label {
+  transform: translateY(-96%) scale(1);
+}
+
+.span-required {
+  font: 400 12px 'Poppins';
+  color: red;
+  display: none;
+}
+
+#senha_requisitos {
+  width: 290px;
+  background-color: #D9A30B;
+  font: 400 13px 'Poppins';
+  line-height: 18px;
+  border-radius: 15px;
+  padding: 20px 35px 20px 40px;
+  position: absolute;
+  right: 115px;
+  bottom: 29px;
+  text-align: justify;
+  display: none;
+}
+
+#olho_aberto_main,
+#olho_aberto_copia {
+  display: none;
+}
+
+#olho_fechado_main,
+#olho_aberto_main,
+#olho_fechado_copia,
+#olho_aberto_copia {
+  cursor: pointer;
+  width: 30px;
+}
+
+.olho {
+  width: 20px;
+  position: relative;
+  right: 8px;
+}
+
+/* .content{
+  margin-top: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-box{
+  width: 519px;
+  height: 500px;
+  border-radius: 14px;
+  background-color: #053C11;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-box form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 320px;
+}
+
+.form-box>h1{
+  font-size: 27px;
+  color: #EAE8DB;
+}
+
+.form-box form button{
+  width: 150px;
+  height: 41px;
+  border-radius: 44px;
+  background-color: #EAE8DB;
+  color: #053C11;
+  border: 3px solid #D9A30B;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.form-box>button{
+  width: 200px;
+  height: 33px;
+  border-radius: 44px;
+  background-color: transparent;
+  color: #EAE8DB;
+  border: 2px solid #D9A30B;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.input-form{
+  width: 334px;
+  height: 35px;
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold;
+  background-color: transparent;
+  border: 0;
+  border-bottom: #EAE8DB solid 1px;
+  outline: none;
+  color: #EAE8DB;
+  cursor: pointer;
+} */

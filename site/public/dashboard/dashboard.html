@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Sua empresa</title>
+
+  <link rel="shortcut icon" href="../img/Logo/CoffeeFlowLogo.svg" type="image/x-icon" />
+
+  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="../menu.css" />
+  <link rel="stylesheet" href="dash.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="../script.js"></script>
+</head>
+
+<body>
+  <header>
+    <ul class="ul-header">
+      <div id="mySidenav" class="sidenav">
+        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="content">
+          <img src="../img/SideBarDashboard/icon.svg" />
+          <h3>Jorge</h3>
+          <img style="width: 200px" src="../img/SideBarDashboard/linha.svg" />
+          <div class="options">
+            <div class="dash-export">
+              <div class="container">
+
+                <div class="filtro">
+                  <h4>Monitoramento</h4>
+                  <div class="div-periodo">
+                    <b>Período</b>
+                    <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
+                      <option>Hoje</option>
+                      <option>Ontem</option>
+                      <option>Última semana</option>
+                      <option>Últimos 30 dias</option>
+                      <option>Últimos 6 meses</option>
+                      <option>Últimos 12 meses</option>
+                      <option value="Personalizado">Personalizado</option>
+                    </select>
+                  </div>
+
+                  <div class="divs-dates" id="divs_dates">
+                    <div>
+                      <b>Data Mínima</b>
+                      <input type="date">
+                    </div>
+                    <div>
+                      <b>Data Máxima</b>
+                      <input type="date">
+                    </div>
+                  </div>
+                  <button id="btn">Filtrar</button>
+
+                  <div class="div-exportacao">
+                    <b>Exportar Dashboard</b>
+                    <select class="select-export">
+                      <option value="">CSV</option>
+                      <option value="">XLS</option>
+                      <option value="">Relatórios exportados</option>
+                    </select>
+                    <a href="https://docs.google.com/spreadsheets/d/1FJqMQo1yTkB6_d2RwS3vEYMuvBa5YM_7pDU6-PUdvyI/edit#gid=213062297"  class="btn-Export">
+                      <p>Exportar</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <span><img src="../img/SideBarDashboard/help.svg">Ajuda</span>
+              <span><img src="../img/SideBarDashboard/exit.svg">Sair</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+      <li>
+        <img src="../img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" />
+      </li>
+      <!-- <li><a href="siteInstitucional/siteInstitucional.html" style="text-decoration: none;"><button class="btn btn-header" style="cursor: pointer;">INÍCIO</button></a></li> -->
+      <li>
+        <button onclick="href('siteInstitucional/siteInstitucional')" class="btn btn-header" style="cursor: pointer">
+          INÍCIO
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <div class="content">
+    <div class="section1">
+      <div class="grafico">
+        <canvas id="temperatura"></canvas>
+      </div>
+      <div class="grafico">
+        <canvas id="umidade"></canvas>
+      </div>
+    </div>
+    <div class="section2">
+      <div class="quadra3">
+        <h1>Métricas - Café Arábico</h1>
+        <div id="metricas" class="metricas">
+          <h2>Temperatura do solo</h2>
+          <div class="temp">
+            <div class="linha">
+              <span>10°C</span>
+              <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>22C°</p>
+              <span>34°C</span>
+            </div>
+          </div>
+          <h2>Umidade do solo</h2>
+          <div class="humidity">
+            <div class="linha">
+              <span>50%</span>
+              <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>75%</p>
+              <span>97%
+
+              </span>
+            </div>
+          </div>
+        </div>
+        <h1>Notificações</h1>
+        <div id="notify">
+          <img id="humidity" src="../img/dashboard/notifyHumiIdeal.svg">
+          <img id="temp" src="../img/dashboard/notifyTempIdeal.svg">
+        </div>
+
+      </div>
+      <div class="kpi">
+        <h1>Tudo o que você precisa saber</h1>
+        <div class="linha1">
+          <div class="elipse temp-interna">
+            <h2 id="tempAtual">22°C</h2>
+            <h3>Temperatura Interna atual</h3>
+          </div>
+          <div class="elipse temp-maxima">
+            <h2>26°C</h2>
+            <h3>Temperatura Máxima do mês</h3>
+          </div>
+          <div class="elipse temp-minima">
+            <h2>15°C</h2>
+            <h3>Temperatura Mínima do mês</h3>
+          </div>
+        </div>
+        <div class="linha2" style="border-top: 3px dashed #666666">
+          <!-- <div class="umidade">
+                  <figure class="highcharts-figure">
+                      <div id="container-menorUmi" class="chart-container"></div>
+                    </figure>
+                    <h3>Menor nível de umidade no mês</h3>
+              </div>
+              <div class="umidade">
+                <figure class="highcharts-figure">
+                    <div id="container-atualUmi" class="chart-container"></div>
+                </figure>
+                <h3>Umidade relativa do ar</h3>
+              </div> -->
+          <div class="umidade">
+            <canvas id="atualUmi"></canvas>
+            <h1 id="atualUmidade"></h1>
+            <h2>Umidade Atual</h2>
+          </div>
+          <div class="umidade">
+            <canvas id="maiorUmi"></canvas>
+            <h1 id="maiorUmidade"></h1>
+            <h2>Maior Umidade no mês</h2>
+          </div>
+          <div class="umidade">
+            <canvas id="menorUmi"></canvas>
+            <h1 id="menorUmidade"></h1>
+            <h2>Menor Umidade no mês</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  //ChartJS Temperatura e Umidade
+  const graficoTemperatura = document.getElementById("temperatura");
+  const graficoUmidade = document.getElementById("umidade");
+
+  const legenda = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+
+  Chart.defaults.font.family = "'Poppins'";
+
+  const dadosTemperatura = {
+    labels: legenda,
+    datasets: [
+      {
+        label: "Temperatura Interna",
+        data: [18, 19, 20, 19, 20, 18],
+        borderColor: "#24211a",
+        backgroundColor: "#24211a",
+      },
+      {
+        label: "Temperatura Externa",
+        data: [24, 25, 25, 26, 24, 23],
+        borderColor: "#547625",
+        backgroundColor: "#547625",
+      },
+    ],
+  };
+
+  const configTemperatura = {
+    type: "line",
+    data: dadosTemperatura,
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "Temperatura (°C)",
+          align: "start",
+          font: {
+            size: 20,
+            family: "'Poppins'",
+          },
+        },
+        legend: {
+          labels: {
+            font: {
+              size: 12,
+              family: "'Poppins'",
+            },
+          },
+        },
+      },
+    },
+  };
+
+  const dadosUmidade = {
+    labels: legenda,
+    datasets: [
+      {
+        label: "Umidade",
+        data: [13, 12, 13, 15, 14, 13],
+        borderColor: "rgb(54,162,235)",
+        backgroundColor: "rgb(54,162,235)",
+      },
+    ],
+  };
+
+  const configUmidade = {
+    type: "line",
+    data: dadosUmidade,
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "Umidade (%)",
+          align: "start",
+          font: {
+            size: 20,
+            family: "'Poppins'",
+          },
+        },
+        legend: {
+          labels: {
+            font: {
+              size: 14,
+              family: "'Poppins'",
+            },
+          },
+        },
+      },
+    },
+  };
+
+  new Chart(graficoTemperatura, configTemperatura);
+  new Chart(graficoUmidade, configUmidade);
+</script>
+<script>
+  //Highcharts Chart de umidade
+
+  var gaugeOptions = {
+    chart: {
+      type: "solidgauge",
+    },
+
+    title: null,
+
+    pane: {
+      center: ["50%", "85%"],
+      size: "100%",
+      startAngle: -90,
+      endAngle: 90,
+      background: {
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || "#EEE",
+        innerRadius: "60%",
+        outerRadius: "100%",
+        shape: "arc",
+      },
+    },
+
+    exporting: {
+      enabled: false,
+    },
+
+    tooltip: {
+      enabled: false,
+    },
+
+    // the value axis
+    yAxis: {
+      stops: [
+        [0.1, "#8AC6FE"], // cyan
+        [0.5, "#DDDF0D"], // yellow
+        [0.9, "#DF5353"], // red
+      ],
+      lineWidth: 0,
+      tickWidth: 0,
+      minorTickInterval: null,
+      tickAmount: 2,
+      title: {
+        y: -40,
+      },
+      labels: {
+        y: 16,
+      },
+    },
+
+    plotOptions: {
+      solidgauge: {
+        dataLabels: {
+          y: 5,
+          borderWidth: 0,
+          useHTML: true,
+        },
+      },
+    },
+  };
+
+  // The speed gauge
+  var chartSpeed = Highcharts.chart(
+    "container-menorUmi",
+    Highcharts.merge(gaugeOptions, {
+      yAxis: {
+        min: 0,
+        max: 100,
+        title: {
+          text: "",
+          style: {
+            fontSize: 12,
+            fontWeight: "bold",
+            color: "#000",
+          },
+        },
+        labels: {
+          enabled: false,
+        },
+      },
+
+      credits: {
+        enabled: false,
+      },
+
+      series: [
+        {
+          name: "Umidade",
+          data: [40],
+          dataLabels: {
+            format:
+              '<div style="text-align:center">' +
+              '<span style="font-size:20px">{y}%</span><br/>' +
+              "</div>",
+          },
+          tooltip: {
+            valueSuffix: " %",
+          },
+        },
+      ],
+    })
+  );
+
+  // Umidade atual
+  var gaugeOptions = {
+    chart: {
+      type: "solidgauge",
+    },
+
+    title: null,
+
+    pane: {
+      center: ["50%", "85%"],
+      size: "100%",
+      startAngle: -90,
+      endAngle: 90,
+      background: {
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || "#EEE",
+        innerRadius: "60%",
+        outerRadius: "100%",
+        shape: "arc",
+      },
+    },
+
+    exporting: {
+      enabled: false,
+    },
+
+    tooltip: {
+      enabled: false,
+    },
+
+    // the value axis
+    yAxis: {
+      stops: [
+        [0.1, "#8AC6FE"], // cyan
+        [0.5, "#DDDF0D"], // yellow
+        [0.9, "#DF5353"], // red
+      ],
+      lineWidth: 0,
+      tickWidth: 0,
+      minorTickInterval: null,
+      tickAmount: 2,
+      title: {
+        y: -40,
+      },
+      labels: {
+        y: 16,
+      },
+    },
+
+    plotOptions: {
+      solidgauge: {
+        dataLabels: {
+          y: 5,
+          borderWidth: 0,
+          useHTML: true,
+        },
+      },
+    },
+  };
+
+  // The speed gauge
+  var chartSpeed = Highcharts.chart(
+    "container-atualUmi",
+    Highcharts.merge(gaugeOptions, {
+      yAxis: {
+        min: 0,
+        max: 100,
+        title: {
+          text: "",
+          style: {
+            fontSize: 12,
+            fontWeight: "bold",
+            color: "#000",
+          },
+        },
+        labels: {
+          enabled: false,
+        },
+      },
+
+      credits: {
+        enabled: false,
+      },
+
+      series: [
+        {
+          name: "Umidade",
+          data: [21],
+          dataLabels: {
+            format:
+              '<div style="text-align:center">' +
+              '<span style="font-size:20px">{y}%</span><br/>' +
+              "</div>",
+          },
+          tooltip: {
+            valueSuffix: " %",
+          },
+        },
+      ],
+    })
+  );
+</script>
+<script>
+  //ChartJS Umidade (pizza ao meio)
+  const pizzaUmidadeMim = document.getElementById("menorUmi");
+  const pizzaUmidadeMax = document.getElementById("maiorUmi");
+  const pizzaUmidadeAtual = document.getElementById("atualUmi");
+
+  Chart.defaults.color = "#666666"
+
+  const umidadeBaixa = 46;
+
+  const dataPizzaMenor = {
+    labels: ["Umidade (%)"],
+    datasets: [
+      {
+        label: "Umidade",
+        data: [umidadeBaixa, 100 - umidadeBaixa],
+        backgroundColor: [
+          "#ffff60",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  const configPizzaMenor = {
+    type: "doughnut",
+    data: dataPizzaMenor,
+  };
+
+  menorUmidade.innerHTML = umidadeBaixa + "%";
+
+  const umidadeAlta = 99;
+
+  const dataPizzaMaior = {
+    labels: ["Umidade (%)"],
+    datasets: [
+      {
+        label: "Umidade",
+        data: [umidadeAlta, 100 - umidadeAlta],
+        backgroundColor: [
+          "#007a7a",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  const configPizzaMaior = {
+    type: "doughnut",
+    data: dataPizzaMaior,
+  };
+
+  maiorUmidade.innerHTML = umidadeAlta + "%";
+
+  const umidadeAtual = 75;
+
+  const dataPizzaAtual = {
+    labels: ["Umidade (%)"],
+    datasets: [
+      {
+        label: "Umidade",
+        data: [umidadeAtual, 100 - umidadeAtual],
+        backgroundColor: [
+          "#20db74",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  const configPizzaAtual = {
+    type: "doughnut",
+    data: dataPizzaAtual,
+  };
+
+  atualUmidade.innerHTML = umidadeAtual + "%";
+
+
+  new Chart(pizzaUmidadeMim, configPizzaMenor);
+  new Chart(pizzaUmidadeMax, configPizzaMaior);
+  const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
+</script>
+<script>
+  //Notificações
+
+  setInterval(function notificar() {
+    x = (Math.random() * 12 + 15).toFixed(0);
+    y = (Math.random() * 10 + 70).toFixed(0);
+
+    tempAtual.innerText = x + "°C";
+
+    var temperatura = "";
+    var temperaturaText = tempAtual.innerHTML;
+
+    var i = 0;
+
+    while (i <= temperaturaText.length - 1) {
+      if (!isNaN(temperaturaText[i])) {
+        temperatura += temperaturaText[i];
+      }
+      i++;
+    }
+    temperatura = Number(temperatura);
+
+    if (x <= 10) {
+      temp.src = "../img/dashboard/notifyTempLow";
+      tempAtual.style.color = "#7afdff";
+      temp.classList.add('animate');
+    } else if (x <= 15) {
+      temp.src = "../img/dashboard/notifyTempLowAlert.svg";
+      tempAtual.style.color = "#9cdbc0";
+      temp.classList.remove('animate');
+    } else if (x < 27) {
+      temp.src = "../img/dashboard/notifyTempIdeal.svg";
+      tempAtual.style.color = "#bdc771";
+      temp.classList.remove('animate');
+    } else if (x < 34) {
+      temp.src = "../img/dashboard/notifyTempHighAlert.svg";
+      tempAtual.style.color = "#c9b167";
+      temp.classList.remove('animate');
+    } else {
+      temp.src = "../img/dashboard/notifyTempHigh.svg";
+      tempAtual.style.color = "#ff7200";
+      temp.classList.add('animate');
+    }
+
+
+    if (x < 10 || x > 34) {
+      id_ponteiroTemperatura.innerHTML = `|<br>|`
+      var razao = (x - 22) * 4;
+      console.log(razao.toString().charAt(0))
+      if (razao.toString().charAt(0) == "-") {
+        id_ponteiroTemperatura.style.left = "-" + 50 + "%"
+      } else {
+        id_ponteiroTemperatura.style.left = 50 + "%"
+      }
+    } else {
+      id_ponteiroTemperatura.style.left = ((x - 22) * 4 + "%")
+      id_ponteiroTemperatura.style.opacity = 1
+      id_ponteiroTemperatura.innerHTML = `|<br>`
+      if (x != 10 && x != 34) {
+        id_ponteiroTemperatura.innerHTML += `${x}°C`
+      } else {
+        id_ponteiroTemperatura.innerHTML += `|`
+      }
+    }
+
+    if (y <= 50) {
+      humidity.src = "../img/dashboard/notifyHumiLow.svg";
+      umidade.data.datasets[0].backgroundColor = ["#ffff60", "#EAE8DB"];
+      humidity.classList.add('animate');
+    } else if (y <= 60) {
+      humidity.src = "../img/dashboard/notifyHumiLowAlert.svg";
+      umidade.data.datasets[0].backgroundColor = ["#a0ff67", "#EAE8DB"];
+      humidity.classList.remove('animate');
+    } else if (y <= 80) {
+      humidity.src = "../img/dashboard/notifyHumiIdeal.svg";
+      umidade.data.datasets[0].backgroundColor = ["#20db74", "#EAE8DB"];
+      humidity.classList.remove('animate');
+    } else if (y <= 97) {
+      humidity.src = "../img/dashboard/notifyHumiHighAlert.svg";
+      umidade.data.datasets[0].backgroundColor = ["#109c77", "#EAE8DB"];
+      humidity.classList.remove('animate');
+    } else {
+      humidity.src = "../img/dashboard/notifyHumiHigh.svg";
+      umidade.data.datasets[0].backgroundColor = ["#007a7a", "#EAE8DB"];
+      humidity.classList.add('animate');
+    }
+
+    atualUmidade.innerHTML = y + "%";
+
+    if (y < 50 || y > 97) {
+      id_ponteiroUmidade.innerHTML = `|<br>|`
+      if (y.toString().includes("-")) {
+        id_ponteiroUmidade.style.left = -50 + "%";
+      } else {
+        id_ponteiroUmidade.style.left = 50 + "%";
+      }
+    } else {
+      id_ponteiroUmidade.style.left = (y - 75) * 5 + "%";
+      id_ponteiroUmidade.style.opacity = 1
+      id_ponteiroUmidade.innerHTML = `|<br>`
+      if (y != 50 && y != 97) {
+        id_ponteiroUmidade.innerHTML += `${y}%`
+      } else {
+        id_ponteiroUmidade.innerHTML += `|`
+      }
+    }
+
+
+
+
+
+    umidade.data.datasets[0].data = [y, 100 - y];
+    umidade.update();
+
+
+
+  }, 5000);
+
+
+  // função para o filtro
+  function exibir(option) {
+    if (option.value == "Personalizado") {
+      document.getElementById("divs_dates").style.display = "flex";
+    } else {
+      document.getElementById("divs_dates").style.display = "none";
+    }
+  }
+
+
+</script>
