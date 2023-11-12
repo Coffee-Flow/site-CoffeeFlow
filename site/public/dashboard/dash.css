@@ -1,5 +1,9 @@
 body {
   background-color: #EAE8DB;
+  background-image: url("../assets/img/Section1/imgGraosCafe.svg");
+}
+.ul-header {
+    padding: 0;
 }
 .sidenav {
     height: 100%;
@@ -113,17 +117,23 @@ body {
   .sidenav .content .options span img{
     width: 21px;
   }
+  body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  body, html{
+    height: 100%;
+    width: 100%;
+  } 
+  .content .section1, .content .section2{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+  }
 
-  .content .section1{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 10px;
-  }
-  .content .section2{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 10px;
-  }
   .content .section2 h1{
     font-size: 20px;
     color: #666666;
@@ -131,9 +141,12 @@ body {
   }
   .content>div>div{
     padding: 10px 20px 10px 20px;
-    width: 45%;
+    width: 40%;
     background-color: white;
     border-radius: 38px;
+  }
+  body>.content>div>div{
+    border: 2px #925035 solid;
   }
   .content .section2 .quadra3{
     display: flex;
@@ -185,14 +198,16 @@ body {
   .content .section2 .quadra3 .metricas .temp .linha span{
     margin-top: 28px;
   }
-
+  .content .section2 .quadra3 h1:nth-child(3){
+    margin-top: 20px;
+  }
   .content .section2 .quadra3 #notify{
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
   .content .section2 .quadra3 #notify img{
-    width: 40%;
+    width: 45%;
   }
   .animate {
     animation: animate 0.9s linear infinite;
@@ -219,10 +234,8 @@ body {
     justify-content: space-evenly;
   }
   .content .section2 .kpi>div .elipse{
-    /* border: 3px #000 solid; */
-    /* border-radius: 100px; */
-    height: 130px;
-    width: 130px;
+    height: 100px;
+    width: 100px;
   }
   .content .section2 .kpi>div .elipse{
     display: flex;
@@ -235,12 +248,13 @@ body {
     font-size: 40px;
   }
   .content .section2 .kpi>div .elipse h3{
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
     color: #666666;
   }
   .content .section2 .kpi .umidade{
     margin: 0;
+    margin-top: -35px;
     width: 150px;
     text-align: center;
   }
@@ -251,7 +265,7 @@ body {
     margin-top: -50px;
   }
   .content .section2 .kpi .umidade h2{
-    font-size: 15px;
+    font-size: 13px;
     color: #666666;
     width: 100%;
     font-weight: 500;

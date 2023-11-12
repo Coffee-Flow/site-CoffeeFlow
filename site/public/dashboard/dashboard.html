@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard - Sua empresa</title>
 
-  <link rel="shortcut icon" href="../img/Logo/CoffeeFlowLogo.svg" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon" />
 
-  <link rel="stylesheet" href="login.css" />
-  <link rel="stylesheet" href="../menu.css" />
+  <!-- <link rel="stylesheet" href="login.css" /> -->
+  <link rel="stylesheet" href="../css/menu.css" />
   <link rel="stylesheet" href="dash.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -19,7 +19,7 @@
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  <script src="../script.js"></script>
+  <script src="../js/script.js"></script>
 </head>
 
 <body>
@@ -28,9 +28,9 @@
       <div id="mySidenav" class="sidenav">
         <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="content">
-          <img src="../img/SideBarDashboard/icon.svg" />
+          <img src="../assets/img/SideBarDashboard/icon.svg" />
           <h3>Jorge</h3>
-          <img style="width: 200px" src="../img/SideBarDashboard/linha.svg" />
+          <img style="width: 200px" src="../assets/img/SideBarDashboard/linha.svg" />
           <div class="options">
             <div class="dash-export">
               <div class="container">
@@ -75,23 +75,22 @@
                   </div>
                 </div>
               </div>
-              <span><img src="../img/SideBarDashboard/help.svg">Ajuda</span>
-              <span><img src="../img/SideBarDashboard/exit.svg">Sair</span>
+              <span><img src="../assets/img/SideBarDashboard/help.svg">Ajuda</span>
+              <span><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
             </div>
           </div>
         </div>
       </div>
 
-      <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+      <!-- <span class="menu-toggle" onclick="openNav()">&#9776;</span>
       <li>
-        <img src="../img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" />
+        <img src="../assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" />
       </li>
-      <!-- <li><a href="siteInstitucional/siteInstitucional.html" style="text-decoration: none;"><button class="btn btn-header" style="cursor: pointer;">INÍCIO</button></a></li> -->
       <li>
-        <button onclick="href('siteInstitucional/siteInstitucional')" class="btn btn-header" style="cursor: pointer">
+        <button onclick="href('siteInstitucional')" class="btn btn-header" style="cursor: pointer">
           INÍCIO
         </button>
-      </li>
+      </li> -->
     </ul>
   </header>
 
@@ -129,8 +128,8 @@
         </div>
         <h1>Notificações</h1>
         <div id="notify">
-          <img id="humidity" src="../img/dashboard/notifyHumiIdeal.svg">
-          <img id="temp" src="../img/dashboard/notifyTempIdeal.svg">
+          <img id="humidity" src="../assets/img/dashboard/notifyHumiIdeal.svg">
+          <img id="temp" src="../assets/img/dashboard/notifyTempIdeal.svg">
         </div>
 
       </div>
@@ -496,7 +495,6 @@
   const umidadeBaixa = 46;
 
   const dataPizzaMenor = {
-    labels: ["Umidade (%)"],
     datasets: [
       {
         label: "Umidade",
@@ -522,7 +520,6 @@
   const umidadeAlta = 99;
 
   const dataPizzaMaior = {
-    labels: ["Umidade (%)"],
     datasets: [
       {
         label: "Umidade",
@@ -548,7 +545,6 @@
   const umidadeAtual = 75;
 
   const dataPizzaAtual = {
-    labels: ["Umidade (%)"],
     datasets: [
       {
         label: "Umidade",
@@ -599,23 +595,23 @@
     temperatura = Number(temperatura);
 
     if (x <= 10) {
-      temp.src = "../img/dashboard/notifyTempLow";
+      temp.src = "../assets/img/dashboard/notifyTempLow";
       tempAtual.style.color = "#7afdff";
       temp.classList.add('animate');
     } else if (x <= 15) {
-      temp.src = "../img/dashboard/notifyTempLowAlert.svg";
+      temp.src = "../assets/img/dashboard/notifyTempLowAlert.svg";
       tempAtual.style.color = "#9cdbc0";
       temp.classList.remove('animate');
     } else if (x < 27) {
-      temp.src = "../img/dashboard/notifyTempIdeal.svg";
+      temp.src = "../assets/img/dashboard/notifyTempIdeal.svg";
       tempAtual.style.color = "#bdc771";
       temp.classList.remove('animate');
     } else if (x < 34) {
-      temp.src = "../img/dashboard/notifyTempHighAlert.svg";
+      temp.src = "../assets/img/dashboard/notifyTempHighAlert.svg";
       tempAtual.style.color = "#c9b167";
       temp.classList.remove('animate');
     } else {
-      temp.src = "../img/dashboard/notifyTempHigh.svg";
+      temp.src = "../assets/img/dashboard/notifyTempHigh.svg";
       tempAtual.style.color = "#ff7200";
       temp.classList.add('animate');
     }
@@ -642,23 +638,23 @@
     }
 
     if (y <= 50) {
-      humidity.src = "../img/dashboard/notifyHumiLow.svg";
+      humidity.src = "../assets/img/dashboard/notifyHumiLow.svg";
       umidade.data.datasets[0].backgroundColor = ["#ffff60", "#EAE8DB"];
       humidity.classList.add('animate');
     } else if (y <= 60) {
-      humidity.src = "../img/dashboard/notifyHumiLowAlert.svg";
+      humidity.src = "../assets/img/dashboard/notifyHumiLowAlert.svg";
       umidade.data.datasets[0].backgroundColor = ["#a0ff67", "#EAE8DB"];
       humidity.classList.remove('animate');
     } else if (y <= 80) {
-      humidity.src = "../img/dashboard/notifyHumiIdeal.svg";
+      humidity.src = "../assets/img/dashboard/notifyHumiIdeal.svg";
       umidade.data.datasets[0].backgroundColor = ["#20db74", "#EAE8DB"];
       humidity.classList.remove('animate');
     } else if (y <= 97) {
-      humidity.src = "../img/dashboard/notifyHumiHighAlert.svg";
+      humidity.src = "../assets/img/dashboard/notifyHumiHighAlert.svg";
       umidade.data.datasets[0].backgroundColor = ["#109c77", "#EAE8DB"];
       humidity.classList.remove('animate');
     } else {
-      humidity.src = "../img/dashboard/notifyHumiHigh.svg";
+      humidity.src = "../assets/img/dashboard/notifyHumiHigh.svg";
       umidade.data.datasets[0].backgroundColor = ["#007a7a", "#EAE8DB"];
       humidity.classList.add('animate');
     }
@@ -704,5 +700,19 @@
     }
   }
 
+
+</script>
+<script>//tecla para abrir o menu
+window.onkeyup = function(event) {
+    let key = event.key.toUpperCase();
+    console.log(key)
+    if (key == 'ESCAPE') {
+        if(document.getElementById("mySidenav").style.width == "0px"){
+          openNav();
+        }else{
+          closeNav();
+        }
+    }
+}
 
 </script>
