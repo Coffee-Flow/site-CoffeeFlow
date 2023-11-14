@@ -8,6 +8,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
+
 // Botões Section 3 - siteInstitucional
 
 var container1 = document.getElementById('container1');
@@ -265,5 +266,4 @@ function div_non() {
     div_n.innerHTML = "";
     div_o.innerHTML = "*Nossa equipe irá retirar o seu sistema de irrigação e instalará um sistema de irrigação por aspersão.";
     irrig.style.padding = '0 47px 0 51px';
-
 }

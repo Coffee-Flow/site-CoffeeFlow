@@ -19,15 +19,14 @@
                 <a href="sobreNos.html" class="links-sidenav"><img
                         src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
                 <a href="servicos.html" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
-                <!-- <a href="#" class="links-sidenav"><img src="assets/img/SideBar/Feedback.svg" alt="">Clientes</a> -->
-                <a href="siteInstitucional.html#footer" class="links-sidenav"><img src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
+                <a href="index.html#footer" class="links-sidenav"><img src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
                 <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
                         alt="">Cotação</a>
             </div>
 
             <span class="menu-toggle" onclick="openNav()">&#9776;</span>
             <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" style="margin-left: 72px;"></li>
-            <li><button onclick="href('siteInstitucional')" class="btn btn-header"
+            <li><button onclick="href('index')" class="btn btn-header"
                     style="cursor: pointer;">INÍCIO</button></li>
         </ul>
     </header>
@@ -37,7 +36,6 @@
         </div>
         <div class="form-box">
             <h1>Primeiro Acesso</h1>
-            <!-- <form onsubmit="return impedirEnvioCadastro()" id="form" autocomplete="off"> -->
             <div class="container-inputs">
                 <div class="input-group">
                     <input id="nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)"
@@ -54,10 +52,15 @@
                 </div>
 
                 <div class="input-group">
-                    <input id="cpf" class="input-form required" onfocus="limpar(this, cpfL)"
-                        onblur="limpar(this, cpfL)">
+                    <input maxlength="14" id="cpf" class="input-form required" onfocus="limpar(this, cpfL)"
+                        onblur="limpar(this, cpfL)" oninput="mascara(this)">
                     <label class="label" id="cpfL" for="cpf">CPF</label>
                     <span id="span_cpf" class="span-required">*O CPF deve conter 11 a 12 caracteres</span>
+                </div>
+
+                <div class="input-group">
+                    <input id="chaveEmpresa" class="input-form required">
+                    <label class="label" id="empresaL" for="empresa">Chave da empresa</label>
                 </div>
 
                 <div class="input-group">
@@ -89,7 +92,6 @@
                 </div>                
             </div>
                 <button class="btn-form" onclick="validarForm()" >Cadastrar-se</button>
-            <!-- </form> -->
             <div class="lineVector">
                 <img src="assets/img/Vectors/greenLine.svg">
                 <button class="btn-form" onclick="href('login')">Login</button>
@@ -121,8 +123,9 @@
         var spanNomeCompleto = document.getElementById('span_nome');
         var emailInsti = document.getElementById('email').value;
         var spanEmailInsti = document.getElementById('span_email');
+        var empresa = document.getElementById('chaveEmpresa').value;
         var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?$/;
-        // var cpf = document.getElementById('cpf').value;
+        var cpf = document.getElementById('cpf').value;
         var spanCpf = document.getElementById('span_cpf');
         var senhaPrincipal = document.getElementById('senha_main').value;
         var spanSenhaPrincipal = document.getElementById('span_senha_main');
@@ -137,7 +140,7 @@
         } else if (!emailRegex.test(emailInsti)) {
             spanEmailInsti.style.display = 'block';
             return false;
-        } else if (cpf.value.length < 11 || cpf.value.length > 14) {
+        } else if (cpf.length < 11 || cpf.length > 14) {
             spanCpf.style.display = 'block';
             return false;
         } else if (!senhaRegex.test(senhaPrincipal)) {
@@ -148,9 +151,41 @@
             return false;
         } else {
             sumirMensagem();
-            setTimeout(function () {
-                window.location.href = "login.html";
-            }, 2000);
+            // setTimeout(function () {
+            //     window.location.href = "login.html";
+            // }, 2000);
         }
+        
+        fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nomeServer: nomeCompleto,
+            emailServer: emailInsti,
+            cpfServer: cpf,
+            senhaServer: senhaPrincipal,
+            empresaServer: empresa
+          }),
+        }).then(function (resposta){
+            if(resposta.status == 200){
+                window.location.href = "login.html";
+            }
+        })
     }
+    
+    //Máscara no CPF
+    function mascara(i){ 
+        var v = i.value;
+
+        if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+           i.value = v.substring(0, v.length-1);
+           return;
+        }
+
+        i.setAttribute("maxlength", "14");
+        if (v.length == 3 || v.length == 7) i.value += ".";
+        if (v.length == 11) i.value += "-";
+}
 </script>

@@ -22,7 +22,7 @@
                 <a href="sobreNos.html" class="links-sidenav"><img
                         src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
                 <a href="servicos.html" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
-                <a href="siteInstitucional.html#footer" class="links-sidenav"><img
+                <a href="index.html#footer" class="links-sidenav"><img
                         src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
                 <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
                         alt="">Cotação</a>
@@ -32,7 +32,7 @@
             <!-- NavBar -->
 
             <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" style="margin-left: 72px;"></li>
-            <li><a href="#" style="text-decoration: none;"><button onclick="href('public/siteInstitucional')"
+            <li><a href="#" style="text-decoration: none;"><button onclick="href('index')"
                         class="btn btn-header">INÍCIO</button></a></li>
         </ul>
     </header>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="input-group">
                     <input id="cnpj" class="input-form required" onfocus="limpar(this, cnpjL)"
-                        onblur="limpar(this, cnpjL)">
+                        onblur="limpar(this, cnpjL)" maxlength="18">
                     <label class="label" class="label" for="cnpj" id="cnpjL">CNPJ</label>
                     <span id="span_cnpj" class="span-required">*O CNPJ deve ter 14 dígitos
                     </span>
@@ -87,6 +87,18 @@
 </html>
 <script>
 
+    //Máscara cnpj
+    cnpj.addEventListener("keypress", () => {
+    let inputLength = cnpj.value.length    
+    if (inputLength == 2 || inputLength == 6) {
+        cnpj.value += ".";
+    } else if (inputLength == 10) {
+        cnpj.value += "/";
+    } else if (inputLength == 15) {
+        cnpj.value += "-";
+    }
+    });
+
     function validarForm() {
         var nomeEmpresa = document.getElementById('nomeEmp').value;
         var spanNomeEmpresa = document.getElementById('span_nomeEmp');
@@ -107,21 +119,38 @@
         } else if (razaoSocial.length < 6) {
             spanRazaoSocial.style.display = 'block';
             return false;
-        } else if (cnpj.length != 14) {
+        } else if (cnpj.length != 18) {
             spanCnpj.style.display = 'block';
             return false;
         } else if (!emailRegex.test(emailCorp)) {
             spanEmailCorp.style.display = 'block';
             return false;
-        } else if (telCom.length < 8 || telCom.length > 11) {
+        } else if (telCom.length < 8 || telCom.length > 15) {
             spanTelCom.style.display = 'block';
             return false;
         } else {
             sumirMensagem();
-            setTimeout(function () {
-                window.location.href = "login.html";
-            }, 2000);
+            // setTimeout(function () {
+            //     window.location.href = "login.html";
+            // }, 2000);
         }
+        fetch("/empresas/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nomeEmpresaServer: nomeEmpresa,
+            razaoSocialServer: razaoSocial,
+            cnpjServer: cnpj,
+            emailServer: emailCorp,
+            telComServer: telCom
+          }),
+        }).then(function (resposta){
+            if(resposta.status == 200){
+                window.location.href = "login.html";
+            }
+        })
     }
 
 </script>

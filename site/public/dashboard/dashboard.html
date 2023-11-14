@@ -20,16 +20,18 @@
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/sessao.js"></script>
+  <script src="../js/dashboard.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
   <header>
     <ul class="ul-header">
-      <div id="mySidenav" class="sidenav">
+      <div id="mySidenav" class="sidenav" style="width: 15px;">
         <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="content">
           <img src="../assets/img/SideBarDashboard/icon.svg" />
-          <h3>Jorge</h3>
+          <h3 id="nome" onload="nomeSessao()"></h3>
           <img style="width: 200px" src="../assets/img/SideBarDashboard/linha.svg" />
           <div class="options">
             <div class="dash-export">
@@ -76,9 +78,11 @@
                 </div>
               </div>
               <span><img src="../assets/img/SideBarDashboard/help.svg">Ajuda</span>
-              <span><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
+              <span onclick="limparSessao()"><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
             </div>
           </div>
+        </div>
+        <div class="botaoSideNav" id="botaoSideNav" onmouseover="showNav()">
         </div>
       </div>
 
@@ -87,7 +91,7 @@
         <img src="../assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" />
       </li>
       <li>
-        <button onclick="href('siteInstitucional')" class="btn btn-header" style="cursor: pointer">
+        <button onclick="href('index')" class="btn btn-header" style="cursor: pointer">
           INÍCIO
         </button>
       </li> -->
@@ -120,9 +124,7 @@
             <div class="linha">
               <span>50%</span>
               <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>75%</p>
-              <span>97%
-
-              </span>
+              <span>97%</span>
             </div>
           </div>
         </div>
@@ -182,7 +184,6 @@
     </div>
   </div>
 </body>
-
 </html>
 <script>
   //ChartJS Temperatura e Umidade
@@ -277,305 +278,98 @@
 
   new Chart(graficoTemperatura, configTemperatura);
   new Chart(graficoUmidade, configUmidade);
-</script>
-<script>
-  //Highcharts Chart de umidade
 
-  var gaugeOptions = {
-    chart: {
-      type: "solidgauge",
-    },
 
-    title: null,
+//ChartJS Umidade (pizza ao meio)
+const pizzaUmidadeMim = document.getElementById("menorUmi");
+const pizzaUmidadeMax = document.getElementById("maiorUmi");
+const pizzaUmidadeAtual = document.getElementById("atualUmi");
 
-    pane: {
-      center: ["50%", "85%"],
-      size: "100%",
-      startAngle: -90,
-      endAngle: 90,
-      background: {
-        backgroundColor:
-          Highcharts.defaultOptions.legend.backgroundColor || "#EEE",
-        innerRadius: "60%",
-        outerRadius: "100%",
-        shape: "arc",
-      },
-    },
+Chart.defaults.color = "#666666"
 
-    exporting: {
-      enabled: false,
-    },
+const umidadeBaixa = 46;
 
-    tooltip: {
-      enabled: false,
-    },
-
-    // the value axis
-    yAxis: {
-      stops: [
-        [0.1, "#8AC6FE"], // cyan
-        [0.5, "#DDDF0D"], // yellow
-        [0.9, "#DF5353"], // red
+const dataPizzaMenor = {
+  datasets: [
+    {
+      label: "Umidade",
+      data: [umidadeBaixa, 100 - umidadeBaixa],
+      backgroundColor: [
+        "#ffff60",
+        "#EAE8DB",
       ],
-      lineWidth: 0,
-      tickWidth: 0,
-      minorTickInterval: null,
-      tickAmount: 2,
-      title: {
-        y: -40,
-      },
-      labels: {
-        y: 16,
-      },
+      hoverOffset: 4,
+      circumference: 180,
+      rotation: -90,
     },
+  ],
+};
 
-    plotOptions: {
-      solidgauge: {
-        dataLabels: {
-          y: 5,
-          borderWidth: 0,
-          useHTML: true,
-        },
-      },
-    },
-  };
+const configPizzaMenor = {
+  type: "doughnut",
+  data: dataPizzaMenor,
+};
 
-  // The speed gauge
-  var chartSpeed = Highcharts.chart(
-    "container-menorUmi",
-    Highcharts.merge(gaugeOptions, {
-      yAxis: {
-        min: 0,
-        max: 100,
-        title: {
-          text: "",
-          style: {
-            fontSize: 12,
-            fontWeight: "bold",
-            color: "#000",
-          },
-        },
-        labels: {
-          enabled: false,
-        },
-      },
+menorUmidade.innerHTML = umidadeBaixa + "%";
 
-      credits: {
-        enabled: false,
-      },
+const umidadeAlta = 99;
 
-      series: [
-        {
-          name: "Umidade",
-          data: [40],
-          dataLabels: {
-            format:
-              '<div style="text-align:center">' +
-              '<span style="font-size:20px">{y}%</span><br/>' +
-              "</div>",
-          },
-          tooltip: {
-            valueSuffix: " %",
-          },
-        },
+const dataPizzaMaior = {
+  datasets: [
+    {
+      label: "Umidade",
+      data: [umidadeAlta, 100 - umidadeAlta],
+      backgroundColor: [
+        "#007a7a",
+        "#EAE8DB",
       ],
-    })
-  );
-
-  // Umidade atual
-  var gaugeOptions = {
-    chart: {
-      type: "solidgauge",
+      hoverOffset: 4,
+      circumference: 180,
+      rotation: -90,
     },
+  ],
+};
 
-    title: null,
+const configPizzaMaior = {
+  type: "doughnut",
+  data: dataPizzaMaior,
+};
 
-    pane: {
-      center: ["50%", "85%"],
-      size: "100%",
-      startAngle: -90,
-      endAngle: 90,
-      background: {
-        backgroundColor:
-          Highcharts.defaultOptions.legend.backgroundColor || "#EEE",
-        innerRadius: "60%",
-        outerRadius: "100%",
-        shape: "arc",
-      },
-    },
+maiorUmidade.innerHTML = umidadeAlta + "%";
 
-    exporting: {
-      enabled: false,
-    },
+const umidadeAtual = 75;
 
-    tooltip: {
-      enabled: false,
-    },
-
-    // the value axis
-    yAxis: {
-      stops: [
-        [0.1, "#8AC6FE"], // cyan
-        [0.5, "#DDDF0D"], // yellow
-        [0.9, "#DF5353"], // red
+const dataPizzaAtual = {
+  datasets: [
+    {
+      label: "Umidade",
+      data: [umidadeAtual, 100 - umidadeAtual],
+      backgroundColor: [
+        "#20db74",
+        "#EAE8DB",
       ],
-      lineWidth: 0,
-      tickWidth: 0,
-      minorTickInterval: null,
-      tickAmount: 2,
-      title: {
-        y: -40,
-      },
-      labels: {
-        y: 16,
-      },
+      hoverOffset: 4,
+      circumference: 180,
+      rotation: -90,
     },
+  ],
+};
 
-    plotOptions: {
-      solidgauge: {
-        dataLabels: {
-          y: 5,
-          borderWidth: 0,
-          useHTML: true,
-        },
-      },
-    },
-  };
+const configPizzaAtual = {
+  type: "doughnut",
+  data: dataPizzaAtual,
+};
 
-  // The speed gauge
-  var chartSpeed = Highcharts.chart(
-    "container-atualUmi",
-    Highcharts.merge(gaugeOptions, {
-      yAxis: {
-        min: 0,
-        max: 100,
-        title: {
-          text: "",
-          style: {
-            fontSize: 12,
-            fontWeight: "bold",
-            color: "#000",
-          },
-        },
-        labels: {
-          enabled: false,
-        },
-      },
-
-      credits: {
-        enabled: false,
-      },
-
-      series: [
-        {
-          name: "Umidade",
-          data: [21],
-          dataLabels: {
-            format:
-              '<div style="text-align:center">' +
-              '<span style="font-size:20px">{y}%</span><br/>' +
-              "</div>",
-          },
-          tooltip: {
-            valueSuffix: " %",
-          },
-        },
-      ],
-    })
-  );
-</script>
-<script>
-  //ChartJS Umidade (pizza ao meio)
-  const pizzaUmidadeMim = document.getElementById("menorUmi");
-  const pizzaUmidadeMax = document.getElementById("maiorUmi");
-  const pizzaUmidadeAtual = document.getElementById("atualUmi");
-
-  Chart.defaults.color = "#666666"
-
-  const umidadeBaixa = 46;
-
-  const dataPizzaMenor = {
-    datasets: [
-      {
-        label: "Umidade",
-        data: [umidadeBaixa, 100 - umidadeBaixa],
-        backgroundColor: [
-          "#ffff60",
-          "#EAE8DB",
-        ],
-        hoverOffset: 4,
-        circumference: 180,
-        rotation: -90,
-      },
-    ],
-  };
-
-  const configPizzaMenor = {
-    type: "doughnut",
-    data: dataPizzaMenor,
-  };
-
-  menorUmidade.innerHTML = umidadeBaixa + "%";
-
-  const umidadeAlta = 99;
-
-  const dataPizzaMaior = {
-    datasets: [
-      {
-        label: "Umidade",
-        data: [umidadeAlta, 100 - umidadeAlta],
-        backgroundColor: [
-          "#007a7a",
-          "#EAE8DB",
-        ],
-        hoverOffset: 4,
-        circumference: 180,
-        rotation: -90,
-      },
-    ],
-  };
-
-  const configPizzaMaior = {
-    type: "doughnut",
-    data: dataPizzaMaior,
-  };
-
-  maiorUmidade.innerHTML = umidadeAlta + "%";
-
-  const umidadeAtual = 75;
-
-  const dataPizzaAtual = {
-    datasets: [
-      {
-        label: "Umidade",
-        data: [umidadeAtual, 100 - umidadeAtual],
-        backgroundColor: [
-          "#20db74",
-          "#EAE8DB",
-        ],
-        hoverOffset: 4,
-        circumference: 180,
-        rotation: -90,
-      },
-    ],
-  };
-
-  const configPizzaAtual = {
-    type: "doughnut",
-    data: dataPizzaAtual,
-  };
-
-  atualUmidade.innerHTML = umidadeAtual + "%";
+atualUmidade.innerHTML = umidadeAtual + "%";
 
 
-  new Chart(pizzaUmidadeMim, configPizzaMenor);
-  new Chart(pizzaUmidadeMax, configPizzaMaior);
-  const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
-</script>
-<script>
-  //Notificações
+new Chart(pizzaUmidadeMim, configPizzaMenor);
+new Chart(pizzaUmidadeMax, configPizzaMaior);
+const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
 
-  setInterval(function notificar() {
+//Notificações
+
+setInterval(function notificar() {
     x = (Math.random() * 12 + 15).toFixed(0);
     y = (Math.random() * 10 + 70).toFixed(0);
 
@@ -690,29 +484,5 @@
 
   }, 5000);
 
-
-  // função para o filtro
-  function exibir(option) {
-    if (option.value == "Personalizado") {
-      document.getElementById("divs_dates").style.display = "flex";
-    } else {
-      document.getElementById("divs_dates").style.display = "none";
-    }
-  }
-
-
-</script>
-<script>//tecla para abrir o menu
-window.onkeyup = function(event) {
-    let key = event.key.toUpperCase();
-    console.log(key)
-    if (key == 'ESCAPE') {
-        if(document.getElementById("mySidenav").style.width == "0px"){
-          openNav();
-        }else{
-          closeNav();
-        }
-    }
-}
 
 </script>

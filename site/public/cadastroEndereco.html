@@ -22,7 +22,7 @@
                 <a href="sobreNos.html" class="links-sidenav"><img
                         src="assets/img/SideBar/Information.svg" alt="">Sobre Nós</a>
                 <a href="#" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
-                <a href="siteInstitucional.html#footer" class="links-sidenav"><img
+                <a href="index.html#footer" class="links-sidenav"><img
                         src="assets/img/SideBar/telephone.svg" alt="">Contato</a>
                 <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
                         alt="">Cotação</a>
@@ -155,6 +155,15 @@
 </html>
 <script>
 
+    //Máscara CEP
+    cep.addEventListener("keypress", () => {
+        let inputLength = cep.value.length;
+
+        if (inputLength == 5) {
+            cep.value += "-";
+        }
+    });
+
     // Validações Inputs
 
     function consultarCEP() {
@@ -167,6 +176,7 @@
         } else {
         // CEP válido
         // Usando a API do ViaCEP para consultar o CEP
+        span_cep.style.display = 'none';
         var url = `https://viacep.com.br/ws/${cepValue}/json/`;
 
         fetch(url) // É uma função global que recebe uma URL como argumento. Ela retorna uma promessa (Promise) como resposta.
@@ -270,10 +280,29 @@
             return false;
         } else {
             sumirMensagem();
-            setTimeout(function () {
-                window.location.href = "../public/dashboard/dashboard.html";
-            }, 2000);
+            // setTimeout(function () {
+            //     window.location.href = "../public/dashboard/dashboard.html";
+            // }, 2000);
         }
+        fetch("/enderecos/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cepServer: cep,
+            logrServer: logr,
+            numeroServer: numero,
+            complementoServer: complemento,
+            bairroServer: bairro,
+            cidadeServer: cidade,
+            ufServer: uf
+          }),
+        }).then(function (resposta){
+            if(resposta.status == 200){
+                window.location.href = "login.html";
+            }
+        })
     }
 
 </script>
