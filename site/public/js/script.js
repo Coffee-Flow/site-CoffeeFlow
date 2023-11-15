@@ -52,7 +52,6 @@ function limpar(input, label) {
         label.classList.add("subir-label");
     } else {
         label.classList.remove("subir-label");
-
     }
 }
 
@@ -68,6 +67,36 @@ function sumirMensagem() {
 
     msgCadastroConcluido.style.display = 'block';
 }
+
+function sumirMensagemErro(span) {
+    span.style.display = 'none';
+}
+
+// Limpar inputs quando o formulário for enviado com sucesso
+function limparFormulario() {
+    var todosInputs = document.querySelectorAll('input');
+
+// Iterar sobre cada input
+    for (var i = 0; i < todosInputs.length; i++) {
+        if (todosInputs[i].type == 'text' || todosInputs[i].type == 'password' || todosInputs[i].type == 'number') {
+            todosInputs[i].value = "";
+        } else if (todosInputs[i].type == 'radio') {
+            todosInputs[i].checked = false;
+        }
+    };
+}
+
+// carregamento (loading)
+function aguardar() {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "flex";
+}
+
+function finalizarAguardar() {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "none";
+}  
+
 
 // Mostrar senha - Login/Cadastro
 

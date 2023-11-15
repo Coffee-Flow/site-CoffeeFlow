@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js"></script>
+    <title>Cadastrar Nova Lavoura</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/cadLavoura.css">
+    <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <ul class="ul-header">
+
+            <!-- SideNav -->
+
+            <div id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="sobreNos.html" class="links-sidenav"><img src="assets/img/SideBar/Information.svg" alt="">Sobre
+                    Nós</a>
+                <a href="#" class="links-sidenav"><img src="assets/img/SideBar/farm.svg" alt="">Nossos Serviços</a>
+                <a href="index.html#footer" class="links-sidenav"><img src="assets/img/SideBar/telephone.svg"
+                        alt="">Contato</a>
+                <a href="cadastrarEmpresa.html" class="links-sidenav"><img src="assets/img/SideBar/Money.svg"
+                        alt="">Cotação</a>
+            </div>
+            <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+
+            <!-- NavBar -->
+
+            <li><img src="assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px"
+                    style="margin-left: 72px;"></li>
+            <li><a href="#" style="text-decoration: none;"><button onclick="href('../site/public/dashboard/dashboard')"
+                        class="btn btn-header">DASHBOARD</button></a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <div id="cadastro_concluido">
+            <p>Cadastro Concluído!✅ Você será redirecionado para a sua dashboard.</p>
+        </div>
+        <div class="form-box">
+            <div class="form-box-yellowColor">
+                <h1>Cadastro da Lavoura</h1>
+                <div class="lavoura">
+                    <div class="input-group">
+                        <select name="chaveF" id="chaveFilial" class="input-form required" onclick="clearOpt()">
+                            <option class="label" selected>Chave do endereço</option>
+                            <option id="optNull" value="null"></option>
+                        </select>
+                        <span class="span-required" id="chave_filial_span">*Selecione a chave de um dos seus
+                            endereços</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="nomeLavoura" class="input-form required"
+                            onfocus="limpar(this, nomeLavouraL)" onblur="limpar(this, nomeLavouraL)">
+                        <label class="label" for="nomeLavoura" id="nomeLavouraL">Nome da Lavoura</label>
+                        <span class="span-required" id="nome_lavoura_span">*Nome da Lavoura deve conter no mínimo 3
+                            caracteres</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" id="areaCultivo" class="input-form required"
+                            onfocus="limpar(this, areaCultL)" onblur="limpar(this, areaCultL)">
+                        <label class="label" for="areaCultivo" id="areaCultL">Tamanho da Área de Cultivo</label>
+                        <span class="span-required" id="area_cultivo_span">*Tamanho da Área deve ser maior que 0</span>
+                    </div>
+                    <div class="radioArea">
+                        <input type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
+                        <input type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
+                        <span class="span-required" id="radio_area_span">*Selecione uma das opções</span>
+                    </div>
+                </div>
+
+                <div class="cafe">
+                    <h2>Tipo(s) de Café cultivado(s)</h2>
+                    <div class="radioCafe">
+                        <input type="radio" name="cafe" id="arabica"><label for="arabica">Cultivo somente café
+                            arábica.</label>
+                    </div>
+                    <div class="radioCafe">
+                        <input type="radio" name="cafe" id="canilon"><label for="canilon">Cultivo somente café
+                            canilon/robusta.</label>
+                    </div>
+                    <span class="span-required" id="radio_cafe_span">*Selecione uma das opções</span>
+                </div>
+
+                <!-- <div class="irrig" id="irrig">
+                <h2>Tipo de Sistema de Irrigação</h2>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="arsp" onclick="div_ntn()"><label for="arsp">Sistema de Irrigação
+                        por
+                        Aspersão.</label>
+                </div>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="nenhum" onchange="div_nt()"><label for="nenhum">Não possuo
+                        sistema de irrigação.</label>
+                </div>
+                <div id="div_n" style="font-size: 13px; color: rgb(190, 14, 14);"></div>
+                <div class="radioIrr">
+                    <input type="radio" name="irr" id="outroirr" onclick="div_non()"><label for="outroirr">Outro
+                        sistema</label>
+                </div>
+                <div id="div_o" style="font-size: 13px; color: rgb(190, 14, 14);"></div>
+            </div> -->
+
+                <!-- <h3>Quantidade média de café colhido anualmente (em sacas) <input type="number" id="sacas"> </h3> -->
+                <button value="Enviar" onclick="validarForm()">Finalizar Cadastro<div id="div_aguardar" class="loading-div">
+                    <img src="assets/img/loading.gif" id="loading-gif"></div></button>
+
+                <!-- </form> -->
+            </div>
+
+        </div>
+
+</body>
+
+</html>
+<script>
+    function clearOpt() {
+        optNull.disabled = true;
+    }
+
+    function validarForm() {
+        aguardar();
+
+        var opcaoSelect = chaveFilial.children[chaveFilial.selectedIndex];
+        var spanSelectChave = document.getElementById('chave_filial_span');
+        var inputNome = document.getElementById('nomeLavoura').value;
+        var inputAreaCult = document.getElementById('areaCultivo').value;
+        var spanAreaCult = document.getElementById('area_cultivo_span');
+        var opcoesArea = document.getElementsByName('area');
+        var spanArea = document.getElementById('radio_area_span');
+        var selecionadoArea = false;
+        var opcoesCafe = document.getElementsByName('cafe');
+        var spanCafe = document.getElementById('radio_cafe_span');
+        var selecionadoCafe = false;
+
+        for (var i = 0; i < opcoesArea.length; i++) {
+            if (opcoesArea[i].checked) {
+                selecionadoArea = true;
+                break;
+            }
+        }
+
+        for (var i = 0; i < opcoesCafe.length; i++) {
+            if (opcoesCafe[i].checked) {
+                selecionadoCafe = true;
+                break;
+            }
+        }
+
+        if (opcaoSelect.textContent == "Chave do endereço") {
+            spanSelectChave.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanSelectChave);
+        }
+        if (inputNome.length <= 3) {
+            nome_lavoura_span.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(nome_lavoura_span);
+        }
+        if (inputAreaCult <= 0) {
+            spanAreaCult.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanAreaCult);
+        }
+        if (!selecionadoArea) {
+            spanArea.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanArea);
+        }
+        if (!selecionadoCafe) {
+            spanCafe.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanCafe);
+        }
+
+
+        sumirMensagem();
+
+        fetch("/enderecos/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // cepServer: cep,
+                // logrServer: logr,
+                // numeroServer: numero,
+                // complementoServer: complemento,
+                // bairroServer: bairro,
+                // cidadeServer: cidade,
+                // ufServer: uf
+            }),
+        }).then(function (resposta) {
+            if (resposta.status == 200) {
+                setTimeout(function () {
+                    window.location.href = "../public/dashboard/dashboard.html";
+                }, 2000);
+
+                limparFormulario();
+
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+            .catch(function (resposta) {
+                onsole.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+    }
+
+
+</script>

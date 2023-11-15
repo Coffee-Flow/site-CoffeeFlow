@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/script.js"></script>
-    <title>Cadastrar Novo Endereço e Lavoura</title>
+    <title>Cadastrar Novo Endereço</title>
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/cadEndereco.css">
     <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
@@ -37,11 +37,11 @@
         </ul>
     </header>
 
+    <div id="cadastro_concluido">
+        <p>Cadastro Concluído!✅ Você será redirecionado para a tela de cadastro de lavoura.</p>
+    </div>
     <div class="container">
-        <div id="cadastro_concluido">
-            <p>Cadastro Concluído!✅ Você será redirecionado para a sua dashboard.</p>
-        </div>
-        <div class="form-box">
+        <div class="form-box" id="form_box">
             <div class="form-box-endereco">
             <h1>Cadastro de Endereço</h1>
             <!-- <form autocomplete="off"> -->
@@ -86,68 +86,8 @@
                     <label class="label" for="uf" id="ufL">UF</label>
                     <span class="span-required" id="spanUf">*O campo deve conter 2 caracteres/span>
                 </div> </div>
-       
-        <div class="form-box-yellowColor">
-            <h1>Detalhes da Lavoura</h1>
-            <div class="lavoura">
-                <div class="input-group">
-                    <input type="text" id="nomeLavoura" class="input-form required" onfocus="limpar(this, nomeLavouraL)"
-                        onblur="limpar(this, nomeLavouraL)">
-                    <label class="label" for="nomeLavoura" id="nomeLavouraL">Nome da Lavoura</label>
-                    <span class="span-required" id="nome_lavoura_span">*Nome da Lavoura deve conter no mínimo 3 caracteres</span>
-                </div>
-                <div class="input-group">
-                    <input type="number" id="areaCultivo" class="input-form required" onfocus="limpar(this, areaCultL)"
-                        onblur="limpar(this, areaCultL)">
-                    <label class="label" for="areaCultivo" id="areaCultL">Tamanho da Área de Cultivo</label>
-                    <span class="span-required" id="area_cultivo_span">*Tamanho da Área deve ser maior que 0</span>
-                </div>
-                <div class="radioArea">
-                    <input type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
-                    <input type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
-                    <span class="span-required" id="radio_area_span">*Selecione uma das opções</span>
-                </div>
-            </div>
-
-            <div class="cafe">
-            <h2>Tipo(s) de Café cultivado(s)</h2>
-            <div class="radioCafe">
-                <input type="radio" name="cafe" id="arabica"><label for="arabica">Cultivo somente café arábica.</label>
-            </div>
-            <div class="radioCafe">
-                <input type="radio" name="cafe" id="canilon"><label for="canilon">Cultivo somente café canilon/robusta.</label>
-            </div>
-            <div class="radioCafe">
-                <input type="radio" name="cafe" id="outrocafe"><label for="outrocafe">Cultivo outro(s) tipo(s) de café</label>
-            </div>
-            <span class="span-required" id="radio_cafe_span">*Selecione uma das opções</span>
-            </div>
-
-            <!-- <div class="irrig" id="irrig">
-                <h2>Tipo de Sistema de Irrigação</h2>
-                <div class="radioIrr">
-                    <input type="radio" name="irr" id="arsp" onclick="div_ntn()"><label for="arsp">Sistema de Irrigação
-                        por
-                        Aspersão.</label>
-                </div>
-                <div class="radioIrr">
-                    <input type="radio" name="irr" id="nenhum" onchange="div_nt()"><label for="nenhum">Não possuo
-                        sistema de irrigação.</label>
-                </div>
-                <div id="div_n" style="font-size: 13px; color: rgb(190, 14, 14);"></div>
-                <div class="radioIrr">
-                    <input type="radio" name="irr" id="outroirr" onclick="div_non()"><label for="outroirr">Outro
-                        sistema</label>
-                </div>
-                <div id="div_o" style="font-size: 13px; color: rgb(190, 14, 14);"></div>
-            </div> -->
-
-            <!-- <h3>Quantidade média de café colhido anualmente (em sacas) <input type="number" id="sacas"> </h3> -->
-            <button value="Enviar" onclick="validarForm()">Finalizar Cadastro</button>
-        
-            <!-- </form> -->
-        </div>
-        
+        <button value="Enviar" onclick="validarForm()">Finalizar Cadastro<div id="div_aguardar" class="loading-div">
+            <img src="assets/img/loading.gif" id="loading-gif"></div></button>
     </div>
 
 </body>
@@ -170,13 +110,10 @@
         var cep = document.getElementById('cep');
         var cepValue = cep.value.replace(/[^\d]/g, ''); // Limpa caracteres não numéricos
 
-        if (cepValue.length != 8 && !/^[0-9]{8}$/.test(cepValue)) {
-            // CEP inválido
-            span_cep.style.display = 'block';
-        } else {
+        if (cepValue.length == 8 && /^[0-9]{8}$/.test(cepValue)) {
         // CEP válido
         // Usando a API do ViaCEP para consultar o CEP
-        span_cep.style.display = 'none';
+        span_cep.style.display = 'none'; // Mensagem de erro será ocultada
         var url = `https://viacep.com.br/ws/${cepValue}/json/`;
 
         fetch(url) // É uma função global que recebe uma URL como argumento. Ela retorna uma promessa (Promise) como resposta.
@@ -226,83 +163,102 @@
 
 
     function validarForm() {
-        var opcoesArea = document.getElementsByName('area');
-        var spanArea = document.getElementById('radio_area_span');
-        var selecionadoArea = false;
-        var selecionadoCafe = false;
+        aguardar();
 
-        var inputNome = document.getElementById('nomeLavoura').value;
-        var inputAreaCult = document.getElementById('areaCultivo').value;
-        var spanAreaCult = document.getElementById('area_cultivo_span');
-        var opcoesCafe = document.getElementsByName('cafe');
-        var spanCafe = document.getElementById('radio_cafe_span');
+        var cep = document.getElementById('cep');
+        var cepValue = cep.value.replace(/[^\d]/g, ''); // Limpa caracteres não numéricos
 
-        for (var i = 0; i < opcoesArea.length; i++) {
-            if (opcoesArea[i].checked) {
-                selecionadoArea = true;
-                break;
-            }
-        }
-
-        for (var i = 0; i < opcoesCafe.length; i++) {
-            if (opcoesCafe[i].checked) {
-                selecionadoCafe = true;
-                break;
-            }
-        }
-
-        if (logr.value.length < 5) {
-            spanLogr.style.display = 'block';
-            return false;
-        } else if (numero.value.length < 3) {
-            spanNumero.style.display = 'block';
-            return false;
-        } else if (bairro.value.length < 1) {
-            spanBairro.style.display = 'block';
-            return false;
-        } else if (cidade.value.length < 1) {
-            spanCidade.style.display = 'block';
-            return false;
-        } else if (uf.value.length < 2) {
-            spanUf.style.display = 'block';
-            return false;
-        } else if (inputNome.length <= 3) {
-            nome_lavoura_span.style.display = 'block';
-            return false;
-        } else if (inputAreaCult <= 0) {
-            spanAreaCult.style.display = 'block';
-            return false;
-        } else if (!selecionadoArea) {
-            spanArea.style.display = 'block';
-            return false;
-        } else if (!selecionadoCafe) {
-            spanCafe.style.display = 'block';
+        if (cepValue.length != 8 && !/^[0-9]{8}$/.test(cepValue)) {
+            // CEP inválido
+            span_cep.style.display = 'block';
+            finalizarAguardar();
             return false;
         } else {
-            sumirMensagem();
-            // setTimeout(function () {
-            //     window.location.href = "../public/dashboard/dashboard.html";
-            // }, 2000);
+            sumirMensagemErro(span_cep);
         }
+        if (logr.value.length < 5) {
+            spanLogr.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanLogr);
+        }
+        if (numero.value.length < 3) {
+            spanNumero.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanNumero);
+        }
+        if (bairro.value.length < 1) {
+            spanBairro.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanBairro);
+        }
+        if (cidade.value.length < 1) {
+            spanCidade.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanCidade);
+        }
+        if (uf.value.length < 2) {
+            spanUf.style.display = 'block';
+            finalizarAguardar();
+            return false;
+        } else {
+            sumirMensagemErro(spanUf);
+        }
+
+        var formBox = document.getElementById('form_box');
+            
+        sumirMensagem();
+        formBox.style.height = '78vh';
+        // setTimeout(function () {
+        //     window.location.href = "../public/dashboard/dashboard.html";
+        // }, 2000);
+
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        if (!idEmpresa) {
+            console.error("ID_EMPRESA não está definido na sessionStorage");
+        return; 
+        }
+        
         fetch("/enderecos/cadastrar", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            cepServer: cep,
-            logrServer: logr,
-            numeroServer: numero,
-            complementoServer: complemento,
-            bairroServer: bairro,
-            cidadeServer: cidade,
-            ufServer: uf
+            cepServer: cep.value,
+            logrServer: logr.value,
+            numeroServer: numero.value,
+            complementoServer: complemento.value,
+            bairroServer: bairro.value,
+            cidadeServer: cidade.value,
+            ufServer: uf.value,
+            empresaServer: idEmpresa
           }),
         }).then(function (resposta){
             if(resposta.status == 200){
-                window.location.href = "cadastrar.html";
+                setTimeout(function() {
+                    window.location.href = "cadastroLavoura.html";
+                }, 2000);
+
+          limparFormulario();
+
+            } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
             }
         })
+        .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
     }
 
 </script>
