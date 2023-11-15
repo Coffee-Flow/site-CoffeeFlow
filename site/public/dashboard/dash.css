@@ -4,6 +4,11 @@ body {
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: bottom;
+  
+}
+
+::-webkit-scrollbar {
+  width: 0%;
 }
 .ul-header {
     padding: 0;
@@ -20,7 +25,7 @@ body {
     background-color: #053C11;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 15px;
     box-shadow: -1px 0 8px 0 #3a3a3a;
   }
   .sidenav .closebtn {
@@ -44,7 +49,6 @@ body {
   }
   .sidenav .content h3{
     margin-top: 15px;
-    margin-bottom: 15px;
     color: #EAE8DB;
     font-size: 24px;
   }
@@ -96,7 +100,7 @@ body {
   .sidenav .content .options .dash-export {
     background-color: #205F2D;
     width: 160px;
-    height: 315px;
+    height: fit-content;
     
     
   }
@@ -340,8 +344,16 @@ body {
     font: 600 18px 'Poppins';
     color: #053C11;
     font-size: 10px;
-    margin-left: 10px;
+    
   }
+
+  .filtro .container-cordenadas {
+    width: 93%;
+    display: flex;
+    position: relative;
+    left: 27px;
+  }
+
 
 #btn {
   font: 600 15px 'Poppins';

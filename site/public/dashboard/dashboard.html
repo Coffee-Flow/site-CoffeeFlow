@@ -38,7 +38,32 @@
               <div class="container">
 
                 <div class="filtro">
+
                   <h4>Monitoramento</h4>
+                  <div class="container-cordenadas">
+                    <div class="cordenadas">
+                      <div>
+                        <b>Lavoura</b>
+                        <select name="Lavoura" id="">
+                          <option value="">1</option>
+                          <option value="">2</option>
+                          <option value="">3</option>
+                          <option value="">4</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="cordenadas">
+                      <div>
+                        <b>Quadrante</b>
+                        <select name="Quadrante" id="">
+                          <option value="">1</option>
+                          <option value="">2</option>
+                          <option value="">3</option>
+                          <option value="">4</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                   <div class="div-periodo">
                     <b>Período</b>
                     <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
@@ -71,15 +96,16 @@
                       <option value="">XLS</option>
                       <option value="">Relatórios exportados</option>
                     </select>
-                    <a href="https://docs.google.com/spreadsheets/d/1FJqMQo1yTkB6_d2RwS3vEYMuvBa5YM_7pDU6-PUdvyI/edit#gid=213062297"  class="btn-Export">
+                    <a href="https://docs.google.com/spreadsheets/d/1FJqMQo1yTkB6_d2RwS3vEYMuvBa5YM_7pDU6-PUdvyI/edit#gid=213062297"
+                      class="btn-Export">
                       <p>Exportar</p>
                     </a>
                   </div>
                 </div>
               </div>
-              <span><img src="../assets/img/SideBarDashboard/help.svg">Ajuda</span>
-              <span onclick="limparSessao()"><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
             </div>
+            <span><img src="../assets/img/SideBarDashboard/help.svg">Ajuda</span>
+            <span onclick="limparSessao()"><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
           </div>
         </div>
         <div class="botaoSideNav" id="botaoSideNav" onmouseover="showNav()">
@@ -184,6 +210,7 @@
     </div>
   </div>
 </body>
+
 </html>
 <script>
   //ChartJS Temperatura e Umidade
@@ -280,96 +307,96 @@
   new Chart(graficoUmidade, configUmidade);
 
 
-//ChartJS Umidade (pizza ao meio)
-const pizzaUmidadeMim = document.getElementById("menorUmi");
-const pizzaUmidadeMax = document.getElementById("maiorUmi");
-const pizzaUmidadeAtual = document.getElementById("atualUmi");
+  //ChartJS Umidade (pizza ao meio)
+  const pizzaUmidadeMim = document.getElementById("menorUmi");
+  const pizzaUmidadeMax = document.getElementById("maiorUmi");
+  const pizzaUmidadeAtual = document.getElementById("atualUmi");
 
-Chart.defaults.color = "#666666"
+  Chart.defaults.color = "#666666"
 
-const umidadeBaixa = 46;
+  const umidadeBaixa = 46;
 
-const dataPizzaMenor = {
-  datasets: [
-    {
-      label: "Umidade",
-      data: [umidadeBaixa, 100 - umidadeBaixa],
-      backgroundColor: [
-        "#ffff60",
-        "#EAE8DB",
-      ],
-      hoverOffset: 4,
-      circumference: 180,
-      rotation: -90,
-    },
-  ],
-};
+  const dataPizzaMenor = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [umidadeBaixa, 100 - umidadeBaixa],
+        backgroundColor: [
+          "#ffff60",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
 
-const configPizzaMenor = {
-  type: "doughnut",
-  data: dataPizzaMenor,
-};
+  const configPizzaMenor = {
+    type: "doughnut",
+    data: dataPizzaMenor,
+  };
 
-menorUmidade.innerHTML = umidadeBaixa + "%";
+  menorUmidade.innerHTML = umidadeBaixa + "%";
 
-const umidadeAlta = 99;
+  const umidadeAlta = 99;
 
-const dataPizzaMaior = {
-  datasets: [
-    {
-      label: "Umidade",
-      data: [umidadeAlta, 100 - umidadeAlta],
-      backgroundColor: [
-        "#007a7a",
-        "#EAE8DB",
-      ],
-      hoverOffset: 4,
-      circumference: 180,
-      rotation: -90,
-    },
-  ],
-};
+  const dataPizzaMaior = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [umidadeAlta, 100 - umidadeAlta],
+        backgroundColor: [
+          "#007a7a",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
 
-const configPizzaMaior = {
-  type: "doughnut",
-  data: dataPizzaMaior,
-};
+  const configPizzaMaior = {
+    type: "doughnut",
+    data: dataPizzaMaior,
+  };
 
-maiorUmidade.innerHTML = umidadeAlta + "%";
+  maiorUmidade.innerHTML = umidadeAlta + "%";
 
-const umidadeAtual = 75;
+  const umidadeAtual = 75;
 
-const dataPizzaAtual = {
-  datasets: [
-    {
-      label: "Umidade",
-      data: [umidadeAtual, 100 - umidadeAtual],
-      backgroundColor: [
-        "#20db74",
-        "#EAE8DB",
-      ],
-      hoverOffset: 4,
-      circumference: 180,
-      rotation: -90,
-    },
-  ],
-};
+  const dataPizzaAtual = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [umidadeAtual, 100 - umidadeAtual],
+        backgroundColor: [
+          "#20db74",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
 
-const configPizzaAtual = {
-  type: "doughnut",
-  data: dataPizzaAtual,
-};
+  const configPizzaAtual = {
+    type: "doughnut",
+    data: dataPizzaAtual,
+  };
 
-atualUmidade.innerHTML = umidadeAtual + "%";
+  atualUmidade.innerHTML = umidadeAtual + "%";
 
 
-new Chart(pizzaUmidadeMim, configPizzaMenor);
-new Chart(pizzaUmidadeMax, configPizzaMaior);
-const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
+  new Chart(pizzaUmidadeMim, configPizzaMenor);
+  new Chart(pizzaUmidadeMax, configPizzaMaior);
+  const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
 
-//Notificações
+  //Notificações
 
-setInterval(function notificar() {
+  setInterval(function notificar() {
     x = (Math.random() * 12 + 15).toFixed(0);
     y = (Math.random() * 10 + 70).toFixed(0);
 

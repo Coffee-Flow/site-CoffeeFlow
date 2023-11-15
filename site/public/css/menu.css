@@ -58,7 +58,8 @@ p {
   display: block;
   transition: 0.3s;
   display: flex;
-  gap: 7px;
+  position: relative;
+  top: 3px;
 }
 
 .sidenav a:hover {
