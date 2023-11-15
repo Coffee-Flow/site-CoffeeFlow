@@ -84,7 +84,7 @@
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
+            if (resposta.status == 200) {
                 console.log(resposta);
 
                 resposta.json().then(json => {
@@ -93,6 +93,7 @@
                     sessionStorage.EMAIL_USUARIO = json[0].emailUsuario;
                     sessionStorage.NOME_USUARIO = json[0].nomeUsuario;
                     sessionStorage.ID_USUARIO = json[0].idUsuario;
+                    sessionStorage.ID_EMPRESA = json[0].idEmpresa;
                     console.log(sessionStorage);
 
                     setTimeout(function () {
