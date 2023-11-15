@@ -130,9 +130,6 @@
             return false;
         } else {
             sumirMensagem();
-            // setTimeout(function () {
-            //     window.location.href = "login.html";
-            // }, 2000);
         }
         fetch("/empresas/cadastrar", {
           method: "POST",
@@ -148,7 +145,7 @@
           }),
         }).then(function (resposta){
             if(resposta.status == 200){
-                window.location.href = "login.html";
+                window.location.href = "cadastrarEndereco.html";
             }
         })
     }

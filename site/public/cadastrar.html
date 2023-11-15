@@ -35,7 +35,7 @@
             <p>Cadastro Concluído!✅ Você será redirecionado para a tela de login.</p>
         </div>
         <div class="form-box">
-            <h1>Primeiro Acesso</h1>
+            <h1>Cadastrar Novo Usuário</h1>
             <div class="container-inputs">
                 <div class="input-group">
                     <input id="nome" type="text" class="input-form required" onfocus="limpar(this, nomeL)"
@@ -59,8 +59,15 @@
                 </div>
 
                 <div class="input-group">
-                    <input id="chaveEmpresa" class="input-form required">
+                    <input id="chaveEmpresa" class="input-form required" onfocus="limpar(this, empresaL)" onblur="listarFiliais(this);limpar(this, empresaL)">
                     <label class="label" id="empresaL" for="empresa">Chave da empresa</label>
+                </div>
+
+                <div class="input-group">
+                    <select name="chaveF" id="chaveFilial" class="input-form required" disabled onfocus="limpar(this, filialL)" onblur="limpar(this, filialL)" onclick="clearOpt()">
+                        <option id="optNull" value="null"></option>
+                    </select>
+                    <label class="label" id="filialL" for="chaveFilial">Chave da empresa filial</label>
                 </div>
 
                 <div class="input-group">
@@ -113,6 +120,33 @@
 
 </html>
 <script>
+    function clearOpt(){
+        optNull.disabled = true;
+    }
+
+
+    function listarFiliais(inpChaveEmp) {
+    fetch(`/empresas/listar/`, {
+      method: "GET",
+      headers: {
+        "idempresa" : Number(inpChaveEmp.value)
+      }
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+            chaveFilial.innerHTML = `<option id="optNull" value="null"></option>`
+          empresas.forEach((empresa) => {
+            chaveFilial.innerHTML += `<option value='${empresa.idEndereco}'>${empresa.cep}</option>`;
+            chaveFilial.disabled = false;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+    }
+
+
     function exibirRequisitos() {
         var divRequisitos = document.getElementById('senha_requisitos');
         divRequisitos.style.display = 'block'
@@ -124,6 +158,7 @@
         var emailInsti = document.getElementById('email').value;
         var spanEmailInsti = document.getElementById('span_email');
         var empresa = document.getElementById('chaveEmpresa').value;
+        var endereco = document.getElementById('chaveFilial').value;
         var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?$/;
         var cpf = document.getElementById('cpf').value;
         var spanCpf = document.getElementById('span_cpf');
@@ -151,9 +186,6 @@
             return false;
         } else {
             sumirMensagem();
-            // setTimeout(function () {
-            //     window.location.href = "login.html";
-            // }, 2000);
         }
         
         fetch("/usuarios/cadastrar", {
@@ -166,7 +198,8 @@
             emailServer: emailInsti,
             cpfServer: cpf,
             senhaServer: senhaPrincipal,
-            empresaServer: empresa
+            empresaServer: empresa,
+            enderecoServer: endereco
           }),
         }).then(function (resposta){
             if(resposta.status == 200){

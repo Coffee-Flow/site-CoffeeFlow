@@ -6,8 +6,8 @@ function buscarPorId(id) {
   return database.executar(query);
 }
 
-function listar() {
-  var query = `select * from empresa`;
+function listar(id) {
+  var query = `select * from endereco where idEmpresa = ${id}`;
 
   return database.executar(query);
 }

@@ -9,7 +9,9 @@ function buscarPorCnpj(req, res) {
 }
 
 function listar(req, res) {
-  empresaModel.listar().then((resultado) => {
+  var idempresa = req.headers.idempresa;
+
+  empresaModel.listar(idempresa).then((resultado) => {
     res.status(200).json(resultado);
   });
 }
@@ -36,7 +38,7 @@ function cadastrar(req, res) {
         .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
     } else {
       empresaModel.cadastrar(nomeEmpresa, razaoSocial, cnpj, email, tel).then((resultado) => {
-        res.status(201).json(resultado);
+        res.status(200).json(resultado);
       });
     }
   });
