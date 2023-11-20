@@ -1,10 +1,16 @@
+body, html{
+  height: 100%;
+  width: 100%;
+}
 body {
   background-color: #EAE8DB;
   background-image: url("../assets/img/Section1/imgGraosCafe.svg");
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: bottom;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 ::-webkit-scrollbar {
@@ -168,16 +174,7 @@ body {
   .sidenav .content .options span img{
     width: 21px;
   }
-  body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  body, html{
-    height: 100%;
-    width: 100%;
-  } 
+
   .content .section1, .content .section2{
     display: flex;
     justify-content: center;
@@ -190,9 +187,10 @@ body {
     color: #666666;
     margin-bottom: 10px;
   }
+
   .content>div>div{
     padding: 10px 20px 10px 20px;
-    width: 40%;
+    width: 50%;
     background-color: white;
     border-radius: 38px;
   }
@@ -202,63 +200,25 @@ body {
   .content .section2 .quadra3{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     padding-bottom: 45px;
   }
-  .content .section2 .quadra3 .metricas{
-    width: 100%;    
-    gap: 10px;
-    text-align: center;
-  }
-  .content .section2 .quadra3 .metricas>div{
-    display: flex;
-  }
-  .content .section2 .quadra3 .metricas>div>div{
+  .content .section2 .quadra3 .content{
     width: 100%;
-    height: 30px;
-    border-radius: 5px;
-  }
-  .content .section2 .quadra3 .metricas h2{
-    font-size: 15px;
-    font-weight: bold;
-    color: #666666;
-
-  }
-  .content .section2 .quadra3 .metricas .humidity .linha{
-    background: rgb(255,0,0);
-    background: linear-gradient(90deg, #ffff60 0%, #a0ff67 20%, #20db74 40%, #20db74 60%, #109c77 80%, #007a7a 100%);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
-  .content .section2 .quadra3 .metricas .humidity .linha span{
-    margin-top: 28px;
+  .content .section2 .quadra3 .content .mapa{
+    width: 450px;
+    height: 250px;
+    border: solid #053C11 2px;
+    margin-top: 15px;
+    border-radius: 15px;
+    background-image: url("../assets/img/dashboard/mapaLavoura.png");
+    background-size: cover;
   }
-  .content .section2 .quadra3 .metricas div .linha p{
-    font-weight: bold;
-    font-size: 14px;
-    position: relative;
-    left: 0;
-  }
-  .content .section2 .quadra3 .metricas .temp .linha{
-    background: rgb(255,0,0);
-    background: linear-gradient(90deg, #7afdff 0%, #9cdbc0 20%, #bdc771 41%, #c9b167 70%, #ff7200 100%);
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  .content .section2 .quadra3 .metricas .temp .linha span{
-    margin-top: 28px;
-  }
-  .content .section2 .quadra3 h1:nth-child(3){
-    margin-top: 20px;
-  }
-  .content .section2 .quadra3 #notify{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .content .section2 .quadra3 #notify img{
-    width: 45%;
+  .content .section2 .quadra3 .content .mapa canvas{
+    border-radius: 13px;
   }
   .animate {
     animation: animate 0.9s linear infinite;
@@ -321,14 +281,6 @@ body {
     width: 100%;
     font-weight: 500;
   }
-
-/* .umidade h3{
-    font-size: 15px;
-    font-weight: 500;
-  }
-  .umidade h2{
-    color: #8AC6FE;
-  } */
   .temp-maxima h2{
     color: #ff7200;
     -webkit-text-stroke: 1px #666666;

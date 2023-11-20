@@ -13,15 +13,10 @@
   <link rel="stylesheet" href="dash.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/highcharts-more.js"></script>
-  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/sessao.js"></script>
   <script src="../js/dashboard.js"></script>
+  <script src="../js/heatmap.js"></script>
 </head>
 
 <body onload="validarSessao()">
@@ -114,16 +109,6 @@
         <div class="botaoSideNav" id="botaoSideNav" onmouseover="showNav()">
         </div>
       </div>
-
-      <!-- <span class="menu-toggle" onclick="openNav()">&#9776;</span>
-      <li>
-        <img src="../assets/img/Logo/CoffeeFlowLogo.svg" alt="Logo Coffee Flow" width="50px" />
-      </li>
-      <li>
-        <button onclick="href('index')" class="btn btn-header" style="cursor: pointer">
-          INÍCIO
-        </button>
-      </li> -->
     </ul>
   </header>
 
@@ -138,31 +123,10 @@
     </div>
     <div class="section2">
       <div class="quadra3">
-        <h1>Métricas - Café Arábico</h1>
-        <div id="metricas" class="metricas">
-          <h2>Temperatura do solo</h2>
-          <div class="temp">
-            <div class="linha">
-              <span>10°C</span>
-              <p id="id_ponteiroTemperatura" class="class-ponteiroTemperatura">|<br>22C°</p>
-              <span>34°C</span>
-            </div>
-          </div>
-          <h2>Umidade do solo</h2>
-          <div class="humidity">
-            <div class="linha">
-              <span>50%</span>
-              <p id="id_ponteiroUmidade" class="class-ponteiroUmidade">|<br>75%</p>
-              <span>97%</span>
-            </div>
-          </div>
+        <h1>Mapa de calor</h1>
+        <div class="content">
+          <div class="mapa"></div>
         </div>
-        <h1>Notificações</h1>
-        <div id="notify">
-          <img id="humidity" src="../assets/img/dashboard/notifyHumiIdeal.svg">
-          <img id="temp" src="../assets/img/dashboard/notifyTempIdeal.svg">
-        </div>
-
       </div>
       <div class="kpi">
         <h1>Tudo o que você precisa saber</h1>
@@ -181,18 +145,6 @@
           </div>
         </div>
         <div class="linha2" style="border-top: 3px dashed #666666">
-          <!-- <div class="umidade">
-                  <figure class="highcharts-figure">
-                      <div id="container-menorUmi" class="chart-container"></div>
-                    </figure>
-                    <h3>Menor nível de umidade no mês</h3>
-              </div>
-              <div class="umidade">
-                <figure class="highcharts-figure">
-                    <div id="container-atualUmi" class="chart-container"></div>
-                </figure>
-                <h3>Umidade relativa do ar</h3>
-              </div> -->
           <div class="umidade">
             <canvas id="atualUmi"></canvas>
             <h1 id="atualUmidade"></h1>
@@ -216,6 +168,118 @@
 
 </html>
 <script>
+
+    // minimal heatmap instance configuration
+    var heatmapInstance = h337.create({
+    // only container is required, the rest will be defaults
+    container: document.querySelector('.mapa'),
+    // backgroundColor: 'red',
+    maxOpacity: .5,
+    minOpacity: .5,
+  // custom gradient colors
+  gradient: {
+    // enter n keys between 0 and 1 here
+    // for gradient color customization
+    '0.2': '#7afdff',
+    '0.3': '#9cdbc0',
+    '0.5': '#bdc771',
+    '0.625': '#c9b167',
+    '0.825': '#ff7200'
+  }
+  });
+
+  // now generate some random data
+  var points = [];
+  var max = 40;
+  var width = 450;
+  var height = 250;
+  // var len = 200;
+
+  var minT = 8;
+  var intervalo = max - minT;
+
+
+  var local1 = {
+    x : 56.25,
+    y : 62.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+  var local2 = {
+    x : 56.25,
+    y : 187.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+  var local3 = {
+    x : 168.75,
+    y : 62.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+  var local4 = {
+    x : 168.75,
+    y : 187.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+  var local5 = {
+    x : 281.25,
+    y : 62.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+  var local6 = {
+    x : 281.25,
+    y : 187.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+  var local7 = {
+    x : 393,
+    y : 62.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+  var local8 = {
+    x : 393,
+    y : 187.5,
+    value : Math.floor(minT+Math.random()*intervalo),
+    radius : 110,
+  }
+
+  // while (len--) {
+  //   var val = Math.floor(Math.random()*100);
+  //   max = Math.max(max, val);
+  //   var point = {
+  //     x: Math.floor(Math.random()*100),
+  //     y: Math.floor(Math.random()*height),
+  //     value: val
+  //   };
+  // }
+
+  console.log(local1)
+  console.log(local2)
+  console.log(local3)
+  console.log(local4)
+  console.log(local5)
+  console.log(local6)
+  console.log(local7)
+  console.log(local8)
+
+  points = points.concat(local1, local2, local3, local4, local5, local6, local7, local8);
+
+  // heatmap data format
+  var data = {
+    max: max,
+    data: points
+  };
+  // if you have a set of datapoints always use setData instead of addData
+  // for data initialization
+  heatmapInstance.setData(data);
+
+
+
   //ChartJS Temperatura e Umidade
   const graficoTemperatura = document.getElementById("temperatura");
   const graficoUmidade = document.getElementById("umidade");
@@ -399,120 +463,120 @@
 
   //Notificações
 
-  setInterval(function notificar() {
-    x = (Math.random() * 12 + 15).toFixed(0);
-    y = (Math.random() * 10 + 70).toFixed(0);
+  // setInterval(function notificar() {
+  //   x = (Math.random() * 12 + 15).toFixed(0);
+  //   y = (Math.random() * 10 + 70).toFixed(0);
 
-    tempAtual.innerText = x + "°C";
+  //   tempAtual.innerText = x + "°C";
 
-    var temperatura = "";
-    var temperaturaText = tempAtual.innerHTML;
+  //   var temperatura = "";
+  //   var temperaturaText = tempAtual.innerHTML;
 
-    var i = 0;
+  //   var i = 0;
 
-    while (i <= temperaturaText.length - 1) {
-      if (!isNaN(temperaturaText[i])) {
-        temperatura += temperaturaText[i];
-      }
-      i++;
-    }
-    temperatura = Number(temperatura);
+  //   while (i <= temperaturaText.length - 1) {
+  //     if (!isNaN(temperaturaText[i])) {
+  //       temperatura += temperaturaText[i];
+  //     }
+  //     i++;
+  //   }
+  //   temperatura = Number(temperatura);
 
-    if (x <= 10) {
-      temp.src = "../assets/img/dashboard/notifyTempLow";
-      tempAtual.style.color = "#7afdff";
-      temp.classList.add('animate');
-    } else if (x <= 15) {
-      temp.src = "../assets/img/dashboard/notifyTempLowAlert.svg";
-      tempAtual.style.color = "#9cdbc0";
-      temp.classList.remove('animate');
-    } else if (x < 27) {
-      temp.src = "../assets/img/dashboard/notifyTempIdeal.svg";
-      tempAtual.style.color = "#bdc771";
-      temp.classList.remove('animate');
-    } else if (x < 34) {
-      temp.src = "../assets/img/dashboard/notifyTempHighAlert.svg";
-      tempAtual.style.color = "#c9b167";
-      temp.classList.remove('animate');
-    } else {
-      temp.src = "../assets/img/dashboard/notifyTempHigh.svg";
-      tempAtual.style.color = "#ff7200";
-      temp.classList.add('animate');
-    }
-
-
-    if (x < 10 || x > 34) {
-      id_ponteiroTemperatura.innerHTML = `|<br>|`
-      var razao = (x - 22) * 4;
-      console.log(razao.toString().charAt(0))
-      if (razao.toString().charAt(0) == "-") {
-        id_ponteiroTemperatura.style.left = "-" + 50 + "%"
-      } else {
-        id_ponteiroTemperatura.style.left = 50 + "%"
-      }
-    } else {
-      id_ponteiroTemperatura.style.left = ((x - 22) * 4 + "%")
-      id_ponteiroTemperatura.style.opacity = 1
-      id_ponteiroTemperatura.innerHTML = `|<br>`
-      if (x != 10 && x != 34) {
-        id_ponteiroTemperatura.innerHTML += `${x}°C`
-      } else {
-        id_ponteiroTemperatura.innerHTML += `|`
-      }
-    }
-
-    if (y <= 50) {
-      humidity.src = "../assets/img/dashboard/notifyHumiLow.svg";
-      umidade.data.datasets[0].backgroundColor = ["#ffff60", "#EAE8DB"];
-      humidity.classList.add('animate');
-    } else if (y <= 60) {
-      humidity.src = "../assets/img/dashboard/notifyHumiLowAlert.svg";
-      umidade.data.datasets[0].backgroundColor = ["#a0ff67", "#EAE8DB"];
-      humidity.classList.remove('animate');
-    } else if (y <= 80) {
-      humidity.src = "../assets/img/dashboard/notifyHumiIdeal.svg";
-      umidade.data.datasets[0].backgroundColor = ["#20db74", "#EAE8DB"];
-      humidity.classList.remove('animate');
-    } else if (y <= 97) {
-      humidity.src = "../assets/img/dashboard/notifyHumiHighAlert.svg";
-      umidade.data.datasets[0].backgroundColor = ["#109c77", "#EAE8DB"];
-      humidity.classList.remove('animate');
-    } else {
-      humidity.src = "../assets/img/dashboard/notifyHumiHigh.svg";
-      umidade.data.datasets[0].backgroundColor = ["#007a7a", "#EAE8DB"];
-      humidity.classList.add('animate');
-    }
-
-    atualUmidade.innerHTML = y + "%";
-
-    if (y < 50 || y > 97) {
-      id_ponteiroUmidade.innerHTML = `|<br>|`
-      if (y.toString().includes("-")) {
-        id_ponteiroUmidade.style.left = -50 + "%";
-      } else {
-        id_ponteiroUmidade.style.left = 50 + "%";
-      }
-    } else {
-      id_ponteiroUmidade.style.left = (y - 75) * 5 + "%";
-      id_ponteiroUmidade.style.opacity = 1
-      id_ponteiroUmidade.innerHTML = `|<br>`
-      if (y != 50 && y != 97) {
-        id_ponteiroUmidade.innerHTML += `${y}%`
-      } else {
-        id_ponteiroUmidade.innerHTML += `|`
-      }
-    }
+  //   if (x <= 10) {
+  //     temp.src = "../assets/img/dashboard/notifyTempLow";
+  //     tempAtual.style.color = "#7afdff";
+  //     temp.classList.add('animate');
+  //   } else if (x <= 15) {
+  //     temp.src = "../assets/img/dashboard/notifyTempLowAlert.svg";
+  //     tempAtual.style.color = "#9cdbc0";
+  //     temp.classList.remove('animate');
+  //   } else if (x < 27) {
+  //     temp.src = "../assets/img/dashboard/notifyTempIdeal.svg";
+  //     tempAtual.style.color = "#bdc771";
+  //     temp.classList.remove('animate');
+  //   } else if (x < 34) {
+  //     temp.src = "../assets/img/dashboard/notifyTempHighAlert.svg";
+  //     tempAtual.style.color = "#c9b167";
+  //     temp.classList.remove('animate');
+  //   } else {
+  //     temp.src = "../assets/img/dashboard/notifyTempHigh.svg";
+  //     tempAtual.style.color = "#ff7200";
+  //     temp.classList.add('animate');
+  //   }
 
 
+  //   if (x < 10 || x > 34) {
+  //     id_ponteiroTemperatura.innerHTML = `|<br>|`
+  //     var razao = (x - 22) * 4;
+  //     console.log(razao.toString().charAt(0))
+  //     if (razao.toString().charAt(0) == "-") {
+  //       id_ponteiroTemperatura.style.left = "-" + 50 + "%"
+  //     } else {
+  //       id_ponteiroTemperatura.style.left = 50 + "%"
+  //     }
+  //   } else {
+  //     id_ponteiroTemperatura.style.left = ((x - 22) * 4 + "%")
+  //     id_ponteiroTemperatura.style.opacity = 1
+  //     id_ponteiroTemperatura.innerHTML = `|<br>`
+  //     if (x != 10 && x != 34) {
+  //       id_ponteiroTemperatura.innerHTML += `${x}°C`
+  //     } else {
+  //       id_ponteiroTemperatura.innerHTML += `|`
+  //     }
+  //   }
+
+  //   if (y <= 50) {
+  //     humidity.src = "../assets/img/dashboard/notifyHumiLow.svg";
+  //     umidade.data.datasets[0].backgroundColor = ["#ffff60", "#EAE8DB"];
+  //     humidity.classList.add('animate');
+  //   } else if (y <= 60) {
+  //     humidity.src = "../assets/img/dashboard/notifyHumiLowAlert.svg";
+  //     umidade.data.datasets[0].backgroundColor = ["#a0ff67", "#EAE8DB"];
+  //     humidity.classList.remove('animate');
+  //   } else if (y <= 80) {
+  //     humidity.src = "../assets/img/dashboard/notifyHumiIdeal.svg";
+  //     umidade.data.datasets[0].backgroundColor = ["#20db74", "#EAE8DB"];
+  //     humidity.classList.remove('animate');
+  //   } else if (y <= 97) {
+  //     humidity.src = "../assets/img/dashboard/notifyHumiHighAlert.svg";
+  //     umidade.data.datasets[0].backgroundColor = ["#109c77", "#EAE8DB"];
+  //     humidity.classList.remove('animate');
+  //   } else {
+  //     humidity.src = "../assets/img/dashboard/notifyHumiHigh.svg";
+  //     umidade.data.datasets[0].backgroundColor = ["#007a7a", "#EAE8DB"];
+  //     humidity.classList.add('animate');
+  //   }
+
+  //   atualUmidade.innerHTML = y + "%";
+
+  //   if (y < 50 || y > 97) {
+  //     id_ponteiroUmidade.innerHTML = `|<br>|`
+  //     if (y.toString().includes("-")) {
+  //       id_ponteiroUmidade.style.left = -50 + "%";
+  //     } else {
+  //       id_ponteiroUmidade.style.left = 50 + "%";
+  //     }
+  //   } else {
+  //     id_ponteiroUmidade.style.left = (y - 75) * 5 + "%";
+  //     id_ponteiroUmidade.style.opacity = 1
+  //     id_ponteiroUmidade.innerHTML = `|<br>`
+  //     if (y != 50 && y != 97) {
+  //       id_ponteiroUmidade.innerHTML += `${y}%`
+  //     } else {
+  //       id_ponteiroUmidade.innerHTML += `|`
+  //     }
+  //   }
 
 
 
-    umidade.data.datasets[0].data = [y, 100 - y];
-    umidade.update();
+
+
+  //   umidade.data.datasets[0].data = [y, 100 - y];
+  //   umidade.update();
 
 
 
-  }, 5000);
+  // }, 5000);
 
 
 </script>
