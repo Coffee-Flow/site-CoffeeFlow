@@ -448,3 +448,57 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .highcharts-axis-labels.highcharts-yaxis-labels.highcharts-radial-axis-labels text {
   font-size: 0;
 }
+
+.notificacao {
+  position: absolute;
+  right: 30px;
+  align-self: start;
+  height: auto;
+  display: flex;
+  background-color: greenyellow;
+  padding: 10px 0 10px 20px;
+  border-radius: 15px;
+  margin: 20px 55px;
+  display: none;
+  width: 0;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+}
+
+.notificacao>div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notificacao>div:last-child {
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+  gap: 10px;
+}
+
+.notificacao>div:first-child>div>p:first-child {
+  margin-bottom: 7px;
+}
+
+#p_titulo_msg {
+  font: 700 18px 'Poppins';
+  line-height: 20px;
+}
+
+.notificacao .p-auxiliar {
+  font: 400 13px 'Poppins';
+  line-height: 17px;
+}
+
+#thumbs {
+  background-color: red;
+  padding: 12px;
+  border-radius: 50px;
+  margin-left: -10px;
+  position: absolute;
+  top: 45px;
+  right: 60px;
+  cursor: pointer;
+}

@@ -113,6 +113,7 @@
   </header>
 
   <div class="content">
+
     <div class="section1">
       <div class="grafico">
         <canvas id="temperatura"></canvas>
@@ -164,28 +165,118 @@
       </div>
     </div>
   </div>
+  <div class="notificacao">
+    <div>
+      <div>
+        <p><b id="p_titulo_msg"></b></p>
+        <p class="p-auxiliar">YAY! You can do some Magic now! Start using your Magic Mouse</p>
+      </div>
+    </div>
+  </div>
+  <img width="25px" src="../assets/img/dashboard/thumbs-up.png" alt="" id="thumbs">
 </body>
 
 </html>
 <script>
 
-    // minimal heatmap instance configuration
-    var heatmapInstance = h337.create({
+  // Seleciona o icon de notificação
+  const iconNoti = document.querySelector('#thumbs');
+  // Seleciona a div da notificação
+  const notificacao = document.querySelector('.notificacao');
+  var tirarTimeout;
+
+  // Adiciona um evento de hover à outra div
+  iconNoti.addEventListener('mouseover', () => {
+    // Mostra a notificação ao passar o mouse sobre o icon de notificação
+    notificacao.style.display = 'flex';
+    notificacao.style.width = '22%';
+    notificacao.style.opacity = '1';
+
+    // 'limpa' o setTimeout da outra função abaixo, para não ficar lento a exibição da notificação
+    clearTimeout(tirarTimeout);
+  });
+
+  iconNoti.addEventListener('mouseout', () => {
+    // Esconde a notificação ao tirar o mouse do icon de notificação
+    notificacao.style.width = '0';
+    notificacao.style.opacity = '0.3';
+
+    tirarTimeout = setTimeout(() => {
+      notificacao.style.display = 'none';
+    }, 550);
+
+  });
+
+  // Função para processar os dados
+  function processarDados(dados) {
+    var { temperaturaExt, temperaturaSolo, umidade } = dados;
+
+    var mensagem = "";
+
+    if ((temperaturaExt <= 15 && temperaturaExt >= 27) || (temperaturaSolo <= 12 && temperaturaSolo >= 25) || (umidade <= 60 || umidade >= 80)) {
+      thumbs.style.display = 'flex';
+      if (temperaturaExt <= 10) {
+        mensagem += `Crítico: Temperatura Externa muito baixa!<br>`;
+      } else if (temperaturaExt <= 15) {
+        mensagem += `Alerta: Temperatura Externa baixa!<br>`;
+      } else if (temperaturaExt >= 27) {
+        mensagem += `Alerta: Temperatura Externa alta!<br>`;
+      } else if (temperaturaExt >= 34) {
+        mensagem += `Crítico: Temperatura Externa muito alta!<br>`;
+      }
+
+      if (temperaturaSolo <= 8) {
+        mensagem += `Crítico: Temperatura do Solo muito baixa!<br>`;
+      } else if (temperaturaSolo <= 12) {
+        mensagem += `Alerta: Temperatura do Solo baixa!<br>`;
+      } else if (temperaturaSolo >= 25) {
+        mensagem += `Alerta: Temperatura do Solo alta!<br>`;
+      } else if (temperaturaSolo >= 33) {
+        mensagem += `Crítico: Temperatura do Solo muito alta!<br>`;
+      }
+
+      if (umidade <= 50) {
+        mensagem += `Crítico: Umidade do Solo muito baixa!<br>`;
+      } else if (umidade <= 60) {
+        mensagem += `Alerta: Umidade do Solo baixa!<br>`;
+      } else if (umidade >= 80) {
+        mensagem += `Alerta: Umidade do Solo alta!<br>`;
+      } else if (umidade >= 97) {
+        mensagem += `Crítico: Umidade do Solo muito alta!<br>`;
+      }
+    } else {
+      thumbs.style.display = 'none';
+    }
+
+    document.getElementById('p_titulo_msg').innerHTML = mensagem;
+  }
+
+  var dadosSimulados = {
+    temperaturaExt: 20.53,
+    temperaturaSolo: 20.64, 
+    umidade: 30
+  };
+  // Chama a função para processar os dados simulados
+  processarDados(dadosSimulados);
+
+
+  // minimal heatmap instance configuration
+  var heatmapInstance = h337.create({
     // only container is required, the rest will be defaults
     container: document.querySelector('.mapa'),
     // backgroundColor: 'red',
     maxOpacity: .5,
     minOpacity: .5,
-  // custom gradient colors
-  gradient: {
-    // enter n keys between 0 and 1 here
-    // for gradient color customization
-    '0.2': '#7afdff',
-    '0.3': '#9cdbc0',
-    '0.5': '#bdc771',
-    '0.625': '#c9b167',
-    '0.825': '#ff7200'
-  }
+    // custom gradient colors
+    gradient: {
+      // enter n keys between 0 and 1 here
+      // for gradient color customization
+      '0.2': '#7afdff',
+      '0.3': '#9cdbc0',
+      '0.5': '#bdc771',
+      '0.625': '#c9b167',
+      '0.825': '#ff7200'
+    }
   });
 
   // now generate some random data
@@ -200,52 +291,52 @@
 
 
   var local1 = {
-    x : 56.25,
-    y : 62.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 56.25,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
   var local2 = {
-    x : 56.25,
-    y : 187.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 56.25,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
   var local3 = {
-    x : 168.75,
-    y : 62.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 168.75,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
   var local4 = {
-    x : 168.75,
-    y : 187.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 168.75,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
   var local5 = {
-    x : 281.25,
-    y : 62.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 281.25,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
   var local6 = {
-    x : 281.25,
-    y : 187.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 281.25,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
   var local7 = {
-    x : 393,
-    y : 62.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 393,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
   var local8 = {
-    x : 393,
-    y : 187.5,
-    value : Math.floor(minT+Math.random()*intervalo),
-    radius : 110,
+    x: 393,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 110,
   }
 
   // while (len--) {
