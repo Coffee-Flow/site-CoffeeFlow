@@ -165,96 +165,181 @@
       </div>
     </div>
   </div>
-  <div class="notificacao">
+  <div class="notificacaoTemp">
     <div>
       <div>
-        <p><b id="p_titulo_msg"></b></p>
-        <p class="p-auxiliar">YAY! You can do some Magic now! Start using your Magic Mouse</p>
+        <p><b id="p_titulo_msg_temp"></b></p>
+        <p id="p_auxiliarTemp"></p>
       </div>
     </div>
   </div>
-  <img width="25px" src="../assets/img/dashboard/thumbs-up.png" alt="" id="thumbs">
+  <img width="25px" src="" alt="" id="thumbsTemp">
+
+  <div class="notificacaoUmi">
+    <div>
+      <div>
+        <p><b id="p_titulo_msg_umi"></b></p>
+        <p id="p_auxiliarUmi"></p>
+      </div>
+    </div>
+  </div>
+  <img width="25px" src="" alt="" id="thumbsUmi">
 </body>
 
 </html>
 <script>
 
   // Seleciona o icon de notificação
-  const iconNoti = document.querySelector('#thumbs');
+  const iconNotiTemp = document.querySelector('#thumbsTemp');
+  const iconNotiUmi = document.querySelector('#thumbsUmi');
+
   // Seleciona a div da notificação
-  const notificacao = document.querySelector('.notificacao');
+  const notificacaoTemp = document.querySelector('.notificacaoTemp');
+  const notificacaoUmi = document.querySelector('.notificacaoUmi');
+
   var tirarTimeout;
 
   // Adiciona um evento de hover à outra div
-  iconNoti.addEventListener('mouseover', () => {
+  iconNotiTemp.addEventListener('mouseover', () => {
     // Mostra a notificação ao passar o mouse sobre o icon de notificação
-    notificacao.style.display = 'flex';
-    notificacao.style.width = '22%';
-    notificacao.style.opacity = '1';
+    notificacaoTemp.style.display = 'flex';
+    // notificacaoTemp.style.width = '23%';
+    notificacaoTemp.style.opacity = '1';
 
     // 'limpa' o setTimeout da outra função abaixo, para não ficar lento a exibição da notificação
     clearTimeout(tirarTimeout);
   });
 
-  iconNoti.addEventListener('mouseout', () => {
+  iconNotiTemp.addEventListener('mouseout', () => {
     // Esconde a notificação ao tirar o mouse do icon de notificação
-    notificacao.style.width = '0';
-    notificacao.style.opacity = '0.3';
+    // notificacaoTemp.style.width = '0';
+    notificacaoTemp.style.opacity = '0';
 
     tirarTimeout = setTimeout(() => {
-      notificacao.style.display = 'none';
+      notificacaoTemp.style.display = 'none';
+      // notificacaoTemp.style.opacity = '0';
+
     }, 550);
 
+  });
+
+  // Para Umidade
+
+  iconNotiUmi.addEventListener('mouseover', () => {
+    notificacaoUmi.style.display = 'flex';
+    // notificacaoUmi.style.width = '21%';
+    notificacaoUmi.style.opacity = '1';
+
+    clearTimeout(tirarTimeout);
+  });
+
+  iconNotiUmi.addEventListener('mouseout', () => {
+    // notificacaoUmi.style.width = '0';
+    notificacaoUmi.style.opacity = '0';
+
+    tirarTimeout = setTimeout(() => {
+      notificacaoUmi.style.display = 'none';
+      // notificacaoUmi.style.opacity = '0';
+
+    }, 550);
   });
 
   // Função para processar os dados
   function processarDados(dados) {
     var { temperaturaExt, temperaturaSolo, umidade } = dados;
 
-    var mensagem = "";
+    var mensagemTemp = "";
+    var mensagemUmi = "";
 
-    if ((temperaturaExt <= 15 && temperaturaExt >= 27) || (temperaturaSolo <= 12 && temperaturaSolo >= 25) || (umidade <= 60 || umidade >= 80)) {
-      thumbs.style.display = 'flex';
+
+    if (temperaturaExt <= 10 || temperaturaSolo <= 8 || temperaturaExt >= 34 || temperaturaSolo >= 33) {
+      thumbsTemp.style.display = 'flex';
+
       if (temperaturaExt <= 10) {
-        mensagem += `Crítico: Temperatura Externa muito baixa!<br>`;
+        mensagemTemp += `Crítico: Temperatura Externa muito baixa!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconCritico.svg";
+        thumbsTemp.style.backgroundColor = "#7AFDFF";
+        p_auxiliarTemp.innerHTML += "Proteja as plantas do frio intenso. Ajuste os cuidados para evitar danos aos cafezais.<br>"
       } else if (temperaturaExt <= 15) {
-        mensagem += `Alerta: Temperatura Externa baixa!<br>`;
-      } else if (temperaturaExt >= 27) {
-        mensagem += `Alerta: Temperatura Externa alta!<br>`;
+        mensagemTemp += `Alerta: Temperatura Externa baixa!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconAlerta.svg";
+        thumbsTemp.style.backgroundColor = "#9CDBC0";
+        p_auxiliarTemp.innerHTML += "Temperatura fresca lá fora. Ajuste os cuidados para manter o conforto das plantas de café.<br>"
+      } else if (temperaturaExt >= 27 && temperaturaExt < 34) {
+        mensagemTemp += `Alerta: Temperatura Externa alta!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconAlerta.svg";
+        thumbsTemp.style.backgroundColor = "#C9B167";
+        p_auxiliarTemp.innerHTML += "Ajuste a irrigação para proteger os cafezais do calor excessivo.<br>"
       } else if (temperaturaExt >= 34) {
-        mensagem += `Crítico: Temperatura Externa muito alta!<br>`;
+        mensagemTemp += `Crítico: Temperatura Externa muito alta!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconCritico.svg";
+        thumbsTemp.style.backgroundColor = "#FF7200";
+        p_auxiliarTemp.innerHTML += "Calor extremo lá fora. Adapte a irrigação para evitar danos às plantas.<br>"
       }
 
       if (temperaturaSolo <= 8) {
-        mensagem += `Crítico: Temperatura do Solo muito baixa!<br>`;
+        mensagemTemp += `Crítico: Temperatura do Solo muito baixa!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconCritico.svg";
+        thumbsTemp.style.backgroundColor = "#7AFDFF";
+        p_auxiliarTemp.innerHTML += "Ajuste a irrigação para proteger as mudas de café do frio.<br>"
       } else if (temperaturaSolo <= 12) {
-        mensagem += `Alerta: Temperatura do Solo baixa!<br>`;
-      } else if (temperaturaSolo >= 25) {
-        mensagem += `Alerta: Temperatura do Solo alta!<br>`;
+        mensagemTemp += `Alerta: Temperatura do Solo baixa!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconAlerta.svg";
+        thumbsTemp.style.backgroundColor = "#9CDBC0";
+        p_auxiliarTemp.innerHTML += "Ajuste os aspersores para evitar perdas na lavoura.<br>"
+      } else if (temperaturaSolo >= 25 && temperaturaSolo < 33) {
+        mensagemTemp += `Alerta: Temperatura do Solo alta!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconAlerta.svg";
+        thumbsTemp.style.backgroundColor = "#C9B167";
+        p_auxiliarTemp.innerHTML += "Ajuste a irrigação para evitar estresse nas raízes do café.<br>"
       } else if (temperaturaSolo >= 33) {
-        mensagem += `Crítico: Temperatura do Solo muito alta!<br>`;
-      }
-
-      if (umidade <= 50) {
-        mensagem += `Crítico: Umidade do Solo muito baixa!<br>`;
-      } else if (umidade <= 60) {
-        mensagem += `Alerta: Umidade do Solo baixa!<br>`;
-      } else if (umidade >= 80) {
-        mensagem += `Alerta: Umidade do Solo alta!<br>`;
-      } else if (umidade >= 97) {
-        mensagem += `Crítico: Umidade do Solo muito alta!<br>`;
+        mensagemTemp += `Crítico: Temperatura do Solo muito alta!<br>`;
+        thumbsTemp.src = "../assets/img/dashboard/iconCritico.svg";
+        thumbsTemp.style.backgroundColor = "#FF7200";
+        p_auxiliarTemp.innerHTML += "Aumente a frequência de irrigação para compensar o calor.<br>"
       }
     } else {
-      thumbs.style.display = 'none';
+      thumbsTemp.style.display = 'none';
     }
 
-    document.getElementById('p_titulo_msg').innerHTML = mensagem;
+    document.getElementById('p_titulo_msg_temp').innerHTML = mensagemTemp;
+
+    if (umidade <= 60 || umidade >= 80) {
+      thumbsUmi.style.display = 'flex';
+
+      if (umidade <= 50) {
+        mensagemUmi += `Crítico: Umidade do Solo muito baixa!<br>`;
+        thumbsUmi.src = "../assets/img/dashboard/iconCritico.svg";
+        thumbsUmi.style.backgroundColor = "#FFFF60";
+        p_auxiliarUmi.innerHTML += "Ajuste a irrigação para garantir a umidade necessária.<br>";
+      } else if (umidade <= 60) {
+        mensagemUmi += `Alerta: Umidade do Solo baixa!<br>`;
+        thumbsUmi.src = "../assets/img/dashboard/iconAlerta.svg";
+        thumbsUmi.style.backgroundColor = "#A0FF67";
+        p_auxiliarUmi.innerHTML += "Ajuste a irrigação para manter o equilíbrio hídrico nas raízes do café.<br>"
+      } else if (umidade >= 80 && umidade < 97) {
+        mensagemUmi += `Alerta: Umidade do Solo alta!<br>`;
+        thumbsUmi.src = "../assets/img/dashboard/iconAlerta.svg";
+        thumbsUmi.style.backgroundColor = "#109C77";
+        p_auxiliarUmi.innerHTML += "Reduza a irrigação para evitar excesso de umidade.<br>";
+      } else if (umidade >= 97) {
+        mensagemUmi += `Crítico: Umidade do Solo muito alta!<br>`;
+        thumbsUmi.src = "../assets/img/dashboard/iconCritico.svg";
+        thumbsUmi.style.backgroundColor = "#007A7A";
+        p_auxiliarUmi.innerHTML += "Ajuste a irrigação para proteger as raízes do café.<br>";
+      }
+    } else {
+      thumbsUmi.style.display = 'none';
+    }
+
+    document.getElementById('p_titulo_msg_umi').innerHTML = mensagemUmi;
+
   }
 
   var dadosSimulados = {
-    temperaturaExt: 20.53,
-    temperaturaSolo: 20.64, 
-    umidade: 30
+    temperaturaExt: 5,
+    temperaturaSolo: 20,
+    umidade: 80
   };
   // Chama a função para processar os dados simulados
   processarDados(dadosSimulados);

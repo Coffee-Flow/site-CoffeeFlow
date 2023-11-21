@@ -449,56 +449,77 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 0;
 }
 
-.notificacao {
+.notificacaoTemp, .notificacaoUmi {
   position: absolute;
   right: 30px;
+  top: 20px;
   align-self: start;
-  height: auto;
   display: flex;
-  background-color: greenyellow;
-  padding: 10px 0 10px 20px;
+  align-items: center;
+  background-color: #053C11;
+  padding: 15px 20px 15px 20px;
   border-radius: 15px;
   margin: 20px 55px;
   display: none;
   width: 0;
+  height: 70px; /* Definindo uma altura fixa */
   overflow: hidden;
   transition: all 0.6s ease-in-out;
 }
 
-.notificacao>div:first-child {
+.notificacaoTemp {
+  padding: 30px 30px;
+  width: 23%;
+}
+
+.notificacaoUmi {
+ width: 21%;
+  top: 175px;
+  
+}
+
+.notificacaoTemp>div:first-child, .notificacaoUmi>div:first-child {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-.notificacao>div:last-child {
+.notificacaoTemp>div:last-child, .notificacaoUmi>div:last-child {
   display: flex;
   flex-direction: column;
-  max-width: 280px;
   gap: 10px;
 }
 
-.notificacao>div:first-child>div>p:first-child {
+.notificacaoTemp>div:first-child>div>p:first-child, .notificacaoUmi>div:first-child>div>p:first-child  {
   margin-bottom: 7px;
 }
 
-#p_titulo_msg {
-  font: 700 18px 'Poppins';
+.notificacaoTemp>div:first-child>div>p:first-child p, .notificacaoUmi>div:first-child>div>p:first-child p {
+  width: 300px;
+}
+
+#p_titulo_msg_temp, #p_titulo_msg_umi {
+  font: 600 14px 'Poppins';
   line-height: 20px;
+  color: white;
+  width: 300px;
 }
 
-.notificacao .p-auxiliar {
-  font: 400 13px 'Poppins';
+.notificacaoTemp #p_auxiliarTemp, .notificacaoUmi #p_auxiliarUmi  {
+  font: 300 13px 'Poppins';
   line-height: 17px;
+  color: white;
 }
 
-#thumbs {
-  background-color: red;
-  padding: 12px;
+#thumbsTemp, #thumbsUmi {
+  padding: 12px 19px;
   border-radius: 50px;
-  margin-left: -10px;
+  margin-left: -5px;
   position: absolute;
   top: 45px;
-  right: 60px;
+  right: 45px;
   cursor: pointer;
+}
+
+#thumbsUmi {
+  top: 190px;
 }
