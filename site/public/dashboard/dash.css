@@ -449,7 +449,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 0;
 }
 
-.notificacaoTemp, .notificacaoUmi {
+.notificacaoTempExt, .notificacaoTempSolo, .notificacaoUmi {
   position: absolute;
   right: 30px;
   top: 20px;
@@ -457,60 +457,64 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   background-color: #053C11;
-  padding: 15px 20px 15px 20px;
   border-radius: 15px;
   margin: 20px 55px;
+  padding: 20px 65px 20px 20px;
   display: none;
-  width: 0;
-  height: 70px; /* Definindo uma altura fixa */
+  width: fit-content;
+  height: fit-content; /* Definindo uma altura fixa */
   overflow: hidden;
   transition: all 0.6s ease-in-out;
 }
 
-.notificacaoTemp {
-  padding: 30px 30px;
-  width: 23%;
+.notificacaoTempExt {  
+  width: 22%;
+}
+
+.notificacaoTempSolo {  
+  width: 20%;
+  top: 160px;
 }
 
 .notificacaoUmi {
- width: 21%;
-  top: 175px;
-  
+  width: 20%;
+  top: 305px;
 }
 
-.notificacaoTemp>div:first-child, .notificacaoUmi>div:first-child {
+.notificacaoTempExt>div:first-child, .notificacaoTempSolo>div:first-child, .notificacaoUmi>div:first-child {
   display: flex;
   align-items: center;
 }
 
-.notificacaoTemp>div:last-child, .notificacaoUmi>div:last-child {
+.notificacaoTempExt>div:last-child, .notificacaoTempSolo>div:last-child, .notificacaoUmi>div:last-child {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.notificacaoTemp>div:first-child>div>p:first-child, .notificacaoUmi>div:first-child>div>p:first-child  {
+.notificacaoTempExt>div:first-child>div>p:first-child, .notificacaoTempSolo>div:first-child>div>p:first-child .notificacaoUmi>div:first-child>div>p:first-child  {
   margin-bottom: 7px;
 }
 
-.notificacaoTemp>div:first-child>div>p:first-child p, .notificacaoUmi>div:first-child>div>p:first-child p {
+.notificacaoTempExt>div:first-child>div>p:first-child p,
+.notificacaoTempSolo>div:first-child>div>p:first-child p, .notificacaoUmi>div:first-child>div>p:first-child p {
   width: 300px;
 }
 
-#p_titulo_msg_temp, #p_titulo_msg_umi {
+#p_titulo_msg_temp_ext, #p_titulo_msg_temp_solo, #p_titulo_msg_umi {
   font: 600 14px 'Poppins';
   line-height: 20px;
   color: white;
   width: 300px;
 }
 
-.notificacaoTemp #p_auxiliarTemp, .notificacaoUmi #p_auxiliarUmi  {
+.notificacaoTempExt #p_auxiliarTempExt, .notificacaoTempSolo #p_auxiliarTempSolo, .notificacaoUmi #p_auxiliarUmi  {
   font: 300 13px 'Poppins';
   line-height: 17px;
   color: white;
 }
 
-#thumbsTemp, #thumbsUmi {
+#thumbsTempExt, #thumbsTempSolo, #thumbsUmi {
   padding: 12px 19px;
   border-radius: 50px;
   margin-left: -5px;
@@ -520,6 +524,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
+#thumbsTempSolo {
+  top: 188px;
+}
+
 #thumbsUmi {
-  top: 190px;
+  top: 334px;
 }
