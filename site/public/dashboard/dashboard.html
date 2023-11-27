@@ -416,83 +416,135 @@
 
 
   var local1 = {
-    x: 56.25,
+    x: 28.125,
     y: 62.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
   }
   var local2 = {
-    x: 56.25,
+    x: 28.125,
     y: 187.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
   }
   var local3 = {
-    x: 168.75,
+    x: 84.375,
     y: 62.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
   }
   var local4 = {
-    x: 168.75,
+    x: 84.375,
     y: 187.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
   }
   var local5 = {
-    x: 281.25,
+    x: 140.625,
     y: 62.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
   }
   var local6 = {
-    x: 281.25,
+    x: 140.625,
     y: 187.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
   }
   var local7 = {
-    x: 393,
+    x: 196.875,
     y: 62.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
   }
   var local8 = {
-    x: 393,
+    x: 196.875,
     y: 187.5,
     value: Math.floor(minT + Math.random() * intervalo),
-    radius: 110,
+    radius: 60
+  }
+  var local9 = {
+    x: 253.125,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
+  }
+  var local10 = {
+    x: 253.125,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
+  }
+  var local11 = {
+    x: 309.375,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
+  }
+  var local12 = {
+    x: 309.375,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
+  }
+  var local13 = {
+    x: 365.625,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
+  }
+  var local14 = {
+    x: 365.625,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
+  }
+  var local15 = {
+    x: 421.875,
+    y: 62.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
+  }
+  var local16 = {
+    x: 421.875,
+    y: 187.5,
+    value: Math.floor(minT + Math.random() * intervalo),
+    radius: 60
   }
 
-  // while (len--) {
-  //   var val = Math.floor(Math.random()*100);
-  //   max = Math.max(max, val);
-  //   var point = {
-  //     x: Math.floor(Math.random()*100),
-  //     y: Math.floor(Math.random()*height),
-  //     value: val
-  //   };
-  // }
+  
+  var posX = 28;
 
-  console.log(local1)
-  console.log(local2)
-  console.log(local3)
-  console.log(local4)
-  console.log(local5)
-  console.log(local6)
-  console.log(local7)
-  console.log(local8)
+  for(var contadorSensor = 1; contadorSensor<=16; contadorSensor++){
+    
+    var posY = 62;
+    if(contadorSensor % 2 == 0){
+      posY = 187;
+    }else{
+      posX = 28;
+      posX = posX * contadorSensor;
+    }
 
-  points = points.concat(local1, local2, local3, local4, local5, local6, local7, local8);
+    var sensor = {
+      x: posX,
+      y: posY,
+      value: Math.floor(minT + Math.random() * intervalo),
+      radius: 110,
+    }
+    points.push(sensor);
+  }
 
-  // heatmap data format
   var data = {
-    max: max,
-    data: points
+    max: 40,
+    data: points,
   };
+
+  heatmapInstance.setData(data);
+  console.log(points)
+  // heatmap data format
+
   // if you have a set of datapoints always use setData instead of addData
   // for data initialization
-  heatmapInstance.setData(data);
 
 
 
@@ -676,123 +728,5 @@
   new Chart(pizzaUmidadeMim, configPizzaMenor);
   new Chart(pizzaUmidadeMax, configPizzaMaior);
   const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
-
-  //Notificações
-
-  // setInterval(function notificar() {
-  //   x = (Math.random() * 12 + 15).toFixed(0);
-  //   y = (Math.random() * 10 + 70).toFixed(0);
-
-  //   tempAtual.innerText = x + "°C";
-
-  //   var temperatura = "";
-  //   var temperaturaText = tempAtual.innerHTML;
-
-  //   var i = 0;
-
-  //   while (i <= temperaturaText.length - 1) {
-  //     if (!isNaN(temperaturaText[i])) {
-  //       temperatura += temperaturaText[i];
-  //     }
-  //     i++;
-  //   }
-  //   temperatura = Number(temperatura);
-
-  //   if (x <= 10) {
-  //     temp.src = "../assets/img/dashboard/notifyTempLow";
-  //     tempAtual.style.color = "#7afdff";
-  //     temp.classList.add('animate');
-  //   } else if (x <= 15) {
-  //     temp.src = "../assets/img/dashboard/notifyTempLowAlert.svg";
-  //     tempAtual.style.color = "#9cdbc0";
-  //     temp.classList.remove('animate');
-  //   } else if (x < 27) {
-  //     temp.src = "../assets/img/dashboard/notifyTempIdeal.svg";
-  //     tempAtual.style.color = "#bdc771";
-  //     temp.classList.remove('animate');
-  //   } else if (x < 34) {
-  //     temp.src = "../assets/img/dashboard/notifyTempHighAlert.svg";
-  //     tempAtual.style.color = "#c9b167";
-  //     temp.classList.remove('animate');
-  //   } else {
-  //     temp.src = "../assets/img/dashboard/notifyTempHigh.svg";
-  //     tempAtual.style.color = "#ff7200";
-  //     temp.classList.add('animate');
-  //   }
-
-
-  //   if (x < 10 || x > 34) {
-  //     id_ponteiroTemperatura.innerHTML = `|<br>|`
-  //     var razao = (x - 22) * 4;
-  //     console.log(razao.toString().charAt(0))
-  //     if (razao.toString().charAt(0) == "-") {
-  //       id_ponteiroTemperatura.style.left = "-" + 50 + "%"
-  //     } else {
-  //       id_ponteiroTemperatura.style.left = 50 + "%"
-  //     }
-  //   } else {
-  //     id_ponteiroTemperatura.style.left = ((x - 22) * 4 + "%")
-  //     id_ponteiroTemperatura.style.opacity = 1
-  //     id_ponteiroTemperatura.innerHTML = `|<br>`
-  //     if (x != 10 && x != 34) {
-  //       id_ponteiroTemperatura.innerHTML += `${x}°C`
-  //     } else {
-  //       id_ponteiroTemperatura.innerHTML += `|`
-  //     }
-  //   }
-
-  //   if (y <= 50) {
-  //     humidity.src = "../assets/img/dashboard/notifyHumiLow.svg";
-  //     umidade.data.datasets[0].backgroundColor = ["#ffff60", "#EAE8DB"];
-  //     humidity.classList.add('animate');
-  //   } else if (y <= 60) {
-  //     humidity.src = "../assets/img/dashboard/notifyHumiLowAlert.svg";
-  //     umidade.data.datasets[0].backgroundColor = ["#a0ff67", "#EAE8DB"];
-  //     humidity.classList.remove('animate');
-  //   } else if (y <= 80) {
-  //     humidity.src = "../assets/img/dashboard/notifyHumiIdeal.svg";
-  //     umidade.data.datasets[0].backgroundColor = ["#20db74", "#EAE8DB"];
-  //     humidity.classList.remove('animate');
-  //   } else if (y <= 97) {
-  //     humidity.src = "../assets/img/dashboard/notifyHumiHighAlert.svg";
-  //     umidade.data.datasets[0].backgroundColor = ["#109c77", "#EAE8DB"];
-  //     humidity.classList.remove('animate');
-  //   } else {
-  //     humidity.src = "../assets/img/dashboard/notifyHumiHigh.svg";
-  //     umidade.data.datasets[0].backgroundColor = ["#007a7a", "#EAE8DB"];
-  //     humidity.classList.add('animate');
-  //   }
-
-  //   atualUmidade.innerHTML = y + "%";
-
-  //   if (y < 50 || y > 97) {
-  //     id_ponteiroUmidade.innerHTML = `|<br>|`
-  //     if (y.toString().includes("-")) {
-  //       id_ponteiroUmidade.style.left = -50 + "%";
-  //     } else {
-  //       id_ponteiroUmidade.style.left = 50 + "%";
-  //     }
-  //   } else {
-  //     id_ponteiroUmidade.style.left = (y - 75) * 5 + "%";
-  //     id_ponteiroUmidade.style.opacity = 1
-  //     id_ponteiroUmidade.innerHTML = `|<br>`
-  //     if (y != 50 && y != 97) {
-  //       id_ponteiroUmidade.innerHTML += `${y}%`
-  //     } else {
-  //       id_ponteiroUmidade.innerHTML += `|`
-  //     }
-  //   }
-
-
-
-
-
-  //   umidade.data.datasets[0].data = [y, 100 - y];
-  //   umidade.update();
-
-
-
-  // }, 5000);
-
 
 </script>
