@@ -216,6 +216,21 @@ body {
     border-radius: 15px;
     background-image: url("../assets/img/dashboard/mapaLavoura.png");
     background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+  .content .section2 .quadra3 .content .mapa h1{
+    color: #000;
+    width: 12.5%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    z-index: 9;
   }
   .content .section2 .quadra3 .content .mapa canvas{
     border-radius: 13px;
