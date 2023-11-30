@@ -33,7 +33,7 @@ function showNav(){
 
 function obterDadosGrafico(idLavoura, idQuadrante) {
 
-  // alterarTitulo(idAquario)
+  // alterarTitulo(idLavoura)
 
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
@@ -55,7 +55,7 @@ function obterDadosGrafico(idLavoura, idQuadrante) {
       });
 }
 
-function plotarGrafico(resposta, idAquario) {
+function plotarGrafico(resposta, idLavoura) {
 
   // console.log('iniciando plotagem do gráfico...');
 
@@ -193,7 +193,7 @@ function plotarGrafico(resposta, idAquario) {
     configUmidade
 );
 
-  // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+  setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value), 2000);
 }
 
 function obterDadosTeto(idLavoura, idQuadrante) {
@@ -220,3 +220,68 @@ function obterDadosTeto(idLavoura, idQuadrante) {
           console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
       });
 }
+
+// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idLavoura, idQuadrante) {
+
+      fetch(`/medidas/tempo-real/${idLavoura}/${idQuadrante}`, { cache: 'no-store' }).then(function (response) {
+          if (response.ok) {
+              response.json().then(function (novoRegistro) {
+
+                  obterDadosTeto(idLavoura, idQuadrante);
+                  // alertar(novoRegistro, idLavoura);
+                  console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                  console.log(`Dados atuais do gráfico:`);
+                  console.log(dados);
+
+                  // let avisoCaptura = document.getElementById(`avisoCaptura${idLavoura}`)
+                  // avisoCaptura.innerHTML = ""
+
+
+                  if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                      console.log("---------------------------------------------------------------")
+                      console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                      // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                      console.log("Horário do novo dado capturado:")
+                      console.log(novoRegistro[0].momento_grafico)
+                      console.log("Horário do último dado capturado:")
+                      console.log(dados.labels[dados.labels.length - 1])
+                      console.log("---------------------------------------------------------------")
+                  } else {
+                      // tirando e colocando valores no gráfico
+                      dados.labelsTemp.shift();
+                      dados.labelsTemp.push(novoRegistro[0].momento);
+
+                      dados.labelsUmi.shift();
+                      dados.labelsUmi.push(novoRegistro[0].momento);
+
+                      dadosTemp.datasets[0].data.shift();
+                      dadosTemp.datasets[0].data.push(novoRegistro[0].tempInt);
+
+                      dadosTemp.datasets[1].data.shift();
+                      dadosTemp.datasets[1].data.push(novoRegistro[0].tempExt);
+
+                      dadosUmidade.datasets[0].data.shift();
+                      dadosUmidade.datasets[0].data.push(novoRegistro[0].umidade);
+
+                      myChart.update();
+                  }
+
+                  // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                  proximaAtualizacao = setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value), 2000);
+              });
+          } else {
+              console.error('Nenhum dado encontrado ou erro na API');
+              // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+              proximaAtualizacao = setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value), 2000);
+          }
+      })
+          .catch(function (error) {
+              console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+          });
+
+  }

@@ -90,7 +90,7 @@ header {
   background-color: #053C11;
   box-shadow: 0 4px 8px -5px rgb(20, 20, 20);
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 .ul-header {

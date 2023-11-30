@@ -42,11 +42,12 @@ function buscarMedidasTeto(req, res){
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var idAquario = req.params.idAquario;
+    var idLavoura = req.params.idLavoura;
+    var idQuadrante = req.params.idQuadrante;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoReal(idLavoura, idQuadrante).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

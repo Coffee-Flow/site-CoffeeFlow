@@ -11,7 +11,7 @@ router.get("/medidasTeto/:idLavoura/:idQuadrante", function (req, res) {
     medidaController.buscarMedidasTeto(req, res);
 });
 
-router.get("/tempo-real/:idLavoura", function (req, res) {
+router.get("/tempo-real/:idLavoura/:idQuadrante", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
