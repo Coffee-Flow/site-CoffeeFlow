@@ -145,7 +145,11 @@
           }),
         }).then(function (resposta){
             if(resposta.status == 200){
-                window.location.href = "cadastrarEndereco.html";
+                resposta.json().then(function (json){
+                    sessionStorage.ID_EMPRESA = json.insertId
+                    window.location.href = "cadastroEndereco.html";
+                })
+               
             }
         })
     }

@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="assets/img/Logo/CoffeeFlowLogo.svg" type="image/x-icon">
 </head>
 
-<body>
+<body onload="listarFiliais(sessionStorage.ID_EMPRESA)">
     <header>
         <ul class="ul-header">
 
@@ -68,8 +68,8 @@
                         <span class="span-required" id="area_cultivo_span">*Tamanho da Área deve ser maior que 0</span>
                     </div>
                     <div class="radioArea">
-                        <input type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
-                        <input type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
+                        <input value="ha" type="radio" name="area" id="ha"><label for="ha">Em hectares (ha)</label>
+                        <input value="m2" type="radio" name="area" id="m2"><label for="m2">Em metros² (m²)</label>
                         <span class="span-required" id="radio_area_span">*Selecione uma das opções</span>
                     </div>
                 </div>
@@ -77,11 +77,11 @@
                 <div class="cafe">
                     <h2>Tipo(s) de Café cultivado(s)</h2>
                     <div class="radioCafe">
-                        <input type="radio" name="cafe" id="arabica"><label for="arabica">Cultivo somente café
+                        <input value="1" type="radio" name="cafe" id="arabica"><label for="arabica">Cultivo somente café
                             arábica.</label>
                     </div>
                     <div class="radioCafe">
-                        <input type="radio" name="cafe" id="canilon"><label for="canilon">Cultivo somente café
+                        <input value="2" type="radio" name="cafe" id="canilon"><label for="canilon">Cultivo somente café
                             canilon/robusta.</label>
                     </div>
                     <span class="span-required" id="radio_cafe_span">*Selecione uma das opções</span>
@@ -123,6 +123,27 @@
         optNull.disabled = true;
     }
 
+    function listarFiliais(inpChaveEmp) {
+        fetch(`/empresas/listar/`, {
+          method: "GET",
+          headers: {
+            "idempresa" : Number(inpChaveEmp)
+          }
+        })
+          .then(function (resposta) {
+            resposta.json().then((empresas) => {
+                chaveFilial.innerHTML = `<option id="optNull" value="null"></option>`
+              empresas.forEach((empresa) => {
+                chaveFilial.innerHTML += `<option value='${empresa.idEndereco}'>${empresa.cep}</option>`;
+                chaveFilial.disabled = false;
+              });
+            });
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+        }
+
     function validarForm() {
         aguardar();
 
@@ -133,21 +154,29 @@
         var spanAreaCult = document.getElementById('area_cultivo_span');
         var opcoesArea = document.getElementsByName('area');
         var spanArea = document.getElementById('radio_area_span');
+        var medidaSelecionada;
         var selecionadoArea = false;
         var opcoesCafe = document.getElementsByName('cafe');
         var spanCafe = document.getElementById('radio_cafe_span');
+        var cafeSelecionado;
         var selecionadoCafe = false;
 
         for (var i = 0; i < opcoesArea.length; i++) {
             if (opcoesArea[i].checked) {
                 selecionadoArea = true;
+                medidaSelecionada = opcoesArea[i].value
                 break;
             }
+        }
+
+        if(medidaSelecionada == "m2"){
+            inputAreaCult = inputAreaCult/10000;
         }
 
         for (var i = 0; i < opcoesCafe.length; i++) {
             if (opcoesCafe[i].checked) {
                 selecionadoCafe = true;
+                cafeSelecionado = opcoesCafe[i].value
                 break;
             }
         }
@@ -188,27 +217,26 @@
             sumirMensagemErro(spanCafe);
         }
 
+        console.log(opcaoSelect.value+inputNome+inputAreaCult+cafeSelecionado)
 
         sumirMensagem();
 
-        fetch("/enderecos/cadastrar", {
+        fetch("/lavouras/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                // cepServer: cep,
-                // logrServer: logr,
-                // numeroServer: numero,
-                // complementoServer: complemento,
-                // bairroServer: bairro,
-                // cidadeServer: cidade,
-                // ufServer: uf
+                empresaServer: sessionStorage.ID_EMPRESA,
+                enderecoServer: opcaoSelect.value,
+                nomeServer: inputNome,
+                areaServer: inputAreaCult,
+                cafeServer: cafeSelecionado
             }),
         }).then(function (resposta) {
             if (resposta.status == 200) {
                 setTimeout(function () {
-                    window.location.href = "../public/dashboard/dashboard.html";
+                    window.location.href = "dashboard/dashboard.html";
                 }, 2000);
 
                 limparFormulario();
@@ -218,7 +246,7 @@
             }
         })
             .catch(function (resposta) {
-                onsole.log(`#ERRO: ${resposta}`);
+                console.log(`#ERRO: ${resposta}`);
                 finalizarAguardar();
             });
 
