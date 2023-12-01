@@ -41,7 +41,6 @@ function buscarMedidasTeto(req, res){
 
 
 function buscarMedidasEmTempoReal(req, res) {
-
     var idLavoura = req.params.idLavoura;
     var idQuadrante = req.params.idQuadrante;
 

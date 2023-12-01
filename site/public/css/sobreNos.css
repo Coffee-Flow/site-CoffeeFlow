@@ -7,6 +7,11 @@
   top: -59px;
 }
 
+.section1 {
+  z-index: -1;
+  position: sticky;
+}
+
 .section1 h6 {
   position: absolute;
   top: 205px;
@@ -30,7 +35,7 @@
 
 .onda {
   position: absolute;
-  top: 300px;
+  top: 265px;
   right: 0px;
   width: 100%;
 }
@@ -43,6 +48,7 @@
   padding: 0px 190px 70px 190px;
   text-align: center;
   background-color: #EAE8DB;
+  margin-top: 63px;
 }
 
 .section2 h3 {
