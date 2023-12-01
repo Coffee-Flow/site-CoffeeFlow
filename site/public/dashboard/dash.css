@@ -4,7 +4,6 @@ body, html{
 }
 body {
   background-color: #EAE8DB;
-  /*background-image: url("../assets/img/Section1/imgGraosCafe.svg"); */
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: bottom;
@@ -477,4 +476,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 #thumbsUmi {
   top: 334px;
+}
+dialog{
+  height: 80%;
+  width: 70%;
+  margin: auto;
+  padding: 0;
+  z-index: 2;
+  background-color: transparent;
+  overflow: hidden;
+  border: #D9A30B 2px solid;
+}
+dialog iframe{
+  height: 100%;
+  width: 100%;
+}
+dialog h1{
+  position: absolute;
+  color: #EAE8DB;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
 }

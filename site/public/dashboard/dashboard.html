@@ -115,7 +115,7 @@
                 </div>
               </div>
             </div>
-            <span><img src="../assets/img/SideBarDashboard/help.svg">Ajuda</span>
+            <span style="cursor: pointer;" onclick="abrirHD()"><img src="../assets/img/SideBarDashboard/help.svg">Ajuda</span>
             <span onclick="limparSessao()"><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
           </div>
         </div>
@@ -224,6 +224,10 @@
     </div>
   </div>
   <img width="55px" src="" alt="" id="thumbsUmi">
+  <dialog id="helpdesk">
+    <h1 onclick="fecharHD()">X</h1>
+    <iframe src="https://app.pipefy.com/public/form/3bbziCUd"></iframe>
+  </dialog>
 </body>
 
 </html>

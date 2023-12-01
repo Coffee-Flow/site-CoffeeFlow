@@ -7,6 +7,14 @@ function exibir(option) {
   }
 }
 
+//Funções para abrir e fechar o modal da helpdesk
+function abrirHD(){
+  helpdesk.showModal()
+}
+function fecharHD(){
+  helpdesk.close()
+}
+
 //ESC abrir menu
 window.onkeyup = function (event) {
   let key = event.key.toUpperCase();
