@@ -279,8 +279,10 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
             }
           });
           // tirando e colocando valores no gráfico
-          dadosTemp.labels.shift();
-          dadosTemp.labels.push(novoRegistro[0].momento);
+          dadosTemp.datasets[0].label.shift();
+          dadosTemp.datasets[0].label.push(novoRegistro[0].momento);
+          dadosTemp.datasets[1].label.shift();
+          dadosTemp.datasets[1].label.push(novoRegistro[0].momento);
 
           dadosUmidade.labels.shift();
           dadosUmidade.labels.push(novoRegistro[0].momento);

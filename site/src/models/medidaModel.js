@@ -45,9 +45,9 @@ function buscarMedidasEmTempoReal(idLavoura, idQuadrante) {
                     order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select r.valor, r.idTipo, DATE_FORMAT(r.dataHora,'%H:%i:%s') as momento, r.idLavoura, r.idQuadrante from sensor s
-        join registro r on s.idQuadrante = r.idQuadrante and s.idTipo = r.idTipo
-        where s.idLavoura = ${idLavoura} and r.idQuadrante = ${idQuadrante} order by idRegistro desc limit 3;`;
+        instrucaoSql = `
+        select valor, dataHora, idTipo from registro where idRegistro = (select max(idRegistro) from registro) and idQuadrante = 3 and idLavoura = 1 order by idTipo limit 3;
+        `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

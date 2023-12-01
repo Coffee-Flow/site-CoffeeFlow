@@ -131,6 +131,7 @@ footer {
   padding: 38px 0 0 0;
   color: #EAE8DB;
   gap: 40px;
+  z-index: -1;
 }
 
 .footer-esquerda div {
