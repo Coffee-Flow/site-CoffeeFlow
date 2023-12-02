@@ -105,14 +105,24 @@ function plotarGrafico(resposta, idLavoura) {
   // console.log(resposta)
 
   // Inserindo valores recebidos em estrutura para plotar o gráfico
-  for (i = 0; i < resposta.length; i++) {
+  for (var i = resposta.length-1; i >= 0; i--) {
     var registro = resposta[i];
-    labelsTemp.push(registro.momento);
-    labelsUmi.push(registro.momento)
-    dadosTemp.datasets[0].data.push(registro.tempInt);
-    dadosTemp.datasets[1].data.push(registro.tempExt);
-    dadosUmidade.datasets[0].data.push(registro.umidade);
+    if(labelsTemp.length < 7){
+      labelsTemp.push(new Date(registro.dataHora).toLocaleTimeString());
+    }
+    if(registro.idTipo == 3){
+      dadosTemp.datasets[1].data.push(registro.valor);
+    }else if(registro.idTipo == 2){
+      atualUmidade.innerHTML = parseFloat(registro.valor).toFixed(0)+"%"
+      labelsUmi.push(new Date(registro.dataHora).toLocaleTimeString())
+      dadosUmidade.datasets[0].data.push(registro.valor);
+    }else{
+      tempAtual.innerHTML = parseFloat(registro.valor).toFixed(0)+"°C"
+      dadosTemp.datasets[0].data.push(registro.valor);
+    }
   }
+
+
 
   // console.log('----------------------------------------------')
   // console.log('O gráfico será plotado com os respectivos valores:')
@@ -209,12 +219,12 @@ function obterDadosTeto(idLavoura, idQuadrante) {
     if (response.status == 200) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-        tempMax.innerHTML = parseInt(resposta[0].maxTempExt) + '°C';
-        tempMin.innerHTML = parseInt(resposta[0].minTempExt) + '°C';
-        chartUmidadeMax.data.datasets[0].data = [parseInt(resposta[0].maxUmidade), 100 - parseInt(resposta[0].maxUmidade)];
-        chartUmidadeMin.data.datasets[0].data = [parseInt(resposta[0].minUmidade), 100 - parseInt(resposta[0].minUmidade)];
-        maiorUmidade.innerHTML = parseInt(resposta[0].maxUmidade) + '%';
-        menorUmidade.innerHTML = parseInt(resposta[0].minUmidade) + '%';
+        tempMax.innerHTML = parseFloat(resposta[2].valor).toFixed(0) + '°C';
+        tempMin.innerHTML = parseFloat(resposta[3].valor).toFixed(0) + '°C';
+        chartUmidadeMax.data.datasets[0].data = [parseFloat(resposta[0].valor).toFixed(0), 100 - parseFloat(resposta[0].valor).toFixed(0)];
+        chartUmidadeMin.data.datasets[0].data = [parseFloat(resposta[1].valor).toFixed(0), 100 - parseFloat(resposta[1].valor).toFixed(0)];
+        maiorUmidade.innerHTML = parseFloat(resposta[0].valor).toFixed(0) + '%';
+        menorUmidade.innerHTML = parseFloat(resposta[1].valor).toFixed(0) + '%';
         console.log(chartUmidadeMax.data.datasets[0].data)
         console.log(chartUmidadeMin.data.datasets[0].data)
         chartUmidadeMax.update();
@@ -245,18 +255,18 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
         // alertar(novoRegistro, idLavoura);
         console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
         console.log(`Dados atuais do gráfico:`);
-        console.log(dadosTemp.datasets[0].data, dadosTemp.datasets[1].data, dadosUmidade.datasets[0].data);
+        console.log(dadosTemp, dadosTemp, dadosUmidade);
 
         // let avisoCaptura = document.getElementById(`avisoCaptura${idLavoura}`)
         // avisoCaptura.innerHTML = ""
 
-
-        if ([novoRegistro[0].momento == dadosTemp.labels[dadosTemp.labels.length - 1]] && [novoRegistro[1].momento == dadosUmidade.labels[dadosUmidade.labels.length - 1]]) {
+        // new Date(novoRegistro[0].dataHora).toLocaleTimeString()
+        if (new Date(novoRegistro[0].dataHora).toLocaleTimeString() == dadosTemp.labels[dadosTemp.labels.length - 1] && new Date(novoRegistro[1].dataHora).toLocaleTimeString() == dadosUmidade.labels[dadosUmidade.labels.length - 1]) {
           console.log("---------------------------------------------------------------")
           console.log("Como não há dados novos para captura, o gráfico não atualizará.")
           // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
           console.log("Horário do novo dado capturado:")
-          console.log(novoRegistro[0].momento)
+          console.log(novoRegistro[0].dataHora)
           console.log("Horário do último dado temp capturado:")
           console.log(dadosTemp.labels[dadosTemp.labels.length - 1])
           console.log("Horário do último dado umidade capturado:")
@@ -266,37 +276,38 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
           novoRegistro.forEach(function (item) {
             if (item.idTipo === 1) {
               dadosTemp.datasets[0].data.shift();
-              dadosTemp.datasets[0].data.push(novoRegistro[0].tempInt);
+              dadosTemp.datasets[0].data.push(novoRegistro[0].valor);
 
             } else if (item.idTipo === 3) {
               dadosTemp.datasets[1].data.shift();
-              dadosTemp.datasets[1].data.push(novoRegistro[0].tempExt);
+              dadosTemp.datasets[1].data.push(novoRegistro[2].valor);
 
             } else if (item.idTipo === 2) {
               dadosUmidade.datasets[0].data.shift();
-              dadosUmidade.datasets[0].data.push(novoRegistro[0].umidade);
+              dadosUmidade.datasets[0].data.push(novoRegistro[1].valor);
               
             }
           });
           // tirando e colocando valores no gráfico
-          dadosTemp.datasets[0].label.shift();
-          dadosTemp.datasets[0].label.push(novoRegistro[0].momento);
-          dadosTemp.datasets[1].label.shift();
-          dadosTemp.datasets[1].label.push(novoRegistro[0].momento);
+          dadosTemp.labels.shift();
+          dadosTemp.labels.push(new Date(novoRegistro[0].dataHora).toLocaleTimeString());
+          // dadosTemp.datasets[1].label.shift();
+          // dadosTemp.datasets[1].label.push(new Date(novoRegistro[2].dataHora).toLocaleTimeString());
 
           dadosUmidade.labels.shift();
-          dadosUmidade.labels.push(novoRegistro[0].momento);
+          dadosUmidade.labels.push(new Date(novoRegistro[1].dataHora).toLocaleTimeString());
 
-          myChart.update();
+          chartTemp.update();
+          chartUmi.update();
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacao = setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
+      proximaAtualizacao = setTimeout(() => atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
     }
   })
     .catch(function (error) {

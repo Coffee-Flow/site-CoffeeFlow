@@ -146,7 +146,7 @@
         }).then(function (resposta){
             if(resposta.status == 200){
                 resposta.json().then(function (json){
-                    sessionStorage.ID_EMPRESA = json.insertId
+                    sessionStorage.ID_EMPRESA = json.inserstId
                     window.location.href = "cadastroEndereco.html";
                 })
                

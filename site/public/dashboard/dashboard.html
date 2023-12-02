@@ -14,13 +14,13 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../js/script.js"></script>
-  <script src="../js/alerta.js"></script>
+  <!-- <script src="../js/alerta.js"></script> -->
   <script src="../js/sessao.js"></script>
   <script src="../js/dashboard.js"></script>
   <script src="../js/heatmap.js"></script>
 </head>
 
-<body onload="validarSessao(), obterDadosGrafico(lavoura.value, quadrante.value), setTimeout(() => obterDadosTeto(lavoura.value, quadrante.value), 200), setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value), 2000);">
+<body onload="validarSessao(), obterDadosGrafico(lavoura.value, quadrante.value) ,setTimeout(() => obterDadosTeto(lavoura.value, quadrante.value), 200)">
   <header>
     <ul class="ul-header">
       <div id="mySidenav" class="sidenav" style="width: 15px;">
@@ -116,7 +116,7 @@
               </div>
             </div>
             <span style="cursor: pointer;" onclick="abrirHD()"><img src="../assets/img/SideBarDashboard/help.svg">Ajuda</span>
-            <span onclick="limparSessao()"><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
+            <span style="cursor: pointer;" onclick="limparSessao()"><img src="../assets/img/SideBarDashboard/exit.svg">Sair</span>
           </div>
         </div>
         <div class="botaoSideNav" id="botaoSideNav" onmouseover="showNav()">

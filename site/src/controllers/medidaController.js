@@ -2,7 +2,7 @@ var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
 
-    const limite_linhas = 16;
+    const limite_linhas = 7;
 
     var idLavoura = req.params.idLavoura;
     var idQuadrante = req.params.idQuadrante;
@@ -11,6 +11,7 @@ function buscarUltimasMedidas(req, res) {
 
     medidaModel.buscarUltimasMedidas(idLavoura, idQuadrante, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
+            console.log(resultado)
             res.status(200).json(resultado);
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
