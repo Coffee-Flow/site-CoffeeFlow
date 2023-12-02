@@ -20,7 +20,12 @@
   <script src="../js/heatmap.js"></script>
 </head>
 
-<body onload="validarSessao(), obterDadosGrafico(lavoura.value, quadrante.value) ,setTimeout(() => obterDadosTeto(lavoura.value, quadrante.value), 200)">
+<body onload="
+validarSessao(), 
+obterDadosGrafico(lavoura.value, quadrante.value) ,
+obterDadosMapaCalor(),
+setTimeout(() => obterDadosTeto(lavoura.value, quadrante.value), 200), 
+setInterval(()=> obterDadosMapaCalor(), 2000)">
   <header>
     <ul class="ul-header">
       <div id="mySidenav" class="sidenav" style="width: 15px;">
@@ -310,175 +315,6 @@
 
     }, 550);
   });
-
-  // Função para processar os dados
-  // function processarDados(dados) {
-  //   var { temperaturaExt, temperaturaSolo, umidade } = dados;
-
-  //   var mensagemTempExt = "";
-  //   var mensagemTempSolo = "";
-  //   var mensagemUmi = "";
-
-  //     if (temperaturaExt <= 10) {
-  //       thumbsTempExt.style.display = 'flex';
-  //       mensagemTempExt += `Crítico: Temperatura Externa muito baixa!<br>`;
-  //       thumbsTempExt.src = "../assets/img/dashboard/iconCriticoTempExt.svg";
-  //       thumbsTempExt.style.backgroundColor = "#7AFDFF";
-  //       p_auxiliarTempExt.innerHTML += "Proteja as plantas do frio intenso. Ajuste os cuidados para evitar danos aos cafezais.<br>"
-  //     } else if (temperaturaExt <= 15) {
-  //       thumbsTempExt.style.display = 'flex';
-  //       mensagemTempExt += `Alerta: Temperatura Externa baixa!<br>`;
-  //       thumbsTempExt.src = "../assets/img/dashboard/iconAlertaTempExt.svg";
-  //       thumbsTempExt.style.backgroundColor = "#9CDBC0";
-  //       p_auxiliarTempExt.innerHTML += "Temperatura fresca lá fora. Ajuste os cuidados para manter o conforto das plantas de café.<br>"
-  //     } else if (temperaturaExt >= 27 && temperaturaExt < 34) {
-  //       thumbsTempExt.style.display = 'flex';
-  //       mensagemTempExt += `Alerta: Temperatura Externa alta!<br>`;
-  //       thumbsTempExt.src = "../assets/img/dashboard/iconAlertaTempExt.svg";
-  //       thumbsTempExt.style.backgroundColor = "#C9B167";
-  //       p_auxiliarTempExt.innerHTML += "Ajuste a irrigação para proteger os cafezais do calor excessivo.<br>"
-  //     } else if (temperaturaExt >= 34) {
-  //       thumbsTempExt.style.display = 'flex';
-  //       mensagemTempExt += `Crítico: Temperatura Externa muito alta!<br>`;
-  //       thumbsTempExt.src = "../assets/img/dashboard/iconCriticoTempExt.svg";
-  //       thumbsTempExt.style.backgroundColor = "#FF7200";
-  //       p_auxiliarTempExt.innerHTML += "Calor extremo lá fora. Adapte a irrigação para evitar danos às plantas.<br>"
-  //     } else {
-  //       thumbsTempExt.style.display = 'none';
-  //   } 
-       
-
-  //   if (temperaturaSolo <= 8) {
-  //     thumbsTempSolo.style.display = 'flex';
-  //     mensagemTempSolo += `Crítico: Temperatura do Solo muito baixa!<br>`;
-  //     thumbsTempSolo.src = "../assets/img/dashboard/iconCriticoTempSolo.svg";
-  //     thumbsTempSolo.style.backgroundColor = "#7AFDFF";
-  //     p_auxiliarTempSolo.innerHTML += "Ajuste a irrigação para proteger as mudas de café do frio.<br>"
-  //   } else if (temperaturaSolo <= 12) {
-  //     thumbsTempSolo.style.display = 'flex';
-  //     mensagemTempSolo += `Alerta: Temperatura do Solo baixa!<br>`;
-  //     thumbsTempSolo.src = "../assets/img/dashboard/iconAlertaTempSolo.svg";
-  //     thumbsTempSolo.style.backgroundColor = "#9CDBC0";
-  //     p_auxiliarTempSolo.innerHTML += "Ajuste os aspersores para evitar perdas na lavoura.<br>"
-  //   } else if (temperaturaSolo >= 25 && temperaturaSolo < 33) {
-  //     thumbsTempSolo.style.display = 'flex';
-  //     mensagemTempSolo += `Alerta: Temperatura do Solo alta!<br>`;
-  //     thumbsTempSolo.src = "../assets/img/dashboard/iconAlertaTempSolo.svg";
-  //     thumbsTempSolo.style.backgroundColor = "#C9B167";
-  //     p_auxiliarTempSolo.innerHTML += "Ajuste a irrigação para evitar estresse nas raízes do café.<br>"
-  //   } else if (temperaturaSolo >= 33) {
-  //     thumbsTempSolo.style.display = 'flex';
-  //     mensagemTempSolo += `Crítico: Temperatura do Solo muito alta!<br>`;
-  //     thumbsTempSolo.src = "../assets/img/dashboard/iconCriticoTempSolo.svg";
-  //     thumbsTempSolo.style.backgroundColor = "#FF7200";
-  //     p_auxiliarTempSolo.innerHTML += "Aumente a frequência de irrigação para compensar o calor.<br>"
-  //   } else {
-  //     thumbsTempSolo.style.display = 'none';
-  //  } 
-  
-  //   document.getElementById('p_titulo_msg_temp_ext').innerHTML = mensagemTempExt;
-  //   document.getElementById('p_titulo_msg_temp_solo').innerHTML = mensagemTempSolo;
-
-  //   if (umidade <= 50) {
-  //     thumbsUmi.style.display = 'flex';
-  //     mensagemUmi += `Crítico: Umidade do Solo muito baixa!<br>`;
-  //     thumbsUmi.src = "../assets/img/dashboard/iconCriticoHumi.svg";
-  //     thumbsUmi.style.backgroundColor = "#FFFF60";
-  //     p_auxiliarUmi.innerHTML += "Ajuste a irrigação para garantir a umidade necessária.<br>";
-  //   } else if (umidade <= 60) {
-  //     thumbsUmi.style.display = 'flex';
-  //     mensagemUmi += `Alerta: Umidade do Solo baixa!<br>`;
-  //     thumbsUmi.src = "../assets/img/dashboard/iconAlertaHumi.svg";
-  //     thumbsUmi.style.backgroundColor = "#A0FF67";
-  //     p_auxiliarUmi.innerHTML += "Ajuste a irrigação para manter o equilíbrio hídrico nas raízes do café.<br>"
-  //   } else if (umidade >= 80 && umidade < 97) {
-  //     thumbsUmi.style.display = 'flex';
-  //     mensagemUmi += `Alerta: Umidade do Solo alta!<br>`;
-  //     thumbsUmi.src = "../assets/img/dashboard/iconAlertaHumi.svg";
-  //     thumbsUmi.style.backgroundColor = "#109C77";
-  //     p_auxiliarUmi.innerHTML += "Reduza a irrigação para evitar excesso de umidade.<br>";
-  //   } else if (umidade >= 97) {
-  //     thumbsUmi.style.display = 'flex';
-  //     mensagemUmi += `Crítico: Umidade do Solo muito alta!<br>`;
-  //     thumbsUmi.src = "../assets/img/dashboard/iconCriticoHumi.svg";
-  //     thumbsUmi.style.backgroundColor = "#007A7A";
-  //     p_auxiliarUmi.innerHTML += "Ajuste a irrigação para proteger as raízes do café.<br>";
-  //   } else {
-  //     thumbsUmi.style.display = 'none';
-  // } 
-  //   document.getElementById('p_titulo_msg_umi').innerHTML = mensagemUmi;
-
-  // }
-
-  // var dadosSimulados = {
-  //   temperaturaExt: 10,
-  //   temperaturaSolo: 90,
-  //   umidade: 100
-  // };
-  // // Chama a função para processar os dados simulados
-  // processarDados(dadosSimulados);
-
-
-  // minimal heatmap instance configuration
-  var heatmapInstance = h337.create({
-    // only container is required, the rest will be defaults
-    container: document.querySelector('.mapa'),
-    // backgroundColor: 'red',
-    maxOpacity: .5,
-    minOpacity: .5,
-    // custom gradient colors
-    gradient: {
-      // enter n keys between 0 and 1 here
-      // for gradient color customization
-      '0.2': '#7afdff',
-      '0.3': '#9cdbc0',
-      '0.5': '#bdc771',
-      '0.625': '#c9b167',
-      '0.825': '#ff7200'
-    }
-  });
-
-  // now generate some random data
-  var points = [];
-  var max = 40;
-  var width = 450;
-  var height = 250;
-
-  var minT = 8;
-  var intervalo = max - minT;
-  
-  var posX = 28;
-
-  for(var contadorSensor = 1; contadorSensor<=16; contadorSensor++){
-    
-    var posY = 62;
-    if(contadorSensor % 2 == 0){
-      posY = 187;
-    }else{
-      posX = 28;
-      posX = posX * contadorSensor;
-    }
-
-    var sensor = {
-      x: posX,
-      y: posY,
-      value: Math.floor(minT + Math.random() * intervalo),
-      radius: 100,
-    }
-    points.push(sensor);
-  }
-
-  var data = {
-    max: 40,
-    data: points,
-  };
-
-  heatmapInstance.setData(data);
-  console.log(points)
-  // heatmap data format
-
-  // if you have a set of datapoints always use setData instead of addData
-  // for data initialization
 
   //ChartJS Umidade (pizza ao meio)
   const pizzaUmidadeMim = document.getElementById("menorUmi");

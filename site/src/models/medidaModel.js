@@ -23,6 +23,16 @@ function buscarMedidasTeto(idLavoura, idQuadrante) {
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
+
+}
+function buscarMedidasMapa() {
+
+    instrucaoSql = `
+    select * from registro where idTipo = 1 and idRegistro = (select max(idRegistro) from registro) order by dataHora desc;
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
 function buscarMedidasEmTempoReal(idLavoura, idQuadrante) {
@@ -55,5 +65,6 @@ function buscarMedidasEmTempoReal(idLavoura, idQuadrante) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarMedidasTeto
+    buscarMedidasTeto,
+    buscarMedidasMapa
 }

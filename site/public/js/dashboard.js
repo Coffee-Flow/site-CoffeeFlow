@@ -8,10 +8,10 @@ function exibir(option) {
 }
 
 //Funções para abrir e fechar o modal da helpdesk
-function abrirHD(){
+function abrirHD() {
   helpdesk.showModal()
 }
-function fecharHD(){
+function fecharHD() {
   helpdesk.close()
 }
 
@@ -105,19 +105,19 @@ function plotarGrafico(resposta, idLavoura) {
   // console.log(resposta)
 
   // Inserindo valores recebidos em estrutura para plotar o gráfico
-  for (var i = resposta.length-1; i >= 0; i--) {
+  for (var i = resposta.length - 1; i >= 0; i--) {
     var registro = resposta[i];
-    if(labelsTemp.length < 7){
+    if (labelsTemp.length < 7) {
       labelsTemp.push(new Date(registro.dataHora).toLocaleTimeString());
     }
-    if(registro.idTipo == 3){
+    if (registro.idTipo == 3) {
       dadosTemp.datasets[1].data.push(registro.valor);
-    }else if(registro.idTipo == 2){
-      atualUmidade.innerHTML = parseFloat(registro.valor).toFixed(0)+"%"
+    } else if (registro.idTipo == 2) {
+      atualUmidade.innerHTML = parseFloat(registro.valor).toFixed(0) + "%"
       labelsUmi.push(new Date(registro.dataHora).toLocaleTimeString())
       dadosUmidade.datasets[0].data.push(registro.valor);
-    }else{
-      tempAtual.innerHTML = parseFloat(registro.valor).toFixed(0)+"°C"
+    } else {
+      tempAtual.innerHTML = parseFloat(registro.valor).toFixed(0) + "°C"
       dadosTemp.datasets[0].data.push(registro.valor);
     }
   }
@@ -285,7 +285,7 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
             } else if (item.idTipo === 2) {
               dadosUmidade.datasets[0].data.shift();
               dadosUmidade.datasets[0].data.push(novoRegistro[1].valor);
-              
+
             }
           });
           // tirando e colocando valores no gráfico
@@ -460,4 +460,86 @@ function atualizacaoPeriodica() {
     obterDados(item.id)
   });
   setTimeout(atualizacaoPeriodica, 5000);
+}
+
+function obterDadosMapaCalor() {
+
+  fetch(`/medidas/mapaCalor`, { cache: 'no-store' }).then(function (response) {
+    if (response.status == 200) {
+      response.json().then(function (resposta) {
+        // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+        // minimal heatmap instance configuration
+
+        [...document.getElementsByClassName("heatmap-canvas")].forEach((e) =>e.remove());
+
+        var heatmapInstance = h337.create({
+          // only container is required, the rest will be defaults
+          container: document.querySelector('.mapa'),
+          // backgroundColor: 'red',
+          maxOpacity: .5,
+          minOpacity: .5,
+          // custom gradient colors
+          gradient: {
+            // enter n keys between 0 and 1 here
+            // for gradient color customization
+            '0.2': '#7afdff',
+            '0.3': '#9cdbc0',
+            '0.5': '#bdc771',
+            '0.625': '#c9b167',
+            '0.825': '#ff7200'
+          }
+        });
+        
+        // now generate some random data
+        var points = [];
+        var max = 40;
+        var width = 450;
+        var height = 250;
+        
+        console.log(points)
+        
+        var minT = 8;
+        var intervalo = max - minT;
+        
+        var posX = 28;
+
+        for (var contadorSensor = 1; contadorSensor <= resposta.length; contadorSensor++) {
+          
+          var posY = 62;
+          if (contadorSensor % 2 == 0) {
+            posY = 187;
+          } else {
+            posX = 28;
+            posX = posX * contadorSensor;
+          }
+
+          var sensor = {
+            x: posX,
+            y: posY,
+            value: resposta[contadorSensor-1].valor,
+            radius: 100,
+          }
+          points.push(sensor);
+        }
+
+
+        var data = {
+          max: 40,
+          data: points,
+        };
+
+        // heatmapInstance.setData({data:[]});
+        // heatmapInstance._renderer._clear()
+        heatmapInstance.setData(data);
+        console.log('MAPA DE CALOR '+JSON.stringify(data))
+        points = [];  
+
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+    }
+  })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
 }
