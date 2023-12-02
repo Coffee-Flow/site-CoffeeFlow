@@ -1,5 +1,26 @@
 /* Estilização Section 1 */
 
+html {
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #D9A30B;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #f7b606;
+}
+
+body::-webkit-scrollbar-track-piece {
+  background: #053C11;
+}
+
 .bck-section1 {
   width: 100%;
   filter: brightness(30%);
