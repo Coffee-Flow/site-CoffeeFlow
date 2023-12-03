@@ -19,4 +19,8 @@ router.get("/tempo-real/:idLavoura/:idQuadrante", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/exportar/:dataInicio/:dataFim", function (req, res) {
+    medidaController.buscarMedidasExportar(req, res);
+});
+
 module.exports = router;

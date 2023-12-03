@@ -18,6 +18,7 @@
   <script src="../js/sessao.js"></script>
   <script src="../js/dashboard.js"></script>
   <script src="../js/heatmap.js"></script>
+  <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 </head>
 
 <body onload="
@@ -26,6 +27,22 @@ obterDadosGrafico(lavoura.value, quadrante.value) ,
 obterDadosMapaCalor(),
 setTimeout(() => obterDadosTeto(lavoura.value, quadrante.value), 200), 
 setInterval(()=> obterDadosMapaCalor(), 2000)">
+
+  <div style="display: none;" id="export">
+
+    <table id="tbl_exporttable_to_xls" border="1">
+      <thead>
+        <th>Temperatura Máxima</th>
+        <th>Temperatura Média</th>
+        <th>Temperatura Mínima</th>
+        <th>Data</th>
+      </thead>
+      <tbody id="exportContent">
+          
+      </tbody>
+    </table>
+  </div>
+
   <header>
     <ul class="ul-header">
       <div id="mySidenav" class="sidenav" style="width: 15px;">
@@ -83,12 +100,12 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                   <div class="div-periodo">
                     <b>Período</b>
                     <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
-                      <option>Hoje</option>
-                      <option>Ontem</option>
-                      <option>Última semana</option>
-                      <option>Últimos 30 dias</option>
-                      <option>Últimos 6 meses</option>
-                      <option>Últimos 12 meses</option>
+                      <option value="hoje">Hoje</option>
+                      <option value="ontem">Ontem</option>
+                      <option value="semana">Última semana</option>
+                      <option value="mes">Últimos 30 dias</option>
+                      <option value="semestre">Últimos 6 meses</option>
+                      <option value="ano">Últimos 12 meses</option>
                       <option value="Personalizado">Personalizado</option>
                     </select>
                   </div>
@@ -96,14 +113,14 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                   <div class="divs-dates" id="divs_dates">
                     <div>
                       <b>Data Mínima</b>
-                      <input type="date">
+                      <input id="minDate" type="date">
                     </div>
                     <div>
                       <b>Data Máxima</b>
-                      <input type="date">
+                      <input id="maxDate" type="date">
                     </div>
                   </div>
-                  <button id="btn">Filtrar</button>
+                  <!-- <button id="btn">Filtrar</button> -->
 
                   <div class="div-exportacao">
                     <b>Exportar Dashboard</b>
@@ -112,8 +129,7 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                       <option value="">XLS</option>
                       <option value="">Relatórios exportados</option>
                     </select>
-                    <a href="https://docs.google.com/spreadsheets/d/1FJqMQo1yTkB6_d2RwS3vEYMuvBa5YM_7pDU6-PUdvyI/edit#gid=213062297"
-                      class="btn-Export">
+                    <a class="btn-Export" onclick="obterDadosExportar(minDate.value, maxDate.value)">
                       <p>Exportar</p>
                     </a>
                   </div>

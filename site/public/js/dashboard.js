@@ -100,10 +100,6 @@ function plotarGrafico(resposta, idLavoura) {
     ],
   };
 
-  // console.log('----------------------------------------------')
-  // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-  // console.log(resposta)
-
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (var i = resposta.length - 1; i >= 0; i--) {
     var registro = resposta[i];
@@ -121,22 +117,6 @@ function plotarGrafico(resposta, idLavoura) {
       dadosTemp.datasets[0].data.push(registro.valor);
     }
   }
-
-
-
-  // console.log('----------------------------------------------')
-  // console.log('O gráfico será plotado com os respectivos valores:')
-  // console.log('Labels:')
-  // console.log(labelsTemp)
-  // console.log('Dados:')
-  // console.log(dadosTemp.datasets)
-  // console.log('----------------------------------------------')
-
-  // Criando estrutura para plotar gráfico - config
-  // const config = {
-  //     type: 'line',
-  //     data: dados,
-  // };
 
   const configTemp = {
     type: "line",
@@ -534,6 +514,65 @@ function obterDadosMapaCalor() {
         console.log('MAPA DE CALOR '+JSON.stringify(data))
         points = [];  
 
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+    }
+  })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function ExportToExcel(dtInicio, dtFim, type, fn, dl) {
+  var elt = document.getElementById('tbl_exporttable_to_xls');
+  var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+  return dl ?
+    XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+    XLSX.writeFile(wb, fn || (`relatório${dtInicio}-${dtFim}.` + (type || 'xlsx')));
+}
+
+function obterDadosExportar(dataInicio, dataFim){
+  if(dataInicio == '' && dataFim == ''){
+    var periodo = periodo_min.value;
+    dataFim = new Date().toISOString().slice(0, 10)
+    var dataAtual = new Date();
+    if(periodo == 'hoje'){
+      dataInicio = dataFim
+    }else if(periodo == 'ontem'){
+      dataInicio = dataAtual-8.64e+7
+      dataInicio = new Date(dataInicio).toISOString().slice(0, 10)
+    }else if(periodo == 'semana'){
+      dataInicio = dataAtual-6.048e+8
+      dataInicio = new Date(dataInicio).toISOString().slice(0, 10)
+    }else if(periodo == 'mes'){
+      dataInicio = dataAtual-2.628e+9
+      dataInicio = new Date(dataInicio).toISOString().slice(0, 10)
+    }else if(periodo == 'semestre'){
+      dataInicio = dataAtual-2.628e+9*6
+      dataInicio = new Date(dataInicio).toISOString().slice(0, 10)
+    }else if(periodo == 'ano'){
+      dataInicio = dataAtual-31535965440.0381851
+      dataInicio = new Date(dataInicio).toISOString().slice(0, 10)
+    }
+  }
+  fetch(`/medidas/exportar/${dataInicio}/${dataFim}`, { cache: 'no-store' }).then(function (response) {
+    if (response.status == 200) {
+      response.json().then(function (resposta) {
+        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+        for(var i = 0; i<resposta.length; i++){
+          exportContent.innerHTML += `
+          <tr>
+            <td>${resposta[i].max}</td>
+            <td>${resposta[i].med}</td>
+            <td>${resposta[i].min}</td>
+            <td>${new Date(resposta[i].dia).toLocaleDateString()}</td>
+          </tr>    
+          `;
+          
+        }
+        ExportToExcel(dataInicio, dataFim, 'xlsx');
+        exportContent.innerHTML = ``;
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');

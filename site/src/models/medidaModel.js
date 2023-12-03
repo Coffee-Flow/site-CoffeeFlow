@@ -61,10 +61,21 @@ function buscarMedidasEmTempoReal(idLavoura, idQuadrante) {
     return database.executar(instrucaoSql);
 }
 
+function buscarMedidasExportar(dataInicio, dataFim) {
+
+    instrucaoSql = `
+    select max(valor) as max, avg(valor) as med,min(valor) as min,DATE(dataHora) as dia from registro where DATE(dataHora) between '${dataInicio}' and '${dataFim}' group by DATE(dataHora);
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarMedidasTeto,
-    buscarMedidasMapa
+    buscarMedidasMapa,
+    buscarMedidasExportar
 }
