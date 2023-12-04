@@ -65,7 +65,86 @@ function obterDadosGrafico(idLavoura, idQuadrante) {
 
 function plotarGrafico(resposta, idLavoura) {
 
-  // console.log('iniciando plotagem do gráfico...');
+  
+  //ChartJS Umidade (pizza ao meio)
+  const pizzaUmidadeMim = document.getElementById("menorUmi");
+  const pizzaUmidadeMax = document.getElementById("maiorUmi");
+  const pizzaUmidadeAtual = document.getElementById("atualUmi");
+
+  Chart.defaults.color = "#666666"
+
+
+  const dataPizzaMenor = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [],
+        backgroundColor: [
+          "#ffff60",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  const configPizzaMenor = {
+    type: "doughnut",
+    data: dataPizzaMenor,
+  };
+
+  // menorUmidade.innerHTML = umidadeBaixa + "%";
+
+
+  const dataPizzaMaior = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [],
+        backgroundColor: [
+          "#007a7a",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  const configPizzaMaior = {
+    type: "doughnut",
+    data: dataPizzaMaior,
+  };
+
+  // maiorUmidade.innerHTML = umidadeAlta + "%";
+
+  const dataPizzaAtual = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [100-resposta[resposta.length-1].valor, resposta[resposta.length-1].valor],
+        backgroundColor: [
+          "#20db74",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  const configPizzaAtual = {
+    type: "doughnut",
+    data: dataPizzaAtual,
+  };
+
+
+
+
 
   // Criando estrutura para plotar gráfico - labels
   let labelsTemp = [];
@@ -191,7 +270,12 @@ function plotarGrafico(resposta, idLavoura) {
     configUmidade
   );
 
-  setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
+  
+  umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual); 
+  chartUmidadeMin = new Chart(pizzaUmidadeMim, configPizzaMenor);
+  chartUmidadeMax = new Chart(pizzaUmidadeMax, configPizzaMaior);
+
+  setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value, dadosTemp, dadosUmidade, chartTemp, chartUmi, ), 2000);
 }
 
 function obterDadosTeto(idLavoura, idQuadrante) {
@@ -255,10 +339,12 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
         } else {
           novoRegistro.forEach(function (item) {
             if (item.idTipo === 1) {
+              tempAtual.innerHTML = parseFloat(novoRegistro[0].valor).toFixed(0) + '°C';
               dadosTemp.datasets[0].data.shift();
               dadosTemp.datasets[0].data.push(novoRegistro[0].valor);
 
             } else if (item.idTipo === 3) {
+              atualUmidade.innerHTML = parseFloat(novoRegistro[2].valor).toFixed(0) + '%';
               dadosTemp.datasets[1].data.shift();
               dadosTemp.datasets[1].data.push(novoRegistro[2].valor);
 
@@ -472,7 +558,7 @@ function obterDadosMapaCalor() {
         
         // now generate some random data
         var points = [];
-        var max = 40;
+        var max = 100;
         var width = 450;
         var height = 250;
         
@@ -504,7 +590,7 @@ function obterDadosMapaCalor() {
 
 
         var data = {
-          max: 40,
+          max: 60,
           data: points,
         };
 
