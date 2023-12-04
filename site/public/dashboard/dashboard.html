@@ -64,7 +64,7 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                   <div class="container-cordenadas">
                     <div class="cordenadas">
                       <div>
-                        <b>Lavoura</b>
+                        <b style="color: white; font-size: 11px;">Lavoura</b>
                         <select onchange="obterDadosGrafico(lavoura.value, quadrante.value)" name="Lavoura" id="lavoura">
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -75,7 +75,7 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                     </div>
                     <div class="cordenadas">
                       <div>
-                        <b>Quadrante</b>
+                        <b style="color: white; font-size: 11px;">Quadrante</b>
                         <select onchange="obterDadosGrafico(lavoura.value, quadrante.value)" name="Quadrante" id="quadrante">
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -98,7 +98,7 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                     </div>
                   </div>
                   <div class="div-periodo">
-                    <b>Período</b>
+                    <b style="color: white; margin-top: 6px; font-size: 11px; margin-left: 16px;">Período</b>
                     <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
                       <option value="hoje">Hoje</option>
                       <option value="ontem">Ontem</option>
@@ -123,12 +123,7 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                   <!-- <button id="btn">Filtrar</button> -->
 
                   <div class="div-exportacao">
-                    <b>Exportar Dashboard</b>
-                    <select class="select-export">
-                      <option value="">CSV</option>
-                      <option value="">XLS</option>
-                      <option value="">Relatórios exportados</option>
-                    </select>
+                    <b style="color: white; margin-top: 6px; font-size: 11px;">Exportar Dashboard</b>
                     <a class="btn-Export" onclick="obterDadosExportar(minDate.value, maxDate.value)">
                       <p>Exportar</p>
                     </a>

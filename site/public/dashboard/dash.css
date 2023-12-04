@@ -67,11 +67,12 @@ body {
   }
   
   .btn-Export {
+    cursor: pointer;
     width: 50px;
     height: 14px;
     position: relative;
     top: 20px;
-    left: 40px;
+    left: 28px;
     background-color: #EAE8DB;
     border: 2px solid #D9A30B;
     border-radius: 50px;
@@ -221,6 +222,7 @@ body {
     text-align: center;
     flex-direction: column;
   }
+
   .content .section2 .quadra3 .content .mapa h1{
     color: #000;
     width: 12.5%;
@@ -231,12 +233,15 @@ body {
     margin: 0;
     z-index: 9;
   }
+
   .content .section2 .quadra3 .content .mapa canvas{
     border-radius: 13px;
   }
+
   .animate {
     animation: animate 0.9s linear infinite;
   }
+
   @keyframes animate {
     0% {
       opacity: 1;
@@ -248,20 +253,24 @@ body {
       opacity: 1;
     }
   }
+
   .content .section2 .kpi{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 25px;
   }
+
   .content .section2 .kpi>div{
     display: flex;
     justify-content: space-evenly;
   }
+
   .content .section2 .kpi>div .elipse{
     height: 100px;
     width: 100px;
   }
+
   .content .section2 .kpi>div .elipse{
     display: flex;
     flex-direction: column;
@@ -269,40 +278,49 @@ body {
     text-align: center;
     padding: 10px;
   }
+
   .content .section2 .kpi>div .elipse h2{
     font-size: 40px;
   }
+
   .content .section2 .kpi>div .elipse h3{
     font-size: 12px;
     font-weight: 600;
     color: #666666;
   }
+
   .content .section2 .kpi .umidade{
     margin: 0;
     margin-top: -35px;
     width: 150px;
     text-align: center;
   }
+
   .content .section2 .kpi .umidade canvas{
     height: 150px;
   }
+
   .content .section2 .kpi .umidade h1{
     margin-top: -50px;
   }
+
   .content .section2 .kpi .umidade h2{
     font-size: 13px;
     color: #666666;
     width: 100%;
     font-weight: 500;
   }
+
   .temp-maxima h2{
     color: #ff7200;
     -webkit-text-stroke: 1px #666666;
   }
+
   .temp-minima h2{
     color: #7afdff;
     -webkit-text-stroke: 1px #666666;
   }
+
   .temp-interna h2{
     color: #bdc771;
     -webkit-text-stroke: 1px #666666;
@@ -312,22 +330,26 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
-    /* padding: 20px; */
   }
+
   .sidenav .content .options .dash-export .filtro .div-periodo{
     display: flex;
     flex-direction: column;
   }
+
   .sidenav .content .options .dash-export .filtro .divs-dates {
     display: flex;
     display: none;
     flex-direction: column;
   }
+
   .sidenav .content .options .dash-export .filtro .divs-dates>div{
     display: flex;
     flex-direction: column;
+  }
+
+  .container-cordenadas {
+    margin-left: -28px;
   }
  
   .div-exportacao{
@@ -335,16 +357,17 @@ body {
     flex-direction: column;
     width: 80%;
   }
+
   .sidenav .content .options .dash-export .filtro .div-exportar {
     display: flex; 
     flex-direction: column; 
     justify-content: right; 
   }
+
   .sidenav .content .options .dash-export .filtro div b {
     font: 600 18px 'Poppins';
     color: #053C11;
     font-size: 10px;
-    
   }
 
   .filtro .container-cordenadas {
@@ -353,7 +376,6 @@ body {
     position: relative;
     left: 27px;
   }
-
 
 #btn {
   font: 600 15px 'Poppins';
@@ -477,6 +499,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #thumbsUmi {
   top: 334px;
 }
+
 dialog{
   height: 80%;
   width: 70%;
@@ -487,10 +510,12 @@ dialog{
   overflow: hidden;
   border: #D9A30B 2px solid;
 }
+
 dialog iframe{
   height: 100%;
   width: 100%;
 }
+
 dialog h1{
   position: absolute;
   color: #EAE8DB;
