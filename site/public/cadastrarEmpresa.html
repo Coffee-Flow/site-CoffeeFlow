@@ -50,8 +50,6 @@
                     <label class="label" for="nomeEmp" id="nomeEmpL">Nome da Empresa</label>
                     <span id="span_nomeEmp" class="span-required">*Nome deve ter no mínimo 5 caracteres</span>
                 </div>
-
-
                 <div class="input-group">
                     <input type="text" id="razao" class="input-form required" onfocus="limpar(this, razaoL)"
                         onblur="limpar(this, razaoL)">
@@ -146,7 +144,7 @@
         }).then(function (resposta){
             if(resposta.status == 200){
                 resposta.json().then(function (json){
-                    sessionStorage.ID_EMPRESA = json.inserstId
+                    sessionStorage.ID_EMPRESA = json.insertId
                     window.location.href = "cadastroEndereco.html";
                 })
                

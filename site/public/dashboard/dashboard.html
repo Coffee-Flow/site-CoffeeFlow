@@ -56,9 +56,11 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
               <div class="container">
 
                 <div class="filtro">
-
                   <a href="/cadastrar.html" class="btn-add">
                     <p>+ Colaboradores</p>
+                  </a>
+                  <a href="/cadastroLavoura.html" class="btn-add">
+                    <p>+ Lavouras</p>
                   </a>
                   <h4>Monitoramento</h4>
                   <div class="container-cordenadas">
@@ -98,7 +100,7 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
                     </div>
                   </div>
                   <div class="div-periodo">
-                    <b style="color: white; margin-top: 6px; font-size: 11px; margin-left: 16px;">Período</b>
+                    <b style="color: white; margin-top: 6px; font-size: 11px;">Período</b>
                     <select onchange="exibir(this)" id="periodo_min" style="font-family: 'Poppins'">
                       <option value="hoje">Hoje</option>
                       <option value="ontem">Ontem</option>
@@ -179,15 +181,15 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
         <h1>Tudo o que você precisa saber</h1>
         <div class="linha1">
           <div class="elipse temp-interna">
-            <h2 id="tempAtual">22°C</h2>
+            <h2 id="tempAtual">...°C</h2>
             <h3>Temperatura Interna atual</h3>
           </div>
           <div class="elipse temp-maxima">
-            <h2 id="tempMax">26°C</h2>
+            <h2 id="tempMax">...°C</h2>
             <h3>Temperatura Máxima do mês</h3>
           </div>
           <div class="elipse temp-minima">
-            <h2 id="tempMin">15°C</h2>
+            <h2 id="tempMin">...°C</h2>
             <h3>Temperatura Mínima do mês</h3>
           </div>
         </div>
@@ -326,92 +328,5 @@ setInterval(()=> obterDadosMapaCalor(), 2000)">
 
     }, 550);
   });
-
-  //ChartJS Umidade (pizza ao meio)
-  const pizzaUmidadeMim = document.getElementById("menorUmi");
-  const pizzaUmidadeMax = document.getElementById("maiorUmi");
-  const pizzaUmidadeAtual = document.getElementById("atualUmi");
-
-  Chart.defaults.color = "#666666"
-
-  const umidadeBaixa = 46;
-
-  const dataPizzaMenor = {
-    datasets: [
-      {
-        label: "Umidade",
-        data: [],
-        backgroundColor: [
-          "#ffff60",
-          "#EAE8DB",
-        ],
-        hoverOffset: 4,
-        circumference: 180,
-        rotation: -90,
-      },
-    ],
-  };
-
-  const configPizzaMenor = {
-    type: "doughnut",
-    data: dataPizzaMenor,
-  };
-
-  // menorUmidade.innerHTML = umidadeBaixa + "%";
-
-  const umidadeAlta = 99;
-
-  const dataPizzaMaior = {
-    datasets: [
-      {
-        label: "Umidade",
-        data: [],
-        backgroundColor: [
-          "#007a7a",
-          "#EAE8DB",
-        ],
-        hoverOffset: 4,
-        circumference: 180,
-        rotation: -90,
-      },
-    ],
-  };
-
-  const configPizzaMaior = {
-    type: "doughnut",
-    data: dataPizzaMaior,
-  };
-
-  // maiorUmidade.innerHTML = umidadeAlta + "%";
-
-  const umidadeAtual = 75;
-
-  const dataPizzaAtual = {
-    datasets: [
-      {
-        label: "Umidade",
-        data: [umidadeAtual, 100 - umidadeAtual],
-        backgroundColor: [
-          "#20db74",
-          "#EAE8DB",
-        ],
-        hoverOffset: 4,
-        circumference: 180,
-        rotation: -90,
-      },
-    ],
-  };
-
-  const configPizzaAtual = {
-    type: "doughnut",
-    data: dataPizzaAtual,
-  };
-
-  atualUmidade.innerHTML = umidadeAtual + "%";
-
-
-  chartUmidadeMin = new Chart(pizzaUmidadeMim, configPizzaMenor);
-  chartUmidadeMax = new Chart(pizzaUmidadeMax, configPizzaMaior);
-  const umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual);
 
 </script>

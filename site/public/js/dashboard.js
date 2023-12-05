@@ -39,19 +39,15 @@ function showNav() {
   }
 }
 
+
+var graficosNaTela = 0;
+
 function obterDadosGrafico(idLavoura, idQuadrante) {
-
-  // alterarTitulo(idLavoura)
-
-  // if (proximaAtualizacao != undefined) {
-  //     clearTimeout(proximaAtualizacao);
-  // }
 
   fetch(`/medidas/ultimas/${idLavoura}/${idQuadrante}`, { cache: 'no-store' }).then(function (response) {
     if (response.status == 200) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-        // resposta.reverse();
         plotarGrafico(resposta, idLavoura);
       });
     } else {
@@ -65,7 +61,82 @@ function obterDadosGrafico(idLavoura, idQuadrante) {
 
 function plotarGrafico(resposta, idLavoura) {
 
-  // console.log('iniciando plotagem do gráfico...');
+  
+
+  
+  //ChartJS Umidade (pizza ao meio)
+  var pizzaUmidadeMim = document.getElementById("menorUmi");
+  var pizzaUmidadeMax = document.getElementById("maiorUmi");
+  var pizzaUmidadeAtual = document.getElementById("atualUmi");
+
+  Chart.defaults.color = "#666666"
+
+
+  var dataPizzaMenor = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [],
+        backgroundColor: [
+          "#ffff60",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  var configPizzaMenor = {
+    type: "doughnut",
+    data: dataPizzaMenor,
+  };
+
+  // menorUmidade.innerHTML = umidadeBaixa + "%";
+
+  var dataPizzaMaior = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [],
+        backgroundColor: [
+          "#007a7a",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  var configPizzaMaior = {
+    type: "doughnut",
+    data: dataPizzaMaior,
+  };
+
+  // maiorUmidade.innerHTML = umidadeAlta + "%";
+
+  var dataPizzaAtual = {
+    datasets: [
+      {
+        label: "Umidade",
+        data: [],
+        backgroundColor: [
+          "#20db74",
+          "#EAE8DB",
+        ],
+        hoverOffset: 4,
+        circumference: 180,
+        rotation: -90,
+      },
+    ],
+  };
+
+  console.log(dataPizzaAtual)
+
+  
 
   // Criando estrutura para plotar gráfico - labels
   let labelsTemp = [];
@@ -112,11 +183,17 @@ function plotarGrafico(resposta, idLavoura) {
       atualUmidade.innerHTML = parseFloat(registro.valor).toFixed(0) + "%"
       labelsUmi.push(new Date(registro.dataHora).toLocaleTimeString())
       dadosUmidade.datasets[0].data.push(registro.valor);
+      dataPizzaAtual.datasets[0].data = [registro.valor, 100-registro.valor]
     } else {
       tempAtual.innerHTML = parseFloat(registro.valor).toFixed(0) + "°C"
       dadosTemp.datasets[0].data.push(registro.valor);
     }
   }
+
+  var configPizzaAtual = {
+    type: "doughnut",
+    data: dataPizzaAtual,
+  };
 
   const configTemp = {
     type: "line",
@@ -180,18 +257,32 @@ function plotarGrafico(resposta, idLavoura) {
     },
   };
 
+  if(graficosNaTela == 1){
+    umidade.destroy();
+    chartTemp.destroy();
+    chartUmi.destroy();
+  }else{
+    chartUmidadeMin = new Chart(pizzaUmidadeMim, configPizzaMenor);
+    chartUmidadeMax = new Chart(pizzaUmidadeMax, configPizzaMaior);
+  }
+
   // Adicionando gráfico criado em div na tela
-  let chartTemp = new Chart(
+  chartTemp = new Chart(
     document.getElementById(`temperatura`),
     configTemp
   );
 
-  let chartUmi = new Chart(
+  chartUmi = new Chart(
     document.getElementById(`umidade`),
     configUmidade
   );
 
-  setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
+  
+  umidade = new Chart(pizzaUmidadeAtual, configPizzaAtual); 
+
+  graficosNaTela = 1;
+
+  setTimeout(() => atualizarGrafico(lavoura.value, quadrante.value, dadosTemp, dadosUmidade, chartTemp, chartUmi, umidade), 2000);
 }
 
 function obterDadosTeto(idLavoura, idQuadrante) {
@@ -224,7 +315,7 @@ function obterDadosTeto(idLavoura, idQuadrante) {
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi) {
+function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi, umidade) {
 
   fetch(`/medidas/tempo-real/${idLavoura}/${idQuadrante}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
@@ -255,10 +346,12 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
         } else {
           novoRegistro.forEach(function (item) {
             if (item.idTipo === 1) {
+              tempAtual.innerHTML = parseFloat(novoRegistro[0].valor).toFixed(0) + '°C';
               dadosTemp.datasets[0].data.shift();
               dadosTemp.datasets[0].data.push(novoRegistro[0].valor);
 
             } else if (item.idTipo === 3) {
+              atualUmidade.innerHTML = parseFloat(novoRegistro[2].valor).toFixed(0) + '%';
               dadosTemp.datasets[1].data.shift();
               dadosTemp.datasets[1].data.push(novoRegistro[2].valor);
 
@@ -268,6 +361,9 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
 
             }
           });
+
+          umidade.data.datasets[0].data = [novoRegistro[1].valor, 100 - novoRegistro[1].valor]
+
           // tirando e colocando valores no gráfico
           dadosTemp.labels.shift();
           dadosTemp.labels.push(new Date(novoRegistro[0].dataHora).toLocaleTimeString());
@@ -279,15 +375,16 @@ function atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chart
 
           chartTemp.update();
           chartUmi.update();
+          umidade .update();
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi, umidade), 2000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacao = setTimeout(() => atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi), 2000);
+      proximaAtualizacao = setTimeout(() => atualizarGrafico(idLavoura, idQuadrante, dadosTemp, dadosUmidade, chartTemp, chartUmi, umidade), 2000);
     }
   })
     .catch(function (error) {
@@ -472,14 +569,6 @@ function obterDadosMapaCalor() {
         
         // now generate some random data
         var points = [];
-        var max = 40;
-        var width = 450;
-        var height = 250;
-        
-        console.log(points)
-        
-        var minT = 8;
-        var intervalo = max - minT;
         
         var posX = 28;
 
@@ -497,14 +586,14 @@ function obterDadosMapaCalor() {
             x: posX,
             y: posY,
             value: resposta[contadorSensor-1].valor,
-            radius: 100,
+            radius: 110,
           }
           points.push(sensor);
         }
 
 
         var data = {
-          max: 40,
+          max: 100,
           data: points,
         };
 
