@@ -133,11 +133,6 @@ function plotarGrafico(resposta, idLavoura) {
       },
     ],
   };
-
-  console.log(dataPizzaAtual)
-
-  
-
   // Criando estrutura para plotar gráfico - labels
   let labelsTemp = [];
   let labelsUmi = [];
